@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "updatedAt": "2026-06-29",
+  "version": 7,
+  "updatedAt": "2026-10-17T06:00:00Z",
   "cards": [
     {
       "id": "chase-chase-sapphire-preferred",
@@ -252,6 +252,60 @@
       ],
       "rotatingCategories": [
         {
+          "quarter": 1,
+          "year": 2026,
+          "categories": [
+            "grocery",
+            "fitness"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 2,
+          "year": 2026,
+          "categories": [
+            "dining",
+            "hotels"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 3,
+          "year": 2026,
+          "categories": [
+            "gas",
+            "evCharging",
+            "entertainment"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 4,
+          "year": 2026,
+          "categories": [
+            "amazon",
+            "wholesale",
+            "paypal"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
           "quarter": 4,
           "year": 2025,
           "categories": [
@@ -314,12 +368,44 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
+          "category": "travel",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 150000,
+          "capPeriod": "yearly",
+          "note": "Travel purchases"
+        },
+        {
           "category": "shipping",
           "multiplier": 3,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null,
-          "note": null
+          "isPercentage": false,
+          "cap": 150000,
+          "capPeriod": "yearly",
+          "note": "Shipping purchases"
+        },
+        {
+          "category": "advertising",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 150000,
+          "capPeriod": "yearly",
+          "note": "Social media & search engine ads"
+        },
+        {
+          "category": "internet",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 150000,
+          "capPeriod": "yearly",
+          "note": "Internet, cable & phone services"
+        },
+        {
+          "category": "phone",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 150000,
+          "capPeriod": "yearly",
+          "note": "Phone services"
         }
       ],
       "rotatingCategories": null,
@@ -345,6 +431,38 @@
           "cap": null,
           "capPeriod": null,
           "note": null
+        },
+        {
+          "category": "internet",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 25000,
+          "capPeriod": "yearly",
+          "note": "Internet, cable & phone services"
+        },
+        {
+          "category": "phone",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 25000,
+          "capPeriod": "yearly",
+          "note": "Cell phone and landline"
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": 25000,
+          "capPeriod": "yearly",
+          "note": "Gas stations"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": 25000,
+          "capPeriod": "yearly",
+          "note": "Restaurants"
         }
       ],
       "rotatingCategories": null,
@@ -962,7 +1080,56 @@
       "rewardType": "cashback",
       "baseReward": 1,
       "baseIsPercentage": true,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "amazon",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Amazon.com purchases"
+        },
+        {
+          "category": "wholeFoods",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Whole Foods Market"
+        },
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Chase Travel"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Local transit & commuting"
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -978,7 +1145,56 @@
       "rewardType": "cashback",
       "baseReward": 1,
       "baseIsPercentage": true,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "amazon",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Amazon.com purchases"
+        },
+        {
+          "category": "wholeFoods",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Whole Foods Market"
+        },
+        {
+          "category": "travel",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Chase Travel"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Local transit & commuting"
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -2563,6 +2779,59 @@
       "categoryRewards": [],
       "rotatingCategories": [
         {
+          "quarter": 1,
+          "year": 2026,
+          "categories": [
+            "dining",
+            "drugstore"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 2,
+          "year": 2026,
+          "categories": [
+            "gas",
+            "evCharging",
+            "homeImprovement"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 3,
+          "year": 2026,
+          "categories": [
+            "grocery",
+            "walmart"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 4,
+          "year": 2026,
+          "categories": [
+            "amazon",
+            "target"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
           "quarter": 4,
           "year": 2025,
           "categories": [
@@ -2572,6 +2841,7 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": 1500,
+          "capPeriod": "quarterly",
           "activationRequired": true
         }
       ],
@@ -2639,6 +2909,59 @@
       "categoryRewards": [],
       "rotatingCategories": [
         {
+          "quarter": 1,
+          "year": 2026,
+          "categories": [
+            "dining",
+            "drugstore"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 2,
+          "year": 2026,
+          "categories": [
+            "gas",
+            "evCharging",
+            "homeImprovement"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 3,
+          "year": 2026,
+          "categories": [
+            "grocery",
+            "walmart"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 4,
+          "year": 2026,
+          "categories": [
+            "amazon",
+            "target"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
           "quarter": 4,
           "year": 2025,
           "categories": [
@@ -2648,6 +2971,7 @@
           "multiplier": 5,
           "isPercentage": true,
           "cap": 1500,
+          "capPeriod": "quarterly",
           "activationRequired": true
         }
       ],
@@ -3878,6 +4202,14 @@
       "baseReward": 1.5,
       "baseIsPercentage": true,
       "categoryRewards": [
+        {
+          "category": "paypal",
+          "multiplier": 3,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "When checking out with PayPal"
+        },
         {
           "category": "onlineShopping",
           "multiplier": 3,

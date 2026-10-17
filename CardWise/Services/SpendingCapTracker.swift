@@ -81,7 +81,7 @@ class SpendingCapTracker {
                         id: "\(card.id)-\(reward.category.rawValue)",
                         cardId: card.id,
                         cardName: userCard.nickname ?? card.name,
-                        category: reward.category.rawValue,
+                        category: reward.category.displayName,
                         currentSpend: spend,
                         cap: cap,
                         period: period,
@@ -95,7 +95,10 @@ class SpendingCapTracker {
                 let currentQ = RotatingCategory.currentQuarter()
                 let currentY = RotatingCategory.currentYear()
 
-                if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }),
+                let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY })
+                    ?? rotating.filter { $0.quarter == currentQ }.max(by: { $0.year < $1.year })
+
+                if let currentRotating = currentRotating,
                    let cap = currentRotating.cap {
                     // Sum spending across all rotating categories
                     var totalSpend: Double = 0
@@ -112,7 +115,7 @@ class SpendingCapTracker {
                         id: "\(card.id)-rotating-Q\(currentQ)",
                         cardId: card.id,
                         cardName: userCard.nickname ?? card.name,
-                        category: "Q\(currentQ) Rotating (\(currentRotating.categories.map { $0.rawValue }.joined(separator: ", ")))",
+                        category: "Q\(currentQ) Rotating: \(currentRotating.categories.map { $0.displayName }.joined(separator: ", "))",
                         currentSpend: totalSpend,
                         cap: cap,
                         period: .quarterly,
@@ -140,7 +143,7 @@ class SpendingCapTracker {
                     id: "\(card.id)-selectable",
                     cardId: card.id,
                     cardName: userCard.nickname ?? card.name,
-                    category: "Selected (\(selectedCategories.map { $0.rawValue }.joined(separator: ", ")))",
+                    category: "Selected: \(selectedCategories.map { $0.displayName }.joined(separator: ", "))",
                     currentSpend: totalSpend,
                     cap: cap,
                     period: capPeriod,

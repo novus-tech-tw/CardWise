@@ -113,4 +113,24 @@ final class MerchantDatabaseTests: XCTestCase {
         let results = MerchantDatabase.searchMerchants(query: "xyznotfound123")
         XCTAssertTrue(results.isEmpty, "Should return empty for no matches")
     }
+
+    // MARK: - Category Synonyms Tests
+
+    func testCategorySynonymsDirectMatching() {
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "coffee"), .dining)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "groceries"), .grocery)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "gas station"), .gas)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "flight"), .airlines)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "hotel"), .hotels)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "supermarket"), .grocery)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "restaurant"), .dining)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "gym"), .fitness)
+        XCTAssertEqual(MerchantDatabase.suggestCategory(for: "pharmacy"), .drugstore)
+    }
+
+    func testSearchMerchantsByKeywordReturnsCategoryMerchants() {
+        let results = MerchantDatabase.searchMerchants(query: "coffee")
+        XCTAssertFalse(results.isEmpty, "Search for 'coffee' should return dining merchants like Starbucks")
+        XCTAssertTrue(results.contains { $0.name == "Starbucks" })
+    }
 }
