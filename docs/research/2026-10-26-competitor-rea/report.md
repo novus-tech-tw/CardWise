@@ -1,10 +1,10 @@
 # CardPointers and MaxRewards offline REA
 
-Status: **completed original offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Its selected static work is finished and owned analysis jobs are closed. The [progress ledger](progress.md) records exact scope, artifacts, Evidence and continuation limits. Both iPad app logins are now confirmed; deeper runtime checks remain pending coordinated access and a usable input/instrumentation path.
+Status: **completed reachable investigation and iPad followup**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Selected static work is finished, both iPad app logins were confirmed, and owned device windows/controllers are released. The [progress ledger](progress.md) and [completion checklist](followup/completion-checklist.md) distinguish completed evidence from unavailable runtime paths explicitly skipped under the user's instruction. No further user setup is requested.
 
 ## Main findings
 
-The [2026-10-27 followup](followup/README.md) resolves three previously open static bindings using existing artifacts. Both target apps are now installed on the iPad and authenticated landing views have been observed after the user completed login. Deeper runtime behavior and reliable input remain unverified; the original offline completion does not establish those results or substitute Mac artifacts for the iPad packages.
+The [2026-10-27 followup](followup/README.md) resolves three previously open static bindings using existing artifacts. Both target apps are installed on the iPad and authenticated landing views were observed after the user completed login. Final exact-bundle inventory requests timed out, and Frida process discovery on 27.2 returned a connection-refused provider error; no attachment was attempted without a current PID. Deeper runtime behavior and reliable input remain unverified and are explicitly skipped. Mac artifacts are not substituted for the iPad packages.
 
 CardPointers combines prepared shopping-card recommendations with bank-specific offer enrollment and native Apple integrations. MaxRewards combines server-returned merchant recommendations with client valuation/eligibility logic and remotely configured bank connection. Both expose substantially more integration work than a card-rate catalog alone.
 
