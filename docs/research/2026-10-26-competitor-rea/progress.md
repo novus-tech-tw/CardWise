@@ -1,6 +1,6 @@
 # Investigation progress
 
-Status: **in progress**. Updated 2026-10-26 America/Phoenix; raw tool timestamps can be 2026-10-27 UTC.
+Status: **in progress**. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix.
 
 ## Current execution mode
 
@@ -22,10 +22,10 @@ The user requested an unattended method after interactive login/UI checks requir
 | Workstream | Completed | Current follow-up | State |
 | --- | --- | --- | --- |
 | CardPointers extension and public web | Official Firefox XPI 8.0.8 hash verified; all six JS parsed; all 344 content factories covered using bounded partitions without resource truncation; popup/vendor/helpers analyzed; Safari bridge analyzed | Final compact ledgers integrated under `cardpointers/`; dynamic/external bindings remain explicitly unknown | Reachable extension static scope delivered |
-| MaxRewards public web and extension | Public frontend classified; official Firefox 0.1.7 and all nine JS parsed; untruncated business/core follow-up; eight public routes captured; all 74 public Connect descriptors fetched without bank execution | Finish source-bound data/offer/valuation report and compact Evidence | Active |
+| MaxRewards public web and extension | 38-file frontend classified; official Firefox 0.1.7 and all nine JS parsed; untruncated business/core follow-up; public routes/planner observed; all 74 public Connect descriptors fetched without bank execution | Reports and compact Evidence integrated; server/runtime limits retained | Offline scope delivered |
 | CardPointers native Mac app | Official Mac App Store download succeeded; 8.1.4/build20261019; signed universal Mach-O and three extensions inventoried; Core Data model 24 entities/637 objects decoded; 70 compiled intent actions inventoried | Scoped Ghidra 12.1.3 main and Safari-extension native analysis; offline only | Active |
-| MaxRewards native iPhone/iPad-compatible Mac app | Official Mac App Store download succeeded; 4.8.35/build1792099341; native inventory and cryptid=1 metadata; separate Hermes v96 bytecode decoded with pinned offline parser | Focused bytecode function/dataflow analysis; offline only; no FairPlay bypass | Active |
-| Native recommendation cross-check | Same exact MaxRewards Hermes artifact and existing parser reused | Independent cap/activation/signup/merchant candidate analysis in `native-recommendation-review/` | Active |
+| MaxRewards native iPhone/iPad-compatible Mac app | Official 4.8.35/build1792099341; native inventory and cryptid=1 metadata; Hermes v96 all headers/strings parsed; 17 focused entry functions decoded | Digest-bound report integrated; no FairPlay bypass | Offline scope delivered |
+| Native recommendation cross-check | All distinct bodies/instructions traversed for bounded identifier searches; 100 selected functions and 28 byte-range anchors reviewed | Date/category/cap/bonus/merchant findings and explicit limits integrated | Offline scope delivered |
 | Consolidation and PR | Dedicated worktree; first-pass reports, hashes, evidence ledger and CardWise baseline recorded | Integrate follow-up results, reconcile findings, validate files and publish updates | Active |
 
 ## Open questions
@@ -49,3 +49,9 @@ Do not describe the whole investigation as complete merely because a report or P
 - MaxRewards worker rechecked all 38 acquired source hashes in the initial corpus.
 - Main checkout is unchanged. No application build/test result is claimed for this documentation-only investigation; repository PR checks remain applicable.
 - Initial PR CI passed build-and-test, Python pipeline tests and SwiftLint on both push and pull-request runs. Later commits require checking their own head before claiming final CI status.
+- Root independently rechecked the exact Hermes carrier, all 100 supplemental bytecode spans and disassembly/pseudocode output pairs, plus the main workstream's 17 output pairs; all hashes matched.
+- An independent cross-report review identified stale native-acquisition and user-blocked language in the initial CardPointers report. Those statements were corrected to distinguish historical extension scope, separate acquired Mac analysis and current offline method limits.
+
+## Native engine recovery
+
+The first extended Ghidra attempts stalled in Swift demangling because the scoped PATH lacked `swift-demangle` and its `swift` fallback resolved to an unrelated OpenStack Python CLI. The native worker preserved thread/log evidence, canceled only owned analysis processes, and restarted with the actual Xcode toolchain bin prefixed in its process PATH. Default analyzers remain enabled, and neither global configuration nor target bytes were changed. Exact current jobs and recovery evidence are in `native/`; native function completion is still pending.

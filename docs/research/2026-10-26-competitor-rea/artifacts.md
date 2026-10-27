@@ -13,6 +13,10 @@ The complete local archive is `/Users/rich/Desktop/CardWise-REA-2026-10-26/`. It
 | `maxrewards/scenario-evidence.json` | Product-to-signup runtime, without collected credential/header/body values |
 | `native/` | Native artifact acquisition and inspection results, added by the native workstream |
 
+Current native originals are installed through the official Mac App Store at `/Applications/CardPointers.app` and `/Applications/MaxRewards.app/Wrapper/MaxRewards.app`. Static snapshots and derived carrier identities are recorded in the product/native ledgers. User containers, receipts, keychains and live account values are excluded from the public PR.
+
+The [native Evidence index](native/evidence-index.json), [native binary provenance](native/binary-provenance.json), [native jobs](native/jobs.json), [CardPointers deep ledger](cardpointers/deep/analysis-summary-ledger.json) and [partition manifest](cardpointers/deep/cli-batches-compact.json) preserve subsequent analysis beyond the initial export sizes above. Consult each workstream's progress for the final retained bundle paths.
+
 Each retained initial Evidence ID is recorded in the [consolidated report](report.md) and detailed product ledgers. Later exports can add records and change file size, so use the exact record ID and artifact digest rather than file size as semantic identity.
 
 If the retained archive is unavailable, reacquire the exact public distribution version from the source URL recorded in the product report and verify the digest. Website builds can change between requests; a new build is a new artifact and must not be presented as reproducing the original hash or runtime bytes.

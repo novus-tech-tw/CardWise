@@ -1,136 +1,168 @@
-# MaxRewards REA investigation
+# MaxRewards: offline competitor investigation
 
-Investigation date: 2026-10-26 America/Phoenix (capture/export crossed 2026-10-27 UTC).
+## Outcome
 
-## Scope and outcome
+This investigation now has genuine shipped product evidence: the official Firefox extension **0.1.7**, its public provider configuration catalog, and the official iOS/iPadOS application **4.8.35, build 1792099341**, obtained by the parent session from the Mac App Store. REA inspected the website, JavaScript, native package, property lists, signature, Mach-O and a signed-out native window. A pinned supplementary Hermes parser disassembled selected functions from the app's unencrypted business-bytecode resource.
 
-REA was actually run against MaxRewards' public browser experience and acquired first-party JavaScript. It reproduced the product-page-to-signup transition and statically parsed seven selected business-related sources. This is a bounded analysis of the public website and account acquisition flow, **not a decompilation of the MaxRewards iOS or Android app**. No mobile binary, logged-in wallet, banking credentials, payment interaction, or recommendation result was acquired.
+The most useful findings for CardWise are:
 
-The strongest finding is a clear separation between the Webflow marketing surface and a React/Next.js account surface, with explicit identity, user-provisioning, session-recovery, and mobile-handoff logic. This supports a meaningful comparison with CardWise's account-free onboarding. It does not establish how MaxRewards computes card rewards or connects to banks.
+1. The extension's online merchant recommendation is an authenticated server query, followed by session-owner checks, per-domain caching and presentation. This is directly supported by shipped extension code, rather than marketing claims.
+2. The native client contains explicit cash/points conversion and a custom-valuation fallback chain. The observed functions do not establish the complete recommendation algorithm, but they explain a concrete part of the displayed return.
+3. Bank connection is a substantial subsystem: a generic extension interpreter consumes remotely served provider descriptors, coordinates authentication/scraping state, and sends captured session material to MaxRewards' backend. None of these bank operations was executed.
+4. MaxRewards has several native distribution surfaces—category widget, lock widget and Live Activity—alongside a React Native/Expo/Hermes main app. A dependency's presence is kept separate from proof of its runtime use.
+5. A public, signed-out two-year card-value calculator was actually exercised with synthetic inputs. Personalized wallet/account routes were login-gated, but it would be wrong to say all useful MaxRewards functionality requires an account.
 
-## Evidence ledger
+At the user's direction, the final pass is **fully offline and unattended**. No further launch, login, bank connection, account changes or UI intervention is needed to complete this artifact-based scope. Authenticated server and runtime questions are stated limits, not pending requests for the user.
 
-| ID | REA Evidence ID | Operation and coverage |
+## Evidence and target identity
+
+| Target | Identity | Evidence basis |
 |---|---|---|
-| R1 | `ev_ea10ac8fd04e2f98a2eebf6f667e47d98d7beb2f1863021bfc1edd94cb37ba01` | Browser scenario: fresh provider-owned headless Chromium 156.0.8078.48; product page to signup; DOM, accessibility, URL, history and network metadata. Three declared actions completed. Owned browser terminated afterward. |
-| S1 | `ev_a1ab54ca0e29ba5922c67b4c0bf00f27dcfeae2b2aa23d0407e0b47c22c27584` | Parent JavaScript application analysis: seven selected sources from a 38-file acquired corpus, 286,567 text bytes, 86,722 visited AST nodes, zero parse failures. |
-| S1 summary | `ev_e2ba528d655c51541194be6551222f3fcdf491e1fdd9a1e45b0db68f2bf00e6e` | Retained parent summary, including limits and unselected scopes. |
-| M1 | `ev_761b3fa2f5568730796b6e0332fc68c8390d54e6f809225a0f40659bdce64177` | Complete 45-entry page of source-module and asset-role identities. |
-| A1 | `ev_d777b33790d8ba2fe44a2812c46586c09ef9551e33941bb3fc22c3a7be625f7b` | Auth/business chunk module identity and observations for `2kf2nyxhdvt_4.js`. |
-| A2 | `ev_5e06741940a46a846e19984ade097521f6aaa2cf0dbf3690b8370bd47c6adc80` | Signup chunk module identity and observations for `1ilbignihnir-.js`. |
+| Public web corpus | 38 saved JS files, 2,987,794 bytes; corpus SHA-256 `e22363f5777192a31f64604afa9bbc18f15b4fcf251be43ca819aa07a4e1f217` | URL/file/digest manifest; 17 business/inline files REA-parsed in selected passes, 21 SDK/shared files separately inventoried. |
+| Firefox extension | Official AMO distribution 0.1.7; XPI 578,507 bytes; SHA-256 `5a8866b7c1760bddf125564249bc174548db4264e3a28c62ff0f6be856bd0c4b` | Digest matches Mozilla's published file hash. Extracted corpus has 26 files; nine JS files were parsed by REA. |
+| Provider descriptors | Public Connect catalog plus all 74 listed provider JSON descriptors; descriptor bodies total 170,203 bytes | Exact URLs, HTTP 200 statuses and individual digests retained. No provider instructions were executed. |
+| Native executable | `com.max.MaxRewards`, 4.8.35 / 1792099341, arm64; SHA-256 `c709cbcb5dc95907dac5de166014ca8149b5ab697deb8d421092301b1aac1122` | REA plist/signature/Mach-O. Apple application-signing chain and team identifier recorded. |
+| Native business carrier | `main.jsbundle`, Hermes bytecode version 96, 12,633,156 bytes; SHA-256 `efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9` | Native artifact inventory plus a pinned, source-only offline Hermes parser. |
 
-Full records are preserved in `rea-evidence-bundle.json` (6 records; 94,636,146 bytes at export). `scenario-evidence.json` contains the portable runtime Evidence. Raw tool envelopes are also retained.
+Public identity links: [product](https://maxrewards.com/app), [Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/maxrewards/), [iOS app](https://apps.apple.com/us/app/maxrewards-rewards-cashback/id1435710443), [Android listing](https://play.google.com/store/apps/details?id=com.maxrewards). The Android link is identity evidence only; this worker did not acquire or inspect an APK.
 
-## Target identity and acquisition
+The compact `evidence-index.json`, `native/provenance.json`, `corpus-classification.json` and `extension-source-anchors.json` preserve reproducible anchors. Raw packages, vendor source, full pseudocode/disassembly, private runtime material and large Evidence bundles stay outside the repository.
 
-Official product URL: <https://maxrewards.com/app>. The product page links its primary CTA to `/signup` and business-product CTA to `/platinum`.
+## Web application boundaries
 
-Official distribution references were obtained from <https://maxrewards.com/download-app>:
+The public product page uses Webflow metadata/assets and dynamically loads MaxRewards' component bundle. Signup/login use first-party Next.js/Turbopack resources with React component code. This establishes the **web** layering only; the native stack is established separately by its own package and bytecode. [W1, W2, W3]
 
-- iOS: <https://apps.apple.com/us/app/maxrewards-rewards-cashback/id1435710443>
-- Android: <https://play.google.com/store/apps/details?id=com.maxrewards>
-- Mobile and QR download handoffs use MaxRewards' app.link domain.
+The account client distinguishes identity creation, product-user provisioning, existing-user recovery, and a mobile download handoff. Native auth disassembly also exposes a shared authentication hook and a login screen consuming it; it reads an access-token key through the application's storage wrapper and invokes user/initial-data actions. These are static call/field observations, not verification of token security or a successful login. [W2; native functions 20054 and 34977]
 
-These links resolve product identity; they are not evidence that a native package was downloaded or inspected. Native app versions remain unknown in this investigation.
+A business-related web chunk contains 71 callable API-wrapper definitions spanning cards, categories, valuations, offers, benefits, transactions, account sync and membership. The exact wrappers and offsets are in `route-and-api-inventory.json`. They use a credentialed `/max-api` client and GraphQL-shaped request bodies. This is a client contract inventory—not a server schema or evidence that every method is currently available to every account. [W3, `1-239ln8xig0a.js`, approximately offsets 39,500–58,500]
 
-Acquired artifacts: 30 public Next.js chunks, one public Webflow-component bundle, and seven inline script snapshots, totaling 2,987,794 bytes. Seven `blob:` script references could not be reacquired after the scenario ended; they remain acquisition gaps. The acquired corpus is intentionally not a complete website distribution. Downloaded script bytes were separately refetched from URLs observed in the scenario; their digest identity is established for the saved files, not for the unretained bytes from the earlier browser response.
+Relevant static seams include user valuation changes; category reward queries; selectable-category updates; paginated offers; offer saving; manual benefit-tracker changes; monthly credit trackers; subscription setup/finalization; and AI card-story feedback. No mutation was sent by the investigator. A wrapper or operation name alone does not establish correctness, entitlement or server-side enforcement.
 
-| Artifact | SHA-256 |
-|---|---|
-| Initial product HTML | `dbf0fe80259eae2f88e5bb281fbed518c6d6c1cecbb9e1b64b8686f73c3e6e14` |
-| Download-page HTML | `53deb31b86fb9fc512724e6ba3dfd45588ee606f177676f54f3233c0e19181f6` |
-| Entire acquired JS corpus identity, S1 | `e22363f5777192a31f64604afa9bbc18f15b4fcf251be43ca819aa07a4e1f217` |
-| Auth/business chunk `2kf2nyxhdvt_4.js` | `4c0ab2e5fd05cf979b0ee06c4eb3211b8722532b7c4f5b8338e9872e2e1d19a6` |
-| Signup chunk `1ilbignihnir-.js` | `d433cacb49eef72938fbb8d8ecac1be56a2bb3e76626334cd2032b6780f20492` |
-| Marketing component `production.bundle.js` | `81a6ac50f9838ce04759e311315f10a51d1c104c05d394efa3c9501a8bfbd4f9` |
+The 21 remaining SDK/shared files were deliberately not turned into claims about product functionality. Their bounded inventory identifies React/Next.js, query-cache, Zod, animation, floating-UI, analytics and experimentation candidates, plus unresolved shared helpers. An animation property named amplitude is explicitly not treated as an analytics SDK. Exact package versions remain unknown unless independently established.
 
-Every successful source URL, filename, byte count and digest is in `artifact-manifest.json`; the initial document acquisition is in `acquisition.json`.
+## Genuine extension architecture
 
-## Runtime observations
+The Firefox manifest declares background, popup and content-script components; cookies, storage, scripting and alarms permissions; broad HTTP(S) host matching; and narrower MaxRewards-page bridges. These are manifest facts, not evidence of actual access to every site. [E1, package `manifest.json`]
 
-REA performed these declared actions, without submitting any form:
+### Merchant recommendation path
 
-1. Open `https://maxrewards.com/app` in a fresh owned browser and wait for the primary CTA to become visible.
-2. Click the CTA.
-3. Wait 2.5 seconds and capture the resulting signup state.
+Shipped background code implements this static path:
 
-All three completed. The final URL was `https://maxrewards.com/signup`. The signup page presented Google and Apple authentication, an email field, a disabled Continue button while the field was empty, and links to login, terms, privacy and app download. This is directly observed UI, not inferred from a screenshot in marketing material. [R1]
+1. A popup request uses the active tab's hostname; an in-page request supplies the current hostname.
+2. The background resolves a MaxRewards session and checks that its owner has not changed.
+3. It requests `getBestCardsOnline` for that domain from MaxRewards' backend.
+4. It rechecks session identity before updating per-domain results and relevant user state.
+5. The popup renders returned cards; the in-page component uses the first returned card.
 
-The same scenario observed automatic unauthenticated requests:
+The response query includes rate, valuation, multiplier, reason, spend-to-date, spend limit and offer fields. The client **does not thereby reveal how the server chose the best rate or mapped the merchant**. No authenticated recommendation request was replayed. [E2; `background.js`, approximately offsets 13,495–14,650 and 67,700–68,500]
 
-| Method and path | Observed response | Interpretation |
+The popup has separate card/offer/cap presentation paths. Its cap presentation computes a clamped progress percentage from returned spend and limit values. The in-page effective-rate display multiplies returned rate by valuation; the native client has a related but more explicit cash/points distinction described below. These are source observations, not an end-to-end cap-accounting test. [E1/E2; popup approximately offsets 213,200–215,600; content script approximately 209,550–210,600]
+
+### Connection and synchronization are remotely configured
+
+The background retrieves provider descriptors from the official Connect distribution service and registers bank content scripts for the descriptor's matching sites. Its generic bank script interprets declarative authentication/progress/scraping configuration. The background contains queued connection/resync work, timeouts, cancellation, account-owner checks, user-attention states and periodic resync eligibility checks. [E2; `background.js`, approximately offsets 28,200–65,900]
+
+The acquired catalog lists 74 providers, including retail-card variants. Every acquired descriptor declares session-token capture; two include client-side scraping configuration: American Express and Navy Federal Credit Union. The Bilt descriptor requires extension 0.1.8, newer than the acquired 0.1.7. **The catalog count is not a count of working, compatible connectors.** [P1; `connect-descriptor-summary.json`]
+
+The American Express descriptor defines offer discovery, subscription/preference gating, batching, a primary enrollment request, fallback enrollment and result normalization. Matching parsers/interpreter branches occur in the shipped generic bank script. This supports a static implementation finding for offer automation. No issuer page, discovery request, enrollment or fallback was executed, and no claim is made that it currently succeeds for a real account. [E2 + P1]
+
+The background also contains account-scoped encrypted local credential storage using a generated AES-GCM key and an IndexedDB key store, with a fresh IV and owner/provider-associated data. Separate source branches package captured bank session material for a MaxRewards backend login/sync endpoint. These are implementation observations. They are not a security audit, a statement that secrets cannot be recovered, or proof of backend retention policy. No real credentials, cookies or stored account containers were read. [E2; background approximately offsets 14,950–17,700 and 31,800–38,100]
+
+### Trace quality
+
+REA source-node selection was based on returned module IDs, not invented names. Property-based semantic tracing found retained nodes, but the `bestCards` receiver remained unresolved in a narrow forward trace. That trace is explicitly ambiguous. The pipeline above is supported by the digest-bound source reading and REA-parsed modules; it is not misrepresented as a complete recovered interprocedural graph. [T1]
+
+## Official native package and Hermes analysis
+
+REA inventoried 1,078 files and 456 directories in the native app, with no integrity contradictions reported. The plist identifies React Native new architecture and Expo routing. Framework/package evidence includes React and Hermes. App extensions include category recommendations, a lock widget, a Live Activity and a notification service. Capabilities and packaged SDK resources establish integrations available to the build, not that a particular feature ran or transmitted data. [N1–N4]
+
+The native executable's `LC_ENCRYPTION_INFO_64` reports `cryptid=1`, with a 4,096-byte encrypted region. No FairPlay decryption, patching or bypass was attempted. Its separate `main.jsbundle` is a readable Hermes-format bytecode carrier, so offline analysis of that resource does not require decrypting the executable. [N4]
+
+The supplementary parser is **P1sec/hermes-dec 0.1.8 source at commit `2e796663e1fedb93dca51060797ebf3327b3fedb`**, acquired from its [upstream repository](https://github.com/P1sec/hermes-dec). It parsed HBC version 96, 68,786 function headers and 72,616 string entries. This worker produced targeted disassembly and pseudocode for 17 entry functions across reward presentation, auth and data initialization; nested closures are included where emitted by the tool. Per-function byte offsets, lengths and output digests are retained. This is a **supplementary offline analyzer**, not a claim that REA has a native Hermes decompiler.
+
+Pseudocode is a fallible reconstruction. Several emitted expressions retain unresolved lexical environments or register expressions; no fallback marker in the output does not prove semantic equivalence. Conclusions below are intentionally narrow and anchored to matching disassembly/property/arithmetic operations.
+
+### Concrete return-conversion functions
+
+| Function | Carrier byte offset / size | Bounded finding |
 |---|---|---|
-| GET `/api/public-chrome` | 200 | Public website component/configuration seam; response body was not requested. |
-| GET `/api/get-popular-cards` | 200 | Public card-list seam; neither payload nor card coverage was inspected. |
-| GET `/sessions/whoami` on the main domain | 401 | Session check while signed out. |
-| GET `/sessions/whoami` on `access.maxrewards.com` | 401 | A second identity/session surface was contacted. |
-| GET `/api/auth/magic-session` | 401 | Signed-out magic-session check. |
+| 27688, `getBestCardPercentage` | 6,712,695 / 62 bytes | Points branch multiplies best rate, point value and 100. Cash branch multiplies best rate, 100 and an optional multiplier defaulting to 1. |
+| 61110, `bestCardPercentage` | 10,922,625 / 318 bytes | Resolves a custom currency before ordinary card currency; uses a matching user valuation with a result-value fallback; accepts a rate override before returned best/base rates. Cash uses a card multiplier defaulting to 1. A captured formatting callable remains unresolved. |
+| 67344, `sortBestCardRewardsRows` | 12,301,834 / 116 bytes | Compares displayed percentage descending; on equal percentages, progress rows are preferred, then type-name comparison is used. This comparator's use in a particular screen still needs its caller context. |
+| 28785, `getBestCardLiveActivitySpendLabel` | 6,808,617 / 85 bytes | Formats a spend-limit-related label for the Live Activity payload; not an accounting ledger. |
+| 30443, `buildBestCardMerchantWidgetDeepLink` | 6,958,902 / 138 bytes | Constructs merchant-widget navigation data; not evidence of a location search being run. |
 
-These requests were emitted by the visited page, not manually invoked as API probes. They establish observed paths/statuses only; no request or response bodies, header values, credentials, or storage values were collected. Scenario events lack initiator stacks, so timing does not prove which module initiated each request. Some requests were unfinished when capture ended. [R1]
+These functions explain parts of conversion/presentation. They do not independently prove complete cap accounting, quarter activation, signup-bonus weighting, server ranking or merchant categorization. An independently assigned additional audit of those native decision paths is under `native-recommendation-review/` and should be read separately.
 
-## Static observations and bounded inferences
+### Data initialization and storage
 
-### Marketing and account surfaces are separate web implementations
+The auth hook statically consumes user-query, token-clearing and initial-data callbacks. The initial-data hook requires a critical-data synchronization callable, then dispatches secondary category, benefit, next-card, redemption and offer requests using a settled-promise aggregation pattern. This is evidence of layered client data orchestration and partial-failure handling. It is not proof of an offline-first product or a complete synchronization contract. [native functions 20054, 33406 and 33472]
 
-**Observed:** the marketing DOM includes Webflow page/site metadata, Webflow assets, and a loader selecting a first-party production/staging component bundle. The signup page loads first-party `/_next/static/immutable/chunks/` resources, including a Turbopack runtime, with React component syntax in the acquired sources. [R1, S1; `app-inline-2.js` and acquired chunk inventory]
+The typed storage wrappers call an environment-provided `getString`/`set` interface and log failures. Their unresolved provider binding prevents a claim about storage encryption, Keychain usage or complete token lifecycle from these functions alone. No application data container, stored token or user database was opened. [native functions 16155 and 16158]
 
-**Inference:** MaxRewards maintains a hybrid marketing/account web surface rather than a single static brochure. Exact Next.js/React versions, deployment topology, and native UI framework are not established. A response header name or shared vendor library is insufficient to establish the mobile application's stack.
+The app-level privacy manifest declares tracking false and lists required-reason API categories. Individual packaged SDKs have their own manifests and the application requests tracking/location-related permissions in its plist. These declarations are kept as declarations; this investigation does not infer observed collection or compliance from them. [N2, N5]
 
-### Signup separates identity creation from product-user provisioning
+## Earlier controlled runtime evidence
 
-**Observed in inert source:** the auth/business chunk contains an Ory browser-registration flow, registration updates carrying email/password/CSRF fields, identity/session reads, and a separate product-user creation step. Its logic distinguishes an existing product user, a resumable identity without completed provisioning, and a reset path. [S1, A1; `2kf2nyxhdvt_4.js`, approximate character offsets 28,000–31,000; exact excerpts in `static-excerpts.json`]
+The following runs were completed before the user's final offline-only steering. They are preserved evidence, not a request for more interaction.
 
-**Inference:** identity establishment and MaxRewards account provisioning are separate application concerns, with recovery paths to avoid treating every returning identity as a new account. This is a source-level control-flow reading; no account was created and no server enforcement was tested.
+- Product CTA to signup: Google, Apple and email registration choices were visible; no form was submitted. Session-check responses were 401 while signed out, while public component/card-list seams returned 200. [W1]
+- Login, recovery, download, extension login, terms/privacy and Platinum were observed. Recovery navigated to the separate access-domain UI. `/my/accounts` redirected to login while preserving the intended destination. [R2]
+- The card directory rendered 780 cards at observation time. Membership and website-best-card routes redirected to login. This is a UI observation, not verification that all 780 cards are accurate or available. [R3]
+- A public card-value planner was tested with **synthetic** annual everyday spend of $10,000 and a selected $300 annual travel credit. It displayed $290 annual spend rewards and a $4,690 two-year estimate, reconciling to $4,300 welcome value + $580 spend rewards + $600 selected credits − $790 fees. No account, application or purchase was submitted. All declared actions completed and the owned browser was terminated. The numbers are an observed planner fixture, not current card advice or the user's finances. [R4]
+- The exact native welcome window was passively captured after binding its true translocated executable. It was signed out. The native click provider rejected the planned action before execution because window geometry was ambiguous. A later passive attempt timed out and a process check found no live target. Neither event supports any claim about a logged-in wallet. These provider limits do not prevent the completed offline analysis. [U1/U2]
 
-### The web signup is designed to hand users to mobile
-
-**Observed in inert source:** the signup chunk branches on phone context and return destination, writes a handoff payload through a storage helper, and navigates eligible users to the app-download page. Other source branches provide a mobile-app interstitial, dismissal state, and deep-return routing. The visible signup flow itself was only observed before submission. [S1, A2; `1ilbignihnir-.js`, approximate offsets 11,000–16,500]
-
-**Inference:** web acquisition and native usage are deliberately connected. Whether every device follows that branch, and whether the handoff preserves signup correctly, remain untested.
-
-### Firebase references are web-push plumbing, not proof of Firebase Auth
-
-**Observed in inert source:** Firebase environment-variable names occur with messaging initialization, a service-worker path, notification-token registration and a web-push endpoint. Ory-related code owns the observed registration/session seams. [S1, A1; auth chunk approximate offsets 22,000–25,000]
-
-**Inference:** the captured web code contains Firebase messaging integration. It would be incorrect to label the native app a Firebase app, or to infer Firebase Authentication from these strings. Service workers were blocked by the deterministic REA scenario configuration, and notification permission was never requested.
-
-### Membership and attribution integration is present in shipped web code
-
-**Observed in inert source:** the selected code contains membership/trial conversion tracking, a Stripe-session identifier field, and first-party attribution endpoint calls associated with registration. [S1, A1; approximately offsets 107,000–110,000]
-
-**Inference:** account acquisition includes analytics and paid-membership integration seams. This does not establish a checkout route, payment processor execution, complete billing flow, or transfer of a real user's financial information. No paywall or checkout was opened. Third-party requests seen in the browser window are not all attributed to MaxRewards: the capture includes browser/environment instrumentation, lacks initiator stacks, and records metadata only.
-
-## Vendor statements, separate from verified behavior
-
-The rendered official product page advertises category/location card selection, offer activation, benefits monitoring, spending analysis and account aggregation. Its FAQ lists free core functionality, Gold from US$108/year and Platinum from US$240/year. It describes proprietary issuer connectors, encrypted credential handling and a policy against selling user data. These are **vendor claims**, not verified connector behavior or a security audit. [Official product page](https://maxrewards.com/app); also captured as visible content in R1.
-
-No financial recommendation, offer activation, transaction sync, credential encryption, AI categorization, reward calculation, or membership entitlement was executed or verified.
+An initial calculator selector wrongly assumed a DOM button; the rendered control was an anchor with button semantics. Its failed result was retained. Two broad capture attempts timed out during cleanup, retaining partial observations. The calculator verification used a corrected direct route, exact input roles and reduced capture scope; only its successful canonical Evidence is used for the numerical finding. No repeated setup or OS-permission changes were made.
 
 ## Implications for CardWise
 
-These are analyst recommendations, not competitor facts. The CardWise baseline comes from `../cardwise-baseline.md` at repository commit `5f7b9823e053924ee3d353e3198c88738f66af0d`.
+These recommendations are analyst judgments using the CardWise source baseline at commit `5f7b9823e053924ee3d353e3198c88738f66af0d`:
 
-1. **Make account-free time-to-first-recommendation visible.** MaxRewards' observed public acquisition path reaches account creation before any wallet result. CardWise can demonstrate adding card names and obtaining a useful recommendation immediately. This is a concrete onboarding distinction; it does not prove MaxRewards lacks guest functionality elsewhere.
-2. **Prioritize trustworthy cap-aware recommendations across every surface.** CardWise already has a cap-aware engine, while the baseline identified some callers omitting spending records. Validate the recorded-spending-near-cap scenario before expanding features. MaxRewards' own cap handling is not known from this investigation; this priority follows CardWise source evidence and its core promise.
-3. **Improve existing benefit tracking instead of duplicating it.** CardWise already supports manual statement-credit usage and unused-credit aggregation. Make remaining value and the next reset easy to understand; clearly label manual versus automatic state. MaxRewards' automatic tracking is only a vendor claim in this pass.
-4. **Explain recommendations and their freshness.** Present active category assumptions, remaining cap, point valuation, signup-bonus priority and catalog freshness near the result. This is compatible with the current local-first model and makes a recommendation easier to trust without account synchronization.
-5. **Treat bank synchronization as an architectural product decision.** The web account/provisioning seams and vendor connector claims indicate a different service model from CardWise's private CloudKit approach. Automatic bank-linked features would require scope, ongoing operations and a changed data model; they should not be copied incidentally during UI work.
+1. **Prioritize recommendation consistency across views and widgets.** CardWise's cap-aware engine already exists, but inspected callers omit spending records. Verify the near-cap scenario across all entry points before adding more features.
+2. **Make valuation explicit and configurable.** MaxRewards' native conversion functions use currency/user valuation and cash multipliers. CardWise's baseline uses a common points value; program/user valuation and an explanation could improve trust without introducing bank sync.
+3. **Extend existing widgets with context.** CardWise already has home/lock widgets. A configurable merchant/category is a smaller, relevant extension than treating widgets as absent. Live Activity/location behavior would be an additional product decision.
+4. **Polish the benefit tracking that already exists.** CardWise already tracks manual statement-credit usage and unused credits. Clear reset dates and remaining usable value are useful improvements. Do not propose adding this category from scratch.
+5. **Keep the data-model distinction concrete.** MaxRewards' server recommendations, accounts, provider descriptors and credential/session orchestration form an ongoing service subsystem. CardWise's account-free local/CloudKit architecture can support a simpler first result, while adding automatic bank connection would be a major architectural change.
+6. **Consider an optional transparent value planner.** The verified public calculator shows one way to explain fees, selected usable benefits and welcome assumptions. It should be presented as an estimate with visible inputs, and should account for CardWise's current signup-priority policy rather than silently mixing immediate rewards with long-term value.
 
-Do not recommend adding signup tracking, benefit tracking, or widgets as entirely new CardWise features: they already exist in the inspected baseline.
+## Offline completion matrix
 
-## Coverage checklist and unresolved questions
-
-| Question | Status | Evidence or remaining requirement |
+| Scope | Completed coverage | Explicit limit |
 |---|---|---|
-| Exact public website/native listing identity | Answered | Official product and download links; saved HTML and manifests. |
-| Public product-to-signup behavior | Answered within scenario | R1; no form submission. |
-| Public frontend layering | Answered within acquired web scope | R1, S1 and source-bound observations. |
-| Identity/provisioning/mobile-handoff design | Partially answered | Inert source reading; server and successful signup behavior untested. |
-| Paywall and billing behavior | Unresolved | Source seams and vendor prices only; no checkout capture. |
-| Card reward ranking, cap accounting and merchant classification | Unresolved | Requires native artifact or an authorized wallet/runtime with known fixtures. |
-| Bank connection and automatic offer behavior | Unresolved | Requires authorized bank/test fixtures; not exercised. |
-| Native framework, package version, local database and app privacy implementation | Unresolved | No IPA/APK supplied or acquired from official distribution. |
+| Web | All 38 acquired files classified; 17 business/inline sources REA-parsed; 21 shared/SDK files separately inventoried | Shared/SDK implementations were not exhaustively semantically audited. Updated business and supplementary passes have no semantic truncation, but dynamic and unselected relationships remain partial. |
+| Firefox extension | All nine shipped JS files parsed with zero syntax failures; six core JS files plus manifest/popup received a focused pass without semantic truncation | Broad graph reached resource ceilings; three UI-heavy JS files are outside the focused core pass. No extension installation/execution. |
+| Provider configuration | All 74 listed descriptors acquired, parsed and hash-verified | Declarative behavior only. No bank page/request executed; one provider requires a newer extension version. |
+| Native package | 1,078 files / 456 directories inventoried; app identity, signature, plist, privacy manifest, Mach-O commands and integration resources inspected | Native executable cryptid=1; no native decryption. Imported/exported symbol inventories are not exhaustive. |
+| Hermes resource | Entire 12,633,156-byte carrier parsed: 68,786 function headers and 72,616 strings; 17 focused entry functions disassembled/decompiled, with output hashes | Targeted static decoding, not whole-program decompilation or execution. Unresolved environments remain explicit. Independent recommendation-path audit is documented separately. |
+| Earlier runtime | Public auth/product/account gates, one synthetic calculator fixture and a signed-out native welcome captured | No authenticated wallet claim. Historical provider failures are preserved; no further runtime work or user intervention remains in scope. |
 
-S1 intentionally leaves 31 inventoried files unanalyzed. Its semantic graph is partial and truncated by the selected 12,000-node per-file and 50,000-node aggregate ceilings, with 19,396 semantic unknowns and 31 application-scope unknowns reported. Turbopack factory internals were not recovered as a complete original module graph. No absence claim should be based on this partial static graph. The analysis had zero syntax parse failures, but that is not proof of semantic completeness.
+## Completion and limits
 
-No repository content, account, bank connection, installed application, or global REA configuration was changed. All deliverables are in this external investigation directory.
+The authorized offline evidence acquisition, module classification, extension-core review, provider-config review, native package inspection, targeted bytecode analysis and sanitized documentation are complete. The remaining native recommendation audit is independently scoped and documented in its own subtree.
+
+The broad extension pass encountered worker/result budgets. A selected core pass and the updated web-business pass have `semantic.truncated=false`, but still report dynamic-resolution and unselected-scope unknowns. The SDK/shared inventory is not a complete semantic audit. Turbopack wrappers were not reconstructed into original source modules.
+
+No available artifact reveals the live server implementation, account-specific entitlements, issuer uptime, backend retention behavior or the current results of actual bank offer activation. No authenticated financial transaction or account mutation was performed. These are explicit boundaries of an unattended offline competitor analysis; they do not require another login, device or permissions request.
+
+## Selected Evidence IDs
+
+| Label | Evidence ID |
+|---|---|
+| W1, product-to-signup runtime | `ev_ea10ac8fd04e2f98a2eebf6f667e47d98d7beb2f1863021bfc1edd94cb37ba01` |
+| W2, updated seven-source web business parent | `ev_60c99d921a4b12ae853443674e1fb310eb14582fc2c27cc3b34356f479fcd078` |
+| W3, ten-source supplementary web parent | `ev_d1878e7ea9adf13bb4dc11ad80696b4d96b3401219201f39c40e948eadc45f60` |
+| E1, complete extension source parse, resource-limited graph | `ev_2044e4d5646a96a4e4f43c5137a7a24546b7a04be6b68e45ff4f9c0ea3cda514` |
+| E2, selected extension core parent | `ev_4489deb9a5d9177945f4a467e17bc8ccb83e8c9f9c47cebdabfe5923194a8728` |
+| T1, narrow ambiguous property trace | `ev_70012eb67bc4206fea0c64606519c77bcc0ff2111818b8b50c2d801e2368ef8f` |
+| R2, public login/recovery/account/legal routes | `ev_9360824fda9ef57527f484d62c441d240d96cb8f61f78ea7aa6c2d367105ee58` |
+| R3, public directory and account gates | `ev_25e47440418eda73e6fa80912bb4458be0c912645519e9b49bf4716997a438c4` |
+| R4, synthetic public planner verification | `ev_763929fb25bfe1dc8dc51cc391659cf9502b9907164253a993bba1e80790824f` |
+| N1, native artifact inspection parent | `ev_5f183e69c10e069f64ed18f69c51596ebf11f77a4320517f0856751ecc96e4e2` |
+| N2, native Info.plist | `ev_4ea36514a943545cea3ce55258237f688aafafacc0e1307018111f11cc9c352f` |
+| N3, native signature | `ev_1c5d330492a0fe39861798461c5f6d05184f75dc1e835fd9d4bdb6ff60d4555c` |
+| N4, native Mach-O inspection parent | `ev_d4c4152c3e50fb513c3b63114a9ad2147331c9c3d4abe2f154476757f3db7667` |
+| N5, native app privacy manifest | `ev_5706c35aced340639718af47051bbc10d22acfe090514c0b8c347ff68b579fff` |
+| U1, native AX observation | `ev_e94889b514afaeeeb74988a059bfeb04a1b08161872817986ea476de4c102f14` |
+| U2, native signed-out window screenshot | `ev_a3e02bebf8b845afe5fd96983ffe093acf0704c59e9efcdd3eb33fa7ca639a4d` |
+
+P1 is separate digest-bound HTTP acquisition, and the Hermes outputs are separate tool-derived evidence; neither is assigned a fabricated REA Evidence ID.

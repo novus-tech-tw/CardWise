@@ -1,102 +1,86 @@
-# CardPointers and MaxRewards REA competitor analysis
+# CardPointers and MaxRewards offline REA
 
-Requested: 2026-10-26, America/Phoenix. REA timestamps can fall on 2026-10-27 UTC. Analysis uses REA 6.5.0. **Investigation in progress:** the first browser/extension pass is complete, and official native app analysis is now underway. See the [current progress ledger](progress.md) for the authoritative delivery status. No authenticated banking test or FairPlay bypass has been performed.
+Status: **in progress**. Browser/extension and MaxRewards bytecode work is delivered; the two CardPointers native Ghidra jobs are still running. This report and [progress ledger](progress.md) distinguish completed static work from remaining native analysis. The active method is fully unattended/offline; no further login or UI participation is required.
 
-## Decision
+## Main findings
 
-CardPointers is the closer comparison for a card-selection utility, and its distributed extension exposes substantial offer-handling logic. MaxRewards' official extension and remotely shipped provider descriptions expose bank-session integration, while its native Hermes bytecode exposes specific client reward-valuation functions. These go beyond the original public signup flow; server-side ranking and successful banking execution remain unverified. CardWise can use this distinction to prioritize a quick and explainable purchase decision while keeping its current local-first architecture.
+CardPointers combines prepared shopping-card recommendations with bank-specific offer enrollment and native Apple integrations. MaxRewards combines server-returned merchant recommendations with client valuation/eligibility logic and remotely configured bank connection. Both expose substantially more integration work than a card-rate catalog alone.
 
-These are product recommendations, not measurements of retention, revenue, recommendation accuracy, or product-market fit.
+For CardWise, the strongest near-term opportunities are consistent cap-aware inputs, configurable point valuations, explicit eligibility/ranking explanations and context in the existing widgets. Automatically connecting banks would be a separate product and architecture decision. These are analyst judgments grounded in the evidence below, not measured revenue, retention or recommendation accuracy.
 
-## What was actually analyzed
+## Exact acquired targets
 
-| Product | Acquired material and execution | Evidence boundary |
+| Target | Selected distribution | Actual analysis |
 | --- | --- | --- |
-| CardPointers | Officially linked Mozilla distribution of CardPointers X 8.0.8; shipped JavaScript/static resources analyzed by REA; focused source anchors retained; fresh-browser observation of the unauthenticated legacy web app | Firefox extension implementation and legacy-web login gate. No claim that the same code implements native iOS recommendation or in-app offer sync |
-| MaxRewards | Public product page, a declared fresh-browser scenario through Start Earning More to signup, and downloaded public web bundles; REA static analysis of seven selected business-relevant sources | Marketing and web onboarding. No native IPA/APK, authenticated wallet, or live banking connector |
-| CardPointers native | Official Mac App Store application 8.1.4/build20261019, signed universal Mach-O, three extensions, compiled Core Data model and App Intents metadata; scoped native analysis underway | Mac distribution; do not silently equate its exact version or behavior with the user's iPhone build |
-| MaxRewards native | Official iPhone/iPad-compatible application 4.8.35/build1792099341 downloaded through the Mac App Store; React/Hermes/Expo artifacts and a separate unencrypted Hermes v96 bytecode bundle | Main native executable declares encrypted bytes; no bypass. Offline bytecode findings concern exact decoded client functions, not original source or server ranking |
-| CardWise | Focused ordinary source inspection at commit `5f7b9823e053924ee3d353e3198c88738f66af0d` | Read-only source comparison; no app execution or test-based defect reproduction |
+| CardPointers X | Official Firefox 8.0.8; XPI SHA-256 `691c287f0c640e5c0cefd77fed49c3e9e6a4630ee0c8461a3e2fdf6022327af3` | Six original JS source families, all 344 content factories through source-bound partitions, popup/vendor/helper scopes; resource omissions resolved in final bounded passes |
+| CardPointers Mac | Official Mac App Store 8.1.4/build 20261019; main universal Mach-O SHA-256 `e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa` | Package/signature/plist/dispatch, three extensions, Core Data model and compiled App Intents; main and Safari native function analysis active |
+| MaxRewards Firefox | Official 0.1.7; XPI SHA-256 `5a8866b7c1760bddf125564249bc174548db4264e3a28c62ff0f6be856bd0c4b` | All nine shipped JS files parsed, focused six-source core reanalysis without resource truncation, plus all 74 acquired public provider descriptors |
+| MaxRewards native | Official iPhone/iPad-compatible 4.8.35/build 1792099341; bundle `com.max.MaxRewards` | REA inventory of 1,078 files/456 directories, metadata and encrypted-Mach-O boundary; separate Hermes v96 business resource parsed offline |
+| MaxRewards web | 38 acquired files, exact URL/digest manifest | 17 business/inline files REA-parsed; 21 SDK/shared files inventoried, not claimed as fully semantically audited |
 
-Detailed identity, Evidence IDs, source anchors, and limitations are in [CardPointers analysis](cardpointers/report.md), [MaxRewards analysis](maxrewards/report.md), and the [CardWise baseline](cardwise-baseline.md). Public acquired artifacts and exported REA Evidence are retained beside those reports.
+The MaxRewards Hermes resource contains 68,786 function headers and 72,616 strings. Its main workstream reviewed 17 focused entry functions; an independent review disassembled 100 additional selected functions after exhaustive bounded instruction/identifier searches. Root checked the manifests and found no overlapping function IDs: 117 selected entries in total. This is not a semantic audit of every app function. Pseudocode is reconstructed output, not original source.
 
-| Evidence | Exact retained ID |
-| --- | --- |
-| CardPointers static parent | `ev_646b2b55acdcc2309c2e4d74586a4605c22ccb3fff6512deb64ec27303c225b2` |
-| CardPointers public web scenario | `ev_5200838f26189ed666376a78e752be39ee768ef094c700f8086a562efd2c0409` |
-| MaxRewards static parent | `ev_a1ab54ca0e29ba5922c67b4c0bf00f27dcfeae2b2aa23d0407e0b47c22c27584` |
-| MaxRewards public web scenario | `ev_ea10ac8fd04e2f98a2eebf6f667e47d98d7beb2f1863021bfc1edd94cb37ba01` |
+The selected CardPointers Mac build is distinct from the iOS version advertised by the storefront. Its Safari web manifest is 8.1.3 while the host/extension plists are 8.1.4. No silent same-version comparison is made.
 
-## Findings
+## CardPointers: shopping order and offer-enrollment priority are different
 
-### Native and follow-up extension results extend the first-pass evidence
+The Firefox shopping consumer joins prepared merchant/category lists with the wallet/profile and offers, preserving incoming order in those paths. Its use of provided values does not reveal the entire upstream ranking or transaction-cap calculation.
 
-CardPointers' follow-up covers all 344 content factories through source-bound partitions, plus popup/vendor/helper scopes without resource truncation. Its Amex offer-enrollment helper has a category-bonus preference with manual-priority and original-order tie breaks; this is separate from the general shopping-card list. See [deep findings](cardpointers/deep-findings.md).
+A different helper implements **Amex offer-enrollment allocation**: normalize category aliases, compare applicable category value with base value, prefer the higher category bonus, then break ties with manual inventory priority and original candidate order. Enrollment strategies include fallback modes and issuer-specific state checks. This local algorithm must not be presented as the general shopping recommendation algorithm.
 
-The acquired CardPointers Mac application contains a compiled Core Data model with 24 entities; REA decoded all 637 archived model objects. Model fields include card-pointer values/order, profiles, selected bonus plans/categories, offers, and offer-sync account/card/history entities. This establishes shipped schema, not observed user records. Core Data model Evidence: `ev_7ab422a3a5c0172bcad15d4eed7f3c923a7853a895a3e249b0f15ce8f9f6e642`. Native code and UI follow-up remain active.
+Bank requests use the browser's bank session; own-account synchronization is a separate boundary. A conditional sync branch constructs card/offer objects for the CardPointers service. No bank session, real credential, enrollment or upload was executed, and neither broad permissions nor object-field names establish a confirmed leak.
 
-MaxRewards' official Firefox extension 0.1.7 has now been acquired and parsed. Its background code maps merchant hostname to an authenticated best-card query, then checks the cookie owner before caching and returning the result. Its public Connect catalog/descriptors have also been acquired without contacting bank endpoints. Detailed follow-up evidence and version limitations are being integrated in the MaxRewards report.
+The native Mac package adds concrete domain evidence: 24 Core Data entities, all 637 archived model objects decoded, including pointer values/order, selected bonus plans/categories, profiles, credit offers and offer-sync accounts/cards/history. Tier fields such as `boaTier` establish a model concept, not a proved rewards formula. Seventy compiled App Intents declarations cover several action families; not all are necessarily public, discoverable or usable. Native code results remain active in the [native report](native/report.md).
 
-MaxRewards' separate `main.jsbundle` is Hermes v96 bytecode, not ordinary JavaScript text. A pinned offline decoder has recovered exact function disassembly/pseudocode for client percentage valuation and row sorting. These provide specific local formulas and fallback chains; they do not establish the entire server-side card-ranking algorithm. Independent cap/activation/bonus review is still running.
+Detailed evidence: [initial extension report](cardpointers/report.md), [deep static findings](cardpointers/deep-findings.md), [native Mac report](native/report.md).
 
-### CardPointers: a bank-offer integration layer is visible in the extension
+## MaxRewards: server recommendation data with visible client rules
 
-**Observed in shipped static code:** bank-specific offer retrieval/enrollment adapters, background messaging and request handling, local wallet/merchant/offer caches, CardPointers account-token handling, entitlement state, and calls to the CardPointers service. The AMO-distributed package is version 8.0.8; acquired XPI SHA-256 is `691c287f0c640e5c0cefd77fed49c3e9e6a4630ee0c8461a3e2fdf6022327af3`, matching the distribution metadata.
+The official extension maps tab/merchant hostname to an authenticated server best-card query, checks session ownership, caches per domain and returns presentation data. The response fields include rates, valuation, reason, spending/limit and offers. The server's candidate selection and ranking formula remain unknown.
 
-The source has bank requests that use the browser's existing bank session and a distinct CardPointers-account authorization path. A conditional offer-sync branch constructs a request to `x.cardpointers.com` with bank identity, card arrays, and offer data. Some branches add card identifiers or an email field. See the detailed report and its `offer-sync.txt`, bank-fetch, and wallet-refresh anchors.
+The extension's bank subsystem interprets remotely served provider configuration, manages connection/resync state and handles captured session material. All 74 catalog descriptors were acquired and hashed without running their bank instructions. The Bilt descriptor requires a newer extension than the acquired build: catalog size is not a count of working connectors. Encryption/account-owner branches are code observations, not a security certification or proof of backend retention.
 
-**What this establishes:** substantial integration and synchronization code is shipped to the extension. It provides a concrete engineering basis for the advertised offer feature, beyond a marketing claim.
+The official native package establishes React Native/Hermes/Expo components and category/lock/Live Activity/notification extensions. Its main executable declares an encrypted region; no FairPlay bypass was attempted. Its separately shipped plaintext-format Hermes bytecode supports an unattended analysis path.
 
-The inspected shopping-selection function joins prepared merchant/category card lists with the user's wallet/profile and offers, preserving their order in those paths. Its display consumer does not itself establish the upstream reward-ranking algorithm or transaction-cap accounting. The prepared data includes valuation fields, but their production remains unknown. The fresh-browser legacy web app presented a login/signup gate; this does not establish native-app onboarding behavior.
+Recovered client functions establish these bounded rules:
 
-**What it does not establish:** no bank account was logged in, no offer was enrolled, and no banking or sync traffic was triggered in this investigation. Static branches do not prove runtime success, exact transmitted values, complete sanitization, server retention, or the absence of other data paths. Browser-session access is distinct from sending raw banking passwords to CardPointers. Broad extension permissions alone do not establish misuse.
+- Points percentage uses reward rate, point valuation and a percentage conversion; cash percentage also handles a multiplier. Another helper resolves custom currency, user valuation, returned value and rate fallbacks.
+- One merchant-card comparator orders normalized percentage descending. This says nothing definitive about signup weighting before the supplied results reach that helper.
+- Date eligibility uses inclusive start and exclusive end comparisons. A numeric-month fallback differs from a complete quarter activation policy.
+- Selectable-category rows preserve a saved choice by ID. This does not prove issuer acceptance or its effective date.
+- Cap-row status uses supplied category totals/rates and a profile flag; transaction aggregation and near-cap purchase splitting are not thereby recovered.
+- Welcome-bonus helpers calculate deadlines, posted/pending progress, remaining spend and a value summary. These are separate from the inspected merchant comparator.
+- A record-categorization helper gives feedback overrides precedence over pattern/default data. It is not proof of a purchase-time MCC lookup.
 
-**Inference for CardWise:** maintaining bank-specific integrations is a substantially broader product responsibility than maintaining a card rewards catalog. Adopt the useful interaction ideas independently: clear merchant matches, visible recommendation reasons, and convenient entry points. Treat automated bank offers as a separate architectural decision.
+Detailed evidence: [MaxRewards dossier](maxrewards/report.md), [independent native recommendation review](maxrewards/native-recommendation-review/report.md).
 
-### MaxRewards: public account onboarding is concrete; banking internals remain unknown
+## What is already present in CardWise
 
-**Observed at runtime:** a fresh-browser scenario opened the product page and clicked Start Earning More, arriving at signup with Google, Apple, and email choices. No user data was entered or submitted. Public session probes returned unauthenticated results; public navigation/card-list requests also appeared in the captured network records.
+The [source baseline](cardwise-baseline.md) is commit `5f7b9823e053924ee3d353e3198c88738f66af0d`. CardWise already has manual statement-credit usage and unused-credit totals, signup tracking, rotating/selectable rewards, cap accounting, merchant search, and home/lock widgets. Recommending these as wholly new features would misstate the current app.
 
-**Observed in acquired static code:** the public marketing page uses Webflow assets, while signup uses React/Next.js bundles. Focused first-party code shows an Ory registration stage, MaxRewards user provisioning, session-resume handling, and a mobile-download handoff. Firebase references in inspected code concern web-push functionality; they do not establish Firebase Auth or the native app's backend architecture.
+The engine uses a common $0.01-per-point/mile valuation and prioritizes an unfinished signup bonus before immediate purchase reward. Some inspected view/widget callers omit recorded spending even though the engine accepts it. These are source observations; no implementation change or runtime bug reproduction was performed in this task.
 
-**Inference for CardWise:** the inspected public flow introduces an account/setup step before the mobile handoff. CardWise can make its immediate, account-free experience visible. This does not establish that every MaxRewards feature or native-app entry route requires the same flow.
-
-**Unknown from the initial web pass:** native implementation and banking internals were not established by the signup bundles. Subsequent official extension/native acquisition now partially addresses those questions; full server ranking, merchant accuracy, authenticated transaction handling and successful banking activation still need further evidence. The Webflow marketing stack is not evidence of a Webflow mobile app.
-
-### Paid feature positioning comes from vendor documentation
-
-CardPointers' current product page advertises CardPointers+ at **US$99.99/year**, with location-aware AutoPilot, offer synchronization, Apple platform integrations, and AI features. These are vendor descriptions, not capabilities all exercised here. [Official product/plan page](https://cardpointers.com/pro/).
-
-MaxRewards' current public documentation lists a free Bronze tier with best-card recommendations and account information; Gold starts at **US$108/year**, adding offer/benefit and bonus tracking; Platinum starts at **US$240/year**, adding business-spend and receipt workflows. These are documented plans, not tested purchase entitlements. [Official app page](https://maxrewards.com/app), [official subscription tiers](https://help.maxrewards.com/en/articles/12747576-what-are-the-maxrewards-subscription-tiers).
-
-**Inference:** free best-card recommendations already exist among competitors. CardWise's differentiation should combine price with fewer setup steps, private local data, useful explanations, and dependable handling of the user's recorded context.
-
-## Priorities for CardWise
-
-| Priority | Concrete work to evaluate | Why it follows from the evidence |
+| Priority | Concrete follow-up | Evidence and limit |
 | --- | --- | --- |
-| P0 | Verify that every recommendation entry point passes recorded spending to the cap-aware engine | The engine accepts spending, but the inspected recommendation view, quick recommendation view, and widget call sites omit it and use the empty default. Static observation warrants a focused cap/bonus scenario before implementation |
-| P1 | Make existing widgets contextual: selected category or merchant, concise reason, and relevant cap/activation state | CardWise already has widgets; the current payload computes a fixed Dining/$100 example. Improve the existing fast path rather than building a duplicate widget feature |
-| P1 | Explain ranking and value assumptions | CardWise prioritizes an unfinished sign-up bonus before estimated purchase reward and uses a common $0.01 value per point/mile. Users should understand why a card wins; configurable valuations are a possible follow-up |
-| P2 | Improve the existing manual benefit workflow and reminders based on observed user need | Manual statement-credit usage, unused-credit totals, and cadence are already implemented. Competitors emphasize automation and convenience, so presence of a tracker alone is not differentiation |
-| Separate product decision | Bank-linked offer activation or account aggregation | The extension shows bank-specific integration work; MaxRewards documents a connected-account product. Adding these would expand CardWise's current architecture and maintenance scope |
+| P0 | Verify spending input across every recommendation entry point | Existing cap-aware engine versus inspected callers using its empty default; test a recorded-spending-near-cap fixture before changing code |
+| P1 | Make point valuations and ranking policy explicit | MaxRewards client has user/currency value fallbacks; CardWise uses a common constant and explicit signup-first sorting |
+| P1 | Explain date, activation, chosen category and exhausted cap separately | Native review shows these are distinct predicates/status concepts; one ambiguous active label would obscure why a card wins |
+| P1 | Add context to the existing widget payload | Current source computes a fixed Dining/$100 example; configurable category/merchant extends existing functionality |
+| P2 | Polish existing benefit/reset/progress workflows | Manual credit usage already exists; pending/posted distinctions require trustworthy inputs rather than inferred balances |
+| Separate decision | Automatic bank connection and offer activation | Bank adapters, remote descriptors, retries, credentials/session handling and account synchronization are an ongoing service subsystem |
 
-The P0 observation is not a repaired or runtime-reproduced defect. No implementation changes were requested or made.
+## Earlier runtime evidence is supplementary
 
-## Coverage checklist
+Before the user switched to the unattended method, controlled public browser scenarios observed login/account gates, and a signed-out card-value planner was exercised with synthetic inputs. Therefore, the evidence does not support a blanket claim that MaxRewards requires an account for every useful result. The planner's exact fixture and arithmetic are in its dossier; these are historical observations, not the user's finances or current card advice.
 
-| Original investigation question | Status |
-| --- | --- |
-| Resolve official public target/artifact identity | Answered for CardPointers extension and MaxRewards public web surfaces |
-| Run actual REA analysis | Answered: shipped JavaScript and browser-scenario Evidence retained |
-| Trace public offer/account data boundaries | Partially answered: static extension branches and web account flow; no authenticated banking execution |
-| Explain mobile recommendation internals | Partially answered by acquired native artifacts and MaxRewards client bytecode; native/fixture follow-up remains active |
-| Verify paid-feature operation | Unresolved: official plan descriptions only |
-| Identify grounded CardWise priorities | Answered as analyst recommendations, with source-based verification candidates |
+Some native UI observations were also made, but provider window/AX limitations and lack of a controlled authenticated fixture prevent strong end-to-end claims. No additional login, launch or demonstration is needed under the current scope. Account identifiers, raw screenshots, credentials, receipts and live transaction data are excluded from this public PR.
 
-## Reuse and verification
+## Delivery and limits
 
-- Use the exact package/hash and Evidence IDs in each detailed report when comparing a later version. A future website build or extension update is a different target.
-- Both static analyses explicitly preserve incomplete semantic coverage. A successful parse and a complete summary view do not mean a complete application graph.
-- Source text, symbols, strings, and route names are observations of public shipped material; they do not prove execution, backend behavior, vulnerabilities, or authorization weaknesses.
-- The CardWise Git checkout remains unchanged. No app tests were needed for this analysis-only task; no claims are made about build/test pass status.
+- Completed: official artifact identities, extension/source partitions, public configuration snapshots, MaxRewards package/bytecode review, source-bound comparison and compact provenance.
+- Still running: CardPointers main/Safari native Ghidra function questions; exact jobs/logs/checkpoints are recorded in [native progress](native/progress.md) and [jobs](native/jobs.json).
+- Static-scope limits: hidden server implementation, real bank acceptance/uptime, account-specific paid entitlements and universal recommendation accuracy. These are not tasks awaiting user participation.
+
+All conclusions distinguish observations, inferences and unknowns. Successful parsing, an untruncated graph partition, a complete summary view or a stored field never proves complete behavior. Full third-party artifacts and large raw Evidence are [retained locally](artifacts.md); public files contain digests, source/byte offsets, schema and compact ledgers.
+
+No CardWise application code or release setting was modified. Validation checks artifact identity, provenance, JSON, report links, intended Git paths and the current PR CI. The PR remains unmerged because pushes to main trigger an app release.

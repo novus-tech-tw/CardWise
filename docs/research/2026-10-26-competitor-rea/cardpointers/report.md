@@ -129,9 +129,9 @@ These are design judgments, not recovered competitor requirements. The baseline 
 | Trace basic merchant-to-wallet display selection | Partially answered | Consumer function recovered; upstream ranking unknown |
 | Identify offer fetch/activation and sync boundaries | Partially answered | Source paths read; no bank session or upload observed |
 | Observe unauthenticated public app | Answered within scenario | Login gate, resources and metadata only |
-| Recover native iOS internals, SwiftUI, CloudKit or StoreKit | Unresolved | No iOS/Mac binary acquired or analyzed |
-| Validate actual cap handling, point valuation or recommendation accuracy | Unresolved | No personalized wallet/runtime fixture |
-| Validate paid automation, data retention and issuer reliability | Unresolved | No account, subscription or bank connection |
+| Recover native internals | Separate workstream | Mac application acquired and analyzed in the [native report](../native/report.md); this extension report does not establish iOS behavior |
+| Validate actual cap handling, point valuation or recommendation accuracy | Outside completed extension/offline scope | Client code and supplied data do not prove end-to-end correctness; no further user fixture requested |
+| Validate paid automation, data retention and issuer reliability | Outside completed offline scope | Live server, entitlement and banking results are not established by these artifacts |
 
 ## Retained files
 

@@ -91,10 +91,10 @@ REA parent Evidence `ev_822ac3d70ae63bad2c8e3449d52ebcf03b3f29409ceb8572c6478827
 | Explain merchant/category-to-wallet shopping selection | Partial | Consumer recovered; supplied upstream order/values remain external |
 | Explain local Amex enrollment card priority | Complete as a static algorithm description | Category aliases, total_value comparison, manual tie-break and fallback modes recovered |
 | Explain enrollment-state and sync control branches | Complete as a static branch description | Issuer-specific state filters and common sync boundary; cross-this runtime flow not proved |
-| Prove live bank activation or payload sent | Externally blocked | Requires explicitly authorized legitimate bank test state; no request was performed |
-| Prove server cap/valuation/ranking policy | Externally blocked | Server/account output or corresponding native implementation required |
+| Prove live bank activation or payload sent | Outside completed offline scope | No bank request was performed; no further user login or demonstration requested |
+| Prove server cap/valuation/ranking policy | Outside completed offline scope | Hidden server implementation is not established by the acquired client artifacts |
 | Explain Safari own-account native bridge request | Complete for JS request/response handling | Native host implementation/runtime handled by separate worker |
-| Recover native iOS UI/recommendation internals | Externally blocked in this worker | No iOS binary/runtime; Mac native work is separately owned |
+| Recover native iOS UI/recommendation internals | Outside this extension workstream | Mac native analysis is [documented separately](../native/report.md); no additional iOS runtime requested |
 | Build/modify CardWise | Outside task scope | Root owns report PR; no product code was edited |
 
 ## Retained deeper deliverables

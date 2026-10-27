@@ -1,6 +1,6 @@
 # CardPointers REA progress
 
-Updated: 2026-10-27 UTC. Worker: cardpointers_rea. All output is outside the CardWise Git repository; root owns PR integration.
+Updated: 2026-10-27 UTC. Worker: cardpointers_rea. Acquired code and large Evidence are outside the CardWise Git repository; compact reports/provenance are integrated in the PR worktree.
 
 ## Completed first pass
 
@@ -21,14 +21,14 @@ Updated: 2026-10-27 UTC. Worker: cardpointers_rea. All output is outside the Car
 
 ## External boundaries
 
-- No bank login, offer activation, signup, purchase or subscription execution is authorized in this pass.
-- Root's separate native worker obtained the Mac app and owns native binary/GUI work. This worker inspected only public Safari packaged resources/plists. Native iOS behavior remains externally blocked here; Android acquisition is separately owned.
+- The completed extension pass executed no bank login, offer activation, signup, purchase or subscription. Current task execution is fully offline and does not require any of these actions.
+- The separate native worker obtained the Mac app and owns its native binary analysis. This worker inspected public Safari packaged resources/plists. Native iOS behavior is outside this extension/offline scope; no additional device or user action is requested.
 - Server ranking, data retention and payload sanitization cannot be established from client source alone.
 
 ## Delivery
 
 - Main first-pass report: report.md; deeper static coverage and updated status: deep-findings.md.
-- All work authorized within this worker's public extension/static scope is complete. Remaining questions in deep-findings.md are externally blocked or separately owned, with exact evidence boundaries and required next evidence documented.
+- All work within this worker's public extension/static scope is complete. Remaining server/runtime questions in deep-findings.md are method limits or separately owned native work, with exact evidence boundaries. They are not pending user-intervention tasks.
 - Root integrates the written findings into branch docs/competitor-rea-20261026 and owns the requested PR. No CardWise source was changed by this worker.
 
 This public copy contains status and compact metadata. Large Evidence and acquired program code remain in the [retained local archive](../artifacts.md).

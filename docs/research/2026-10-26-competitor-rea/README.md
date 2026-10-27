@@ -1,12 +1,15 @@
 # CardPointers and MaxRewards REA investigation
 
-Status: **in progress**. The first public-artifact pass is recorded; parallel follow-up is expanding static coverage, acquiring additional shipped artifacts, and resolving native-app coverage. This is not a claim of full mobile-app analysis.
+Status: **in progress, unattended offline analysis**. Official native apps and extensions have been acquired. Parallel workers are finishing native function analysis and bytecode cross-checks without further login or GUI intervention. This is not a claim of complete server-side or live banking behavior.
 
 - [Consolidated findings](report.md)
 - [Live progress and remaining work](progress.md)
 - [Artifact and Evidence archive](artifacts.md)
+- [Unattended offline method](offline-method.md)
 - [CardPointers findings](cardpointers/report.md)
+- [CardPointers native Mac analysis](native/report.md)
 - [MaxRewards findings](maxrewards/report.md)
+- [MaxRewards native recommendation/cap review](maxrewards/native-recommendation-review/report.md)
 - [CardWise source baseline](cardwise-baseline.md)
 
 The user requested maximum useful parallelism, durable progress, and delivery through a PR. Work is isolated on `docs/competitor-rea-20261026`. No app code is changed, and this PR must not be merged merely to store the investigation: pushes to `main` trigger an app release.
