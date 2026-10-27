@@ -1,12 +1,14 @@
 # Investigation progress
 
-Status: **original offline investigation complete; new iPad installation/runtime scope pending**. Delivered through PR #81. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix. Final-head CI status is reported on the PR rather than inferred from an earlier commit.
+Status: **original offline investigation complete; iPad updated to 27.2, runtime scope awaiting coordinated access**. Delivered through PR #81. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix. Final-head CI status is reported on the PR rather than inferred from an earlier commit.
 
 ## Original completed execution mode
 
 The user requested an unattended method after interactive login/UI checks required repeated participation. The investigation now runs **fully offline** against the already acquired official apps, extensions, public configuration snapshots and bytecode. No further user login, GUI navigation, native runtime capture or banking demonstration is required. Complete the remaining static analysis; classify unavailable server internals and live banking outcomes as scope limits rather than user-blocked tasks.
 
 For the later iPad followup, the user explicitly authorized installing both apps, asked to avoid repeating REA already in the PR, and requested immediate notice if login is needed. Reuse prior artifacts and Evidence. Installation remains pending as described in [the followup status](followup/README.md); no target-app account login requirement has yet been observed on the iPad.
+
+Latest resumption: fresh inspection confirms iPadOS 27.2, connected/unlocked state, enabled Developer Mode and functioning Device Hub video. A coordinate action failed without verified input; MaxRewards is still at its welcome/login entry and CardPointers is absent. Device commands are now yielded under explicit coordination among concurrent tasks, with an atomic lease and handoff required before any further device operation. These observations supersede the earlier 26.7 OS gate; [resumed readiness](followup/resumed-readiness.json) preserves the narrower current evidence.
 
 ## Reconnect and continue
 
