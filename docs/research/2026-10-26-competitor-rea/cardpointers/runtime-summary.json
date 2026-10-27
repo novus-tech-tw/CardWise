@@ -25,48 +25,27 @@
     {
       "step_id": "scenario_start",
       "status": "completed",
-      "after_url": {
-        "url": "https://cardpointers.com/app/",
-        "origin": "https://cardpointers.com",
-        "query_parameter_names": [],
-        "redacted": false
-      },
-      "accessibility": {
-        "state": "not_requested"
-      }
+      "after_url": "https://cardpointers.com/app/"
     },
     {
       "step_id": "wait-public-app",
       "status": "completed",
-      "after_url": {
-        "url": "https://cardpointers.com/app/",
-        "origin": "https://cardpointers.com",
-        "query_parameter_names": [],
-        "redacted": false
-      },
-      "accessibility": {
-        "state": "not_requested"
-      }
+      "after_url": "https://cardpointers.com/app/"
     },
     {
       "step_id": "settle",
       "status": "completed",
-      "after_url": {
-        "url": "https://cardpointers.com/app/",
-        "origin": "https://cardpointers.com",
-        "query_parameter_names": [],
-        "redacted": false
-      },
-      "accessibility": {
-        "state": "captured",
-        "value": {
-          "sha256": "61dbb813217c8ba85e3b95d342152da06026dc2fe7742c13c04ab544992a7279",
-          "bytes": 345,
-          "text": "- document:\n  - navigation:\n    - text: CardPointers\n    - button \"Log In\"\n    - button \"Sign Up\"\n  - main: To get started with the web app, log in or sign up using the buttons above.\n  - contentinfo:\n    - link \"Privacy Policy\":\n      - /url: https://cardpointers.com/privacy/\n    - link \"Contact\":\n      - /url: mailto:support@cardpointers.com"
-        }
-      }
+      "after_url": "https://cardpointers.com/app/"
     }
   ],
+  "final_observation": {
+    "visible_actions": [
+      "Log In",
+      "Sign Up"
+    ],
+    "state": "Unauthenticated legacy web app requires login or signup.",
+    "accessibility_sha256": "61dbb813217c8ba85e3b95d342152da06026dc2fe7742c13c04ab544992a7279"
+  },
   "network_request_paths": [
     {
       "method": "GET",
@@ -214,5 +193,6 @@
     "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
     "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
     "Storage values are hashed only after declared-secret redaction."
-  ]
+  ],
+  "full_evidence_retained_archive_path": "cardpointers/rea-evidence.json"
 }

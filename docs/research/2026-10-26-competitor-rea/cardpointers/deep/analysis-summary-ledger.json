@@ -1,0 +1,1207 @@
+[
+  {
+    "scope": "business-modules",
+    "summary_evidence_id": "ev_9555c6b4979e2006c7b2eafd94fa26c793e801f8999c5b55fc12fd96777a8569",
+    "analysis_evidence_id": "ev_bb0e6501f82dd19b1aaff3497a5a094fcd0ce7c3cf9e257d95f8e3a81e71ce8d",
+    "root_sha256": "ac82bb36e507696da797fc9ca99320e0ed4a57ea82fb06134f5ccb4b85e81ed6",
+    "statistics": {
+      "relevant_files": 7,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 9811,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 7,
+      "visited_ast_nodes": 2979,
+      "findings": 0,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "complete",
+        "truncated": false,
+        "omitted_count": 0,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 7,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 32,
+            "omitted_relations": 0,
+            "unknown_count": 172
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 149,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 2403,
+            "omitted_relations": 0,
+            "unknown_count": 161
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 201,
+            "omitted_relations": 0,
+            "unknown_count": 255
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 9,
+            "omitted_relations": 0,
+            "unknown_count": 1
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 2,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 589
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "small-originals",
+    "summary_evidence_id": "ev_063760ad815a200474eb27d53f3adf6dd0e1f43c980a33232c6413b4623b04df",
+    "analysis_evidence_id": "ev_f2e9c35fe224dec97f49b32160f5e9cd17ff52eea7633900031d3c0b9ee50b11",
+    "root_sha256": "73d26264cb472523c110bb6a03d2211f8b1fb2d5abdd83a213f10adf97563504",
+    "statistics": {
+      "relevant_files": 3,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 15834,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 3,
+      "visited_ast_nodes": 4836,
+      "findings": 3,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "partial",
+        "truncated": false,
+        "omitted_count": null,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 3,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 151,
+            "omitted_relations": 0,
+            "unknown_count": 268
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 209,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 3247,
+            "omitted_relations": 0,
+            "unknown_count": 312
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 5,
+            "omitted_relations": 0,
+            "unknown_count": 5
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 277,
+            "omitted_relations": 0,
+            "unknown_count": 507
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 82,
+            "omitted_relations": 0,
+            "unknown_count": 37
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 19,
+            "omitted_relations": 0,
+            "unknown_count": 3
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 8,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 1132
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "popup-modules",
+    "summary_evidence_id": "ev_5054ae8681482501c3262f416620c4d6de4ed4d7e0c4d4fa6c98bdf433a42fa3",
+    "analysis_evidence_id": "ev_c067bc07a1c167175f885b1bb02550f377826e6270a773100368565eb88402a0",
+    "root_sha256": "ca9e5829493c5debc8c9dec57305ec5c33825b62fd4d2b1bc2774519b8fc4c9d",
+    "statistics": {
+      "relevant_files": 15,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 73303,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 15,
+      "visited_ast_nodes": 18131,
+      "findings": 1,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "complete",
+        "truncated": false,
+        "omitted_count": 0,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 24,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 135,
+            "omitted_relations": 0,
+            "unknown_count": 1285
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 1019,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 15635,
+            "omitted_relations": 0,
+            "unknown_count": 650
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 1338,
+            "omitted_relations": 0,
+            "unknown_count": 1937
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 58,
+            "omitted_relations": 0,
+            "unknown_count": 30
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 33,
+            "omitted_relations": 0,
+            "unknown_count": 6
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 2,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 3908
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "content-methods",
+    "summary_evidence_id": "ev_18ea6a56abc802d4b1fb02da5baf70f47a60355f18a3f59d0f5e6f521ac89c2f",
+    "analysis_evidence_id": "ev_74e7cddd87e84766891b4d17a9fe8dc48da11eeed97398d72787849f4ec7e0ec",
+    "root_sha256": "e1d62af5a008ea4fb62e6c89a722d9551e065a1244e3fbf7d8c55261bef2a161",
+    "statistics": {
+      "relevant_files": 239,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 189777,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 239,
+      "visited_ast_nodes": 37478,
+      "findings": 23,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "complete",
+        "truncated": false,
+        "omitted_count": 0,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 40,
+            "omitted_relations": 0,
+            "unknown_count": 1
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 21,
+            "omitted_relations": 0,
+            "unknown_count": 1678
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 275,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 13898,
+            "omitted_relations": 0,
+            "unknown_count": 1532
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 2,
+            "omitted_relations": 0,
+            "unknown_count": 2
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 1933,
+            "omitted_relations": 0,
+            "unknown_count": 4098
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 202,
+            "omitted_relations": 0,
+            "unknown_count": 180
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 191,
+            "omitted_relations": 0,
+            "unknown_count": 18
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 8,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 7509
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "vendor-modules",
+    "summary_evidence_id": "ev_b1ca3df0d65d23f358e7ff2194ce3af34357ed61f9f7ab9330bfa7ffef83afdd",
+    "analysis_evidence_id": "ev_6335dec046d2175d3d3a5e479260bb44e9b0440e18334a98fb4fd826027d5bc6",
+    "root_sha256": "aff0a4627e09a8f6a19a3882c49dfb6a7f233fc02bf4172999b6cc93a51a4eef",
+    "statistics": {
+      "relevant_files": 132,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 302587,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 132,
+      "visited_ast_nodes": 87755,
+      "findings": 0,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "partial",
+        "truncated": false,
+        "omitted_count": null,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 108,
+            "omitted_relations": 0,
+            "unknown_count": 5
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 5377,
+            "omitted_relations": 0,
+            "unknown_count": 3714
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 3151,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 38572,
+            "omitted_relations": 0,
+            "unknown_count": 5118
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 2,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 4812,
+            "omitted_relations": 0,
+            "unknown_count": 9931
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 16,
+            "omitted_relations": 0,
+            "unknown_count": 5
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 26,
+            "omitted_relations": 0,
+            "unknown_count": 10
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 18783
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "full-content-app",
+    "summary_evidence_id": "ev_2bcd0f8ed489c96fab26d0bf8b1ad0b946201bf3b47576d787c0ee2dc2dc03c5",
+    "analysis_evidence_id": "ev_7d26b4f6a33f1f6e9ec9201c84440c0b2df3d15101e4b62c2e6705bf0ced6b21",
+    "root_sha256": "3226f5fc9b77b951940861a926a8a66f7500cc918cbd61e32e762c27433d700b",
+    "statistics": {
+      "relevant_files": 9,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 282115,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 9,
+      "visited_ast_nodes": 60460,
+      "findings": 29,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "complete",
+        "truncated": false,
+        "omitted_count": 0,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 72,
+            "omitted_relations": 0,
+            "unknown_count": 2
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 245,
+            "omitted_relations": 0,
+            "unknown_count": 3362
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 902,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 28773,
+            "omitted_relations": 0,
+            "unknown_count": 2498
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 4,
+            "omitted_relations": 0,
+            "unknown_count": 4
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 3318,
+            "omitted_relations": 0,
+            "unknown_count": 6609
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 220,
+            "omitted_relations": 0,
+            "unknown_count": 181
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 191,
+            "omitted_relations": 0,
+            "unknown_count": 18
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 13,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 12674
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "all-content-factories",
+    "summary_evidence_id": "ev_b1d518b63c81ebc174ed60d5c42c68a3c0f2ace9bcbf14185e359c8c3c45d7b5",
+    "analysis_evidence_id": "ev_4f92b8e21ad26cbe3088544f5848bc19be45f481e3ddeaebefe487dacf2f93eb",
+    "root_sha256": "ded70b2d6332ba462a1af36ae91b624a7953852ce805e0510090d6c9bccfbf61",
+    "statistics": {
+      "relevant_files": 344,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 1238798,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 344,
+      "visited_ast_nodes": 357566,
+      "findings": 29,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "partial",
+        "truncated": false,
+        "omitted_count": null,
+        "limits": [
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 0,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 106584,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 129016,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 151448,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 16964,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 19242224,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2046776,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2069208,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2091640,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 210767794,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 210794118,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2114072,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 26791894,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 27102730,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2872,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 376,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 39388,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 4525014,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 5362,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 61820,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 7852,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 84236,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_result_budget_bytes",
+            "value": 1628818484,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_semantic_result_budget_bytes",
+            "value": 0,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_worker_heap_limit_bytes",
+            "value": 2172649472,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_worker_timeout_ms",
+            "value": 60000,
+            "unit": "milliseconds"
+          }
+        ]
+      },
+      "semantic": {
+        "status": "partial",
+        "truncated": true,
+        "omitted_nodes": null,
+        "omitted_relations": null,
+        "limits": [
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 106584,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 129016,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 151448,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 16964,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 19242224,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2046776,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2069208,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2091640,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 210767794,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 210794118,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 2114072,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 26791894,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 27102730,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 39388,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 4525014,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 61820,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_available_result_budget_bytes",
+            "value": 84236,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_parent_result_budget_bytes",
+            "value": 1628818484,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_semantic_result_budget_bytes",
+            "value": 0,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_worker_heap_limit_bytes",
+            "value": 2172649472,
+            "unit": "bytes"
+          },
+          {
+            "name": "javascript_analysis_worker_timeout_ms",
+            "value": 60000,
+            "unit": "milliseconds"
+          }
+        ],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 79,
+            "omitted_relations": null,
+            "unknown_count": 123
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 9217,
+            "omitted_relations": null,
+            "unknown_count": 7339
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": null,
+            "unknown_count": 122
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 5752,
+            "omitted_relations": null,
+            "unknown_count": 122
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": null,
+            "unknown_count": 122
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 81234,
+            "omitted_relations": null,
+            "unknown_count": 9839
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 198,
+            "omitted_relations": null,
+            "unknown_count": 138
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 11073,
+            "omitted_relations": null,
+            "unknown_count": 18596
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 66,
+            "omitted_relations": null,
+            "unknown_count": 134
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": null,
+            "unknown_count": 122
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": null,
+            "unknown_count": 122
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 23,
+            "omitted_relations": null,
+            "unknown_count": 128
+          }
+        ]
+      },
+      "application_unknowns": 227,
+      "semantic_unknowns": 36907
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  },
+  {
+    "scope": "safari-small",
+    "summary_evidence_id": "ev_ae02b299ae72eaa353f3f112d821a6372a81ce9b12546dabaec3e23fde7e928b",
+    "analysis_evidence_id": "ev_822ac3d70ae63bad2c8e3449d52ebcf03b3f29409ceb8572c647882705e9101b",
+    "root_sha256": "6efe9eed6e27177784d8aa7162d579c2a4ecc4fc3377ff8b51ad6e4853fbca8a",
+    "statistics": {
+      "relevant_files": 2,
+      "nested_asar_containers": 0,
+      "text_bytes_read": 14575,
+      "invalid_utf8_files": 0,
+      "parsed_javascript_files": 2,
+      "visited_ast_nodes": 4242,
+      "findings": 3,
+      "modules": 0,
+      "parse_failures": 0
+    },
+    "coverage": {
+      "application": {
+        "status": "partial",
+        "truncated": false,
+        "omitted_count": null,
+        "limits": []
+      },
+      "semantic": {
+        "status": "unknown",
+        "truncated": false,
+        "omitted_nodes": 0,
+        "omitted_relations": 0,
+        "limits": [],
+        "families": [
+          {
+            "family": "boundary",
+            "status": "partial",
+            "retained_relations": 3,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "call-flow",
+            "status": "partial",
+            "retained_relations": 190,
+            "omitted_relations": 0,
+            "unknown_count": 222
+          },
+          {
+            "family": "child-process",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "closure",
+            "status": "partial",
+            "retained_relations": 162,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "configuration",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "data-flow",
+            "status": "partial",
+            "retained_relations": 2987,
+            "omitted_relations": 0,
+            "unknown_count": 262
+          },
+          {
+            "family": "event",
+            "status": "partial",
+            "retained_relations": 5,
+            "omitted_relations": 0,
+            "unknown_count": 5
+          },
+          {
+            "family": "object-flow",
+            "status": "partial",
+            "retained_relations": 240,
+            "omitted_relations": 0,
+            "unknown_count": 395
+          },
+          {
+            "family": "promise-ownership",
+            "status": "partial",
+            "retained_relations": 82,
+            "omitted_relations": 0,
+            "unknown_count": 48
+          },
+          {
+            "family": "request",
+            "status": "partial",
+            "retained_relations": 19,
+            "omitted_relations": 0,
+            "unknown_count": 3
+          },
+          {
+            "family": "resource-lifecycle",
+            "status": "partial",
+            "retained_relations": 0,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          },
+          {
+            "family": "timer",
+            "status": "partial",
+            "retained_relations": 4,
+            "omitted_relations": 0,
+            "unknown_count": 0
+          }
+        ]
+      },
+      "application_unknowns": 0,
+      "semantic_unknowns": 935
+    },
+    "retained_archive_path": "cardpointers/deep/rea-deep-evidence.json"
+  }
+]

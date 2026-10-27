@@ -2,6 +2,8 @@
 
 Analysis date: October 26, 2026 (America/Phoenix). The evidence records were created on October 27 UTC. Scope: the publicly shipped Firefox extension and the unauthenticated legacy web app. This is not a reverse engineering report on the native iOS binary.
 
+**Deeper pass completed:** [deep-findings.md](deep-findings.md) extends this first-pass report with untruncated partition analyses covering all six Firefox JS source families, local Amex category-aware enrollment ranking, activation/synchronization branches, and a focused Safari native-account bridge. Its updated completion matrix supersedes the first-pass resource and acquisition status below. Native Mac analysis is separately owned by the acquisition worker; native iOS behavior remains unverified here.
+
 ## Result
 
 CardPointers competes through a combination of issuer-specific offer automation, synchronized wallet data, and recommendations embedded directly in shopping pages. The acquired extension provides substantially better evidence for those mechanisms than its marketing website alone. Its shopping recommendation function consumes merchant/category card lists, joins them to the user's wallet, filters by profile, and joins offers by IDs. The inspected function does not itself recalculate rewards from transaction history or sort competing reward rates. The upstream production of those lists remains unknown.
@@ -135,11 +137,13 @@ These are design judgments, not recovered competitor requirements. The baseline 
 
 - [report.md](report.md): this report.
 - [amo-metadata.json](amo-metadata.json): public listing and download identity.
-- `cardpointers_x-8.0.8.xpi` (retained locally; see [archive index](../artifacts.md)) and extension/: exact acquired package and extracted contents.
-- `rea-evidence.json` (retained locally; see [archive index](../artifacts.md)): portable complete REA session ledger (approximately 151 MB, seven records); the ledger preserves partial coverage.
+- [cardpointers_x-8.0.8.xpi — retained locally](../artifacts.md) and extension/: exact acquired package and extracted contents.
+- [rea-evidence.json — retained locally](../artifacts.md): portable complete REA session ledger (approximately 151 MB, seven records); the ledger preserves partial coverage.
 - rea-summary.json, rea-modules.json, rea-background.json, rea-content.json: focused retained views.
 - [runtime-summary.json](runtime-summary.json): concise runtime summary without request query values or body/header contents.
 - [source-anchors.json](source-anchors.json): exact manually inspected source slices, identities and digests; associated .txt files are static excerpts.
 - rea-trace-unmatched.json: explicit unmatched trace and its limitations.
 
 No CardWise repository files were changed, and no tests or app builds were run. The investigation acquired public material, parsed it without installing the extension, and observed only a fresh unauthenticated browser session.
+
+Public-repository copies contain compact metadata only. Full third-party code, exact .txt excerpts, original metadata and canonical Evidence are described in [retained artifacts](../artifacts.md).
