@@ -50,6 +50,10 @@ struct SettingsView: View {
                         .foregroundStyle(Theme.textSecondary)
                 }
 
+                Section("Recommendations") {
+                    NavigationLink("Ranking, Point Values & Widgets") { RecommendationSettingsView() }
+                }
+
                 // MARK: Notifications
                 Section {
                     Toggle("Enable Notifications", isOn: $notificationsEnabled)
@@ -201,6 +205,7 @@ struct SettingsView: View {
                 Button("Clear", role: .destructive) {
                     cardViewModel.clearAllData()
                     spendingViewModel.clearAllData()
+                    RecommendationSettingsStore.shared.reset()
                 }
             } message: {
                 Text("This will delete all your cards, spending records, and preferences. This action cannot be undone.")

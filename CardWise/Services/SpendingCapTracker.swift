@@ -58,136 +58,24 @@ class SpendingCapTracker {
     func calculateCapProgress(
         userCards: [UserCard],
         allCards: [CreditCard],
-        spendings: [Spending]
+        spendings: [Spending],
+        asOf date: Date = Date()
     ) -> [SpendingCapProgress] {
         var results: [SpendingCapProgress] = []
 
+        let now = date
         for userCard in userCards {
-            guard let card = allCards.first(where: { $0.id == userCard.cardId }) else {
-                continue
-            }
-
-            // Check fixed category rewards with caps
-            for reward in card.categoryRewards {
-                if let cap = reward.cap, let period = reward.capPeriod {
-                    let spend = calculateSpendInPeriod(
-                        spendings: spendings,
-                        cardId: card.id,
-                        category: reward.category,
-                        period: period
-                    )
-
-                    results.append(SpendingCapProgress(
-                        id: "\(card.id)-\(reward.category.rawValue)",
-                        cardId: card.id,
-                        cardName: userCard.nickname ?? card.name,
-                        category: reward.category.displayName,
-                        currentSpend: spend,
-                        cap: cap,
-                        period: period,
-                        isRotating: false
-                    ))
-                }
-            }
-
-            // Check rotating categories with caps
-            if let rotating = card.rotatingCategories {
-                let currentQ = RotatingCategory.currentQuarter()
-                let currentY = RotatingCategory.currentYear()
-
-                let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY })
-                    ?? rotating.filter { $0.quarter == currentQ }.max(by: { $0.year < $1.year })
-
-                if let currentRotating = currentRotating,
-                   let cap = currentRotating.cap {
-                    // Sum spending across all rotating categories
-                    var totalSpend: Double = 0
-                    for category in currentRotating.categories {
-                        totalSpend += calculateSpendInPeriod(
-                            spendings: spendings,
-                            cardId: card.id,
-                            category: category,
-                            period: .quarterly
-                        )
-                    }
-
-                    results.append(SpendingCapProgress(
-                        id: "\(card.id)-rotating-Q\(currentQ)",
-                        cardId: card.id,
-                        cardName: userCard.nickname ?? card.name,
-                        category: "Q\(currentQ) Rotating: \(currentRotating.categories.map { $0.displayName }.joined(separator: ", "))",
-                        currentSpend: totalSpend,
-                        cap: cap,
-                        period: .quarterly,
-                        isRotating: true
-                    ))
-                }
-            }
-
-            // Check selectable categories with caps
-            if let config = card.selectableConfig,
-               let cap = config.cap,
-               let capPeriod = config.capPeriod,
-               let selectedCategories = userCard.selectedCategories {
-                var totalSpend: Double = 0
-                for category in selectedCategories {
-                    totalSpend += calculateSpendInPeriod(
-                        spendings: spendings,
-                        cardId: card.id,
-                        category: category,
-                        period: capPeriod
-                    )
-                }
-
+            guard let card = allCards.first(where: { $0.id == userCard.cardId }) else { continue }
+            for rule in card.capRules(userCard: userCard, asOf: now) {
                 results.append(SpendingCapProgress(
-                    id: "\(card.id)-selectable",
-                    cardId: card.id,
-                    cardName: userCard.nickname ?? card.name,
-                    category: "Selected: \(selectedCategories.map { $0.displayName }.joined(separator: ", "))",
-                    currentSpend: totalSpend,
-                    cap: cap,
-                    period: capPeriod,
-                    isRotating: false
+                    id: "\(card.id)-\(rule.id)", cardId: card.id, cardName: userCard.nickname ?? card.name,
+                    category: rule.categories.map(\.displayName).joined(separator: ", "),
+                    currentSpend: rule.spent(cardID: card.id, spendings: spendings, asOf: now),
+                    cap: rule.cap, period: rule.period, isRotating: rule.isRotating
                 ))
             }
         }
-
         return results.sorted { $0.percentage > $1.percentage }
-    }
-
-    private func calculateSpendInPeriod(
-        spendings: [Spending],
-        cardId: String,
-        category: SpendingCategory,
-        period: CapPeriod
-    ) -> Double {
-        let startDate = getStartDate(for: period)
-
-        return spendings
-            .filter { $0.cardUsed == cardId && $0.category == category && $0.date >= startDate }
-            .reduce(0) { $0 + $1.amount }
-    }
-
-    private func getStartDate(for period: CapPeriod) -> Date {
-        let calendar = Calendar.current
-        let now = Date()
-
-        switch period {
-        case .monthly:
-            return calendar.date(from: calendar.dateComponents([.year, .month], from: now)) ?? Date()
-
-        case .quarterly:
-            let month = calendar.component(.month, from: now)
-            let quarter = (month - 1) / 3 + 1
-            let startMonth = (quarter - 1) * 3 + 1
-            var components = calendar.dateComponents([.year], from: now)
-            components.month = startMonth
-            components.day = 1
-            return calendar.date(from: components) ?? Date()
-
-        case .yearly:
-            return calendar.date(from: calendar.dateComponents([.year], from: now)) ?? Date()
-        }
     }
 
     /// Check if any caps are near limit and send notifications

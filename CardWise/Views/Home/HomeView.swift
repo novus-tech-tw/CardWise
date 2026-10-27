@@ -341,6 +341,7 @@ struct SpendingCapsCard: View {
 struct CreditsToUseCard: View {
     @EnvironmentObject var cardViewModel: CardViewModel
     @Binding var isExpanded: Bool
+    @State private var selectedUserCard: UserCard?
 
     var body: some View {
         let items = cardViewModel.unusedCreditsThisPeriod
@@ -358,19 +359,27 @@ struct CreditsToUseCard: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(item.credit.description)
                                 .font(.app(.subheadline))
-                            Text("\(item.cardName) · per \(item.credit.cadence.displayName)")
+                            Text("\(item.cardName) · resets \(item.resetDate.formatted(date: .abbreviated, time: .omitted))")
                                 .font(.app(.caption2))
                                 .foregroundStyle(Theme.textSecondary)
                         }
                         Spacer()
-                        Text("$\(Int(item.remaining)) left")
+                        Text(item.remaining.formatted(.currency(code: "USD")))
                             .font(.app(.caption))
                             .foregroundStyle(Theme.success)
+                        Button("Update") {
+                            selectedUserCard = cardViewModel.getUserCard(byCardId: item.cardID)
+                        }
+                        .font(.caption)
+                        .accessibilityLabel("Update \(item.credit.description) for \(item.cardName)")
                     }
                 }
             }
         }
         .sectionCard()
+        .sheet(item: $selectedUserCard) { userCard in
+            if let card = cardViewModel.getCard(for: userCard) { CardDetailView(userCard: userCard, card: card) }
+        }
     }
 }
 
@@ -485,6 +494,8 @@ struct RecentTransactionsCard: View {
 // MARK: - Quick Recommend Sheet
 
 struct QuickRecommendSheet: View {
+    @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @State private var includeConditionalRewards = false
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cardViewModel: CardViewModel
     @EnvironmentObject var spendingViewModel: SpendingViewModel
@@ -510,7 +521,10 @@ struct QuickRecommendSheet: View {
             for: effectiveCategory,
             amount: amountValue,
             userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards
+            allCards: cardViewModel.allCards,
+            spendings: spendingViewModel.spendings,
+            settings: preferences.settings,
+            includeConditionalRewards: includeConditionalRewards
         )
     }
 
@@ -681,6 +695,10 @@ struct QuickRecommendSheet: View {
                     )
                 } else {
                     List {
+                        PurchaseConditionsToggle(isOn: $includeConditionalRewards)
+                        Text(preferences.settings.ranking.explanation)
+                            .font(.caption)
+                            .foregroundStyle(Theme.textSecondary)
                         ForEach(Array(recommendations.enumerated()), id: \.element.id) { index, rec in
                             QuickRecommendRow(recommendation: rec, isTop: index == 0) {
                                 selectedRecommendation = rec
@@ -712,7 +730,8 @@ struct QuickRecommendSheet: View {
                             date: Date(),
                             note: nil,
                             cardViewModel: cardViewModel,
-                            notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts()
+                            notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts(),
+                            includeConditionalRewards: includeConditionalRewards
                         )
                         dismiss()
                     }
@@ -762,7 +781,7 @@ struct QuickRecommendRow: View {
                         Button {
                             cardViewModel.setRotatingActivated(for: recommendation.userCard, activated: true)
                         } label: {
-                            Label("Needs activation — tap once activated", systemImage: "exclamationmark.triangle")
+                            Label("Confirm issuer activation", systemImage: "exclamationmark.triangle")
                                 .font(.app(.caption2))
                                 .foregroundStyle(Theme.warning)
                         }
@@ -779,6 +798,8 @@ struct QuickRecommendRow: View {
                         .foregroundStyle(Theme.textSecondary)
                 }
             }
+
+            RecommendationContextView(recommendation: recommendation)
 
             // Quick add spending button (only for top recommendation)
             if isTop {

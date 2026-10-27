@@ -106,6 +106,24 @@ class CardViewModel: ObservableObject {
         }
     }
 
+    func updateSignUpOffer(for userCard: UserCard, bonus: SignUpBonus?) {
+        guard let index = userCards.firstIndex(where: { $0.id == userCard.id }) else { return }
+        userCards[index].customSignUpBonus = bonus
+        if bonus == nil && getCard(for: userCard)?.signUpBonus == nil { userCards[index].signUpBonusStartDate = nil }
+        if bonus != nil && userCards[index].signUpBonusStartDate == nil {
+            userCards[index].signUpBonusStartDate = Calendar.current.startOfDay(for: Date())
+        }
+        userCards[index].signUpBonusAchieved = false
+        saveUserCards()
+    }
+
+    func updateSignUpBonus(for userCard: UserCard, startDate: Date?, achieved: Bool) {
+        guard let index = userCards.firstIndex(where: { $0.id == userCard.id }) else { return }
+        userCards[index].signUpBonusStartDate = startDate.map { Calendar.current.startOfDay(for: $0) }
+        userCards[index].signUpBonusAchieved = achieved
+        saveUserCards()
+    }
+
     // Calculate total credit utilization across all cards
     var totalCreditUtilization: Double? {
         let cardsWithLimits = userCards.filter { $0.creditLimit != nil && $0.currentBalance != nil }
@@ -139,9 +157,11 @@ class CardViewModel: ObservableObject {
 
     struct UnusedCredit: Identifiable {
         let id: String          // "\(cardID)|\(creditID)"
+        let cardID: String
         let cardName: String
         let credit: StatementCredit
         let remaining: Double
+        var resetDate: Date { CreditPeriod.nextReset(for: Date(), cadence: credit.cadence) }
     }
 
     var unusedCreditsThisPeriod: [UnusedCredit] {
@@ -153,7 +173,7 @@ class CardViewModel: ObservableObject {
                 let remaining = credit.amount - usedAmount(cardID: card.id, creditID: credit.id, periodKey: periodKey)
                 if remaining > 0 {
                     result.append(UnusedCredit(id: "\(card.id)|\(credit.id)",
-                                               cardName: card.name, credit: credit, remaining: remaining))
+                                               cardID: card.id, cardName: userCard.nickname ?? card.name, credit: credit, remaining: remaining))
                 }
             }
         }
@@ -161,6 +181,7 @@ class CardViewModel: ObservableObject {
         return result.sorted {
             let a = order[$0.credit.cadence] ?? 99
             let b = order[$1.credit.cadence] ?? 99
+            if $0.resetDate != $1.resetDate { return $0.resetDate < $1.resetDate }
             return a != b ? a < b : $0.remaining > $1.remaining
         }
     }

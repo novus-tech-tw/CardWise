@@ -191,6 +191,8 @@ struct AddSpendingView: View {
     @EnvironmentObject var cardViewModel: CardViewModel
     @EnvironmentObject var spendingViewModel: SpendingViewModel
 
+    @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @State private var includeConditionalRewards = false
     @State private var amount = ""
     @State private var merchant = ""
     @State private var selectedCategory: SpendingCategory = .other
@@ -213,13 +215,18 @@ struct AddSpendingView: View {
             for: effectiveCategory,
             amount: amountValue,
             userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards
+            allCards: cardViewModel.allCards,
+            spendings: spendingViewModel.spendings,
+            settings: preferences.settings,
+            asOf: date,
+            includeConditionalRewards: includeConditionalRewards
         )
     }
 
     var body: some View {
         NavigationStack {
             Form {
+                Section { PurchaseConditionsToggle(isOn: $includeConditionalRewards) }
                 Section("Transaction") {
                     HStack {
                         Text("$")
@@ -309,7 +316,8 @@ struct AddSpendingView: View {
                             date: date,
                             note: note.isEmpty ? nil : note,
                             cardViewModel: cardViewModel,
-                            notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts()
+                            notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts(),
+                            includeConditionalRewards: includeConditionalRewards
                         )
                         dismiss()
                     }

@@ -15,6 +15,8 @@ struct ScanReceiptView: View {
 
     // Editable fields (pre-filled from OCR)
     @State private var merchant = ""
+    @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @State private var includeConditionalRewards = false
     @State private var amount = ""
     @State private var selectedCategory: SpendingCategory = .other
     @State private var selectedCardId: String?
@@ -141,6 +143,9 @@ struct ScanReceiptView: View {
                             DatePicker("Date", selection: $date, displayedComponents: .date)
                                 .font(.app(.body))
                                 .tint(Theme.accent)
+
+                            PurchaseConditionsToggle(isOn: $includeConditionalRewards)
+                                .onChange(of: includeConditionalRewards) { _, _ in updateRecommendedCard() }
 
                             // Card selection
                             VStack(alignment: .leading, spacing: 8) {
@@ -288,7 +293,11 @@ struct ScanReceiptView: View {
             for: selectedCategory,
             amount: Double(amount) ?? 100,
             userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards
+            allCards: cardViewModel.allCards,
+            spendings: spendingViewModel.spendings,
+            settings: preferences.settings,
+            asOf: date,
+            includeConditionalRewards: includeConditionalRewards
         )
 
         if let best = recommendations.first {
@@ -308,7 +317,8 @@ struct ScanReceiptView: View {
             date: date,
             note: "Scanned from receipt",
             cardViewModel: cardViewModel,
-            notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts()
+            notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts(),
+            includeConditionalRewards: includeConditionalRewards
         )
 
         dismiss()

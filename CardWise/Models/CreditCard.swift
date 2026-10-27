@@ -67,18 +67,24 @@ struct StatementCredit: Codable, Identifiable, Equatable {
 }
 
 struct CategoryReward: Codable, Identifiable, Equatable {
-    var id: String { category.rawValue }
+    var id: String { "\(category.rawValue)|\(multiplier)|\(note ?? "")" }
     let category: SpendingCategory
     let multiplier: Double  // e.g., 3.0 for 3x or 3%
     let isPercentage: Bool  // true for cashback %, false for points multiplier
     let cap: Double?        // spending cap (e.g., $1,500)
     let capPeriod: CapPeriod?
+    var note: String?
+
+    var requiresPurchaseConfirmation: Bool {
+        guard let note, !note.isEmpty, [.travel, .hotels, .airlines, .dining, .wholesale].contains(category) else { return false }
+        return !["Travel purchases", "Restaurants"].contains(note)
+    }
 
     var displayMultiplier: String {
         if isPercentage {
-            return "\(Int(multiplier))%"
+            return "\(multiplier.formatted(.number.precision(.fractionLength(0...2))))%"
         } else {
-            return "\(Int(multiplier))x"
+            return "\(multiplier.formatted(.number.precision(.fractionLength(0...2))))x"
         }
     }
 }
@@ -95,9 +101,9 @@ struct RotatingCategory: Codable, Identifiable, Equatable {
 
     var displayMultiplier: String {
         if isPercentage {
-            return "\(Int(multiplier))%"
+            return "\(multiplier.formatted(.number.precision(.fractionLength(0...2))))%"
         } else {
-            return "\(Int(multiplier))x"
+            return "\(multiplier.formatted(.number.precision(.fractionLength(0...2))))x"
         }
     }
 
@@ -163,58 +169,10 @@ struct CreditCard: Identifiable, Codable, Equatable {
 
     var displayBaseReward: String {
         if baseIsPercentage {
-            return "\(Int(baseReward))%"
+            return "\(baseReward.formatted(.number.precision(.fractionLength(0...2))))%"
         } else {
-            return "\(Int(baseReward))x"
+            return "\(baseReward.formatted(.number.precision(.fractionLength(0...2))))x"
         }
-    }
-
-    // Get effective reward for a category considering rotating and selectable
-    func getReward(for category: SpendingCategory, selectedCategories: [SpendingCategory]? = nil) -> (multiplier: Double, isPercentage: Bool) {
-        // Check fixed category rewards first
-        if let categoryReward = categoryRewards.first(where: { $0.category == category }) {
-            return (categoryReward.multiplier, categoryReward.isPercentage)
-        }
-
-        // Check rotating categories for current quarter (with fallback to latest year if current year not present)
-        if let rotating = rotatingCategories {
-            let currentQ = RotatingCategory.currentQuarter()
-            let currentY = RotatingCategory.currentYear()
-
-            let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY })
-                ?? rotating.filter { $0.quarter == currentQ }.max(by: { $0.year < $1.year })
-
-            if let currentRotating = currentRotating {
-                if currentRotating.categories.contains(category) {
-                    return (currentRotating.multiplier, currentRotating.isPercentage)
-                }
-            }
-        }
-
-        // Check selectable categories
-        if let config = selectableConfig, let selected = selectedCategories {
-            if selected.contains(category) {
-                return (config.multiplier, config.isPercentage)
-            }
-        }
-
-        // Check related fallback categories (e.g. Travel covering Hotels/Airlines, Grocery covering Whole Foods)
-        let related: [SpendingCategory]
-        switch category {
-        case .hotels, .airlines: related = [.travel]
-        case .wholeFoods: related = [.grocery]
-        case .evCharging: related = [.gas]
-        case .amazon: related = [.onlineShopping]
-        case .target, .walmart: related = [.onlineShopping, .grocery]
-        default: related = []
-        }
-        for rel in related {
-            if let reward = categoryRewards.first(where: { $0.category == rel }) {
-                return (reward.multiplier, reward.isPercentage)
-            }
-        }
-
-        return (baseReward, baseIsPercentage)
     }
 }
 
@@ -226,6 +184,7 @@ struct UserCard: Identifiable, Codable, Equatable {
     var selectedCategories: [SpendingCategory]?
     var creditLimit: Double?          // User's credit limit for this card
     var currentBalance: Double?       // Optional: track current balance
+    var customSignUpBonus: SignUpBonus?
     var signUpBonusStartDate: Date?   // When user started tracking sign-up bonus
     var signUpBonusAchieved: Bool     // Whether bonus has been achieved
     var activatedRotatingQuarters: [String]?  // quarter keys ("2026-Q3") the user has activated; optional for pre-feature decoding
@@ -238,6 +197,7 @@ struct UserCard: Identifiable, Codable, Equatable {
         self.selectedCategories = nil
         self.creditLimit = creditLimit
         self.currentBalance = nil
+        self.customSignUpBonus = nil
         self.signUpBonusStartDate = trackSignUpBonus ? Date() : nil
         self.signUpBonusAchieved = false
         self.activatedRotatingQuarters = nil
@@ -281,15 +241,16 @@ struct UserCard: Identifiable, Codable, Equatable {
         signUpBonusStartDate != nil && !signUpBonusAchieved
     }
 
+    func signUpBonus(for card: CreditCard) -> SignUpBonus? { customSignUpBonus ?? card.signUpBonus }
+
     func signUpBonusDeadline(for card: CreditCard) -> Date? {
         guard let startDate = signUpBonusStartDate,
-              let bonus = card.signUpBonus else { return nil }
+              let bonus = signUpBonus(for: card) else { return nil }
         return Calendar.current.date(byAdding: .day, value: bonus.timeframeDays, to: startDate)
     }
 
     func daysRemainingForBonus(for card: CreditCard) -> Int? {
         guard let deadline = signUpBonusDeadline(for: card) else { return nil }
-        let days = Calendar.current.dateComponents([.day], from: Date(), to: deadline).day ?? 0
-        return max(0, days)
+        return max(0, Int(ceil(deadline.timeIntervalSinceNow / 86400)))
     }
 }
