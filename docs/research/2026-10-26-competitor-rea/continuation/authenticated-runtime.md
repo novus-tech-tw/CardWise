@@ -13,3 +13,5 @@ The controller used explicit loopback HTTP/MJPEG addresses and a localhost-only 
 Selected runtime coverage remains active. Widgets/Live Activities, remaining authenticated offer/card/search paths, MaxRewards actionable UI and the separate Closer task are not declared complete by this window.
 
 Later windows identify a system notification prompt and a foreign floating window; see [scene-boundary observations](runtime-scene-boundaries.md). Target-specific AX/active-bundle metadata alone did not ensure unobstructed screen ownership in those later cases. Remaining navigation is not counted from accepted clicks without an observed destination.
+
+A later [settled navigation window](runtime-settled-navigation.md) confirms the observed OS Minimize result, CP Offers/Cards destinations and a settled authenticated MR Home/native navigation surface. Remaining deeper flows are still separate.

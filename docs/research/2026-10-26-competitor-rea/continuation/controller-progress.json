@@ -27,9 +27,9 @@
     "no_launch_input_capture_or_controller_lifecycle": true,
     "owned_lease_released": true
   },
-  "next": "After fresh handoff, require global visual target ownership plus visible-app/alert gates before remaining CP/MR input; Closer continues independently",
+  "next": "After fresh handoff, MR-first read-only core destination/search checks with source then fresh global visual confirmation; CP deeper detail/search stays pending",
   "app_login": "Both app logins already confirmed; no new login expiry observed",
-  "limits": "Historical Xcode/CoreDevice failures are not current transport/installed-version conclusions. Selected CardPointers input is now proven; all-feature correctness and MaxRewards actionable UI remain unverified. Device/session/account identifiers excluded.",
+  "limits": "Historical Xcode/CoreDevice failures are not current transport or installed-version conclusions. Selected CP category/Offers/Cards source destinations and MR Home/native navigation are observed; deeper MR destinations/input, remaining search/detail paths and all-feature correctness are separate. Device/session/account identifiers excluded.",
   "previous_xcode_start": {
     "provider": "Xcode test-without-building",
     "exit_code": 70,
@@ -38,7 +38,16 @@
     "working_input_observed": false,
     "owned_runner_or_bridge_remaining": false
   },
-  "latest_root_runtime": {
+  "root_window05_settled_navigation": {
+    "OS_Minimize": "observed current controls and settled CP global proof",
+    "CP_Offers_and_Cards": "destination source changes verified; Offers global image verified",
+    "MR_Home_native_navigation": "settled authenticated global/source verified",
+    "MR_BestCard_lookup": "visual freshness rejection before element request, no tap",
+    "known_CP_DELETE": "success",
+    "late_MR_DELETE": "closed bridge refused; not reported success",
+    "own_controller_cleanup": "runner absence before host teardown; host exit and local port free"
+  },
+  "initial_root_runtime_window01": {
     "userspace_transport_handshake": "success",
     "own_WDA_status": "ready",
     "cardpointers_actual_input_and_UI_transition": "verified selected close/navigation/category path",
@@ -49,7 +58,7 @@
       "MaxRewards": "4.8.35/1792099341"
     }
   },
-  "latest_scene_conditions": {
+  "earlier_scene_conditions_window02_03": {
     "system_notification": "MaxRewards authorization prompt visually observed and explicit Don\u2019t Allow acknowledged",
     "multiwindow": "Closer floating over CP despite target-specific metadata; accepted CP navigation did not produce verified destination",
     "focus_sequence": "Home/CP activate acknowledged, visual result unverified",

@@ -2,6 +2,10 @@
 
 Status: **active continuation**. Rich explicitly required CardWise and Closer to finish the remaining analysis; only Orbit is paused. The prior reachable-only closeout is superseded. Both iPad logins are already verified. The [continuation ledger](continuation/README.md) records new recommendation, benefit/offer, wallet-provenance and provider evidence plus remaining questions. No duplicate whole-app analysis is required.
 
+## Current continuation checkpoint
+
+The userspace own-controller start/status/cleanup and selected CardPointers8.1.5 promotion-close/navigation/category output are verified. Exact selected USB metadata confirms MaxRewards4.8.35. Native row/image policy follows the existing reader/content work; prior engine imports and old whole-app producers were not repeated. The [actual runtime record](continuation/authenticated-runtime.md) and [scene boundaries](continuation/runtime-scene-boundaries.md) separate successful destination changes from system prompts and accepted clicks under a foreign floating window. Remaining read-only CP/MR paths and Closer research stay active; raw account/fixture screenshots remain private.
+
 ## Original completed execution mode
 
 The user requested an unattended method after interactive login/UI checks required repeated participation. The investigation now runs **fully offline** against the already acquired official apps, extensions, public configuration snapshots and bytecode. No further user login, GUI navigation, native runtime capture or banking demonstration is required. Complete the remaining static analysis; classify unavailable server internals and live banking outcomes as scope limits rather than user-blocked tasks.

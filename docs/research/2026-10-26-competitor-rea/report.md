@@ -1,10 +1,10 @@
-# CardPointers and MaxRewards offline REA
+# CardPointers and MaxRewards REA investigation
 
 Status: **active continuation required by Rich**. The earlier reachable-only closeout was premature; both CardWise and Closer must continue, while only Orbit is paused. Both iPad logins are verified. Reuse the prior PR/evidence and follow the [new findings and remaining questions](continuation/README.md); controller failures do not establish feature completion. Delivered checkpoints remain on [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81), without merging main or releasing the app.
 
 ## Main findings
 
-The [2026-10-27 followup](followup/README.md) resolves three previously open static bindings using existing artifacts. Both target apps are installed on the iPad and authenticated landing views were observed after the user completed login. Final exact-bundle inventory requests timed out, and Frida process discovery on 27.2 returned a connection-refused provider error; no attachment was attempted without a current PID. Deeper runtime behavior and reliable input remain unverified; these flows remain pending under the active continuation. Mac artifacts are not substituted for the iPad packages.
+The [active continuation](continuation/README.md) adds selected recommendation/input, benefit/progress, wallet-network/persistence, local order and Apple-integration findings using existing artifacts. The changed userspace controller supports verified CardPointers category/Offers/Cards source destinations on the current iPad CardPointers8.1.5 package; exact USB metadata and a settled authenticated Home view also confirm MaxRewards4.8.35. Later [system-alert and multiwindow observations](continuation/runtime-scene-boundaries.md) require global visual ownership before further input. Remaining authenticated read-only flows are active, and both completed logins are preserved. Earlier CoreDevice/Frida failures remain historical provider results; Mac artifacts are not substituted for the iPad packages.
 
 CardPointers combines prepared shopping-card recommendations with bank-specific offer enrollment and native Apple integrations. MaxRewards combines server-returned merchant recommendations with client valuation/eligibility logic and remotely configured bank connection. Both expose substantially more integration work than a card-rate catalog alone.
 
@@ -20,7 +20,7 @@ For CardWise, the strongest near-term opportunities are consistent cap-aware inp
 | MaxRewards native | Official iPhone/iPad-compatible 4.8.35/build 1792099341; bundle `com.max.MaxRewards` | REA inventory of 1,078 files/456 directories, metadata and encrypted-Mach-O boundary; separate Hermes v96 business resource parsed offline |
 | MaxRewards web | 38 acquired files, exact URL/digest manifest | 17 business/inline files REA-parsed; 21 SDK/shared files inventoried, not claimed as fully semantically audited |
 
-The MaxRewards Hermes resource contains 68,786 function headers and 72,616 strings. Its main workstream reviewed 17 focused entry functions; an independent review disassembled 100 additional selected functions after exhaustive bounded instruction/identifier searches. Root checked the manifests and found no overlapping function IDs: 117 selected entries in total. This is not a semantic audit of every app function. Pseudocode is reconstructed output, not original source.
+The MaxRewards Hermes resource contains 68,786 function headers and 72,616 strings. The initial main workstream reviewed 17 focused entry functions; an independent review disassembled 100 additional selected functions after exhaustive bounded instruction/identifier searches. Root checked the manifests and found no overlapping function IDs: 117 selected entries at that initial checkpoint. Further distinct passes are linked in the [continuation ledger](continuation/README.md). This is not a semantic audit of every app function. Pseudocode is reconstructed output, not original source.
 
 The selected CardPointers Mac build is distinct from the iOS version advertised by the storefront. Its Safari web manifest is 8.1.3 while the host/extension plists are 8.1.4. No silent same-version comparison is made.
 
@@ -36,7 +36,7 @@ The native Mac package adds concrete domain evidence: 24 Core Data entities, all
 
 Four actual native Safari function dossiers corroborate the JavaScript bridge. The `getWallet` handler retrieves own-account authorization and entitlement state and constructs its reply; despite its name, this path does not return a complete card-row wallet. Static Keychain retrieval code was analyzed without reading any actual stored token.
 
-Main native code establishes a 400 ms model-change debounce followed by filtered Core Data publication, plus incoming `points`, `total_value` and order materialization with two parent reconciliation call sites. A selected consumer formats estimated cents per dollar and welcome value. The followup resolves the selected fetch's sort keypaths to `is_favorite` descending, then `name` ascending; the full upstream value producer remains unresolved. Packaged ranking help is labeled as vendor explanation rather than a verified formula. All selected native questions and limits are in the [native report](native/report.md).
+Main native code establishes a 400 ms model-change debounce followed by filtered Core Data publication, plus incoming `points`, `total_value` and order materialization with two parent reconciliation call sites. A selected consumer formats estimated cents per dollar and welcome value. The followup resolves the selected fetch's sort keypaths to `is_favorite` descending, then `name` ascending; the [selected network-data/typed-decoder/persistence input](continuation/cardpointers-wallet-network.md) and [local pin/order/sponsored path](continuation/cardpointers-recommendation-order.md) are now bound, while server value generation and alternate paths remain unverified. Packaged ranking help is labeled as vendor explanation rather than a verified formula. All selected native questions and limits are in the [native report](native/report.md).
 
 Detailed evidence: [initial extension report](cardpointers/report.md), [deep static findings](cardpointers/deep-findings.md), [native Mac report](native/report.md).
 
@@ -79,7 +79,7 @@ The engine uses a common $0.01-per-point/mile valuation and prioritizes an unfin
 
 Before the user switched to the unattended method, controlled public browser scenarios observed login/account gates, and a signed-out card-value planner was exercised with synthetic inputs. Therefore, the evidence does not support a blanket claim that MaxRewards requires an account for every useful result. The planner's exact fixture and arithmetic are in its dossier; these are historical observations, not the user's finances or current card advice.
 
-Some native UI observations were also made, but provider window/AX limitations and lack of a controlled authenticated fixture prevent strong end-to-end claims. No additional login, launch or demonstration is needed under the current scope. Account identifiers, raw screenshots, credentials, receipts and live transaction data are excluded from this public PR.
+Historical native UI observations had provider window/AX limits. The later [actual authenticated iPad path](continuation/authenticated-runtime.md) verifies selected CardPointers input and destination content; it does not establish all-feature correctness. Remaining coordinated read-only observation continues with current scene/visual checks. No repeat login is needed. Account identifiers, raw screenshots, credentials, receipts and live transaction data are excluded from this public PR.
 
 ## Delivery and limits
 
