@@ -24,9 +24,21 @@ struct SignUpOfferEditor: View {
                 Picker("Reward type", selection: $rewardType) {
                     ForEach(RewardType.allCases, id: \.self) { Text($0.displayName).tag($0) }
                 }
-                TextField("Bonus amount", text: $rewardAmount).keyboardType(.decimalPad)
-                TextField("Required spending ($)", text: $spendRequirement).keyboardType(.decimalPad)
-                TextField("Time limit in days (1–730)", text: $timeframe).keyboardType(.numberPad)
+                LabeledContent("Bonus amount") {
+                    TextField("Amount", text: $rewardAmount)
+                        .keyboardType(.decimalPad).multilineTextAlignment(.trailing)
+                        .accessibilityLabel("Bonus amount")
+                }
+                LabeledContent("Required spending ($)") {
+                    TextField("Amount", text: $spendRequirement)
+                        .keyboardType(.decimalPad).multilineTextAlignment(.trailing)
+                        .accessibilityLabel("Required spending")
+                }
+                LabeledContent("Time limit (1–730 days)") {
+                    TextField("90", text: $timeframe)
+                        .keyboardType(.numberPad).multilineTextAlignment(.trailing)
+                        .accessibilityLabel("Time limit in days")
+                }
             } footer: {
                 Text("Copy the exact offer from your issuer. CardWise tracks your entries and does not verify eligibility or award payment. Set the opening date on the card details screen after saving.")
             }
@@ -39,10 +51,9 @@ struct SignUpOfferEditor: View {
                 }
             }
         }
-        .navigationTitle("Your Sign-up Offer")
+        .navigationTitle("Sign-up Offer")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     guard let offer else { return }

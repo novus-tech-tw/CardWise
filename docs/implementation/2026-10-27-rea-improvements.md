@@ -32,6 +32,7 @@ Automatic bank connections, bank-session adapters, offer enrollment, account ser
 - Regression fixtures cover exhausted/partial/shared caps, broad-category usage, future records, expired schedules, activation, overlapping bonuses, point/cash comparison, ranking policy, exclusive sign-up deadlines, invalid inputs, settings persistence/reset, manual sign-up offers and legacy wallet decoding, conditional rate opt-in, benefit reset boundaries, legacy widget decoding, and widget/engine consistency.
 - SwiftLint: no new warnings; existing unrelated warnings remain.
 - Release build for generic iOS, unsigned.
-- Simulator UI inspection of settings and benefit/recommendation workflows using synthetic data only.
+- Simulator UI inspection with synthetic data: ranking changes, widget merchant/category controls, persisted $3.50 benefit usage ($6.50 remaining), home-to-benefit navigation, and creating a $200 sign-up offer with a $1,000/90-day goal. The goal displayed its deadline, $1,000 remaining, and 90 days left. A lazy nested-sheet presentation was replaced with navigation before delivery.
+- Final local suite: 123 XCTest cases, one existing opt-in CloudKit schema case skipped, no failures; 18 new Swift Testing tests passed. The cases also include parameterized inputs.
 
 The branch is delivered through a PR. Merging to `main` triggers the repository's automatic app release, so merge and App Store review remain separate actions.

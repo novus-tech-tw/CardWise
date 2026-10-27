@@ -487,7 +487,12 @@ struct CardDetailView: View {
 
                     ForEach(card.categoryRewards) { reward in
                         HStack {
-                            Label(reward.category.displayName, systemImage: reward.category.icon)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Label(reward.category.displayName, systemImage: reward.category.icon)
+                                if let note = reward.note {
+                                    Text(note).font(.caption2).foregroundStyle(Theme.textSecondary)
+                                }
+                            }
                             Spacer()
                             VStack(alignment: .trailing) {
                                 Text(reward.displayMultiplier)
