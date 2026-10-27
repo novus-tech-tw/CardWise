@@ -93,3 +93,8 @@ __pycache__/
 
 # Claude Code local state
 .claude/
+
+# Internal decision, research and planning notes (public repo; keep these local)
+docs/research/
+docs/implementation/
+docs/superpowers/

@@ -1,8 +1,7 @@
 # Scripts/
 
 Tooling around the bundled card database (`CardWise/Resources/cards.json`) plus a few
-one-off asset generators. Design/spec background:
-`docs/superpowers/specs/2026-06-10-local-cards-update-pipeline-design.md`.
+one-off asset generators.
 
 ## cards.json update pipeline
 
