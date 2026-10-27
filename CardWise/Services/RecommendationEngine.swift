@@ -192,7 +192,7 @@ final class RecommendationEngine {
             id: userCard.id, card: card, userCard: userCard,
             effectiveReward: exhausted ? base.multiplier : option.multiplier,
             isPercentage: exhausted ? base.isPercentage : option.isPercentage,
-            estimatedReward: estimated, reason: option.reason,
+            estimatedReward: estimated, reason: exhausted ? "Base reward (bonus cap exhausted)" : option.reason,
             isRotating: option.isRotating || activation,
             isSelectable: option.isSelectable,
             needsActivation: activation,

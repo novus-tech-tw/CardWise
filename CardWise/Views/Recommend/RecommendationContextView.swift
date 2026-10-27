@@ -5,6 +5,11 @@ struct RecommendationContextView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
+            if let remaining = recommendation.spendingCapRemaining {
+                Text(remaining == 0 ? "Bonus cap exhausted" : "Bonus cap: \(remaining.formatted(.currency(code: "USD"))) left")
+                    .font(.caption)
+                    .foregroundStyle(recommendation.isNearSpendingCap ? Theme.warning : Theme.textSecondary)
+            }
             if let progress = recommendation.signUpBonusProgress {
                 HStack {
                     Text("Sign-up goal")

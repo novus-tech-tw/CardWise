@@ -54,6 +54,7 @@ import SwiftData
                                                          spendings: spending, asOf: date(15)).first)
         #expect(rec.estimatedReward == 0.5)
         #expect(rec.displayReward == "1%")
+        #expect(rec.reason == "Base reward (bonus cap exhausted)")
         #expect(rec.context.contains { $0.contains("exhausted") })
         user.selectedCategories = []
         let unselected = try #require(engine.getRecommendations(for: .gas, amount: 50, userCards: [user], allCards: [card], asOf: date(15)).first)
