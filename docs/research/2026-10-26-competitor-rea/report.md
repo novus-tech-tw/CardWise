@@ -1,10 +1,10 @@
 # CardPointers and MaxRewards offline REA
 
-Status: **completed original offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Its selected static work is finished and owned analysis jobs are closed. The [progress ledger](progress.md) records exact scope, artifacts, Evidence and continuation limits. Those offline findings need no further login; the separately requested iPad installation/runtime scope remains pending.
+Status: **completed original offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Its selected static work is finished and owned analysis jobs are closed. The [progress ledger](progress.md) records exact scope, artifacts, Evidence and continuation limits. Both iPad app logins are now confirmed; deeper runtime checks remain pending coordinated access and a usable input/instrumentation path.
 
 ## Main findings
 
-The [2026-10-27 followup](followup/README.md) resolves three previously open static bindings using existing artifacts. Installation and runtime analysis on the newly connected iPad remain pending; this report's offline completion does not claim that the iPad apps were installed or exercised.
+The [2026-10-27 followup](followup/README.md) resolves three previously open static bindings using existing artifacts. Both target apps are now installed on the iPad and authenticated landing views have been observed after the user completed login. Deeper runtime behavior and reliable input remain unverified; the original offline completion does not establish those results or substitute Mac artifacts for the iPad packages.
 
 CardPointers combines prepared shopping-card recommendations with bank-specific offer enrollment and native Apple integrations. MaxRewards combines server-returned merchant recommendations with client valuation/eligibility logic and remotely configured bank connection. Both expose substantially more integration work than a card-rate catalog alone.
 
