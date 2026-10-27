@@ -1,7 +1,7 @@
 {
   "kind": "coordinated-controller-and-metadata-progress",
   "date": "2026-10-27",
-  "evidence_type": "Peer-reported normal Xcode/profile/installer result, plus root-owned changed20s inventory observation; not app feature execution",
+  "evidence_type": "Historical peer provisioning/Xcode results plus newer root-owned userspace transport, exact USB versions, controller lifecycle and selected CardPointers UI evidence",
   "normal_profile_repair": {
     "project_signing_team_selected": true,
     "normal_register_device_action": true,
@@ -13,14 +13,6 @@
     "installer_text_acknowledges_installed_exact_own_runner": true,
     "signature_and_profile_review": "Peer reports separate existing-binary signed copy with selected-device profile; original invalid-profile artifact is not reused unchanged",
     "independent_coredevice_inventory_confirmed": false
-  },
-  "runner_start": {
-    "provider": "Xcode test-without-building",
-    "exit_code": 70,
-    "phase": "Connecting/destination readiness before test",
-    "server_response_observed": false,
-    "working_input_observed": false,
-    "owned_runner_or_bridge_remaining": false
   },
   "root_changed_inventory": {
     "changes": [
@@ -35,7 +27,26 @@
     "no_launch_input_capture_or_controller_lifecycle": true,
     "owned_lease_released": true
   },
-  "next": "Coordinated normal DDI/service readiness inspection and reviewed direct-DTX XCTest alternative; no unchanged start/discovery retry",
+  "next": "Read-only selected-app MaxRewards diagnostic/ordinary userspace launch check after fresh handoff; Closer continues its own bounded UI window",
   "app_login": "Both app logins already confirmed; no new login expiry observed",
-  "limits": "Installation/profile success does not prove a WDA server, input, current package inventory or authenticated recommendation behavior. Device/session/account identifiers excluded."
+  "limits": "Historical Xcode/CoreDevice failures are not current transport/installed-version conclusions. Selected CardPointers input is now proven; all-feature correctness and MaxRewards actionable UI remain unverified. Device/session/account identifiers excluded.",
+  "previous_xcode_start": {
+    "provider": "Xcode test-without-building",
+    "exit_code": 70,
+    "phase": "Connecting/destination readiness before test",
+    "server_response_observed": false,
+    "working_input_observed": false,
+    "owned_runner_or_bridge_remaining": false
+  },
+  "latest_root_runtime": {
+    "userspace_transport_handshake": "success",
+    "own_WDA_status": "ready",
+    "cardpointers_actual_input_and_UI_transition": "verified selected close/navigation/category path",
+    "maxrewards_actionable_UI": "not yet; initial sparse target tree then SpringBoard; gate blocked screenshot/input",
+    "own_runner_absence_and_host_exit": "verified",
+    "actual_versions": {
+      "CardPointers": "8.1.5/20261023",
+      "MaxRewards": "4.8.35/1792099341"
+    }
+  }
 }

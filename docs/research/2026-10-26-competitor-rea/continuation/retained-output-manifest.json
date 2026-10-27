@@ -182,5 +182,44 @@
       "recommendation-order-checks.json": "63a81e89540712c18709b960645e813ce88255f3f33ec4a196be257bc9d9a6ae",
       "recommendation-order-output-hashes.json": "6fc2a19b92384b31778647bb6217e3a9a52463e36e7b2d0a5f957ffa4acf8dfa"
     }
+  },
+  "maxrewards-native-row-preparation": {
+    "local_archive_directory": "continuation-20261027/maxrewards-apple-integrations/native-row-preparation",
+    "files": {
+      "evidence.json": "a2134577a6377ae4fe460fcb1b959ba6b4560adf921e638c7a29b25c817f4dc7",
+      "import-bindings.json": "fa5857d0fa04afe9d4cc884e93fdd66e61156b29a39264d7de4b09a79470f356",
+      "report.md": "267941c6babf090ee0d7de6e794e024cf4b8610d7dc0d9cb8186f30435aa0dae",
+      "output-hashes.json": "9cdb337c444c611b9097e97f6d66893871e2f5f2c83c3b939a9711dba740a8cc",
+      "compact-evidence.json": "c686ac9231b5fd5011c0ba0d352f273dcf50c11cf192555a56fbe488d296a44a",
+      "validation.json": "9fc562e17b7a21c63c13deefa0104d6a8aae4a314959a0d43bdcd8355c5e6b62"
+    }
+  },
+  "authenticated-runtime-window-01": {
+    "local_archive_directory": "continuation-20261027/runtime-readonly/window-01",
+    "files": {
+      "mr-home.json": "cea536f675b6511f26ae293eaa5cff4b3a05564959e24177421c88ef59439e09",
+      "cp-drugstore-click.json": "bf0fba3ffb24dac271c9c4b83964fc2b9e2c08d55e6b10a585362ce0d65f893f",
+      "cp-pointers.json": "203dec62a6d42efb396d585745af87a45ff96a8e4dfbb930a368386a31537a4f",
+      "cp-after-close.xml": "26ecb6af8e281aecdbf19e83d088691ba74066f43474cfeb4e7c62daa8b8255e",
+      "cp-close-find.json": "be983032958af394e35ba585aa6771d1bc6b886944179a4718d2a10a6a6328cb",
+      "cp-drugstore.json": "9e2dbd6c5fa809ec20024935cd06d33093feeadf5be54d26254cb8e79c2a0229",
+      "cp-start.json": "238763dbfd4345c034d158563d47f3540b602b6f0860dc7265b28344f145eadf",
+      "mr-screen.json": "3d1136bf2159b60a81414c1d59825121f5dcd2fd1c4446d3f7ecb74fb20f8f82",
+      "cp-drugstore.xml": "cd08a8202ed4994c417116a0ade47eb500f98368a1d985677de06ec95d3dc6a6",
+      "cp-home.json": "a6debb3706efb6ff3c3b28556ebc96d94360304581c463e2baa505749e202ca9",
+      "cp-pointers.xml": "50153c34776d7aabfd40a0cfd64043bfc77f8206107663769e558192869e4c92",
+      "app-versions.json": "b2dbbd17cd0f38ab75d42cefa0be05f2666ed5e2568d9e98dc4db6b4b44daa1e",
+      "cp-drugstore-find.json": "9ba062235aef005f13125eb8f02c610f5fa7f30b06eb84771222ef0fb49e69e5",
+      "mr-end.json": "81dd8164b45927bfbb9da45113643aa93a5241cdd63cc7b995a6613cb41a108e",
+      "mr-start.json": "2dc08a42f3500f138e254860a2257cecc448c2bf368f108302ddab56ab5c2c42",
+      "cp-home.xml": "1cb5f528aaccd778cc308bb781327ac6ec6c9799c891f23c4d22ab764e0457c4",
+      "cp-pointers-find.json": "361abff13556958d5e7c27edea648354b4429a8a7f44b7f594547ddd691c0f2c",
+      "cp-pointers-click.json": "ffe538c8a25612ef57b41f22ad25a606e2d4a19f7d20c002ba2a869a7c07069c",
+      "cp-after-close.json": "04a1a01fd99a3037b7842d6bfa9afad119d41f19dbc57efd3b214ccfd3559a83",
+      "ui-session-private.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "mr-home.xml": "5c64710453f134f31392f843bcfac82bf468d91aa40114195be52cf3e5dc6ee7",
+      "cp-end.json": "bfda9d7bea7630a23ae6da9c0c4613f012a1f084b5ef654cc51b654cb3fb6d13",
+      "cp-close-click.json": "e8359307aa390fbd595136d9b83ef59c53243b41967ed5649d5f25cc5e559eb4"
+    }
   }
 }
