@@ -1,6 +1,6 @@
 # CardPointers and MaxRewards REA investigation
 
-Status: **completed reachable investigation and iPad followup**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Selected native, extension and bytecode work is finished, both iPad app logins were confirmed, and unavailable runtime paths were explicitly skipped under the user's instruction. Owned device windows and controllers are released. Server-side and live banking behavior remain explicit method limits; see the [completion checklist](followup/completion-checklist.md) and latest-head CI on the PR.
+Status: **active continuation required by Rich**. The earlier reachable-only closeout was premature; both CardWise and Closer must continue, while only Orbit is paused. Both iPad logins are verified. Reuse the prior PR/evidence and follow the [new findings and remaining questions](continuation/README.md); controller failures do not establish feature completion. Delivered checkpoints remain on [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81), without merging main or releasing the app.
 
 - [Consolidated findings](report.md)
 - [iPad installation status and focused static followup](followup/README.md)

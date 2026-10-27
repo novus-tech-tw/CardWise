@@ -1,4 +1,6 @@
-# Completion audit
+# Historical completion audit — superseded
+
+**Correction:** Rich explicitly required the investigation to continue. The completion decisions below were premature for the broader product questions. They preserve historical checks only. The [active continuation ledger](../continuation/README.md) supersedes them; provider failures do not close untried client or authenticated feature work.
 
 This audit preserves the user's scope: reuse completed REA, run reachable remaining analysis, install the two selected apps, surface necessary login, skip unavailable paths, coordinate the shared iPad, and retain reviewable results. Completion does not mean whole-app/server semantic recovery or successful execution of skipped features.
 

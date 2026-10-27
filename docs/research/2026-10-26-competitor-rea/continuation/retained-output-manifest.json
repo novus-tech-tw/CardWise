@@ -1,0 +1,56 @@
+{
+  "maxrewards-recommendation": {
+    "local_archive_directory": "continuation-20261027/maxrewards-recommendation",
+    "files": {
+      "decoded-functions.json": "0787b6cc498094b3011dbc8228276e3b250b764c0b56b9760685c4d598f6c6da",
+      "evidence.json": "16337835c6a897dd319e86a4675331eadd11eaf25fe518dd0e3fa0ded15beaec",
+      "deduplication.json": "5592e38b6cc95955408234973f0a4eaaa1036c65694df5f2aac33d28267ad08a",
+      "report.md": "d38e00d40c7a22fb50278b82acca20405b63f6eb4289b1832edb7fa1d7015fc0",
+      "module-bindings.json": "048328d4dcbfe53c1e27066a71cf54d975ff51d6ebd9bbd8f4391d6db3cb4f14",
+      "finding-ledger.json": "e55eada05a0927702037407cf2b69de6cd68e60e7c58db6309ec282595f726d4",
+      "compact-evidence.json": "32ed8e6372e357ccb57d794836b317f29d04b9633d45be3be9b995238329a6dd",
+      "validate.py": "ca529730a12d02dd693cd9995663ed94d8a26136dedf9ca6d8a88a13aabec511",
+      "root-bindings.py": "810e0d3335059ebdbf0971a74e0627c2a98f097360c52139a96480b6a04f11ff",
+      "validation.json": "9c8b1fbe4f45fde6e7c56bf32e1bed88d149baaedbf24c0a4b5590390b9549f2",
+      "archive-manifest.json": "998c7efd346ecae1b0965d40e1a816f80e96d4e6c153378ce1ef1af9e2ea40ca",
+      "collect-evidence.py": "cb0a1c8ed53ec36ad62001bc531e50cf01539d422f65ed02c194ee9f33da7563",
+      "decode.py": "c58a2b77a31e192bb46da049b8c1cca7f02a0ffe57258fdcffd488b78e86d6ff"
+    }
+  },
+  "benefits-offers": {
+    "local_archive_directory": "continuation-20261027/benefits-offers",
+    "files": {
+      "decoded-functions.json": "d5db7bf4a8a0c36f28b5a39048bbc63403f1e98a6b8b6b02a55cd2ec2fcb556f",
+      "source-anchors.json": "cb5fa88d476bf860466d01136015288590fc6cd937349f2c83d974f816d7fec0",
+      "report.md": "4f6a414d7cf67334d5d6f8247113d747b6656cee8e9b0130876ff94ea82c80cb",
+      "validate.py": "cec26506ed8f1f971db325cbffbafe3f1467c2c7269b40544ebf6559e0c28e1e",
+      "validation.json": "b24df1c41cd823839b6a950730f70eec407e6738085b3df26b6a55b4cbabb6b7",
+      "bindings.py": "64a46ade216e84599abfcddf3f9459971ec966a7182741687ad84cf7b618364b",
+      "all-module-identities.json": "e0f86f98a09b6cb46bb9a6a9625d6bc1bf4910f43fcc1aba21c08165d9e62b07",
+      "registration-seeds.json": "cf29852ed6ef6f6038a1e699deddb48eea2da50566f40da5f70000776b051e20",
+      "decode.py": "8867f23d8b8a55c05bdcc40bf6194be7e7c8927271899fd38754f2900f6738ae"
+    }
+  },
+  "cardpointers-wallet": {
+    "local_archive_directory": "continuation-20261027/cardpointers-wallet",
+    "files": {
+      "wallet-capture-handoff.asm": "e8ecd217f467bbed07e2a531cca0815d71fe5b0e1a0c5ae8a08953d4c78482a5",
+      "wallet-parent-thunk.asm": "b27c90cae943e1f3998d82e4b69942604b1a075e08b94a7d40d519d1c81e6ac1",
+      "response-accessor.asm": "ec258c59120966969aa75931b7f5aa7af15b4f1aaf1cae5c46b817fa7a5db712",
+      "report.md": "c3ddc2f2b3c3f0d20bfdd98b2e602a0a299791ecbebfd272dab2425e9192aa2f",
+      "read-wallet-fields.py": "17f479655dd187805e2d03a5ed9165ca2028c229c193929461e960113336f1fd",
+      "wallet-field-provenance.json": "9785f64f47d7e7194d7bfb5300b7503462695b9c0b816bd30330b320ab688fbc",
+      "wallet-parent-direct-callers.json": "ec8de15cc0c88db1112f5a05f45e70543cdc92182824fc803ae3b0ab2186cba8"
+    }
+  },
+  "provider-diagnosis": {
+    "local_archive_directory": "continuation-20261027/provider-diagnosis",
+    "files": {
+      "viewer_adapter_draft.py": "c8a6c724182a920f0f50a15437f0b9b5dce3294601147a5b6e50039220b32c2f",
+      "report.md": "9fb2dbbb2f0893134e5a793b03877190dcee614fadbb6c83cd9875cefe6de8b8",
+      "fresh-frida-metadata-probe.mjs": "47893e594a419f3224acf48674d55563606f0f70c207d784822dc24a1a39a430",
+      "viewer-input-and-audio.md": "7336e8f5e3d12c1f4284cc2b147ccc683face59e09feeaf79b83e00c09ee6e7d",
+      "fresh-frida-result.jsonl": "b489fb29bc81e59c737fb67f54e57aa925fefc1764a9ed0015c86216a0bc8c52"
+    }
+  }
+}

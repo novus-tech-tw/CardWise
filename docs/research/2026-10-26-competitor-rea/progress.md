@@ -1,6 +1,6 @@
 # Investigation progress
 
-Status: **reachable investigation and iPad followup complete; unavailable runtime paths explicitly skipped**. Delivered through PR #81. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix. Final-head CI status is reported on the PR rather than inferred from an earlier commit. No further user login/setup is requested.
+Status: **active continuation**. Rich explicitly required CardWise and Closer to finish the remaining analysis; only Orbit is paused. The prior reachable-only closeout is superseded. Both iPad logins are already verified. The [continuation ledger](continuation/README.md) records new recommendation, benefit/offer, wallet-provenance and provider evidence plus remaining questions. No duplicate whole-app analysis is required.
 
 ## Original completed execution mode
 
@@ -12,7 +12,7 @@ Initial resumed check: fresh inspection confirmed iPadOS 27.2, connected/unlocke
 
 Subsequent owned window supersedes those installation/login gaps: the user completed both logins and CardPointers installation, independently corroborated by live authenticated landing views. No further user login/setup is currently required. Browser video worked; Home/tap events did not establish reliable app input. The owned viewer was stopped and the lease released; [authenticated readiness](followup/authenticated-readiness.json) retains the bounded result without private screenshot/account values. Await a fresh coordinated handoff before any further device command.
 
-The final explicitly handed-off metadata window is now complete and released. Both exact-bundle inventory requests timed out at eight seconds. REA Frida process discovery on 27.2 returned `capability_unavailable` / connection refused, so current PIDs were unavailable and no attachment was attempted. These unavailable paths, reliable UI interaction and deeper feature replay are skipped as authorized; no repeat under unchanged prerequisites is queued. See [capability closeout](followup/capability-closeout.json) and the [completion checklist](followup/completion-checklist.md). A coordinated peer's failed WDA device provisioning is preserved as a peer report, not a successful installed controller.
+Historical closeout window (superseded as a task-completion decision): the explicitly handed-off metadata window completed and was released. Both exact-bundle inventory requests timed out at eight seconds. REA Frida process discovery on 27.2 returned `capability_unavailable` / connection refused, so current PIDs were unavailable and no attachment was attempted. These unavailable paths, reliable UI interaction and deeper feature replay are skipped as authorized; no repeat under unchanged prerequisites is queued. See [capability closeout](followup/capability-closeout.json) and the [completion checklist](followup/completion-checklist.md). A coordinated peer's failed WDA device provisioning is preserved as a peer report, not a successful installed controller.
 
 ## Reconnect and continue
 
@@ -36,7 +36,7 @@ The final explicitly handed-off metadata window is now complete and released. Bo
 | Native recommendation cross-check | All distinct bodies/instructions traversed for bounded identifier searches; 100 selected functions and 28 byte-range anchors reviewed | Date/category/cap/bonus/merchant findings and explicit limits integrated | Offline scope delivered |
 | Consolidation and PR | Dedicated worktree; final reports, hashes, ledgers, baseline, method and progress reconciled | Final publication validation and CI recorded through PR #81 | Documentation delivered |
 
-## Open questions
+## Original question snapshot — see active continuation ledger
 
 | Question | Next evidence needed | Current status |
 | --- | --- | --- |
@@ -46,13 +46,13 @@ The final explicitly handed-off metadata window is now complete and released. Bo
 | Authenticated recommendation correctness and bank activation | Actual execution cannot be established from static artifacts | Outside current offline scope; no user action requested |
 | Paid feature behavior | Shipped entitlement branches and official plan descriptions can be analyzed statically | Live entitlement/checkout behavior outside offline scope |
 
-## Completion gate
+## Historical closeout gate — superseded by active continuation
 
 The [2026-10-27 followup](followup/README.md) reuses prior outputs and closes selected sort/storage binding gaps without repeating whole-application REA. Both iPad apps are installed and authenticated landing views observed. The final inventory timed out and 27.2 Frida process discovery was unavailable; CardPointers' exact installed version and deeper authenticated behavior remain unknown. Reliable app input was not established in this workstream. These are explicitly skipped unavailable-method limits, not claims of successful feature execution. No owned analysis/controller is running or lease retained; no further user setup is requested.
 
 Earlier standalone screenshot capture established MaxRewards' welcome screen, and the first alternative-control attempt on 26.7 received the device-side iOS 27+ requirement (9021). Those results are preserved as historical rather than current setup blockers. The later 27.2 browser viewer and both authenticated landing observations are new runtime evidence; static REA was not repeated. Both owned alternative viewer processes were stopped with listener cleanup verified.
 
-The selected offline scope is complete: reachable static questions were reconciled to observations, bounded partial findings or explicit method limits; exact artifacts and continuation locations are preserved. Unknown native or authenticated behavior is not converted into an absence claim. No real banking credential, bank session or payment submission was used by the static analysis. Historical login/UI work is supplemental and no further test fixture, account creation or bank connection is pending. Future live/server questions require a separately selected scope rather than silently expanding this completed investigation.
+The selected offline scope is complete: reachable static questions were reconciled to observations, bounded partial findings or explicit method limits; exact artifacts and continuation locations are preserved. Unknown native or authenticated behavior is not converted into an absence claim. No real banking credential, bank session or payment submission was used by the static analysis. Historical login/UI work is supplemental and no further test fixture, account creation or bank connection is pending. Rich has since explicitly resumed the remaining client and runtime questions; the active continuation ledger is authoritative.
 
 ## Validation so far
 

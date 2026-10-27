@@ -1,5 +1,7 @@
 # Focused followup and iPad installation status
 
+**Current status: active continuation.** Rich requires both CardWise and Closer to continue; only Orbit is paused. The closeout/skip language below is historical and superseded by the [new product findings and remaining-question ledger](../continuation/README.md). Both app logins remain confirmed; no repeat login is requested.
+
 Updated 2026-10-27. The earlier selected offline investigation in PR #81 remains complete. This followup first checked that PR and the retained archive, then reused existing function dossiers and artifact bytes to answer specific unresolved bindings. No whole-application REA import, app decryption or completed scenario was repeated.
 
 ## New static results
@@ -15,7 +17,7 @@ These are static artifact findings. Existing native/bytecode runtime, server-ran
 
 Full local scripts and outputs are retained under `CardWise-REA-2026-10-26/ipad-followup-20261027/`. New analyst labels and host CLI observations are not REA MCP Evidence IDs. The CardPointers sort result links back to the original fetch-construction Evidence.
 
-## iPad followup closeout: completed evidence and explicit skips
+## Historical iPad closeout observations — superseded task decision
 
 The final owned metadata window attempted exact inventories for both installed targets; each command timed out at eight seconds. See [inventory outcomes](post-upgrade-inventory.json). REA Frida process discovery on 27.2 returned `capability_unavailable` / selected-device connection refused; see the [sanitized provider result](post-upgrade-frida.json). No current PID was established, so no identity script or attachment was attempted. The [closeout record](capability-closeout.json) confirms that the lease was released before its deadline and no target launch, capture, data mutation or background controller was started in that window.
 
