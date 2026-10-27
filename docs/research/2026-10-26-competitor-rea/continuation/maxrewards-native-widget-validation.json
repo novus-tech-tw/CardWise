@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "source_hashes_verified": 2,
+  "function_records": 30,
+  "unique_functions": 29,
+  "canonical_duplicates": 1,
+  "function_body_encrypted_overlap_bytes": 0,
+  "assembly_anchor_regions": 26,
+  "target_execution": false,
+  "new_imports": [
+    "BestCardsByCategory",
+    "MaxRewardsLiveActivity"
+  ],
+  "main_reimport": false,
+  "own_worker_closed": true,
+  "own_execution_session_closed": true,
+  "owned_processes_confirmed_absent": true,
+  "local_closeout_record": "continuation-20261027/maxrewards-apple-integrations/native-analysis/validation.json"
+}

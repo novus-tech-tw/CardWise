@@ -1,0 +1,58 @@
+[
+  {
+    "file": "background.js",
+    "sha256": "f8d6e2df48ffd6649f75fe7155ed5f5b8f6fe27787d0dd7632e3a61ad244332b",
+    "scope": "Static source, not executed",
+    "anchors": [
+      {
+        "start_character_offset": 13495,
+        "end_character_offset": 14650,
+        "finding": "Domain recommendation query fields"
+      },
+      {
+        "start_character_offset": 67700,
+        "end_character_offset": 68500,
+        "finding": "Session-owner guard, request, per-domain cache and response dispatch"
+      },
+      {
+        "start_character_offset": 14950,
+        "end_character_offset": 17700,
+        "finding": "Generated AES-GCM credential storage and owner/provider scoping"
+      },
+      {
+        "start_character_offset": 28200,
+        "end_character_offset": 30100,
+        "finding": "Remote provider descriptor and dynamic content-script registration"
+      },
+      {
+        "start_character_offset": 31800,
+        "end_character_offset": 38100,
+        "finding": "Session material construction and backend submission code"
+      }
+    ]
+  },
+  {
+    "file": "chunks/popup-DAiVX80Y.js",
+    "sha256": "6bbdd968e1948393048e96f096301185078897f4d7c3c1317192c370010e7c52",
+    "scope": "Static UI implementation, not exercised",
+    "anchors": [
+      {
+        "start_character_offset": 213200,
+        "end_character_offset": 215600,
+        "finding": "Returned rate/value/multiplier and spending-cap display"
+      }
+    ]
+  },
+  {
+    "file": "content-scripts/content.js",
+    "sha256": "c139279325a08e7de9fce37b41d3ed8da475558959491348c35ac0db7929ce9b",
+    "scope": "Static in-page UI implementation, not exercised",
+    "anchors": [
+      {
+        "start_character_offset": 209550,
+        "end_character_offset": 210600,
+        "finding": "Rate-times-valuation display and first returned card selection"
+      }
+    ]
+  }
+]

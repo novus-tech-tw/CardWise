@@ -1,0 +1,46 @@
+{
+  "record_kind": "sanitized-resumed-readiness-observation-not-REA-Evidence",
+  "observation_date": "2026-10-27",
+  "scope": "Readiness checks performed before shared-device coordination release; no new device query used to write this record",
+  "sources": [
+    "Successful devicectl device info details/lockState/target-app inventory results in the resumed session",
+    "Device Hub accessibility title and native screenshot observed in the resumed session"
+  ],
+  "device": {
+    "os_version": "27.2",
+    "connection": "connected",
+    "developer_mode": "enabled",
+    "passcode_required": false,
+    "unlocked_since_boot": true
+  },
+  "apps": {
+    "com.max.MaxRewards": {
+      "installed": true,
+      "version": "4.8.35",
+      "bundle_version": "1792099341",
+      "observed_ui": "Welcome screen with Get started and Already have an account? Log in."
+    },
+    "com.getcardpointers.app": {
+      "installed": false,
+      "evidence": "Exact target inventory returned no CardPointers row"
+    }
+  },
+  "control": {
+    "remote_video": "observed working in Device Hub after OS update",
+    "coordinate_action_attempt": "noWindowsAvailable; no successful input verified",
+    "historical_os_26_7_gate": "superseded for current device version; preserved in original observations",
+    "frida_after_update": "not attempted"
+  },
+  "current_execution": "yielded under shared-device coordination; no device operations until explicit handoff and own atomic lease",
+  "remaining": [
+    "CardPointers installation and any required account verification",
+    "MaxRewards authenticated feature state",
+    "Successful scoped device input/readiness validation after coordinated handoff"
+  ],
+  "limits": [
+    "Video display is not proof of successful touch input.",
+    "Welcome-screen controls do not prove that every feature requires an account.",
+    "No new static REA producer, bank connection or authenticated feature test was executed.",
+    "Private screenshots and coordination thread identifiers are excluded from this public record."
+  ]
+}

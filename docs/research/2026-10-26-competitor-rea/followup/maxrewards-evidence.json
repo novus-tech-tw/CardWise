@@ -1,0 +1,606 @@
+{
+  "carrier_sha256": "efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9",
+  "carrier_bytes": 12633156,
+  "decoder_commit": "2e796663e1fedb93dca51060797ebf3327b3fedb",
+  "evidence_labels": [
+    "MRF-01",
+    "MRF-02"
+  ],
+  "root_function": {
+    "function_id": 0,
+    "offset": 3781736,
+    "size": 275019,
+    "bytecode_sha256": "28d9ac90f6aeadd7c8587e2c06cc02010decdd2cd1162f3b8bb14a95fedaef6e"
+  },
+  "functions": [
+    {
+      "function_id": 16129,
+      "name": "",
+      "offset": 5675815,
+      "size": 1123,
+      "bytecode_sha256": "fa0caa5f452deac123c351af561d91d88f5194aa58c94ab0d06bc9d71b3754f4",
+      "disassembly_file": "16129.disassembly.txt",
+      "disassembly_sha256": "8a4c36946027f81b2a5a0f492616728966e6f5876c691f6c78b42de289c2eb65",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 1028,
+          "absolute_offset": 5676843,
+          "instruction": "00000404: <CreateClosure>: <Reg8: 3, Reg8: 2, function_id: 16155>  # Function: [#16155 loadString of 75 bytes]: 2 params @ offset 0x0056a0d2"
+        },
+        {
+          "relative_offset": 1055,
+          "absolute_offset": 5676870,
+          "instruction": "0000041f: <CreateClosure>: <Reg8: 3, Reg8: 2, function_id: 16158>  # Function: [#16158 saveString of 78 bytes]: 3 params @ offset 0x0056a1d9"
+        },
+        {
+          "relative_offset": 1091,
+          "absolute_offset": 5676906,
+          "instruction": "00000443: <GetById>: <Reg8: 1, Reg8: 1, UInt8: 4, string_id: 32008>  # String: 'MMKV' (Identifier)"
+        },
+        {
+          "relative_offset": 1109,
+          "absolute_offset": 5676924,
+          "instruction": "00000455: <Construct>: <Reg8: 1, Reg8: 1, UInt8: 1>"
+        },
+        {
+          "relative_offset": 1117,
+          "absolute_offset": 5676932,
+          "instruction": "0000045d: <StoreToEnvironment>: <Reg8: 2, UInt8: 23, Reg8: 1>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16155,
+      "name": "loadString",
+      "offset": 5677266,
+      "size": 75,
+      "bytecode_sha256": "97ddbb8a05d490b434bc7d60dacc942052680edcd1603bd56390387f17018967",
+      "disassembly_file": "16155.disassembly.txt",
+      "disassembly_sha256": "af3b5c061feae160418421b6931356d39193cfae5dbd6d459861851479b0f924",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 3,
+          "absolute_offset": 5677269,
+          "instruction": "00000003: <GetEnvironment>: <Reg8: 1, UInt8: 0>"
+        },
+        {
+          "relative_offset": 6,
+          "absolute_offset": 5677272,
+          "instruction": "00000006: <LoadFromEnvironment>: <Reg8: 3, Reg8: 1, UInt8: 23>"
+        },
+        {
+          "relative_offset": 10,
+          "absolute_offset": 5677276,
+          "instruction": "0000000a: <GetById>: <Reg8: 2, Reg8: 3, UInt8: 1, string_id: 22704>  # String: 'getString' (Identifier)"
+        },
+        {
+          "relative_offset": 19,
+          "absolute_offset": 5677285,
+          "instruction": "00000013: <Call2>: <Reg8: 1, Reg8: 2, Reg8: 3, Reg8: 1>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16158,
+      "name": "saveString",
+      "offset": 5677529,
+      "size": 78,
+      "bytecode_sha256": "835c938f2f4b657dc0718dfc2aff2087a2b95686dfcd5cc952aa60152fa43bed",
+      "disassembly_file": "16158.disassembly.txt",
+      "disassembly_sha256": "fe4abf7ed60ebf3f570ebd9a8b4ebfb26179f1a242bbfaf2873793bc995b9155",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 6,
+          "absolute_offset": 5677535,
+          "instruction": "00000006: <GetEnvironment>: <Reg8: 2, UInt8: 0>"
+        },
+        {
+          "relative_offset": 9,
+          "absolute_offset": 5677538,
+          "instruction": "00000009: <LoadFromEnvironment>: <Reg8: 4, Reg8: 2, UInt8: 23>"
+        },
+        {
+          "relative_offset": 13,
+          "absolute_offset": 5677542,
+          "instruction": "0000000d: <GetByIdShort>: <Reg8: 3, Reg8: 4, UInt8: 1, string_id: 66>  # String: 'set' (Identifier)"
+        },
+        {
+          "relative_offset": 21,
+          "absolute_offset": 5677550,
+          "instruction": "00000015: <Call3>: <Reg8: 1, Reg8: 3, Reg8: 4, Reg8: 2, Reg8: 1>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16163,
+      "name": "",
+      "offset": 5677895,
+      "size": 197,
+      "bytecode_sha256": "8b5778ab764a19e0f7661d6f7a56ba4de38b7dfade400960a4f93a60e2e6523e",
+      "disassembly_file": "16163.disassembly.txt",
+      "disassembly_sha256": "33a3069acb3c3add94a92c4f805f1174359d82286ce66a121f249abaa1c9cca0",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 84,
+          "absolute_offset": 5677979,
+          "instruction": "00000054: <LoadConstZero>: <Reg8: 0>"
+        },
+        {
+          "relative_offset": 92,
+          "absolute_offset": 5677987,
+          "instruction": "0000005c: <Call2>: <Reg8: 7, Reg8: 3, Reg8: 0, Reg8: 5>"
+        },
+        {
+          "relative_offset": 97,
+          "absolute_offset": 5677992,
+          "instruction": "00000061: <StoreToEnvironment>: <Reg8: 2, UInt8: 1, Reg8: 7>"
+        },
+        {
+          "relative_offset": 122,
+          "absolute_offset": 5678017,
+          "instruction": "0000007a: <CreateClosure>: <Reg8: 5, Reg8: 2, function_id: 16165>  # Function: [#16165  of 99 bytes]: 2 params @ offset 0x0056a41b"
+        },
+        {
+          "relative_offset": 127,
+          "absolute_offset": 5678022,
+          "instruction": "0000007f: <Call2>: <Reg8: 5, Reg8: 6, Reg8: 7, Reg8: 5>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16165,
+      "name": "",
+      "offset": 5678107,
+      "size": 99,
+      "bytecode_sha256": "93ad3ce1b275bcf3dc46e950b794fe849d580ef177ba39793c5ae7c72a9a6d76",
+      "disassembly_file": "16165.disassembly.txt",
+      "disassembly_sha256": "fe8c246bdeb8ea1d1f4c6c827cb8219926f870a493e16f7d5f66b1d5233d6533",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 9,
+          "absolute_offset": 5678116,
+          "instruction": "00000009: <LoadConstString>: <Reg8: 0, string_id: 121>  # String: 'default' (Identifier)"
+        },
+        {
+          "relative_offset": 79,
+          "absolute_offset": 5678186,
+          "instruction": "0000004f: <CreateClosure>: <Reg8: 5, Reg8: 5, function_id: 16166>  # Function: [#16166 get of 20 bytes]: 1 params @ offset 0x003f3af5"
+        },
+        {
+          "relative_offset": 88,
+          "absolute_offset": 5678195,
+          "instruction": "00000058: <Call4>: <Reg8: 0, Reg8: 2, Reg8: 3, Reg8: 1, Reg8: 4, Reg8: 0>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16166,
+      "name": "get",
+      "offset": 4143861,
+      "size": 20,
+      "bytecode_sha256": "b73f337b290f4ad871570f472a5953f1a231cbee33ccba4865f60285e21ada83",
+      "disassembly_file": "16166.disassembly.txt",
+      "disassembly_sha256": "7c5e5427a7d90e5f74637ed5a836cb5d4529ee78fdf8256d8c67641681f192bc",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 0,
+          "absolute_offset": 4143861,
+          "instruction": "00000000: <GetEnvironment>: <Reg8: 0, UInt8: 1>"
+        },
+        {
+          "relative_offset": 14,
+          "absolute_offset": 4143875,
+          "instruction": "0000000e: <GetByVal>: <Reg8: 0, Reg8: 1, Reg8: 0>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16169,
+      "name": "",
+      "offset": 5678305,
+      "size": 237,
+      "bytecode_sha256": "d8efc9a3584bfbbb0e4c4c2d271ceeedfc174c8550bec5a320b7f961dd09b19f",
+      "disassembly_file": "16169.disassembly.txt",
+      "disassembly_sha256": "9a26e6984b8a409b8a34ab3778a7fb420f08d9e9671c3de1ade95cbb2e15da31",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 65,
+          "absolute_offset": 5678370,
+          "instruction": "00000041: <CreateClosure>: <Reg8: 0, Reg8: 2, function_id: 16171>  # Function: [#16171 get of 9 bytes]: 1 params @ offset 0x003eda69"
+        },
+        {
+          "relative_offset": 74,
+          "absolute_offset": 5678379,
+          "instruction": "0000004a: <LoadConstString>: <Reg8: 0, string_id: 32008>  # String: 'MMKV' (Identifier)"
+        },
+        {
+          "relative_offset": 222,
+          "absolute_offset": 5678527,
+          "instruction": "000000de: <CreateClosure>: <Reg8: 1, Reg8: 2, function_id: 16172>  # Function: [#16172  of 474 bytes]: 1 params @ offset 0x0056a5ce"
+        },
+        {
+          "relative_offset": 227,
+          "absolute_offset": 5678532,
+          "instruction": "000000e3: <Call1>: <Reg8: 1, Reg8: 1, Reg8: 0>"
+        },
+        {
+          "relative_offset": 231,
+          "absolute_offset": 5678536,
+          "instruction": "000000e7: <StoreToEnvironment>: <Reg8: 2, UInt8: 7, Reg8: 1>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16171,
+      "name": "get",
+      "offset": 4119145,
+      "size": 9,
+      "bytecode_sha256": "af1b43036c372d261874a9edfe15fdda51c3f542b3136af010f94a894fad9973",
+      "disassembly_file": "16171.disassembly.txt",
+      "disassembly_sha256": "b0c4d07a13d223b4ac6632a6647b8f0b490abc7bca15bd1bba3dd1977e7929e1",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 3,
+          "absolute_offset": 4119148,
+          "instruction": "00000003: <LoadFromEnvironment>: <Reg8: 0, Reg8: 0, UInt8: 7>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16172,
+      "name": "",
+      "offset": 5678542,
+      "size": 474,
+      "bytecode_sha256": "598f51c5e0b977e6edc8b645c7fd12b7a1324d4ee481f24397f49ec226a44d1e",
+      "disassembly_file": "16172.disassembly.txt",
+      "disassembly_sha256": "514839b7bb442377fb28743cf27026c4f6e37a5fd591b730749f018974a57052",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 2,
+          "absolute_offset": 5678544,
+          "instruction": "00000002: <CreateClosure>: <Reg8: 3, Reg8: 4, function_id: 16173>  # Function: [#16173 MMKV of 155 bytes]: 1 params @ offset 0x0056a7a8"
+        },
+        {
+          "relative_offset": 466,
+          "absolute_offset": 5679008,
+          "instruction": "000001d2: <Call3>: <Reg8: 0, Reg8: 2, Reg8: 0, Reg8: 3, Reg8: 1>"
+        },
+        {
+          "relative_offset": 472,
+          "absolute_offset": 5679014,
+          "instruction": "000001d8: <Ret>: <Reg8: 0>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16173,
+      "name": "MMKV",
+      "offset": 5679016,
+      "size": 155,
+      "bytecode_sha256": "9a02c71df0a77856756b97c2e5481673a533217d140ccaffec594b929e44aae4",
+      "disassembly_file": "16173.disassembly.txt",
+      "disassembly_sha256": "1dde16b6920800dc342f5845c43aebd68c95e606dfc2e84d8b7e971cf381af08",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 24,
+          "absolute_offset": 5679040,
+          "instruction": "00000018: <NewObject>: <Reg8: 4>"
+        },
+        {
+          "relative_offset": 26,
+          "absolute_offset": 5679042,
+          "instruction": "0000001a: <LoadConstString>: <Reg8: 5, string_id: 11344>  # String: 'mmkv.default' (String)"
+        },
+        {
+          "relative_offset": 30,
+          "absolute_offset": 5679046,
+          "instruction": "0000001e: <PutNewOwnByIdShort>: <Reg8: 4, Reg8: 5, string_id: 68>  # String: 'id' (Identifier)"
+        },
+        {
+          "relative_offset": 93,
+          "absolute_offset": 5679109,
+          "instruction": "0000005d: <LoadFromEnvironment>: <Reg8: 3, Reg8: 1, UInt8: 2>"
+        },
+        {
+          "relative_offset": 97,
+          "absolute_offset": 5679113,
+          "instruction": "00000061: <GetById>: <Reg8: 3, Reg8: 3, UInt8: 4, string_id: 59083>  # String: 'createMMKV' (Identifier)"
+        },
+        {
+          "relative_offset": 103,
+          "absolute_offset": 5679119,
+          "instruction": "00000067: <Call2>: <Reg8: 3, Reg8: 3, Reg8: 0, Reg8: 4>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 16196,
+      "name": "createMMKV",
+      "offset": 5680167,
+      "size": 163,
+      "bytecode_sha256": "3dabee7b046eddad0877c5afed9135e9ee67fee75d14e176d8b6534f474f9477",
+      "disassembly_file": "16196.disassembly.txt",
+      "disassembly_sha256": "a3fa807734cb93071342f5f0b152a0f52cec477a69245176864b8c9f1942f40f",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 17,
+          "absolute_offset": 5680184,
+          "instruction": "00000011: <GetById>: <Reg8: 2, Reg8: 2, UInt8: 1, string_id: 60745>  # String: 'getMMKVTurboModule' (Identifier)"
+        },
+        {
+          "relative_offset": 53,
+          "absolute_offset": 5680220,
+          "instruction": "00000035: <GetById>: <Reg8: 4, Reg8: 6, UInt8: 4, string_id: 61236>  # String: 'getAppGroupDirectory' (Identifier)"
+        },
+        {
+          "relative_offset": 150,
+          "absolute_offset": 5680317,
+          "instruction": "00000096: <GetById>: <Reg8: 1, Reg8: 2, UInt8: 9, string_id: 59083>  # String: 'createMMKV' (Identifier)"
+        },
+        {
+          "relative_offset": 156,
+          "absolute_offset": 5680323,
+          "instruction": "0000009c: <Call2>: <Reg8: 0, Reg8: 1, Reg8: 2, Reg8: 0>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67281,
+      "name": "",
+      "offset": 12292476,
+      "size": 623,
+      "bytecode_sha256": "fb264c06fa1ebe2d0b232ecc4683d991f9d76c4f80d0eeea2561be4bdab3ce43",
+      "disassembly_file": "67281.disassembly.txt",
+      "disassembly_sha256": "72410bedf7a3c4c8684eaa14cb8bf4c9c6bf2577020d34160865ee5f1893fd24",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 369,
+          "absolute_offset": 12292845,
+          "instruction": "00000171: <LoadConstUInt8>: <Reg8: 1, UInt8: 16>"
+        },
+        {
+          "relative_offset": 376,
+          "absolute_offset": 12292852,
+          "instruction": "00000178: <Call2>: <Reg8: 1, Reg8: 4, Reg8: 0, Reg8: 1>"
+        },
+        {
+          "relative_offset": 381,
+          "absolute_offset": 12292857,
+          "instruction": "0000017d: <StoreToEnvironment>: <Reg8: 2, UInt8: 15, Reg8: 1>"
+        },
+        {
+          "relative_offset": 589,
+          "absolute_offset": 12293065,
+          "instruction": "0000024d: <CreateClosureLongIndex>: <Reg8: 3, Reg8: 2, function_id: 67284>  # Function: [#67284 BestCardRewardsScreen of 2444 bytes]: 1 params @ offset 0x00bb93eb"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67284,
+      "name": "BestCardRewardsScreen",
+      "offset": 12293099,
+      "size": 2444,
+      "bytecode_sha256": "c65e9c1fd5bbba590a98546a3f39f41b9ee90d61eeb80e9d41f1756eacfca4e1",
+      "disassembly_file": "67284.disassembly.txt",
+      "disassembly_sha256": "c5580d3e1a3d157e5d987e757b52bba96e2e2668be329d264668680ee64bf6d7",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 246,
+          "absolute_offset": 12293345,
+          "instruction": "000000f6: <LoadFromEnvironment>: <Reg8: 4, Reg8: 1, UInt8: 15>"
+        },
+        {
+          "relative_offset": 250,
+          "absolute_offset": 12293349,
+          "instruction": "000000fa: <GetById>: <Reg8: 4, Reg8: 4, UInt8: 12, string_id: 50559>  # String: 'normalizeBestCardRewardsCards' (Identifier)"
+        },
+        {
+          "relative_offset": 270,
+          "absolute_offset": 12293369,
+          "instruction": "0000010e: <Call>: <Reg8: 4, Reg8: 4, UInt8: 5>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67341,
+      "name": "",
+      "offset": 12301402,
+      "size": 331,
+      "bytecode_sha256": "46d71dbe2c56fe6cac73c3d5aba0769df7603de33b452b94b3ff8149806355f8",
+      "disassembly_file": "67341.disassembly.txt",
+      "disassembly_sha256": "8be9d3f35872a8e912e153b4ad3085bb93ced0ea6f0f8db243da23c35f8842a4",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 60,
+          "absolute_offset": 12301462,
+          "instruction": "0000003c: <CreateClosureLongIndex>: <Reg8: 0, Reg8: 2, function_id: 67342>  # Function: [#67342 get of 9 bytes]: 1 params @ offset 0x003ef52a"
+        },
+        {
+          "relative_offset": 197,
+          "absolute_offset": 12301599,
+          "instruction": "000000c5: <CreateClosureLongIndex>: <Reg8: 1, Reg8: 2, function_id: 67344>  # Function: [#67344 sortBestCardRewardsRows of 116 bytes]: 3 params @ offset 0x00bbb60a"
+        },
+        {
+          "relative_offset": 204,
+          "absolute_offset": 12301606,
+          "instruction": "000000cc: <StoreToEnvironment>: <Reg8: 2, UInt8: 6, Reg8: 1>"
+        },
+        {
+          "relative_offset": 307,
+          "absolute_offset": 12301709,
+          "instruction": "00000133: <CreateClosureLongIndex>: <Reg8: 1, Reg8: 2, function_id: 67359>  # Function: [#67359 normalizeCardRewards of 677 bytes]: 5 params @ offset 0x00bbbac5"
+        },
+        {
+          "relative_offset": 314,
+          "absolute_offset": 12301716,
+          "instruction": "0000013a: <StoreToEnvironment>: <Reg8: 2, UInt8: 16, Reg8: 1>"
+        },
+        {
+          "relative_offset": 318,
+          "absolute_offset": 12301720,
+          "instruction": "0000013e: <CreateClosureLongIndex>: <Reg8: 1, Reg8: 2, function_id: 67371>  # Function: [#67371 normalizeBestCardRewardsCards of 46 bytes]: 5 params @ offset 0x00bbc119"
+        },
+        {
+          "relative_offset": 325,
+          "absolute_offset": 12301727,
+          "instruction": "00000145: <StoreToEnvironment>: <Reg8: 2, UInt8: 17, Reg8: 1>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67342,
+      "name": "get",
+      "offset": 4125994,
+      "size": 9,
+      "bytecode_sha256": "85d1b8a66bd61b9a6e4f182117cfe630f9880a68f2b8d3ed762bc93898b5df3e",
+      "disassembly_file": "67342.disassembly.txt",
+      "disassembly_sha256": "9eaf66513bc1a2b29b9f6f1f1a03eb9d89e5a90bdda53dd240a0ae6f09789e66",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 3,
+          "absolute_offset": 4125997,
+          "instruction": "00000003: <LoadFromEnvironment>: <Reg8: 0, Reg8: 0, UInt8: 17>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67344,
+      "name": "sortBestCardRewardsRows",
+      "offset": 12301834,
+      "size": 116,
+      "bytecode_sha256": "afea50bd6cc9ba7dcbf467bd1577ab6c202ba818a0ccab237ceff089710e05cb",
+      "disassembly_file": "67344.disassembly.txt",
+      "disassembly_sha256": "3b9b620c17f90c97af44d28b00c9d0cb48b51e9a43e4629f857fab2d0362bcdc",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 6,
+          "absolute_offset": 12301840,
+          "instruction": "00000006: <GetById>: <Reg8: 3, Reg8: 1, UInt8: 1, string_id: 23567>  # String: 'percent' (Identifier)"
+        },
+        {
+          "relative_offset": 12,
+          "absolute_offset": 12301846,
+          "instruction": "0000000c: <GetById>: <Reg8: 2, Reg8: 0, UInt8: 1, string_id: 23567>  # String: 'percent' (Identifier)"
+        },
+        {
+          "relative_offset": 98,
+          "absolute_offset": 12301932,
+          "instruction": "00000062: <GetById>: <Reg8: 1, Reg8: 1, UInt8: 1, string_id: 23567>  # String: 'percent' (Identifier)"
+        },
+        {
+          "relative_offset": 110,
+          "absolute_offset": 12301944,
+          "instruction": "0000006e: <Sub>: <Reg8: 0, Reg8: 1, Reg8: 0>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67359,
+      "name": "normalizeCardRewards",
+      "offset": 12303045,
+      "size": 677,
+      "bytecode_sha256": "e72c2184b861734dfadb1e173fe085522ab4c64c9e74251b76c0439c101a79a1",
+      "disassembly_file": "67359.disassembly.txt",
+      "disassembly_sha256": "c501938664c06322ddadf463b2fa1108444035ca6a4dfb5cb9f67a08c8788a26",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 66,
+          "absolute_offset": 12303111,
+          "instruction": "00000042: <GetEnvironment>: <Reg8: 10, UInt8: 0>"
+        },
+        {
+          "relative_offset": 440,
+          "absolute_offset": 12303485,
+          "instruction": "000001b8: <GetById>: <Reg8: 15, Reg8: 16, UInt8: 18, string_id: 22138>  # String: 'sort' (Identifier)"
+        },
+        {
+          "relative_offset": 446,
+          "absolute_offset": 12303491,
+          "instruction": "000001be: <LoadFromEnvironment>: <Reg8: 1, Reg8: 10, UInt8: 6>"
+        },
+        {
+          "relative_offset": 450,
+          "absolute_offset": 12303495,
+          "instruction": "000001c2: <Call2>: <Reg8: 1, Reg8: 15, Reg8: 16, Reg8: 1>"
+        },
+        {
+          "relative_offset": 670,
+          "absolute_offset": 12303715,
+          "instruction": "0000029e: <PutNewOwnById>: <Reg8: 0, Reg8: 1, string_id: 23537>  # String: 'rows' (Identifier)"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67371,
+      "name": "normalizeBestCardRewardsCards",
+      "offset": 12304665,
+      "size": 46,
+      "bytecode_sha256": "49b45f23264ecd4a798cd2c0804528799147c901a34bf6cb5cf45602eff5c71a",
+      "disassembly_file": "67371.disassembly.txt",
+      "disassembly_sha256": "3e95f2b803b5e8e15578a5b543cdf4e5224d57b1db644bfa97b5d9a4169f34dc",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 26,
+          "absolute_offset": 12304691,
+          "instruction": "0000001a: <GetById>: <Reg8: 1, Reg8: 2, UInt8: 1, string_id: 54513>  # String: 'flatMap' (Identifier)"
+        },
+        {
+          "relative_offset": 32,
+          "absolute_offset": 12304697,
+          "instruction": "00000020: <CreateClosureLongIndex>: <Reg8: 0, Reg8: 0, function_id: 67372>  # Function: [#67372  of 53 bytes]: 2 params @ offset 0x00bbc147"
+        },
+        {
+          "relative_offset": 39,
+          "absolute_offset": 12304704,
+          "instruction": "00000027: <Call2>: <Reg8: 0, Reg8: 1, Reg8: 2, Reg8: 0>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    },
+    {
+      "function_id": 67372,
+      "name": "",
+      "offset": 12304711,
+      "size": 53,
+      "bytecode_sha256": "f26c2729bd6c8fdd5b2472ea7855b778047ee872177a26c4a1928bdaf58b6eae",
+      "disassembly_file": "67372.disassembly.txt",
+      "disassembly_sha256": "4989675ed45cdad628b9a726210d4dd79ef8c9e990efdacdaa9a077c38a5ddbf",
+      "reviewed_anchor_instructions": [
+        {
+          "relative_offset": 0,
+          "absolute_offset": 12304711,
+          "instruction": "00000000: <GetEnvironment>: <Reg8: 0, UInt8: 1>"
+        },
+        {
+          "relative_offset": 3,
+          "absolute_offset": 12304714,
+          "instruction": "00000003: <LoadFromEnvironment>: <Reg8: 5, Reg8: 0, UInt8: 16>"
+        },
+        {
+          "relative_offset": 27,
+          "absolute_offset": 12304738,
+          "instruction": "0000001b: <Call>: <Reg8: 2, Reg8: 5, UInt8: 5>"
+        }
+      ],
+      "scope": "Selected instruction regions supporting binding only; not complete semantic review of this function."
+    }
+  ],
+  "method": "Existing shipped Hermes96 artifact, static decoder, selected closure/module/dataflow proof. Local IDs are not REA MCP Evidence IDs."
+}

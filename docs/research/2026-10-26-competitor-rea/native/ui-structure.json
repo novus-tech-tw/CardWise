@@ -1,0 +1,33 @@
+{
+  "evidence_id": "ev_1831e6a489f8666cc897d8097c45df0ec598a05b21d5faceedc6dadc8c53d1ba",
+  "operation": "observe_native_ui",
+  "selected_pid": 2578,
+  "selected_window_id": 1406,
+  "screenshot": false,
+  "allowlisted_labels_present": [
+    "CardPointers",
+    "Cancel"
+  ],
+  "raw_evidence_policy": "Local only; no arbitrary accessibility values/account details copied to PR",
+  "limitations": [
+    "Only the explicitly selected already-running process/window is admitted. REA starts no target process and does not change permissions, foreground applications, or restore application data.",
+    "Click uses AXPress; scroll uses AXIncrement/AXDecrement; key-entry sets the selected element's AXValue. Unsupported elements fail without global event fallback.",
+    "Each completed action is followed immediately by capture; delayed UI changes require explicit wait steps. A failed after-capture can follow a completed action, so failure does not prove absence of application effects.",
+    "Scenarios can change app data, cause app network activity and persist changes. The caller explicitly chooses leave-as-is; automatic restoration is unsupported.",
+    "Window matching uses exact PID and window ID for screenshots and unique accessibility geometry. Accessibility paths can change as the UI changes; stale or ambiguous paths fail. Screenshots are scaled to at most 2048 pixels; scenario output is budgeted at 64 MiB and execution is cancelled after 180 seconds."
+  ],
+  "node_count": 44,
+  "roles": {
+    "AXWindow": 1,
+    "AXGroup": 16,
+    "AXButton": 16,
+    "AXSheet": 1,
+    "AXHeading": 5,
+    "AXTextField": 1,
+    "AXPopUpButton": 2,
+    "AXStaticText": 2
+  },
+  "truncated": false,
+  "gaps_count": 0,
+  "actions_executed": 0
+}

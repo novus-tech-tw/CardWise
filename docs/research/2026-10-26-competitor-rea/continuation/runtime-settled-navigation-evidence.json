@@ -1,0 +1,246 @@
+{
+  "kind": "settled-global-scene-and-selected-readonly-app-navigation",
+  "date": "2026-10-27",
+  "evidence_type": "Actual root-owned exclusive WDA observation; local manual global-image confirmation plus current source and active-app/alert gates",
+  "os_scene": {
+    "observed_action": "Window Controls expanded; yellow Minimize selected; Closer was hidden without Close",
+    "settled_global_target_after_minimize": "CardPointers unobstructed",
+    "orientation_and_geometry": "Current landscape global2360x1640 pixels, CP frame1180x820 points; previous portrait positions not reused",
+    "method_reference": {
+      "title": "Apple iPad User Guide: Work with multiple windows",
+      "url": "https://support.apple.com/guide/ipad/ipad08c9970c/ipados",
+      "checked_date": "2026-10-27"
+    },
+    "old_window04_limit": "Its earlier screenshot caught shrinking animation and a subsequent AX source; no settled global result was claimed for that earlier window"
+  },
+  "cardpointers": {
+    "version": "8.1.5/build20261023",
+    "observed_destination_changes": [
+      "For You to Offers",
+      "Offers to Cards"
+    ],
+    "offers_observed": [
+      "Offers heading and global destination",
+      "existing progress/remaining/expiry presentation",
+      "Active population selector",
+      "search/filter/sort and shortcut affordances"
+    ],
+    "cards_observed": [
+      "Cards source heading and existing card list",
+      "All population selector",
+      "filter/sort controls",
+      "savings/renewals/5/24/Top10 affordances"
+    ],
+    "not_executed": [
+      "offer amount changes or redemption",
+      "sync/bank connection or activation",
+      "card creation/editing",
+      "shortcut calculation correctness",
+      "Search query and deeper card/offer detail in this window"
+    ],
+    "private_values_or_user_card_selection_published": false
+  },
+  "maxrewards": {
+    "version": "4.8.35/build1792099341",
+    "settled_authenticated_home_globally_observed": true,
+    "native_navigation_controls": [
+      "Home",
+      "Wallet",
+      "Best Card",
+      "Offers",
+      "Benefits"
+    ],
+    "new_login_required": false,
+    "business_navigation_tap_dispatched": false,
+    "best_card_find_outcome": "Visual confirmation expired during read-only preflight; element POST was not dispatched",
+    "remaining": "Read-only core destinations and synthetic search"
+  },
+  "cleanup": {
+    "own_runner_absence_before_host_teardown": true,
+    "host_children_and_supervisor_exit": true,
+    "localhost_forward_port_free": true,
+    "root_lease_released": "2026-10-27T12:52:11.441784+00:00",
+    "next_owner": "Coordinating Closer task, Orbit paused",
+    "known_CP_session_DELETE": "success",
+    "late_MR_session_DELETE": "connection refused after controller cleanup, not claimed success"
+  },
+  "records": [
+    {
+      "tag": "cp-start",
+      "observation": "Create known own CP session with preserve-app capabilities",
+      "retained_record_sha256": "908c5cbaf83f2f49ccad36a3303338a3de74df6e02dd55ec5bd8118352dfc109",
+      "time_utc": "2026-10-27T12:45:10.107993+00:00",
+      "operation": "start",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-ready-source",
+      "observation": "Current CP For You source after observed OS Minimize",
+      "retained_record_sha256": "165ce253e40d6650b66e5b036dfc6cbfeea006b8bc80b2b34ecb4e5cd3d6989b",
+      "time_utc": "2026-10-27T12:46:36.480879+00:00",
+      "operation": "source",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-ready",
+      "observation": "Settled global target unobstructed",
+      "retained_record_sha256": "7c2f322324d353817f36d6cb28236f64d4936c6b5261e8aac913f848801d70f1",
+      "time_utc": "2026-10-27T12:46:39.861339+00:00",
+      "operation": "screenshot",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-ready-visual",
+      "observation": "Local operator confirmation of inspected screenshot digest",
+      "retained_record_sha256": "54612d0f756e061248cb4b5580febd16a249d036c9540391e6fe329f1addc6e6",
+      "time_utc": "2026-10-27T12:46:58.508850+00:00",
+      "operation": "verify-visual",
+      "local_only": true,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-offers-find",
+      "observation": "Current source and visual/active-app/alert gates before locating observed Offers cell",
+      "retained_record_sha256": "2676283c2c5071550ba061313e11387d66766b94f63c6a9e9372f19d283728f9",
+      "time_utc": "2026-10-27T12:46:58.705073+00:00",
+      "operation": "find",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-offers-click",
+      "observation": "Single-use observed Offers navigation click",
+      "retained_record_sha256": "ed41f320570b41711e2bd2f6789cd9b492e2c7b563557245e41fc091f36c63c2",
+      "time_utc": "2026-10-27T12:47:00.048699+00:00",
+      "operation": "click",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-offers",
+      "observation": "Following source headed Offers with existing offer progress/expiry and filter controls",
+      "retained_record_sha256": "173512c845612a83a1ca0fa6ed852d9dc50472395cfef2bc3e20f5f4f56a0d91",
+      "time_utc": "2026-10-27T12:47:01.623951+00:00",
+      "operation": "source",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-offers-screen",
+      "observation": "Global Offers destination screenshot",
+      "retained_record_sha256": "014cd8516056698ec0dee20e879b5d033820d28dc31bf1bd5190709fdeaea86d",
+      "time_utc": "2026-10-27T12:47:36.534226+00:00",
+      "operation": "screenshot",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-cards-visual",
+      "observation": "Local confirmation of current unobstructed global image",
+      "retained_record_sha256": "be51a57c8d7f3dc9cde6cd7f0ead03a64a03bc89b08bd7723906a5624158aeae",
+      "time_utc": "2026-10-27T12:49:24.570366+00:00",
+      "operation": "verify-visual",
+      "local_only": true,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-cards-find",
+      "observation": "Locate observed Cards cell under all gates",
+      "retained_record_sha256": "712a4612a90a38bc6c59db66b2cef65b8fb0112447580963ba4e3e9155a7a4bb",
+      "time_utc": "2026-10-27T12:49:24.752593+00:00",
+      "operation": "find",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-cards-click",
+      "observation": "Single-use Cards navigation click",
+      "retained_record_sha256": "2b05602a53a72c16882c88209f5fdc9b02973d39581a02ed00fa14b83118f90d",
+      "time_utc": "2026-10-27T12:49:26.254464+00:00",
+      "operation": "click",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-cards",
+      "observation": "Following source headed Cards with existing list and filter/shortcut affordances",
+      "retained_record_sha256": "94525831b0785653fa1c122f03d2c23140edf26733146f365597a504f3514880",
+      "time_utc": "2026-10-27T12:49:28.056794+00:00",
+      "operation": "source",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "cp-end",
+      "observation": "Exact own CP session DELETE succeeded with app termination disabled",
+      "retained_record_sha256": "9cfe6d9a1f3fa77aa19fc2744b62f7e6d6cfc2c51b021c1182d0bcdb58555b97",
+      "time_utc": "2026-10-27T12:49:50.114784+00:00",
+      "operation": "delete",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "mr-start",
+      "observation": "Selected MR own session created",
+      "retained_record_sha256": "a4f1f2c968e06202d8db63c3a44e1b77140a7277c7f65dee0d7fca84e174a128",
+      "time_utc": "2026-10-27T12:49:50.305700+00:00",
+      "operation": "start",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "mr-home-screen",
+      "observation": "Settled authenticated full MR Home and native navigation globally visible",
+      "retained_record_sha256": "786c71f95ff8c11639ff7e08db082ee883f1745210ca3a5aa9118d90bda5fc07",
+      "time_utc": "2026-10-27T12:49:55.451786+00:00",
+      "operation": "screenshot",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "mr-settled",
+      "observation": "Following settled MR source includes native Home/Wallet/Best Card/Offers/Benefits controls",
+      "retained_record_sha256": "1b30c1debc1e1e8ec2ae42c2a62f5bdda363b0f16777d8730c06ecdf51be2cfe",
+      "time_utc": "2026-10-27T12:50:29.442129+00:00",
+      "operation": "source",
+      "http_status": 200,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "mr-home-visual",
+      "observation": "Local manual confirmation of MR global image",
+      "retained_record_sha256": "56a332547badc29858f14b495762e079205702c25af16d22e81de3c8aa689783",
+      "time_utc": "2026-10-27T12:50:34.146276+00:00",
+      "operation": "verify-visual",
+      "local_only": true,
+      "element_request_dispatched": null
+    },
+    {
+      "tag": "mr-best-card-find",
+      "observation": "Read-only gates completed; visual-freshness rejection before element POST",
+      "retained_record_sha256": "ecdd54fdf86e743b2a5ec883461f23292f4f2a783be7e7c24be7f46fd8855137",
+      "time_utc": "2026-10-27T12:50:34.338577+00:00",
+      "operation": "find",
+      "error_type": "AssertionError",
+      "element_request_dispatched": false
+    },
+    {
+      "tag": "mr-end",
+      "observation": "Late exact-session DELETE could not connect after own controller had closed; not success",
+      "retained_record_sha256": "8f8747c2fe39063bff95a4120a52734bffe22d948af5416de69e163bc612c1ff",
+      "time_utc": "2026-10-27T12:51:34.024920+00:00",
+      "operation": "delete",
+      "error_type": "URLError",
+      "element_request_dispatched": null
+    }
+  ],
+  "limits": [
+    "Current selected iPad UI does not establish complete parity with analyzed Mac code",
+    "Displayed totals/progress/rates are not proof of issuer balances, server scoring or universal correctness",
+    "UI affordance presence is separate from activating or verifying that feature",
+    "Raw images/trees, personal values/card selections, fixture contents, process/session/device identities and exact ownership tokens remain private"
+  ]
+}

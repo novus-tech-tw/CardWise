@@ -1,0 +1,119 @@
+{
+  "kind": "selected-runtime-system-alert-and-multiwindow-observations",
+  "date": "2026-10-27",
+  "notification_window": {
+    "read_only_query": "Exact recent MaxRewards visible crash-report metadata; no flush/delete/raw report export",
+    "recent_report_result": {
+      "metadata": null,
+      "outcome": "no-qualifying-selected-report",
+      "selected_recent_candidates": 0
+    },
+    "lock_query": false,
+    "lock_meaning": "Unlocked",
+    "selected_CP_application_state": 4,
+    "reported_active_bundle": "SpringBoard",
+    "global_screenshot_observation": "CardPointers For You behind a system MaxRewards notification-authorization alert",
+    "fresh_alert_text_check": "Exact target name and notification wording matched",
+    "action": "Explicit named Don\u2019t Allow button; optional notification authorization declined, no notification permission granted",
+    "limits": "A current alert explains this observed system-overlay discrepancy; no assertion that every historical sparse tree/foreground change had the same cause"
+  },
+  "multiwindow_window": {
+    "selected_target_metadata": "CardPointers bundle and app-specific For You hierarchy matched",
+    "attempts": [
+      "Observed Offers toolbar control",
+      "Observed Active Offers dashboard control"
+    ],
+    "request_acknowledged": true,
+    "CardPointers_destination_transition_observed": false,
+    "global_screenshot_observation": "Closer floating window visibly overlaid CardPointers",
+    "foreign_fixture_details_or_account_values_published": false,
+    "response": "Stopped business input immediately after visual discrepancy was identified",
+    "ordinary_focus_sequence": "Home then activate CardPointers acknowledged; visual outcome not verified before controller app-operation deadline",
+    "limits": "No claim that another agent sent concurrent input, that an intended navigation succeeded, or that an unobserved foreign-app state never changed"
+  },
+  "controller_cleanup": {
+    "notification_window": "Exact own runner absent before host teardown; children/supervisor exited; explicit session DELETE attempted after bridge closure was refused, not reported as success",
+    "multiwindow_window": "Exact own runner absent before host teardown; children/supervisor exited; no controller retained",
+    "leases": "Released after exact owner checks, next turn handed to Closer; Orbit paused"
+  },
+  "required_next_input_gate": [
+    "Fresh global image inspected for unobstructed target controls",
+    "Current visible-app list and system-alert checks in addition to target-specific AX",
+    "Fresh source and single-use element identity",
+    "No blanket app-state/active-bundle assumption about whole-screen ownership"
+  ],
+  "retained_records": [
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/mr-recent-diagnostic.json",
+      "sha256": "32b18c5d7826c013d329e694ff72b61740e21a3f909c7250383b5c108e0d5416"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/cp-start.json",
+      "sha256": "fa24f5d2ed531a7ef945e1a46513d7ea6e7c75688fc4be6b5e2d712c901d4327"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/cp-resume.json",
+      "sha256": "83ee5df15c4a758ca7112d401d2d1f049598ce4d0d541a7241de69af125b1917"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/lock-read.json",
+      "sha256": "d33589f25fd7c5bca2f7805cefe3231a4a50d4f5d931c33ee82f25a1760177fe"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/cp-appstate.json",
+      "sha256": "fa5a47d47c78ce827eafac687f024676d96185a627f958eb774c7b7d7161ec9c"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/foreground-discrepancy.png",
+      "sha256": "f0dcfbb4b7446817b0797a3834734b4b2f70bdcb5fac53270f4c5939531fd338"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/mr-notification-alert.json",
+      "sha256": "4f2913b5f13e690cc7c93d668670c4b88f67cc53a8325b5141b08fd949eae55b"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-02/mr-notification-decline.json",
+      "sha256": "f27fc7f83ad0fac4bcca0e5d2aeec4ae28d466ecb116b40adddd049ba42e3b15"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-home.json",
+      "sha256": "6054a957f87ccab17df76c1a8045b7d577a53b3151ff797943152e7a159efed8"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-offers-find.json",
+      "sha256": "b1ec89975cfe2fc72d0395eff1725dd43c4d8900406aa39730651305f58ab62f"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-offers-click.json",
+      "sha256": "fdb7bcf281190f8cd2b869007c2a9248ff9f4523a655535cd90e0784504ca364"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-offers.json",
+      "sha256": "09f14ae174381960f5354e6cdfd4ad32f9979cbea0bd1e86386d34cbea5a3c3b"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-active-offers-find.json",
+      "sha256": "ffbe4e782c80b2c88a4065dac4c628ced0d1b55f3abc26f9b12e21dbbd2fbc67"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-active-offers-click.json",
+      "sha256": "0941e790a667434ee2f91ee6605b938f8fda9695894fb127a93a7046c79b233e"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-active-offers.json",
+      "sha256": "f09cc47f009989ffead656545be34ecc278e03218b7ff1a50df70c4102fc0161"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-offer-view-check.png",
+      "sha256": "15298551ac53ac66ee11dc239bad6c6744d1296339bd02ab617c2ef2ef42da2d"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/home-focus.json",
+      "sha256": "4a5ae0032f556d5d873240ddd87f61242a815a939498d90a57823eec7ee8ab4b"
+    },
+    {
+      "archive_relative_path": "continuation-20261027/runtime-readonly/window-03/cp-focus.json",
+      "sha256": "4a5ae0032f556d5d873240ddd87f61242a815a939498d90a57823eec7ee8ab4b"
+    }
+  ]
+}

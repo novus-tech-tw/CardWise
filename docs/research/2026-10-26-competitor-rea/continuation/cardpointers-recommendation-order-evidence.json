@@ -1,0 +1,293 @@
+{
+  "platform": "macOS CPWidgetExtension 8.1.4 build20261019 only",
+  "carrier_sha256": "12423833a32a5f9ca18563746b8bab634a6b19ce38551d54f6ee2dfce256946e",
+  "method": "Bounded llvm disassembly, exact named metadata/selectors/imports, raw direct-branch and callback-pointer binding; no Ghidra",
+  "findings": [
+    {
+      "id": "CPRO-01",
+      "observation": "Concrete parent subtype/relationship source rules; IDs 91/1033/471 use case-insensitive Visa userNetwork override/card-network predicate.",
+      "inference": "These are finite local candidate eligibility/source rules.",
+      "limits": "No human category mapping for these IDs, actual data or issuer eligibility guarantee."
+    },
+    {
+      "id": "CPRO-02",
+      "observation": "First candidate whose inventory equals pinnedInventory is promoted once; remaining rows exclude equal promoted object.",
+      "inference": "Pin precedence overrides ordinary order.",
+      "limits": "First-match source is NSSet.allObjects, with no cross-run pin tie guarantee."
+    },
+    {
+      "id": "CPRO-03",
+      "observation": "All selected insertion/run/merge comparator paths read signed order and preserve equal-key input relative order; result is promoted object plus remainder order ASC.",
+      "inference": "This consumer uses persisted order, not a local points or total_value score comparison.",
+      "limits": "The producer/manual mutation of order and stability of set enumeration are not established."
+    },
+    {
+      "id": "CPRO-04",
+      "observation": "WithoutSponsored preserves sponsored==0 in existing order; WithSponsoredIfEmpty falls back only on empty. Profile filter is in reused downstream card-state helper.",
+      "inference": "Sponsored handling and profile filtering are separate from the base ordering comparator.",
+      "limits": "Existing timeline consumer counts card state; unexpanded UI caller 0x1000859e0 is not evidence of actual rendering."
+    }
+  ],
+  "prior_snapshots": [
+    {
+      "check": "Previous completed output snapshot unchanged",
+      "manifest": "output-hashes.json",
+      "manifest_sha256": "24a291d94ec1622f565f2c371c365ecc64428dc0f81a414b0927c7872783f400",
+      "files": 14,
+      "passed": true
+    },
+    {
+      "check": "Previous completed output snapshot unchanged",
+      "manifest": "widget-timeline-output-hashes.json",
+      "manifest_sha256": "9dddd4d951f75296a4ce989546300608b54d7a1db4f17e327935c6153970f8f1",
+      "files": 30,
+      "passed": true
+    }
+  ],
+  "reused_regions": [
+    {
+      "path": "timeline/0x1000710b8.disassembly.txt",
+      "sha256": "85822c53198d46254b117542c59791198d5c9560924c4abf3b560b910c799de3",
+      "role": "Existing downstream profile/card-state consumer; not regenerated"
+    }
+  ],
+  "exact_callers": {
+    "carrier_sha256": "12423833a32a5f9ca18563746b8bab634a6b19ce38551d54f6ee2dfce256946e",
+    "target": "0x1002bf2cc",
+    "method": "Aligned B/BL immediate target equality scan of mapped __text only",
+    "callers": [
+      {
+        "call": "0x1000710dc",
+        "function": "0x1000710b8",
+        "size": 1492,
+        "call_source": {
+          "address": "0x1000710dc",
+          "file_offset": 463068,
+          "size": 4,
+          "sha256": "21393fc832cb0e09e786ce7fc5b00df6c2109fba69b28f7089b27789019db313"
+        }
+      },
+      {
+        "call": "0x100085d68",
+        "function": "0x1000859e0",
+        "size": 9576,
+        "call_source": {
+          "address": "0x100085d68",
+          "file_offset": 548200,
+          "size": 4,
+          "sha256": "36a898f8cbcac4f763c6e914b4ffa444a6841c0a978962d4440a3d5726cbd5b8"
+        }
+      },
+      {
+        "call": "0x100086024",
+        "function": "0x1000859e0",
+        "size": 9576,
+        "call_source": {
+          "address": "0x100086024",
+          "file_offset": 548900,
+          "size": 4,
+          "sha256": "21ced28c1b6a7650373a4600eeed6f54d53c4dd78187c2aace350755ab6f0bdc"
+        }
+      },
+      {
+        "call": "0x100086204",
+        "function": "0x1000859e0",
+        "size": 9576,
+        "call_source": {
+          "address": "0x100086204",
+          "file_offset": 549380,
+          "size": 4,
+          "sha256": "04d25be23ae19198d0e0d2e88c03fa37870a356e6e24028df734e5027293dcd6"
+        }
+      },
+      {
+        "call": "0x1002bf12c",
+        "function": "0x1002bf0cc",
+        "size": 100,
+        "call_source": {
+          "address": "0x1002bf12c",
+          "file_offset": 2879788,
+          "size": 4,
+          "sha256": "9af166e98688e4b7103ac7ca253aeeced40804717e2507a442675e4ed87e567c"
+        }
+      },
+      {
+        "call": "0x1002bf150",
+        "function": "0x1002bf130",
+        "size": 412,
+        "call_source": {
+          "address": "0x1002bf150",
+          "file_offset": 2879824,
+          "size": 4,
+          "sha256": "85ba33937d61ba4d660a43339af57d765db11d9a4d179926a6524439e6c6d2dc"
+        }
+      }
+    ]
+  },
+  "regions": [
+    {
+      "source": {
+        "address": "0x10008a060",
+        "file_offset": 565344,
+        "size": 244,
+        "sha256": "3ac953462f3f091563e1eb93451bfbc2ee88fb575999fb9e730dd86a0b5b7e1b"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x10008a060.disassembly.txt",
+      "output_sha256": "ac47deddb20f0985ff1678a02a524efd1b903523fd1a94dd9d179cd1a0054f2b"
+    },
+    {
+      "source": {
+        "address": "0x10008a4bc",
+        "file_offset": 566460,
+        "size": 824,
+        "sha256": "e2ac03086e049dd31d044bc7c791ccfc1bf0c356e882307051945c19671b93d5"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x10008a4bc.disassembly.txt",
+      "output_sha256": "d38c58104ac49c4f4141c1f13b301bccbc225722e2cba6cd752827320c08873d"
+    },
+    {
+      "source": {
+        "address": "0x10008c130",
+        "file_offset": 573744,
+        "size": 280,
+        "sha256": "0412997ca42490ad01f3a5dc7b830e18907d322727de32ceec7e8c32d6951b78"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x10008c130.disassembly.txt",
+      "output_sha256": "7b548fc35eafc27e2d84f7dc1a3ceb955b6e6410691258bc5c780487fe5327e3"
+    },
+    {
+      "source": {
+        "address": "0x1000d8948",
+        "file_offset": 887112,
+        "size": 624,
+        "sha256": "a68669bc1fe65771c694841304d3039cca14c68819b2da2d355500702f49c136"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1000d8948.disassembly.txt",
+      "output_sha256": "5ab2cd4740483f151c0a3ff3884deaed95dd24816403372819a4e8da6ac49dd7"
+    },
+    {
+      "source": {
+        "address": "0x10029a134",
+        "file_offset": 2728244,
+        "size": 20,
+        "sha256": "12478e886f588511d2f903ee64cf95cee1373d7993b235a61b3a9100396de115"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x10029a134.disassembly.txt",
+      "output_sha256": "9b0d2a18e053a34505977292834d533b1883a6d38a5ab0d7b7fb0ac1406f0f11"
+    },
+    {
+      "source": {
+        "address": "0x1002a50b4",
+        "file_offset": 2773172,
+        "size": 148,
+        "sha256": "28289b94b2af5fb182d4ddc328c6c3343cc91a619172c20172174a157dbc5c66"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002a50b4.disassembly.txt",
+      "output_sha256": "a27543784fe3e421842c615e8cffbd92cd34389303ee4ef635d3186d4fdc0838"
+    },
+    {
+      "source": {
+        "address": "0x1002a51c0",
+        "file_offset": 2773440,
+        "size": 268,
+        "sha256": "07744514760b11474322d7a52bf11d4fd31c4bd150f6aed3e39e17990a32cfb1"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002a51c0.disassembly.txt",
+      "output_sha256": "df346630c79f5444e401060b0ddfabfbc0dd65948f86dc5d923e04896616e029"
+    },
+    {
+      "source": {
+        "address": "0x1002bf0cc",
+        "file_offset": 2879692,
+        "size": 100,
+        "sha256": "fb2d3a87e41b26a60901f160c7ded81ca5820f78658f37631a643d82917072c6"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared15DBPointerParentC43smartPointerCardsSortedWithSponsoredIfEmptySayAA0dA0CGvg"
+      ],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002bf0cc.disassembly.txt",
+      "output_sha256": "82bc2cd2cf982a4f6cc5793bfbb57da4d1d259de9c11d437b60d522be1276e14"
+    },
+    {
+      "source": {
+        "address": "0x1002bf130",
+        "file_offset": 2879792,
+        "size": 412,
+        "sha256": "98b739658f05c0c14a51a79bc56f5a0cd96bdf88356afd3bf352063221d39a49"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared15DBPointerParentC39smartPointerCardsSortedWithoutSponsoredSayAA0dA0CGvg"
+      ],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002bf130.disassembly.txt",
+      "output_sha256": "0714b0097c0833ba9243c25ccd4a10db5b07aa76d9131c4679fd37dba5e1d610"
+    },
+    {
+      "source": {
+        "address": "0x1002bf2cc",
+        "file_offset": 2880204,
+        "size": 1408,
+        "sha256": "ee10b555dbe7cb6c225cfe69e906468abcd6e50495740eaeb1c9e1d202563cbf"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared15DBPointerParentC36smartPointerCardsSortedWithSponsoredSayAA0dA0CGvg"
+      ],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002bf2cc.disassembly.txt",
+      "output_sha256": "f8c1925c6356e0c4529a783e4f7fc4d079b7688ef7441beaa6dcb96554f354bc"
+    },
+    {
+      "source": {
+        "address": "0x1002bf84c",
+        "file_offset": 2881612,
+        "size": 1936,
+        "sha256": "17b87695e014b4405825766fcb7e2beceb5736aab18f85f932ca941ce83a5d6c"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared15DBPointerParentC17smartPointerCardsSo5NSSetCSgvg"
+      ],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002bf84c.disassembly.txt",
+      "output_sha256": "e9bcd05eff0966c1aa849626240101ac44d3201b0c5d15574df1e76056a6bce1"
+    },
+    {
+      "source": {
+        "address": "0x1002c7300",
+        "file_offset": 2913024,
+        "size": 236,
+        "sha256": "9c181228b229133965fe0abc8824ef86f98abbd7274ec2d6ea0e9fe8e3242c58"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002c7300.disassembly.txt",
+      "output_sha256": "203d868cf71e9f9efdfc1ed5466e6a95a065509c5c61be01d4dbdf6fce09baad"
+    },
+    {
+      "source": {
+        "address": "0x1002c749c",
+        "file_offset": 2913436,
+        "size": 1204,
+        "sha256": "461d11515b5cd39dcd9c54eefec4fc290dbac712d025ae572904fc985793fd30"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected getter/source/filter/cast/sort/merge/append semantics reviewed",
+      "disassembly": "recommendation-order/0x1002c749c.disassembly.txt",
+      "output_sha256": "693770876e2423279ab237137d274e2b0e332f0aa59a97f1d1a717b6bf6fd4c1"
+    }
+  ]
+}

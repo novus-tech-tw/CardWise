@@ -1,0 +1,11 @@
+{
+  "kind": "offline-selected-bytecode-verification",
+  "functions_checked": 141,
+  "instruction_anchors_checked": 4046,
+  "module_registrations_checked": 15,
+  "all_checks_passed": true,
+  "runtime_executed": false,
+  "device_operations": 0,
+  "http_requests": 0,
+  "repository_edits": 0
+}

@@ -1,0 +1,510 @@
+{
+  "scope": "Focused offline macOS CardPointers 8.1.4 Apple integration path; no runtime execution",
+  "findings": {
+    "CPAI-01": {
+      "observations": [
+        "Info.plist separates the macOS WidgetKit extension from the Intents service, with PointersWidgetOneIntent and an explicit IntentHandler principal class in the latter.",
+        "Both signed extension entitlement records contain the same App Group identifiers."
+      ],
+      "inference": [
+        "The selected options provider is an Intents configuration path with shared persistence capability."
+      ],
+      "limits": [
+        "Entitlements and declarations do not prove WidgetKit timeline entry routing or successful runtime data access."
+      ]
+    },
+    "CPAI-02": {
+      "observations": [
+        "The named Objective-C provideSelectedPointerOptionsCollectionForPointersWidgetOne:withCompletion: method copies the completion block and branches to the selected Swift body.",
+        "That body loads PersistenceController.shared, obtains its container field at +0x10, calls viewContext, and passes sortBy 3 to getDefaultDBPointerParents.",
+        "Shared initialization leads to storeURL(for:databaseName:) with group.getcardpointers.app and cardpointers; storeURL appends .sqlite.",
+        "The constructor uses NSPersistentContainer and reaches loadPersistentStoresWithCompletionHandler; this is an initialization boundary, not proof that the extension makes no writes."
+      ],
+      "inference": [
+        "The options provider reads its candidate parents through the shared App Group Core Data setup."
+      ],
+      "limits": [
+        "No actual store directory or user database was opened. Store migration/retry and completion error handling were not expanded."
+      ]
+    },
+    "CPAI-03": {
+      "observations": [
+        "The getDefaultDBPointerParents wrapper supplies closure 0x1001b5368 to the performAndWait wrapper; the closure calls fetch body 0x1001b3f08.",
+        "The fetch entity is DBPointerParent, with predicate is_favorite == YES OR lastViewedAt != nil OR entity == %@.",
+        "For sortBy 3, it takes the default sort branch, using ascending sort_order then ascending name.",
+        "A thrown fetch error is released and replaced by the canonical empty array."
+      ],
+      "inference": [
+        "Candidate order is local Core Data order for this configuration list."
+      ],
+      "limits": [
+        "The OR entity predicate must not be summarized as favorites-only. No recommendation ranking or current data population is established."
+      ]
+    },
+    "CPAI-04": {
+      "observations": [
+        "Each fetched parent is mapped to WidgetOnePointer using its id converted to a String, smartTitle, optional display image, and nil subtitle.",
+        "The mapper tries Data(contentsOf:) for its image URL and uses INImage.imageWithURL on the observed error branch.",
+        "The body always creates the fallback option and inserts it via a range 0,0 array helper before constructing INObjectCollection.",
+        "The fallback factory uses identifier String(0), Last Viewed, and Show the last pointer viewed in the app.",
+        "The completion block is invoked with the collection and a nil error argument."
+      ],
+      "inference": [
+        "A fetch failure can still produce the fixed Last Viewed configuration choice; the range arguments indicate insertion at the start."
+      ],
+      "limits": [
+        "The actual selected-pointer resolver and rendered widget last-viewed lookup were not traced. Image URL derivation and actual file/network availability are not established. Missing App Group container is fatalError, not a graceful storage fallback."
+      ]
+    },
+    "CPAI-05": {
+      "observations": [
+        "CPWidgetExtension contains its own named options method and a 616-byte body; exact calls resolve to the same named PersistenceController.shared and getDefaultDBPointerParents helpers.",
+        "The two body hashes differ, so this is a selected call-level comparison rather than byte equivalence."
+      ],
+      "inference": [
+        "The WidgetKit executable also ships this configuration helper implementation."
+      ],
+      "limits": [
+        "No call from a WidgetKit timeline/provider entry to this helper was recovered. Timeline creation, placeholder/snapshot choice, reload policy, refresh cadence, on-device rendering, and iPad equivalence remain open."
+      ]
+    }
+  },
+  "options_body_comparison": [
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "entry": "0x1000068e8",
+      "span": {
+        "address": "0x1000068e8",
+        "file_offset": 26856,
+        "size": 616,
+        "sha256": "840fd448b6f7a2d15d4d9e0ce2d09c700dddecfb917f2857159b9a7c6e662421"
+      },
+      "selected_calls": [
+        {
+          "call_address": "0x100006918",
+          "target": "0x10018d4fc",
+          "exact_symbols": [
+            "_$s18CardPointersShared21PersistenceControllerC6sharedACvau"
+          ]
+        },
+        {
+          "call_address": "0x10000693c",
+          "target": "0x1001b3eec",
+          "exact_symbols": [
+            "_$s18CardPointersShared14CoreDataHelperC26getDefaultDBPointerParents6sortBy7contextSayAA0I6ParentCGSi_So22NSManagedObjectContextCtFZ"
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "CPWidgetExtension",
+      "entry": "0x1000ffeb0",
+      "span": {
+        "address": "0x1000ffeb0",
+        "file_offset": 1048240,
+        "size": 616,
+        "sha256": "4f47a222685af25555d9849a9ee0bb68a891fc1d47647d62ce50d0944f8af534"
+      },
+      "selected_calls": [
+        {
+          "call_address": "0x1000ffee0",
+          "target": "0x100297980",
+          "exact_symbols": [
+            "_$s18CardPointersShared21PersistenceControllerC6sharedACvau"
+          ]
+        },
+        {
+          "call_address": "0x1000fff04",
+          "target": "0x1002ba1f8",
+          "exact_symbols": [
+            "_$s18CardPointersShared14CoreDataHelperC26getDefaultDBPointerParents6sortBy7contextSayAA0I6ParentCGSi_So22NSManagedObjectContextCtFZ"
+          ]
+        }
+      ]
+    }
+  ],
+  "exact_storeURL_callers": {
+    "method": "Exact immediate B/BL target query against selected storeURL function; LC_FUNCTION_STARTS bounds only.",
+    "rows": [
+      {
+        "instruction_address": "0x10018d5e8",
+        "target": "0x10018c230",
+        "function_start": "0x10018d57c",
+        "function_end": "0x10018d5f8"
+      }
+    ]
+  },
+  "carriers": [
+    {
+      "name": "CPWidgetExtension",
+      "bundle_id": "com.getcardpointers.app.CardPointersWidget",
+      "version": "8.1.4",
+      "build": "20261019",
+      "universal_sha256": "128c93901b8af2e7eef40cc271a7ac6eb6ca1b0cb12a70df07e425f7a2e368fa",
+      "arm64_sha256": "12423833a32a5f9ca18563746b8bab634a6b19ce38551d54f6ee2dfce256946e",
+      "info_plist_sha256": "edfbbc0027b28e5e7ea68f3adeb7a8adc60cb6e3eee5de3b5a6d3cde0bb5317e"
+    },
+    {
+      "name": "CPPointersWidgetExtension",
+      "bundle_id": "com.getcardpointers.app.PointersWidgetExtension",
+      "version": "8.1.4",
+      "build": "20261019",
+      "universal_sha256": "ee344de9149660c93bb3ceae5bcfea479c01c0bdc0f8df95ee2e2c1d098b0fc1",
+      "arm64_sha256": "b6fe3becabd06320fb1f1be8f5ac000d2b3075e3195704b3837ee3f493f6117c",
+      "info_plist_sha256": "73cb559a3432031e26b98d5c0800019d43eae2eb321af55b5d6356927ce99f0b"
+    }
+  ],
+  "regions": [
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1000056b4",
+        "file_offset": 22196,
+        "size": 4,
+        "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+      },
+      "exact_symbols": [
+        "-[_TtC25CPPointersWidgetExtension13IntentHandler resolveSelectedPointerForPointersWidgetOne:withCompletion:]"
+      ],
+      "review_status": "Resolve entry retained only; branch target not expanded",
+      "disassembly": "intent/0x1000056b4.disassembly.txt",
+      "output_sha256": "44b30e48502d0f240c902359c7084327c00047909ca22274a1f82057adf292e2"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1000056b8",
+        "file_offset": 22200,
+        "size": 728,
+        "sha256": "0213e807c8794673e66088442db74c62000c8c388af0b196cfdda2154c272832"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1000056b8.disassembly.txt",
+      "output_sha256": "0f94ea53744ebd2e5e5b90228d997c044a946a78d4ebc6caadde41e9eb753252"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x100005990",
+        "file_offset": 22928,
+        "size": 20,
+        "sha256": "adefd76bfbfd990de66e0dc0cd6deff08c9d38e8d984c4fd1845ce700936df3a"
+      },
+      "exact_symbols": [
+        "-[_TtC25CPPointersWidgetExtension13IntentHandler defaultSelectedPointerForPointersWidgetOne:]"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x100005990.disassembly.txt",
+      "output_sha256": "ca1c2dde7a4bac724ee0d3c3857878d49b0d8673e5292024ac294b863db6aa55"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1000059a4",
+        "file_offset": 22948,
+        "size": 884,
+        "sha256": "50a69e387f8bd30f228decc7bd7c391aa2522cc583ca2d11c4df7651d4b491fd"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1000059a4.disassembly.txt",
+      "output_sha256": "a2bb8b55bb60ac2c81bd901f70a9f173aed1bd1451382313f089c41857975ff2"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x100005d18",
+        "file_offset": 23832,
+        "size": 24,
+        "sha256": "f5669f198dd3edbd28953969bb9009a5bfac02f326b4c9d6eb0c231a673c469a"
+      },
+      "exact_symbols": [
+        "-[_TtC25CPPointersWidgetExtension13IntentHandler provideSelectedPointerOptionsCollectionForPointersWidgetOne:withCompletion:]"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x100005d18.disassembly.txt",
+      "output_sha256": "dccb1798393b2391b06c8c835b6e6e3d2a569329d8f1b480b4fc1f3785f948e8"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x100006810",
+        "file_offset": 26640,
+        "size": 216,
+        "sha256": "040d47f10b628b91b7474dbd730d181c476c89fc25e00f696c9aa26b0f24b4b9"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x100006810.disassembly.txt",
+      "output_sha256": "02ce1e6108bb748360b83606ddffe3077974f2ee75b505d757c449394a003d09"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1000068e8",
+        "file_offset": 26856,
+        "size": 616,
+        "sha256": "840fd448b6f7a2d15d4d9e0ce2d09c700dddecfb917f2857159b9a7c6e662421"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1000068e8.disassembly.txt",
+      "output_sha256": "afa9d43ae8096901c5a03e84ceddd4d80bd272ee58a4ecd0279d8afb420fbddf"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x100009414",
+        "file_offset": 37908,
+        "size": 32,
+        "sha256": "371e3355d89d22dbba63b3e3a493e5001a961e57149e1f6a735dd869180b67b6"
+      },
+      "exact_symbols": [
+        "_$s25CPPointersWidgetExtension0B10OnePointerCMa"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x100009414.disassembly.txt",
+      "output_sha256": "7afccbe78bf5fc8665dcc6a2b6b741071cdaccaadb2de6ce5b39d62b2bca0be8"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018b60c",
+        "file_offset": 1619468,
+        "size": 32,
+        "sha256": "d5d4b3221b53c98c05dc06bdd0d4b2e95b37196d7aa5787b71e728efdd47fa24"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared9DBPointerCMa"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018b60c.disassembly.txt",
+      "output_sha256": "6ed0e85e7dcc961f391a5e8b2a7614b9db06329a69242006a752c93e6deda2ab"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018bcb4",
+        "file_offset": 1621172,
+        "size": 264,
+        "sha256": "04261d35d9650ff3a7729b50c5d227e65b036c9496bbec306915758b493fadac"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared25resolvedWidgetProfileUUID21configurationOverrideS2SSg_tF"
+      ],
+      "review_status": "Profile override helper; not bound to selected options chain",
+      "disassembly": "intent/0x10018bcb4.disassembly.txt",
+      "output_sha256": "5f30288d0070d10b6fdaa93cc757dab9ec159917e6510c0c73ddd851fad6e85b"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018c230",
+        "file_offset": 1622576,
+        "size": 464,
+        "sha256": "9e53b896ca5b6d6d03397a46931149746c98f65efcfa82dc5880731ebb7b3918"
+      },
+      "exact_symbols": [
+        "_$s10Foundation3URLV18CardPointersSharedE05storeB03for12databaseNameACSS_SStFZ"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018c230.disassembly.txt",
+      "output_sha256": "172c61692029d26111f60b2375b0165c0b44afbfdfd21e48d2e951d85ea1bc22"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018d4bc",
+        "file_offset": 1627324,
+        "size": 64,
+        "sha256": "98c18d286d8e96469c41287d0490a3dd3a1e9ec9138cd633bd18364c1d3cca7d"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018d4bc.disassembly.txt",
+      "output_sha256": "373f5cb317c888604cef1b4233e57f3973a369c5c6a46f688fa35823bc5e691c"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018d4fc",
+        "file_offset": 1627388,
+        "size": 64,
+        "sha256": "48e6ada0ef3edca03b42943c0992d3825d50c9d4d90a7b31cce147a0a6c6ebac"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared21PersistenceControllerC6sharedACvau"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018d4fc.disassembly.txt",
+      "output_sha256": "38f6ef3adeaa40e98ad02da31e60e6c04e6b0dfed57cede159cebb210dd06c71"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018d53c",
+        "file_offset": 1627452,
+        "size": 64,
+        "sha256": "41b1316dc9ac1d9bcd9a903b7417c27b922955bacce072afd902ac7419715a77"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared21PersistenceControllerC6sharedACvgZ"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018d53c.disassembly.txt",
+      "output_sha256": "909fa56720bb0926dde47cd7e7f9075e56f55b31399924c53281f4d578a5a109"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018d57c",
+        "file_offset": 1627516,
+        "size": 124,
+        "sha256": "c78add2dc2a528bac44e05255ce5cbffdf847e5624e53e2c0c19839de0e442f3"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018d57c.disassembly.txt",
+      "output_sha256": "226a324603936a79205554945d371e9800ba4a47ea4e027a2261b762d110aacc"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018d5f8",
+        "file_offset": 1627640,
+        "size": 8,
+        "sha256": "afdb8a9e8a4dcd6d5c72c6ecb6b05b89d486563de2c9c99874578682940ebdce"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared21PersistenceControllerC9containerSo21NSPersistentContainerCvg"
+      ],
+      "review_status": "Retained neighboring persistence helper; not necessary to selected chain",
+      "disassembly": "intent/0x10018d5f8.disassembly.txt",
+      "output_sha256": "340f637ef8cc7d61465a76cdca7432faa25bf90d296d825c0a9e9671a89d4281"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x10018e7c4",
+        "file_offset": 1632196,
+        "size": 2268,
+        "sha256": "3031acaac8deba467dddc0bc17aa8b7880d2a283eff95e4bd4400fda597cf1f7"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x10018e7c4.disassembly.txt",
+      "output_sha256": "ddc6db32af2f872855034f3d4e477f43f9fccfb13ef022de602857dc66ea40bf"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1001a5b50",
+        "file_offset": 1727312,
+        "size": 1240,
+        "sha256": "332b2036071bceb1715a9cc8dc90509b07f7f3a720a2995f3e858c59c4eea8c8"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1001a5b50.disassembly.txt",
+      "output_sha256": "b47653a284e1f4c4ac42ca75887f60beabd1d629610721fdbd7b2863834bcbc2"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1001b3eec",
+        "file_offset": 1785580,
+        "size": 28,
+        "sha256": "3fd959d5e2812fc2790d0579770cbe248578e7698ce6d03bf4886d8100647e37"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared14CoreDataHelperC26getDefaultDBPointerParents6sortBy7contextSayAA0I6ParentCGSi_So22NSManagedObjectContextCtFZ"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1001b3eec.disassembly.txt",
+      "output_sha256": "ad3c298b9cb3367b0a0b8669f173d8831deeda1f54d85545487ccf4167f074b7"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1001b3f08",
+        "file_offset": 1785608,
+        "size": 928,
+        "sha256": "0091d4b3c9bb51092743505756cd85fa1b887e4497b98570ff0faebf1b126ca9"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1001b3f08.disassembly.txt",
+      "output_sha256": "d2ed759224a287cc69a9859e0e506648950d4457b409ef858cbd3bb55c3c06aa"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1001b42c4",
+        "file_offset": 1786564,
+        "size": 92,
+        "sha256": "8cda9f5f98866f7c5768b14519ec2210684b718769c917a83d4eb6abc311c536"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1001b42c4.disassembly.txt",
+      "output_sha256": "a9cefca9af21c48389a24d591d13d3535b33207d982e162d5438ade32ac9e525"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1001b5368",
+        "file_offset": 1790824,
+        "size": 24,
+        "sha256": "b4df0b88f13ed6434eeb3f1939a45c954ca1ee585686e2934d560fbfe1f1ad14"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1001b5368.disassembly.txt",
+      "output_sha256": "b2b8713be50283b8c9b19cf6f64d5a528c20199d870e00491d4f7dcce8dd2791"
+    },
+    {
+      "bundle": "CPPointersWidgetExtension",
+      "source": {
+        "address": "0x1001b6028",
+        "file_offset": 1794088,
+        "size": 32,
+        "sha256": "4ec03fb59a06ac4552d494a2bd62a1ac13b97c17c05133c1163e272286525904"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared14CoreDataHelperCMa"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "intent/0x1001b6028.disassembly.txt",
+      "output_sha256": "2e44cfdfc6858e426f354067980deb08a701c039ca8d889842e547b030c85111"
+    },
+    {
+      "bundle": "CPWidgetExtension",
+      "source": {
+        "address": "0x1000ffc6c",
+        "file_offset": 1047660,
+        "size": 24,
+        "sha256": "26e98b33c0060b441933738406bbea7c10ea2d8bf312d4d48264f43250ef3d18"
+      },
+      "exact_symbols": [
+        "-[_TtC17CPWidgetExtension13IntentHandler provideSelectedPointerOptionsCollectionForPointersWidgetOne:withCompletion:]"
+      ],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "widget/0x1000ffc6c.disassembly.txt",
+      "output_sha256": "b3f2458e47fc99dae92974ee9e6cea86f47bd5bd6eac41a01d88a2fa347c2ee8"
+    },
+    {
+      "bundle": "CPWidgetExtension",
+      "source": {
+        "address": "0x1000ffeb0",
+        "file_offset": 1048240,
+        "size": 616,
+        "sha256": "4f47a222685af25555d9849a9ee0bb68a891fc1d47647d62ce50d0944f8af534"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected instruction semantics reviewed",
+      "disassembly": "widget/0x1000ffeb0.disassembly.txt",
+      "output_sha256": "9761ca7e6178f286101d7a189f146fe67f1735864e0f2f468362a9d187a0d28a"
+    }
+  ]
+}

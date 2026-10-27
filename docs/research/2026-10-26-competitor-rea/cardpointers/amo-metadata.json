@@ -1,0 +1,13 @@
+{
+  "source_url": "https://addons.mozilla.org/api/v5/addons/addon/cardpointers-x/",
+  "id": 2918492,
+  "guid": "firefox@cardpointers.com",
+  "version": "8.0.8",
+  "released_at": "2026-10-07T20:38:51Z",
+  "download": {
+    "url": "https://addons.mozilla.org/firefox/downloads/file/5096700/cardpointers_x-8.0.8.xpi",
+    "size": 792134,
+    "sha256": "691c287f0c640e5c0cefd77fed49c3e9e6a4630ee0c8461a3e2fdf6022327af3"
+  },
+  "original_metadata_retained_archive_path": "cardpointers/amo-metadata.json"
+}
