@@ -51,6 +51,12 @@ No card ids were added, removed or renamed.
   merchant-only rates on categories where notes are not conditional, such as Disney
   Premier 5% on Disney streaming sites, Costco 5% on Costco gas, and Instacart 5% on
   Instacart; and Capital One Entertainment 8%.
+- **Known overestimates kept deliberately.**
+  - **Freedom Flex Q4 2026 and Q1 2027 grocery.** These exclude Walmart and Target, but
+    the engine's `walmart`/`target` categories fall back to `grocery`, so those merchants
+    still match the rotating bonus. A category exclusion needs a model change.
+  - **Sapphire Reserve 4x on flights and hotels booked direct.** This has no note, so it
+    shows by default, because most airline and hotel purchases are direct bookings.
 - **Effective dates.** Future-dated changes are not applied (see follow-ups).
 - **Product identity.** New products that launched alongside a legacy card were not
   written over the legacy card id (Navy Federal Flagship Premier, Wyndham Earner
@@ -62,13 +68,28 @@ No card ids were added, removed or renamed.
   - Chase Freedom Flex Q3/Q4 2026 corrected: Q4 is grocery stores (excluding Walmart
     and Target) and dining, not amazon/wholesale/paypal. Q1 2027 added (grocery,
     streaming).
-  - Discover it Cash Back and Discover it Student 2026 calendar corrected to
-    discover.com's published program: Q1 grocery/wholesale/streaming, Q2
-    dining/home improvement, Q3 gas/transit/drugstore, Q4 dining/entertainment/utilities.
-    Discover's utilities definition includes internet, cable and phone service, so
-    `internet` and `phone` are also included.
-    Sources: <https://www.discover.com/credit-cards/cash-back/cashback-calendar.html>,
-    <https://www.discover.com/credit-cards/cash-back/cashback-bonus.html>.
+  - Discover it Cash Back and Discover it Student 2026 calendar replaced: Q1
+    grocery/wholesale/streaming, Q2 dining/home improvement, Q3 gas/transit/drugstore,
+    Q4 dining/entertainment/utilities.
+    - **Provenance (weaker evidence; read this).** The calendar comes from discover.com's
+      own rendered page text, as returned by a search index for
+      <https://www.discover.com/credit-cards/cash-back/cashback-calendar.html> and
+      <https://www.discover.com/credit-cards/cash-back/cashback-bonus.html>. That text
+      includes the program footnote "Activate to earn 5% Cashback Bonus at Restaurants,
+      Entertainment and Utilities from 10/1/26 ... through 12/31/26, on up to $1,500."
+    - **Not reproducible by direct fetch.** Direct fetches of those pages return a cached
+      2024 snapshot or a broken calendar widget, and the widget's `offers.json` only
+      covers 2020–21. The per-card ledger entries below record the subagent's
+      `unverified` verdict, made before this text was found. This section supersedes
+      them.
+    - **Corroboration.** Multiple secondary sources (TPG, CNBC Select, Forbes Advisor and
+      others) quote the same term text.
+    - **Why ship it.** `main`'s Q3/Q4 2026 (grocery/walmart, amazon/target) has no such
+      support and contradicts every source found.
+    - **`internet` and `phone`.** These are included because the same Discover footnote
+      defines Utilities to include internet, cable, satellite TV and mobile/landline
+      phone service paid online or by phone.
+    - **Follow-up.** Confirm against a logged-in Discover calendar when possible.
 - **Points cards stored as cash-back percentages.** 18 Chase points/miles cards
   (Sapphire Preferred/Reserve, Ink Preferred, United ×4, Southwest ×3, Marriott ×3,
   IHG ×2, World of Hyatt, Aeroplan, British Airways) and Discover it Miles now use
@@ -555,6 +576,8 @@ No card ids were added, removed or renamed.
 
 #### `discover-discover-it-cash-back`
 
+> **Superseded:** the 2026 rotating calendar below was later replaced from discover.com page text; see "Corrections to existing main data" for provenance and limits.
+
 | Proposal | Verdict | Reason | Sources |
 |---|---|---|---|
 | PR rotating Q3 2026 = gas/transit/drugstore and Q4 2026 = dining/entertainment/utilities (replacing main's Q3 grocery/walmart, Q4 amazon/target) | unverified | Discover's official 5% calendar page currently shows 'the rewards calendar is not working at this time'. Its data API requires login (HTTP 401), and the static offers.json is stale (2020-2021). No official 2026 terms page could be fetched, so main is kept under the rules. | <https://www.discover.com/credit-cards/cash-back/cashback-calendar.html> <https://www.discover.com/content/dam/dfs/credit-cards/static/json/cashback-calendar/offers.json> <https://www.discover.com/credit-cards/cash-back/cashback-bonus.html> |
@@ -562,6 +585,8 @@ No card ids were added, removed or renamed.
 - **otherFindings:** HIGH PRIORITY: main's 2026 calendar appears to be wrong for every quarter. Many independent non-official sources agree, and several quote Discover's term text verbatim ('from 10/1/26 (or the date on which you activate 5%, whichever is later) through 12/31/26, on up to $1,500'). Sources include TPG, CNBC Select, Forbes Advisor, AwardWallet, CardRatings, Doctor-of-Credit-style posts and Slickdeals; none could be confirmed on discover.com. Their 2026 calendar: Q1 = grocery stores, wholesale clubs, select streaming; Q2 = restaurants, home improvement; Q3 = gas stations, transportation (transit), drug stores (CardRatings lists Q3 slightly differently); Q4 = restaurants, entertainment, utilities. Under that calendar, Q4 would map to dining, entertainment, utilities and possibly internet and phone, since Discover's utilities definition includes online/phone payments for internet, cable, satellite TV and mobile/landline phone. Main's current Q4 2026 = amazon/target and Q3 = grocery/walmart. Recommend a human re-check of the logged-in Discover calendar or the activation email terms before shipping, because the current Q4 recommendation is probably wrong. Cap is $1,500/quarter, activation required, 5%.
 
 #### `discover-discover-it-student-cash-back`
+
+> **Superseded:** the 2026 rotating calendar below was later replaced from discover.com page text; see "Corrections to existing main data" for provenance and limits.
 
 | Proposal | Verdict | Reason | Sources |
 |---|---|---|---|
