@@ -1,0 +1,131 @@
+{
+  "kind": "analyst-focused-offline-decode",
+  "target": {
+    "path": "native/artifacts/CardPointers-8.1.4-arm64",
+    "sha256": "447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0"
+  },
+  "source_evidence": {
+    "path": "native/main-native-pointers-fetch-construction.json",
+    "sha256": "4cab7cc6a07bb656fd882d72ab68b1479d20a787d70909376305d8c92ff5e66a",
+    "evidence_id": "ev_32dbb3c7eb67a8bf5f429eaec9110ce9e6a179a49397fae86acc1752a967dd04",
+    "procedure": "0x1006e5990"
+  },
+  "method": "Map two constant swift_getKeyPath pattern arguments from retained Ghidra assembly to digest-verified Mach-O bytes. Resolve signed Int32 KVC reference at pattern+16 according to Swift runtime key-path pattern header.",
+  "abi_reference": {
+    "url": "https://github.com/swiftlang/swift/blob/main/stdlib/public/core/KeyPath.swift",
+    "retrieved": "2026-10-27",
+    "sections": [
+      "patternPtr = pattern.advanced(by: 4)",
+      "kvcStringBase = patternPtr.advanced(by: 12)",
+      "signed-relative KVC offset resolution"
+    ]
+  },
+  "assembly_observations": [
+    "0x1006e5a28: adrp x0, 0x101316000",
+    "0x1006e5a2c: add x0, x0, #0x270",
+    "0x1006e5a30: bl 0x1012b50c8",
+    "0x1006e5a34: mov w1, #0x0",
+    "0x1006e5a38: bl 0x1012b3100",
+    "0x1006e5a3c: str x0, [x22, #0x20]",
+    "0x1006e5a40: adrp x0, 0x101316000",
+    "0x1006e5a44: add x0, x0, #0x2a0",
+    "0x1006e5a48: bl 0x1012b50c8",
+    "0x1006e5a4c: mov w1, #0x1",
+    "0x1006e5a50: bl 0x1012b3100",
+    "0x1006e5a54: str x0, [x22, #0x28]"
+  ],
+  "sort_descriptors": [
+    {
+      "descriptor_index": 0,
+      "pattern_address": "0x101316270",
+      "pattern_file_offset": 20013680,
+      "pattern_bytes_hex": "40df610000000000b1d7120051680c00e0ffffff1000008001004002c45d05ff180e3dff180e3dff",
+      "kvc_relative_field_address": "0x101316280",
+      "kvc_relative_displacement": -32,
+      "kvc_string_address": "0x101316260",
+      "kvc_string_file_offset": 20013664,
+      "kvc_string": "is_favorite",
+      "ascending": false
+    },
+    {
+      "descriptor_index": 1,
+      "pattern_address": "0x1013162a0",
+      "pattern_file_offset": 20013728,
+      "pattern_bytes_hex": "18df61000000000081d71200356f0c00e8ffffff1000008001004002ecc6cffef00d3dfff00d3dff",
+      "kvc_relative_field_address": "0x1013162b0",
+      "kvc_relative_displacement": -24,
+      "kvc_string_address": "0x101316298",
+      "kvc_string_file_offset": 20013720,
+      "kvc_string": "name",
+      "ascending": true
+    }
+  ],
+  "metadata_parent": {
+    "path": "native/cardpointers-native-extra-initial-metadata-evidence.json",
+    "evidence_id": "ev_efd3886ab6ff0e0dc4ea8589202f66907974517293e3052d286dbb77eb649378",
+    "coverage": [
+      {
+        "facet": "objc_class_method_ivar_metadata",
+        "status": "partial",
+        "examined": 574,
+        "decoded": 1148,
+        "max_records_reached": true,
+        "unsupported": false
+      },
+      {
+        "facet": "binary_relative_pointers",
+        "status": "partial",
+        "examined": 9389,
+        "decoded": 9389,
+        "max_records_reached": true,
+        "unsupported": false
+      },
+      {
+        "facet": "objc_properties_categories",
+        "status": "partial",
+        "examined": 20,
+        "decoded": 19,
+        "max_records_reached": true,
+        "unsupported": false
+      },
+      {
+        "facet": "pointer_fixups",
+        "status": "complete",
+        "examined": 2,
+        "decoded": 2,
+        "max_records_reached": false,
+        "unsupported": false
+      },
+      {
+        "facet": "swift_generic_resilient_witnesses_overrides_async_coroutines",
+        "status": "unsupported",
+        "examined": 0,
+        "decoded": 0,
+        "max_records_reached": false,
+        "unsupported": true
+      },
+      {
+        "facet": "swift_conformances_static_witness_slots",
+        "status": "partial",
+        "examined": 2783,
+        "decoded": 25,
+        "max_records_reached": true,
+        "unsupported": false
+      },
+      {
+        "facet": "swift_class_vtable_descriptors",
+        "status": "partial",
+        "examined": 0,
+        "decoded": 0,
+        "max_records_reached": true,
+        "unsupported": false
+      }
+    ]
+  },
+  "limitations": [
+    "This is a static native fetch presentation sort, not the reward ranking algorithm.",
+    "KVC fields are directly decoded; property/source type identity and runtime behavior are not claimed.",
+    "No iPad runtime observation, target launch, user storage or credentials were used.",
+    "Whole-image metadata omissions persist. Retained evidence paging cannot decode records that the producer omitted."
+  ]
+}

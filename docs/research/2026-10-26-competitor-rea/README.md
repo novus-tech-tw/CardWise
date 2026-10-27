@@ -1,8 +1,9 @@
 # CardPointers and MaxRewards REA investigation
 
-Status: **completed offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). All selected native, extension and bytecode work is finished; owned analysis jobs are closed. Server-side and live banking behavior remain explicit method limits, with no further login or GUI intervention pending.
+Status: **completed original offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Its selected native, extension and bytecode work is finished; owned analysis jobs are closed. Server-side and live banking behavior remain explicit method limits. The newly requested iPad installation/runtime followup is pending separately; see its status below.
 
 - [Consolidated findings](report.md)
+- [iPad installation status and focused static followup](followup/README.md)
 - [Live progress and remaining work](progress.md)
 - [Artifact and Evidence archive](artifacts.md)
 - [Unattended offline method](offline-method.md)

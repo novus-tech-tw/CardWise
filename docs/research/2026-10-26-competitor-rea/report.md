@@ -1,8 +1,10 @@
 # CardPointers and MaxRewards offline REA
 
-Status: **completed offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). All selected static work is finished and owned analysis jobs are closed. The [progress ledger](progress.md) records exact scope, artifacts, Evidence and continuation limits. No further login or UI participation is required.
+Status: **completed original offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). Its selected static work is finished and owned analysis jobs are closed. The [progress ledger](progress.md) records exact scope, artifacts, Evidence and continuation limits. Those offline findings need no further login; the separately requested iPad installation/runtime scope remains pending.
 
 ## Main findings
+
+The [2026-10-27 followup](followup/README.md) resolves three previously open static bindings using existing artifacts. Installation and runtime analysis on the newly connected iPad remain pending; this report's offline completion does not claim that the iPad apps were installed or exercised.
 
 CardPointers combines prepared shopping-card recommendations with bank-specific offer enrollment and native Apple integrations. MaxRewards combines server-returned merchant recommendations with client valuation/eligibility logic and remotely configured bank connection. Both expose substantially more integration work than a card-rate catalog alone.
 
@@ -34,7 +36,7 @@ The native Mac package adds concrete domain evidence: 24 Core Data entities, all
 
 Four actual native Safari function dossiers corroborate the JavaScript bridge. The `getWallet` handler retrieves own-account authorization and entitlement state and constructs its reply; despite its name, this path does not return a complete card-row wallet. Static Keychain retrieval code was analyzed without reading any actual stored token.
 
-Main native code establishes a 400 ms model-change debounce followed by filtered Core Data publication, plus incoming `points`, `total_value` and order materialization with two parent reconciliation call sites. A selected consumer formats estimated cents per dollar and welcome value. Exact Swift sort keypaths and the full upstream value producer remain unresolved. Packaged ranking help is labeled as vendor explanation rather than a verified formula. All selected native questions and limits are in the [native report](native/report.md).
+Main native code establishes a 400 ms model-change debounce followed by filtered Core Data publication, plus incoming `points`, `total_value` and order materialization with two parent reconciliation call sites. A selected consumer formats estimated cents per dollar and welcome value. The followup resolves the selected fetch's sort keypaths to `is_favorite` descending, then `name` ascending; the full upstream value producer remains unresolved. Packaged ranking help is labeled as vendor explanation rather than a verified formula. All selected native questions and limits are in the [native report](native/report.md).
 
 Detailed evidence: [initial extension report](cardpointers/report.md), [deep static findings](cardpointers/deep-findings.md), [native Mac report](native/report.md).
 

@@ -25,6 +25,8 @@ The minimum macOS value comes from Info.plist. The arm64 build-version command s
 
 The expanded dispatch result exceeded the MCP transport budget but completed and was retained; it was exported rather than rerun. The initial 3,000-record pass is superseded for coverage purposes by the 20,000-record pass. The reader still reports unresolved ivar pointers, budget limits in some metadata families, and unsupported generic/resilient Swift tables. A completed export is not a claim of complete native semantic recovery.
 
+A [focused followup](../followup/cardpointers-report.md) isolates exactly two class descriptors with the same installed reader: 39 slots, nine resolved implementations and 30 partial slots, without exhausting its separate budget. It corroborates two existing `PointersStore` function bindings; it does not repair whole-image unsupported metadata or establish complete dispatch coverage.
+
 ## Artifact observations
 
 ### Native structure and capabilities
@@ -92,7 +94,7 @@ The compact per-function ledger is `safari-bridge-findings.json`; full local pse
 
 `PointersStore.controllerDidChangeContent:` at `0x1006e6190` forwards to `0x1006e70b8`. Its implementation cancels an existing DispatchWorkItem and schedules replacement work on the main queue after **400 milliseconds**, through `0x1006e74d0` and `0x1006e6124` to refresh routine `0x1006e61dc`. This is an observed static debounce policy, not measured UI latency. Wrapper Evidence: `ev_f3082c3aa777907071031fd6b0a7509aec91bbb74344833ba7562cafe948c53d`; implementation: `ev_347fc064a34b63358dfc315a31688a66af7b1e269ad3a5c3d1daa49f9d609f82`.
 
-Initialization and lazy fetch setup (`0x1006e5b2c`, `0x1006e592c`, `0x1006e5990`) initialize published/filter state and construct an NSFetchedResultsController using WalletStore's persistence viewContext, a predicate and two sort descriptors. The exact Swift sort keypaths were not resolved. The refresh routine fetches objects, applies search/favorites filtering and publishes results, with optional SwiftUI animation. This selected UI-store path does not recover the underlying reward calculation. Fetch construction Evidence: `ev_32dbb3c7eb67a8bf5f429eaec9110ce9e6a179a49397fae86acc1752a967dd04`; refresh: `ev_32baccdbf0342300f759f81e9d80bce5601d65c3d43f91aa123f3fd3519cea24`.
+Initialization and lazy fetch setup (`0x1006e5b2c`, `0x1006e592c`, `0x1006e5990`) initialize published/filter state and construct an NSFetchedResultsController using WalletStore's persistence viewContext, a predicate and two sort descriptors. The [focused keypath decode](../followup/cardpointers-sort-keypaths.json) resolves these to `is_favorite` descending, then `name` ascending, using the retained assembly and signed-relative KVC string fields in the digest-verified artifact. The refresh routine fetches objects, applies search/favorites filtering and publishes results, with optional SwiftUI animation. This selected UI-store path does not recover the underlying reward calculation. Fetch construction Evidence: `ev_32dbb3c7eb67a8bf5f429eaec9110ce9e6a179a49397fae86acc1752a967dd04`; refresh: `ev_32baccdbf0342300f759f81e9d80bce5601d65c3d43f91aa123f3fd3519cea24`.
 
 The selected `DBPointerCard` materializer at `0x101297288` compares incoming structure float fields with the stored `points` and `total_value`, updates changed values, and copies ordering/identity/relationships. The called `0x1012c0ce0` stub resolves to `setTotal_value:`. This routine copies a supplied value rather than revealing a reward-ranking formula. Materializer Evidence: `ev_ef0dc21c4cb87b64dbe4a6da5bf2e32c9e2129f343bc9cd6874d1e653e1db53d`; setter: `ev_c2f5fd8d432bb63541f80481da3a6f3c9d7f213684c4512a5c3b683154f9ee9b`.
 
@@ -110,7 +112,7 @@ Separately, packaged vendor help describes ordering by category multiplier multi
 | Package/framework/signature/extension inventory | Complete within the stated package/tool coverage; capabilities are declarations |
 | Shipped CoreData/AppIntents inventory | All 637 model objects/24 entities and 70 action declarations; no live rows or action execution |
 | Pointer model-change handling | Selected wrapper, 400ms debounce, work item and refresh chain recovered |
-| Pointer presentation source | Fetched CoreData objects, filtering and published state recovered; exact sort keypaths unresolved |
+| Pointer presentation source | Fetched CoreData objects, filtering and published state recovered; selected fetch sorts favorites descending, then name ascending |
 | Native points/value materialization | Selected writer, setter and two parent reconciliation call sites recovered |
 | Value display | Selected cents-per-dollar and welcome-estimate consumer recovered |
 | Safari native `getWallet` boundary | Four function dossiers recover own-account auth/entitlement reply and helpers; matched independently against shipped JS |

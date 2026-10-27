@@ -1,10 +1,12 @@
 # Investigation progress
 
-Status: **completed offline investigation, delivered through PR #81**. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix. Final-head CI status is reported on the PR rather than inferred from an earlier commit.
+Status: **original offline investigation complete; new iPad installation/runtime scope pending**. Delivered through PR #81. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix. Final-head CI status is reported on the PR rather than inferred from an earlier commit.
 
-## Current execution mode
+## Original completed execution mode
 
 The user requested an unattended method after interactive login/UI checks required repeated participation. The investigation now runs **fully offline** against the already acquired official apps, extensions, public configuration snapshots and bytecode. No further user login, GUI navigation, native runtime capture or banking demonstration is required. Complete the remaining static analysis; classify unavailable server internals and live banking outcomes as scope limits rather than user-blocked tasks.
+
+For the later iPad followup, the user explicitly authorized installing both apps, asked to avoid repeating REA already in the PR, and requested immediate notice if login is needed. Reuse prior artifacts and Evidence. Installation remains pending as described in [the followup status](followup/README.md); no target-app account login requirement has yet been observed on the iPad.
 
 ## Reconnect and continue
 
@@ -33,12 +35,14 @@ The user requested an unattended method after interactive login/UI checks requir
 | Question | Next evidence needed | Current status |
 | --- | --- | --- |
 | Extension upstream ranking and cap handling | CardPointers Amex enrollment ordering is now recovered separately from shopping order; MaxRewards client display/row ordering is partly decoded | Partial; external server-ranking formula still unknown |
-| MaxRewards extension offer handling | Provider descriptor/interpreter and enrollment branches are now acquired; preserve exact version/minVersion limits | Static analysis active; no bank execution |
-| Native implementation and local data model | Both official native artifacts acquired; CardPointers Core Data decoded, MaxRewards React/Hermes/Expo metadata and bytecode identified | Native analysis active |
+| MaxRewards extension offer handling | Provider descriptor/interpreter and enrollment branches acquired; preserve exact version/minVersion limits | Selected static scope complete; no bank execution |
+| Native implementation and local data model | Both official native artifacts acquired; CardPointers Core Data decoded, MaxRewards React/Hermes/Expo metadata and bytecode identified | Selected native scope complete |
 | Authenticated recommendation correctness and bank activation | Actual execution cannot be established from static artifacts | Outside current offline scope; no user action requested |
 | Paid feature behavior | Shipped entitlement branches and official plan descriptions can be analyzed statically | Live entitlement/checkout behavior outside offline scope |
 
 ## Completion gate
+
+The [2026-10-27 followup](followup/README.md) reuses these outputs and closes selected sort/storage binding gaps without repeating whole-application REA. The connected iPad is paired with Developer Mode enabled, but exact-bundle inventory and launch both establish that neither target app is installed. The user subsequently requested installation. Installation and iPad runtime analysis are pending; Device Hub explicitly requires iOS 27.0 or above for screen sharing with this Mac, while the selected iPad runs 26.7. Do not confuse this new pending installation scope with completion of the earlier offline investigation.
 
 The selected offline scope is complete: reachable static questions were reconciled to observations, bounded partial findings or explicit method limits; exact artifacts and continuation locations are preserved. Unknown native or authenticated behavior is not converted into an absence claim. No real banking credential, bank session or payment submission was used by the static analysis. Historical login/UI work is supplemental and no further test fixture, account creation or bank connection is pending. Future live/server questions require a separately selected scope rather than silently expanding this completed investigation.
 
