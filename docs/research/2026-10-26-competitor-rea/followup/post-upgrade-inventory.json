@@ -1,0 +1,16 @@
+{
+  "observed_at_utc": "2026-10-27T09:51:44.334484+00:00",
+  "kind": "owned-window-target-app-inventory",
+  "results": {
+    "com.getcardpointers.app": {
+      "outcome": "unavailable",
+      "exit_code": 2,
+      "error": "ERROR: Command timeout of 8.0 seconds exceeded. Assuming command got stuck and aborting.\n"
+    },
+    "com.max.MaxRewards": {
+      "outcome": "unavailable",
+      "exit_code": 2,
+      "error": "ERROR: Command timeout of 8.0 seconds exceeded. Assuming command got stuck and aborting.\n"
+    }
+  }
+}

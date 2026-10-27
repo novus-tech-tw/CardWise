@@ -1,0 +1,36 @@
+{
+  "record_kind": "sanitized-owned-window-readiness-observation-not-REA-Evidence",
+  "recorded_at_utc": "2026-10-27T09:40:26.623123+00:00",
+  "device_os": "27.2",
+  "login_state": {
+    "MaxRewards": "User reported completed; authenticated homepage observed in owned browser viewer",
+    "CardPointers": "User reported completed; signed-in For You interface behind Add My Cards observed in owned browser viewer"
+  },
+  "installation": {
+    "CardPointers": "User completed installation during window; version not queried",
+    "MaxRewards": "Previously installed4.8.35; existing login preserved"
+  },
+  "input_test": {
+    "host_native_coordinate_methods": "Not repeated",
+    "browser_Home": "Event appeared in viewer log, but concurrent human navigation prevents causal verification; not credited",
+    "browser_canvas_dismiss_tap": "Canvas focused; Add My Cards remained visible; no successful target action credited"
+  },
+  "viewer": {
+    "provider": "pymobiledevice311.45.0",
+    "interface": "loopback browser viewer",
+    "video": "Stable live video observed on27.2",
+    "audio": "Upstream eager audio started despite --no-audio viewer playback flag; no audio recording saved",
+    "cleanup": "Owned server stopped with SIGINT; worker cancelled; process session exited0; no8766 listener; own browser tab closed"
+  },
+  "scope_limits": [
+    "No credentials, account identifiers, financial values or screenshots included in this record",
+    "No cards, fixtures, bank connections or financial actions submitted by this investigation",
+    "No successful browser touch method is claimed",
+    "No fresh device query after lease release"
+  ],
+  "coordination": {
+    "lease_released": true,
+    "next_turn": "Orbit after coordinated user-login readiness",
+    "planned_window_overrun": "approximately one minute during final observation and cleanup; exact own lease identity verified before cleanup/release"
+  }
+}

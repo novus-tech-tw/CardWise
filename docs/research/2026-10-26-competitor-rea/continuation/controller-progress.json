@@ -1,0 +1,67 @@
+{
+  "kind": "coordinated-controller-and-metadata-progress",
+  "date": "2026-10-27",
+  "evidence_type": "Historical peer provisioning/Xcode results plus newer root-owned userspace transport, exact USB versions, controller lifecycle and selected CardPointers UI evidence",
+  "normal_profile_repair": {
+    "project_signing_team_selected": true,
+    "normal_register_device_action": true,
+    "managed_profile_has_selected_ipad": true,
+    "runner_bundle_permitted": true,
+    "credential_values_or_other_device_ids_retained": false
+  },
+  "corrected_runner_install": {
+    "installer_text_acknowledges_installed_exact_own_runner": true,
+    "signature_and_profile_review": "Peer reports separate existing-binary signed copy with selected-device profile; original invalid-profile artifact is not reused unchanged",
+    "independent_coredevice_inventory_confirmed": false
+  },
+  "root_changed_inventory": {
+    "changes": [
+      "normal registration/profile prerequisite repaired",
+      "20s instead of old8s",
+      "supported exact bundle-id filter, no app container/group access"
+    ],
+    "selected_target": "com.getcardpointers.app",
+    "outcome": "timeout",
+    "elapsed_seconds": 20.07,
+    "remaining_same_transport_queries_skipped": true,
+    "no_launch_input_capture_or_controller_lifecycle": true,
+    "owned_lease_released": true
+  },
+  "next": "After fresh handoff, MR-first read-only core destination/search checks with source then fresh global visual confirmation; CP deeper detail/search stays pending",
+  "app_login": "Both app logins already confirmed; no new login expiry observed",
+  "limits": "Historical Xcode/CoreDevice failures are not current transport or installed-version conclusions. Selected CP category/Offers/Cards source destinations and MR Home/native navigation are observed; deeper MR destinations/input, remaining search/detail paths and all-feature correctness are separate. Device/session/account identifiers excluded.",
+  "previous_xcode_start": {
+    "provider": "Xcode test-without-building",
+    "exit_code": 70,
+    "phase": "Connecting/destination readiness before test",
+    "server_response_observed": false,
+    "working_input_observed": false,
+    "owned_runner_or_bridge_remaining": false
+  },
+  "root_window05_settled_navigation": {
+    "OS_Minimize": "observed current controls and settled CP global proof",
+    "CP_Offers_and_Cards": "destination source changes verified; Offers global image verified",
+    "MR_Home_native_navigation": "settled authenticated global/source verified",
+    "MR_BestCard_lookup": "visual freshness rejection before element request, no tap",
+    "known_CP_DELETE": "success",
+    "late_MR_DELETE": "closed bridge refused; not reported success",
+    "own_controller_cleanup": "runner absence before host teardown; host exit and local port free"
+  },
+  "initial_root_runtime_window01": {
+    "userspace_transport_handshake": "success",
+    "own_WDA_status": "ready",
+    "cardpointers_actual_input_and_UI_transition": "verified selected close/navigation/category path",
+    "maxrewards_actionable_UI": "not yet; initial sparse target tree then SpringBoard; gate blocked screenshot/input",
+    "own_runner_absence_and_host_exit": "verified",
+    "actual_versions": {
+      "CardPointers": "8.1.5/20261023",
+      "MaxRewards": "4.8.35/1792099341"
+    }
+  },
+  "earlier_scene_conditions_window02_03": {
+    "system_notification": "MaxRewards authorization prompt visually observed and explicit Don\u2019t Allow acknowledged",
+    "multiwindow": "Closer floating over CP despite target-specific metadata; accepted CP navigation did not produce verified destination",
+    "focus_sequence": "Home/CP activate acknowledged, visual result unverified",
+    "input_reliability": "Selected earlier CP transitions verified; later ACKs are not generalized success"
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "merchant-selection",
+    "path": "extension/content/content.js",
+    "start_character": 415201,
+    "end_character": 416386,
+    "line": 15,
+    "column": 225632,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "merchant-selection.txt",
+    "snippet_sha256": "96a2201930356e2cf93e32907b54fc59d216982eb7df93c486cfa7ae9a1d5561",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  },
+  {
+    "name": "offer-sync",
+    "path": "extension/content/content.js",
+    "start_character": 1122347,
+    "end_character": 1124060,
+    "line": 17,
+    "column": 349268,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "offer-sync.txt",
+    "snippet_sha256": "8600e5b1bcb2c7de5c4dc12a9110775a827f0cc54807b6995f29cb12161a562e",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  },
+  {
+    "name": "bank-card-selection",
+    "path": "extension/content/content.js",
+    "start_character": 1074330,
+    "end_character": 1074637,
+    "line": 17,
+    "column": 301251,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "bank-card-selection.txt",
+    "snippet_sha256": "80a9d9e98f5587960dd4bbe169271fad307e4fe3473f489c44825759934a8dc4",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  },
+  {
+    "name": "amex-offer-fetch",
+    "path": "extension/content/content.js",
+    "start_character": 983431,
+    "end_character": 985331,
+    "line": 17,
+    "column": 210352,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "amex-offer-fetch.txt",
+    "snippet_sha256": "4510f3306cf0bdf78502efe5172b6325e0bbb82f25b7867561c99d79bc698067",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  },
+  {
+    "name": "chase-offer-fetch",
+    "path": "extension/content/content.js",
+    "start_character": 1003395,
+    "end_character": 1005195,
+    "line": 17,
+    "column": 230316,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "chase-offer-fetch.txt",
+    "snippet_sha256": "26dc36e80112f3d13d4dbef0495802884402124104d5b1b69e0215b4a6042fc8",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  },
+  {
+    "name": "chase-card-token-decoration",
+    "path": "extension/content/content.js",
+    "start_character": 990634,
+    "end_character": 991587,
+    "line": 17,
+    "column": 217555,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "chase-card-token-decoration.txt",
+    "snippet_sha256": "5d83ec4eaa090a0193dcca1f90ef44f5a20c51c7a37bd8c4bc84d806fc842c62",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  },
+  {
+    "name": "wallet-refresh",
+    "path": "extension/content/content.js",
+    "start_character": 1101474,
+    "end_character": 1102029,
+    "line": 17,
+    "column": 328395,
+    "source_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3",
+    "snippet_path": "wallet-refresh.txt",
+    "snippet_sha256": "df0d2b67206cc5795d16ac54cf4710d06a2246bf20ac043636b95b91865b9277",
+    "method": "manual source reading; exact text slice of hashed REA input; not executed"
+  }
+]

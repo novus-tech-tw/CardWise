@@ -1,0 +1,97 @@
+{
+  "metadata_evidence_id": "ev_c40fb2224b78f40f2fc0a0b6982e91481e41a344b2b13488d32f3bfdd29211b6",
+  "original_sha256": "94cb7c00e9433e4cfdbfcf35a2a95c3330db7ab8905d77b226f89b9951689c7d",
+  "derived_arm64_sha256": "77da6a6bf88efcbb4bbf7ae1139dde529d526dd2d3ade0820a8c595ff05131ba",
+  "classes": [
+    {
+      "decode": {
+        "reason": null,
+        "status": "decoded"
+      },
+      "evidence": [
+        {
+          "artifact_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/MacOS/CPSafariExtension",
+          "artifact_sha256": "94cb7c00e9433e4cfdbfcf35a2a95c3330db7ab8905d77b226f89b9951689c7d",
+          "description": "Objective-C class and class_ro_t records",
+          "kind": "binary_metadata",
+          "location": {
+            "address": "0x10026ee70",
+            "file_offset": 5729904
+          }
+        }
+      ],
+      "instance_size": 8,
+      "is_meta_class": false,
+      "is_root_class": false,
+      "ivar_count": 0,
+      "location": {
+        "address": "0x10026ee70",
+        "file_offset": 5729904
+      },
+      "metaclass_address": "0x1002735f0",
+      "methods": [
+        {
+          "address": 4294975480,
+          "is_optional": null,
+          "is_required": null,
+          "method_type": "instance",
+          "selector": "beginRequestWithExtensionContext:"
+        },
+        {
+          "address": 4294975552,
+          "is_optional": null,
+          "is_required": null,
+          "method_type": "instance",
+          "selector": "init"
+        }
+      ],
+      "name": "_TtC17CPSafariExtension25SafariWebExtensionHandler",
+      "properties": [],
+      "protocols": [
+        "NSExtensionRequestHandling"
+      ],
+      "super_class": "NSObject",
+      "superclass_address": null
+    },
+    {
+      "decode": {
+        "reason": null,
+        "status": "decoded"
+      },
+      "evidence": [
+        {
+          "artifact_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/MacOS/CPSafariExtension",
+          "artifact_sha256": "94cb7c00e9433e4cfdbfcf35a2a95c3330db7ab8905d77b226f89b9951689c7d",
+          "description": "Objective-C class and class_ro_t records",
+          "kind": "binary_metadata",
+          "location": {
+            "address": "0x1002735f0",
+            "file_offset": 5748208
+          }
+        }
+      ],
+      "instance_size": 40,
+      "is_meta_class": true,
+      "is_root_class": false,
+      "ivar_count": null,
+      "location": {
+        "address": "0x1002735f0",
+        "file_offset": 5748208
+      },
+      "metaclass_address": null,
+      "methods": [],
+      "name": "_TtC17CPSafariExtension25SafariWebExtensionHandler",
+      "properties": [],
+      "protocols": [
+        "NSExtensionRequestHandling"
+      ],
+      "super_class": "NSObject",
+      "superclass_address": null
+    }
+  ],
+  "decompile_seed": {
+    "selector": "beginRequestWithExtensionContext:",
+    "address": "0x100001ff8",
+    "basis": "Objective-C method metadata in original artifact; lipo derivation preserves virtual addresses"
+  }
+}

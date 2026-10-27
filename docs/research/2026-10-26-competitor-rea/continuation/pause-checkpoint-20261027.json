@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "status": "PAUSED_AT_EXPLICIT_USER_REQUEST",
+  "date": "2026-10-27",
+  "resume_only_on_explicit_user_request": true,
+  "new_research_or_device_work_queued": false,
+  "prior_conditional_handoffs_withdrawn": true,
+  "whole_investigation_complete": false,
+  "publication": {
+    "cardwise_pr": "https://github.com/novus-tech-tw/CardWise/pull/81",
+    "cardwise_branch": "docs/competitor-rea-20261026",
+    "previous_published_head": "388f72cdfb5c1375b93ffdd033358182ca8643e7",
+    "previous_head_PR_CI": "workflow198 success",
+    "closer_pr": "https://github.com/novus-tech-tw/pairspace/pull/50",
+    "closer_details_integrated_by_primary_only": true,
+    "merge_or_release_requested": false
+  },
+  "retained_observations": {
+    "CardPointers": [
+      "category/candidate/valuation presentation",
+      "Offers destination",
+      "Cards list"
+    ],
+    "MaxRewards": [
+      "authenticated Home",
+      "Best Card/Category",
+      "Wallet/card detail",
+      "Dining candidate Rate/Value/Percent",
+      "Offers/Benefits same introductory route, closed normally"
+    ],
+    "Closer_separate_PR50": [
+      "14 feature answers/16 pinned sources",
+      "Home to Explore",
+      "status-menu entry",
+      "one additive partial tile-entry finding, deduplicated from existing generic reveal evidence"
+    ]
+  },
+  "remaining_readonly_cases": {
+    "CardPointers": [
+      "synthetic search",
+      "further card-or-offer detail"
+    ],
+    "MaxRewards": [
+      "synthetic search",
+      "later Offers/Benefits introduction/list/detail steps"
+    ],
+    "Closer": [
+      "Started/New/Done filters and restoreAll",
+      "normal profile-field Close without save",
+      "untraversed widget previews"
+    ],
+    "separately_eligible": [
+      "paired role/ownership cases",
+      "media/export/Store/paid/dated and controlled-failure cases"
+    ]
+  },
+  "human_state": {
+    "current_awake_unlocked_no_entry_confirmed": false,
+    "status": "UNCONFIRMED_BEFORE_PAUSE",
+    "duplicate_prompt_while_paused": false,
+    "no_new_app_login_identified": true
+  },
+  "device": {
+    "lease_at_pause": "none",
+    "last_own_actual_release_utc": "2026-10-27T14:13:19.563176+00:00",
+    "new_device_operation_for_checkpoint": false,
+    "historical_orientation_restoration_verified": true,
+    "current_scene_newly_verified": false,
+    "Orbit": "independently user-paused"
+  },
+  "controller": {
+    "registration_profile_install_mounted_DDI_previously_verified": true,
+    "later_startup_failures_separate_from_provisioning": true,
+    "new_guarded_derivative_runtime_verified": false,
+    "maximum_future_slot_seconds_including_cleanup_and_release": 300,
+    "historical_longer_parents_are_drop_in": false,
+    "target_observer_before_runner_teardown": true,
+    "explicit_null_preexisting_session_required": true,
+    "preserving_session_cleanup_in_aggregate_required": true,
+    "cancel_or_host_exit_alone_proves_remote_cleanup": false
+  },
+  "finite_helpers_returned_and_primary_verified": [
+    {
+      "id": "helper25_R033_entry",
+      "additional_body_budget": 6,
+      "result_sha256": "0ab5241fb1ced4823ec066f0dbb019d89f41f93666e83ac8a6460719c4626e90",
+      "summary_sha256": "be58ba7aedecba3dbbcdc45a8c3b9c6f61b55561411fab9007c8b3a6728d11f5",
+      "primary_dedup_and_extension_stay_in_PR50": true,
+      "auto_extension": false
+    },
+    {
+      "id": "helper37_WDA_source_contract",
+      "method_budget": 6,
+      "source_file_budget": 5,
+      "input_pins": 7,
+      "method_body_ranges": 12,
+      "result_sha256": "5d1cdfa1964feca4eb51e4ba9f4c46a18ee59ff4c6cfd4c68c590e50e165c12f",
+      "summary_sha256": "f85a1d3c3303fe5ed7027c8ae342b671adf523e25e39eb8ecbdef6e27668df20",
+      "settlement_or_cross_request_identity_guaranteed": false,
+      "auto_extension": false
+    }
+  ],
+  "private_evidence": "Retained owner-side archive; no raw UI/AX, source packages, account/credential values or device/session/process/lease identifiers published."
+}

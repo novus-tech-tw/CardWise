@@ -1,0 +1,74 @@
+{
+  "content/content.js": {
+    "spending_cap": 0,
+    "spend_cap": 0,
+    "remaining_cap": 0,
+    "remainingCap": 0,
+    "activation": 24,
+    "activated": 37,
+    "total_value": 4,
+    "points_value": 0,
+    "pointsValue": 0,
+    "category_bonus": 8
+  },
+  "background/background.js": {
+    "spending_cap": 0,
+    "spend_cap": 0,
+    "remaining_cap": 0,
+    "remainingCap": 0,
+    "activation": 0,
+    "activated": 0,
+    "total_value": 0,
+    "points_value": 0,
+    "pointsValue": 0,
+    "category_bonus": 0
+  },
+  "popup-ui.js": {
+    "spending_cap": 0,
+    "spend_cap": 0,
+    "remaining_cap": 0,
+    "remainingCap": 0,
+    "activation": 0,
+    "activated": 1,
+    "total_value": 4,
+    "points_value": 0,
+    "pointsValue": 0,
+    "category_bonus": 7
+  },
+  "popup/popup.js": {
+    "spending_cap": 0,
+    "spend_cap": 0,
+    "remaining_cap": 0,
+    "remainingCap": 0,
+    "activation": 0,
+    "activated": 0,
+    "total_value": 0,
+    "points_value": 0,
+    "pointsValue": 0,
+    "category_bonus": 0
+  },
+  "products.js": {
+    "spending_cap": 0,
+    "spend_cap": 0,
+    "remaining_cap": 0,
+    "remainingCap": 0,
+    "activation": 0,
+    "activated": 0,
+    "total_value": 0,
+    "points_value": 0,
+    "pointsValue": 0,
+    "category_bonus": 0
+  },
+  "vendors~popup-ui.js": {
+    "spending_cap": 0,
+    "spend_cap": 0,
+    "remaining_cap": 0,
+    "remainingCap": 0,
+    "activation": 0,
+    "activated": 9,
+    "total_value": 0,
+    "points_value": 0,
+    "pointsValue": 0,
+    "category_bonus": 0
+  }
+}

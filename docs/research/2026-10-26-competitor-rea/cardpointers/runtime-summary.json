@@ -1,0 +1,198 @@
+{
+  "evidence_id": "ev_5200838f26189ed666376a78e752be39ee768ef094c700f8086a562efd2c0409",
+  "browser": {
+    "mode": "launch",
+    "process_ownership": "provider-owned",
+    "cleanup": "terminated-owned-process",
+    "product": "Chromium",
+    "version": "156.0.8078.48"
+  },
+  "scenario": {
+    "start_origin": "https://cardpointers.com",
+    "action_count": 2,
+    "secret_references": [],
+    "network_content": {
+      "request_body": false,
+      "response_body": false,
+      "header_values": false
+    },
+    "event_families": [
+      "network",
+      "page-errors"
+    ]
+  },
+  "steps": [
+    {
+      "step_id": "scenario_start",
+      "status": "completed",
+      "after_url": "https://cardpointers.com/app/"
+    },
+    {
+      "step_id": "wait-public-app",
+      "status": "completed",
+      "after_url": "https://cardpointers.com/app/"
+    },
+    {
+      "step_id": "settle",
+      "status": "completed",
+      "after_url": "https://cardpointers.com/app/"
+    }
+  ],
+  "final_observation": {
+    "visible_actions": [
+      "Log In",
+      "Sign Up"
+    ],
+    "state": "Unauthenticated legacy web app requires login or signup.",
+    "accessibility_sha256": "61dbb813217c8ba85e3b95d342152da06026dc2fe7742c13c04ab544992a7279"
+  },
+  "network_request_paths": [
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/",
+      "resource_type": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "https://fonts.googleapis.com/css",
+      "resource_type": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://js.hs-scripts.com",
+      "path": "https://js.hs-scripts.com/5481972.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://unpkg.com",
+      "path": "https://unpkg.com/vue-paypal-checkout@2.0.0/dist/vue-paypal-checkout.min.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/f97595f.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/f66e286.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/0f59ec5.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/24738d4.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/8864afa.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/4d66701.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/manifest.797e21b6.json",
+      "resource_type": "manifest"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2",
+      "resource_type": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://js.hs-banner.com",
+      "path": "https://js.hs-banner.com/v2/5481972/banner.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://js.hs-analytics.net",
+      "path": "https://js.hs-analytics.net/analytics/1793081700000/5481972.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://www.paypal.com",
+      "path": "https://www.paypal.com/tagmanager/pptm.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://www.google-analytics.com",
+      "path": "https://www.google-analytics.com/analytics.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://connect.facebook.net",
+      "path": "https://connect.facebook.net/en_US/fbevents.js",
+      "resource_type": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://connect.facebook.net",
+      "path": "https://connect.facebook.net/signals/config/557108028148932",
+      "resource_type": "script"
+    },
+    {
+      "method": "POST",
+      "origin": "https://www.google-analytics.com",
+      "path": "https://www.google-analytics.com/j/collect",
+      "resource_type": "xhr"
+    },
+    {
+      "method": "GET",
+      "origin": "https://track.hubspot.com",
+      "path": "https://track.hubspot.com/__ptq.gif",
+      "resource_type": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/icons/icon_64.c38fzoMoCc0.png",
+      "resource_type": "other"
+    },
+    {
+      "method": "GET",
+      "origin": "https://cardpointers.com",
+      "path": "https://cardpointers.com/app/_nuxt/icons/icon_144.c38fzoMoCc0.png",
+      "resource_type": "other"
+    }
+  ],
+  "completeness": {
+    "status": "complete",
+    "equality_eligible": true,
+    "missing_sections": [],
+    "truncated_sections": []
+  },
+  "limitations": [
+    "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+    "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+    "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+    "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+    "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+    "Storage values are hashed only after declared-secret redaction."
+  ],
+  "full_evidence_retained_archive_path": "cardpointers/rea-evidence.json"
+}

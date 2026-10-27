@@ -1,0 +1,62 @@
+{
+  "identifier": {
+    "functions_examined": 68786,
+    "unique_bodies_examined": 49418,
+    "instructions_examined": 2098689,
+    "target_identifiers": 258,
+    "matching_functions": 496,
+    "decode_errors": [],
+    "seconds": 5.95,
+    "scope": "Exhaustive direct string-id operand search across every parsed function body. Serialized object-buffer keys and dynamic identifiers require separate inspection."
+  },
+  "focused": {
+    "functions_examined": 68786,
+    "unique_bodies_examined": 49418,
+    "instructions_examined": 2098689,
+    "target_identifiers": 20,
+    "matching_functions": 85,
+    "decode_errors": [],
+    "seconds": 3.93,
+    "scope": "Exhaustive direct string-id operand search across every parsed function body. Serialized object-buffer keys and dynamic identifiers require separate inspection."
+  },
+  "choice": {
+    "functions_examined": 68786,
+    "unique_bodies_examined": 49418,
+    "instructions_examined": 2098689,
+    "target_identifiers": 10,
+    "matching_functions": 116,
+    "decode_errors": [],
+    "seconds": 34.71,
+    "scope": "Exhaustive direct string-id operand search across every parsed function body. Serialized object-buffer keys and dynamic identifiers require separate inspection."
+  },
+  "object-key": {
+    "functions_examined": 68786,
+    "unique_bodies_examined": 49418,
+    "instructions_examined": 2098689,
+    "target_identifiers": 20,
+    "matching_functions": 6,
+    "decode_errors": [],
+    "seconds": 2.61,
+    "scope": "Exhaustive NewObjectWithBuffer key search across every parsed function body using pinned Hermes96 serialized-key parser. Dynamic keys and runtime objects remain unknown; values were not read."
+  },
+  "named_scan": {
+    "tool": "P1sec/hermes-dec",
+    "commit": "2e796663e1fedb93dca51060797ebf3327b3fedb",
+    "carrier_sha256": "efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9",
+    "carrier_bytes": 12633156,
+    "functions_examined": 68786,
+    "strings_examined": 72616,
+    "named_matches": 250,
+    "identifier_matches": 565,
+    "patterns": {
+      "cap": "cap|limit|remaining",
+      "signup": "sign.?up|welcome.?bonus|bonus.?track|bonus.*spend|spend.*bonus",
+      "activation": "rotat|select.*categor|categor.*select|activat|eligib",
+      "merchant_category": "merchant.*categor|categor.*merchant|categor.*map|categor.*match|merchant.*match"
+    },
+    "method": "Offline static Hermes96 decoder; no target execution; not REA-native analysis"
+  },
+  "decoded_functions": 100,
+  "pseudocode_fallback_functions": 57,
+  "manual_review_scope": "Reported business paths and helper bindings; all matching candidates were inventoried but not all were semantically audited. Searches cover explicit selected direct operands and serialized object keys, not arbitrary dynamic keys or server code."
+}

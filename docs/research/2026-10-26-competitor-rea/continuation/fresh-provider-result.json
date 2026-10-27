@@ -1,0 +1,16 @@
+{
+  "kind": "fresh-frida-selected-device-metadata-probe",
+  "started_at_utc": "2026-10-27T10:27:26.455Z",
+  "provider": {
+    "rea": "6.5.0",
+    "frida": "17.23.2"
+  },
+  "route": "fresh-new-DeviceManager/exact-device-id/no-remote-address",
+  "outcome": "unavailable",
+  "error_category": "selected-endpoint-connection-refused",
+  "elapsed_ms": 484,
+  "cleanup": "manager-closed",
+  "scope": "Metadata discovery only, no launch/attach/UI/capture/storage. Exact shared-device lease checked before device APIs and released afterward.",
+  "interpretation": "A fresh OS process and new DeviceManager did not repair discovery. This rejects a stale MCP-JavaScript-singleton-only explanation; underlying service/transport readiness and instrumentation remain unresolved.",
+  "next_boundary": "Investigate selected developer services under a new coordinated window; do not repeat unchanged discovery or infer permanent OS incompatibility."
+}

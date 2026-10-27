@@ -1,0 +1,3759 @@
+{
+  "evidence_convention": "MAI-01..MAI-06 are local static labels, not REA MCP Evidence IDs. Disassembly is primary; pseudocode is not original source or runtime execution.",
+  "carrier": {
+    "path": "maxrewards/native/main.jsbundle",
+    "bytes": 12633156,
+    "sha256": "efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9",
+    "hermes_version": 96
+  },
+  "decoder_commit": "2e796663e1fedb93dca51060797ebf3327b3fedb",
+  "new_decoded_ids": [
+    25947,
+    25948,
+    27753,
+    28777,
+    28782,
+    28783,
+    28784,
+    28786,
+    28787,
+    28788,
+    28789,
+    28790,
+    28791,
+    30429,
+    30444,
+    30445,
+    30446,
+    30447,
+    30448,
+    30449,
+    30450,
+    30452,
+    30453,
+    30454,
+    30455,
+    30456,
+    30457,
+    30458,
+    30459,
+    30460,
+    30461,
+    30463,
+    30464,
+    30475,
+    30481,
+    30486,
+    30487,
+    30488,
+    30491,
+    30495,
+    30500,
+    30502,
+    30505,
+    30513,
+    30515,
+    30516,
+    30517,
+    30518,
+    30519,
+    30521,
+    30522,
+    30523,
+    30524,
+    30541,
+    30544,
+    30545,
+    30546,
+    30552,
+    30553,
+    30554,
+    30556,
+    30557,
+    30558,
+    30560,
+    30561,
+    30562,
+    30570,
+    30571,
+    30637,
+    30640,
+    30641,
+    30642,
+    30645,
+    68573,
+    68579,
+    68585,
+    68586,
+    68587,
+    68588,
+    68589,
+    68590,
+    68591,
+    68592,
+    68593,
+    68594,
+    68595,
+    68596,
+    68597,
+    68598,
+    68600,
+    68601,
+    68609,
+    68610,
+    68615,
+    68616,
+    68617,
+    68618,
+    68619,
+    68620,
+    68621,
+    68622,
+    68623,
+    68624,
+    68625,
+    68626,
+    68627,
+    68628,
+    68629,
+    68630,
+    68631,
+    68632,
+    68633,
+    68634,
+    68635,
+    68636,
+    68637,
+    68639,
+    68703,
+    68704,
+    68705,
+    68706,
+    68712,
+    68713,
+    68714
+  ],
+  "new_reviewed_region_ids": [
+    25947,
+    25948,
+    27753,
+    28777,
+    28782,
+    28784,
+    28786,
+    28787,
+    28788,
+    28789,
+    28790,
+    28791,
+    30429,
+    30444,
+    30445,
+    30446,
+    30447,
+    30448,
+    30449,
+    30450,
+    30452,
+    30453,
+    30454,
+    30455,
+    30456,
+    30457,
+    30458,
+    30459,
+    30463,
+    30464,
+    30475,
+    30481,
+    30487,
+    30488,
+    30502,
+    30505,
+    30513,
+    30515,
+    30516,
+    30517,
+    30518,
+    30519,
+    30521,
+    30522,
+    30523,
+    30524,
+    30541,
+    30544,
+    30545,
+    30546,
+    30552,
+    30553,
+    30554,
+    30556,
+    30557,
+    30558,
+    30560,
+    30561,
+    30562,
+    30570,
+    30571,
+    30637,
+    30640,
+    30641,
+    30642,
+    30645,
+    68573,
+    68579,
+    68585,
+    68586,
+    68587,
+    68588,
+    68589,
+    68590,
+    68591,
+    68592,
+    68593,
+    68594,
+    68595,
+    68596,
+    68597,
+    68598,
+    68600,
+    68601,
+    68609,
+    68610,
+    68615,
+    68616,
+    68617,
+    68618,
+    68619,
+    68620,
+    68621,
+    68622,
+    68623,
+    68624,
+    68625,
+    68626,
+    68627,
+    68628,
+    68629,
+    68630,
+    68631,
+    68632,
+    68633,
+    68634,
+    68635,
+    68636,
+    68637,
+    68639,
+    68703,
+    68704,
+    68705,
+    68706,
+    68712,
+    68713,
+    68714
+  ],
+  "decoded_but_unreviewed_ids": [
+    28783,
+    30460,
+    30461,
+    30486,
+    30491,
+    30495,
+    30500
+  ],
+  "functions": [
+    {
+      "function_id": 28788,
+      "name": "buildBestCardNearbyLiveActivityPayload",
+      "offset": 6808838,
+      "size": 119,
+      "bytecode_sha256": "2f892b37e22ccee45fe18a44c3477587f53acb42e5a41cfce1b19b4987d06261",
+      "disassembly_file": "28788.disassembly.txt",
+      "disassembly_sha256": "99e1a3ca1c9c2f29cdf3002d7bc39c203085e4c1dbbc7ecd1ed643df6ce04f9d",
+      "pseudocode_file": "28788.pseudo.js",
+      "pseudocode_sha256": "2b44ccf6781d770f712ea91261261ff5506c6ee2fcff59b83a896b36b500835b",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 119,
+          "absolute_start": 6808838,
+          "absolute_end_exclusive": 6808957,
+          "source_sha256": "2f892b37e22ccee45fe18a44c3477587f53acb42e5a41cfce1b19b4987d06261",
+          "instruction_anchors_count": 32
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28790,
+      "name": "buildBestCardNearbyLiveActivityPayloadFromPlaces",
+      "offset": 6809262,
+      "size": 74,
+      "bytecode_sha256": "bb1d119a18f3408bdf9a85f39f67d8a679ad4dac656cc3b05da5a55c565594a8",
+      "disassembly_file": "28790.disassembly.txt",
+      "disassembly_sha256": "76135217ce3885b50fbb15aff9cad11db2865afdd973ce00129bdc5b71272974",
+      "pseudocode_file": "28790.pseudo.js",
+      "pseudocode_sha256": "d1eed9aca71c68f92263baf66d14d1e646da0a331282f5f96da83781a027786b",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 74,
+          "absolute_start": 6809262,
+          "absolute_end_exclusive": 6809336,
+          "source_sha256": "bb1d119a18f3408bdf9a85f39f67d8a679ad4dac656cc3b05da5a55c565594a8",
+          "instruction_anchors_count": 21
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30444,
+      "name": "useUpdateBestCardByCategoryWidget",
+      "offset": 6959040,
+      "size": 162,
+      "bytecode_sha256": "976795cd3077a316c410f778db5a03c25fe2089a1c73a93de1e357996b606b6c",
+      "disassembly_file": "30444.disassembly.txt",
+      "disassembly_sha256": "edc70358a082940d840d3b870daeeca26bb15feec16e17c5717cfb06cb8cb484",
+      "pseudocode_file": "30444.pseudo.js",
+      "pseudocode_sha256": "4f9b8cc65bc05246ee6318fe09b9a2d212940dedf958e571b509684f63880edf",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 162,
+          "absolute_start": 6959040,
+          "absolute_end_exclusive": 6959202,
+          "source_sha256": "976795cd3077a316c410f778db5a03c25fe2089a1c73a93de1e357996b606b6c",
+          "instruction_anchors_count": 37
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68616,
+      "name": "currentBestCardNearbyPayload",
+      "offset": 12574008,
+      "size": 116,
+      "bytecode_sha256": "6304eaaa26310f26374af13d8b47b457bd59e38beed37401b65abbd459f89df3",
+      "disassembly_file": "68616.disassembly.txt",
+      "disassembly_sha256": "0112400aebb9149af7bd1b39b561ef35baa48d0531bb9e753397be8a475b769d",
+      "pseudocode_file": "68616.pseudo.js",
+      "pseudocode_sha256": "e7be5b6a96ac2dcf3da51f90611dd0e0ac9f940c3e99777da2706f5ec64f7c77",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 116,
+          "absolute_start": 12574008,
+          "absolute_end_exclusive": 12574124,
+          "source_sha256": "6304eaaa26310f26374af13d8b47b457bd59e38beed37401b65abbd459f89df3",
+          "instruction_anchors_count": 30
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68704,
+      "name": "BestCardCategoryWidgetDetails",
+      "offset": 12584648,
+      "size": 190,
+      "bytecode_sha256": "a9f852dd21be481955c800a77e6ff9f0b53feb6ac8d4eec273badd4f4a74c8fa",
+      "disassembly_file": "68704.disassembly.txt",
+      "disassembly_sha256": "48268b86b7c62a2f0a8597bf070124b96db584350aa0e41f624e36b56f21fa87",
+      "pseudocode_file": "68704.pseudo.js",
+      "pseudocode_sha256": "e45d21e0e971f6904535cb16eb99561b82081c067ae1c690c26fdf5cab99d62c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 190,
+          "absolute_start": 12584648,
+          "absolute_end_exclusive": 12584838,
+          "source_sha256": "a9f852dd21be481955c800a77e6ff9f0b53feb6ac8d4eec273badd4f4a74c8fa",
+          "instruction_anchors_count": 50
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68713,
+      "name": "BestCardMerchantWidgetDetails",
+      "offset": 12585584,
+      "size": 304,
+      "bytecode_sha256": "def6964742abfaad2964df83f7f1de745b31b94bf7fce645c4fa31ba50a74a83",
+      "disassembly_file": "68713.disassembly.txt",
+      "disassembly_sha256": "9a177bb7cbd668381e3f04bd83981db9df40e1c56af31486f4726c347e89ae32",
+      "pseudocode_file": "68713.pseudo.js",
+      "pseudocode_sha256": "ee962bae996906e9708337b980d6e2071e025661f0265cf7b98508a84c13cf75",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 304,
+          "absolute_start": 12585584,
+          "absolute_end_exclusive": 12585888,
+          "source_sha256": "def6964742abfaad2964df83f7f1de745b31b94bf7fce645c4fa31ba50a74a83",
+          "instruction_anchors_count": 78
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28777,
+      "name": "",
+      "offset": 6807958,
+      "size": 317,
+      "bytecode_sha256": "2ce9f0b606a070a82198473fbcf955817b6e131fa9a3d6e353236563b4f3d701",
+      "disassembly_file": "28777.disassembly.txt",
+      "disassembly_sha256": "9fd091a022fadcc28c963a53a45b9bbcd796ac1919194a345b108af08e3b2f3a",
+      "pseudocode_file": "28777.pseudo.js",
+      "pseudocode_sha256": "22202f5dc8dc092c0fa262e4b6b54a22b3db716785c9dd94213975c9166ec8ae",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 317,
+          "absolute_start": 6807958,
+          "absolute_end_exclusive": 6808275,
+          "source_sha256": "2ce9f0b606a070a82198473fbcf955817b6e131fa9a3d6e353236563b4f3d701",
+          "instruction_anchors_count": 72
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28782,
+      "name": "getBestCardLiveActivityBadgeLabel",
+      "offset": 6808275,
+      "size": 199,
+      "bytecode_sha256": "6cabbe317ca2b951a4f8fa547f0d344df9ed42398041285f39c001e37222afc0",
+      "disassembly_file": "28782.disassembly.txt",
+      "disassembly_sha256": "fc4ebed133899803b31050c1f3664d1ccd9efaeb99bed4538e6a21dff393deeb",
+      "pseudocode_file": "28782.pseudo.js",
+      "pseudocode_sha256": "203232ba3faf39bf0378ac74886a2bbe317ecbb7907278871072b270137ecf5c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 199,
+          "absolute_start": 6808275,
+          "absolute_end_exclusive": 6808474,
+          "source_sha256": "6cabbe317ca2b951a4f8fa547f0d344df9ed42398041285f39c001e37222afc0",
+          "instruction_anchors_count": 51
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28783,
+      "name": "",
+      "offset": 6808474,
+      "size": 53,
+      "bytecode_sha256": "01ed4e9dc0bd290f9e6e1df4c401a1417a521e868845f9fc1de43b0cb4f9a7a9",
+      "disassembly_file": "28783.disassembly.txt",
+      "disassembly_sha256": "064de0cfa5804408f5d1286f8f84de88655fc4672825a535d99d9cbc055fce0f",
+      "pseudocode_file": "28783.pseudo.js",
+      "pseudocode_sha256": "05f4e09a06b5cf9b33a627409d8c2782e3028bc34c0a051247dd03dc0ab6a9ec",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 28784,
+      "name": "getBestCardLiveActivityRowKind",
+      "offset": 6808527,
+      "size": 90,
+      "bytecode_sha256": "cd20aebf28e4cb71edfae11f1b8ee39581255a31db24273ec0daaa76b58127b6",
+      "disassembly_file": "28784.disassembly.txt",
+      "disassembly_sha256": "86ca5ff9d5883dd4aa65b54a2978bbbb43f40ef91c884c6270f127e080bec34e",
+      "pseudocode_file": "28784.pseudo.js",
+      "pseudocode_sha256": "69608cd339d1e181fd53d9bbdaa82d2d7caf2096f2bcbc59104526cb045df428",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 90,
+          "absolute_start": 6808527,
+          "absolute_end_exclusive": 6808617,
+          "source_sha256": "cd20aebf28e4cb71edfae11f1b8ee39581255a31db24273ec0daaa76b58127b6",
+          "instruction_anchors_count": 25
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28786,
+      "name": "getBestCardLiveActivityCardName",
+      "offset": 6808702,
+      "size": 50,
+      "bytecode_sha256": "feeccaf2d71ab818cc152a99073f9143a8becd6d0fd332abf389d8c6ff6b695c",
+      "disassembly_file": "28786.disassembly.txt",
+      "disassembly_sha256": "00a3c593541168b9b5c401c3bb9b110a15f59a02efb3d63ce44020af11118f14",
+      "pseudocode_file": "28786.pseudo.js",
+      "pseudocode_sha256": "2c3590425b116db44033e229b34d928e99fbdec9972f6af0079f4eaf08798723",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 50,
+          "absolute_start": 6808702,
+          "absolute_end_exclusive": 6808752,
+          "source_sha256": "feeccaf2d71ab818cc152a99073f9143a8becd6d0fd332abf389d8c6ff6b695c",
+          "instruction_anchors_count": 15
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28787,
+      "name": "getFallbackPercentage",
+      "offset": 6808752,
+      "size": 86,
+      "bytecode_sha256": "4b1d26a5f816535ee3352b3a5dab5946812d65cca884715eef28a133a6946479",
+      "disassembly_file": "28787.disassembly.txt",
+      "disassembly_sha256": "d4eb32f191574f7f5b5903b99848721170b4d5cd39528f73c05e4ee227a34b8c",
+      "pseudocode_file": "28787.pseudo.js",
+      "pseudocode_sha256": "0b405a8c415d2e14a2bcdabd51116e3938559575a5468b012820bbf28ad75506",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 86,
+          "absolute_start": 6808752,
+          "absolute_end_exclusive": 6808838,
+          "source_sha256": "4b1d26a5f816535ee3352b3a5dab5946812d65cca884715eef28a133a6946479",
+          "instruction_anchors_count": 22
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28789,
+      "name": "",
+      "offset": 6808957,
+      "size": 305,
+      "bytecode_sha256": "f5ee3102daa07ec7ef1b787939ec5bdf9286d94e0e82be2a7d9e69f174203020",
+      "disassembly_file": "28789.disassembly.txt",
+      "disassembly_sha256": "cbc45661b07ad7152b249008421e7f1752d5adc549e6fe5d4530ba75b6644677",
+      "pseudocode_file": "28789.pseudo.js",
+      "pseudocode_sha256": "f178fabbbf49cd8e2fd5e8f312f1dc557695c655c1d8f53e8c3f1d2e656e2f58",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 305,
+          "absolute_start": 6808957,
+          "absolute_end_exclusive": 6809262,
+          "source_sha256": "f5ee3102daa07ec7ef1b787939ec5bdf9286d94e0e82be2a7d9e69f174203020",
+          "instruction_anchors_count": 74
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 28791,
+      "name": "",
+      "offset": 6809336,
+      "size": 303,
+      "bytecode_sha256": "fe64152d165d2effe10b9838ce6feecf5e542b932c08ed49a7b7279a1f181160",
+      "disassembly_file": "28791.disassembly.txt",
+      "disassembly_sha256": "f7ccf8ce94fbe020d8b45ebd198a9eaf264522258ec0f7020cf23a29f987c128",
+      "pseudocode_file": "28791.pseudo.js",
+      "pseudocode_sha256": "8026fdc85caafc6f5d6a6382f4612a822e5db7de9c1410658311200f192c8f66",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 303,
+          "absolute_start": 6809336,
+          "absolute_end_exclusive": 6809639,
+          "source_sha256": "fe64152d165d2effe10b9838ce6feecf5e542b932c08ed49a7b7279a1f181160",
+          "instruction_anchors_count": 80
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30429,
+      "name": "",
+      "offset": 6957753,
+      "size": 933,
+      "bytecode_sha256": "a2f91e271d88303b7be85b0c56dc089e4c990dd0e6ee1ca13fd2d3635baff5b3",
+      "disassembly_file": "30429.disassembly.txt",
+      "disassembly_sha256": "07b1198a63c053de6f1c2b6e2fd0db9bec55f6e7aed8d2df57a6d18588f156fa",
+      "pseudocode_file": "30429.pseudo.js",
+      "pseudocode_sha256": "97ab98d555f1c81c33e58e3b69125f98735d35f6b29e62deb3bc4799025e61ca",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 330,
+          "relative_end_exclusive": 701,
+          "absolute_start": 6958083,
+          "absolute_end_exclusive": 6958454,
+          "source_sha256": "8ee8739f2bfaa22f4bb4e13fbdfc578a3e0e8f3493f3dc722543737a93813005",
+          "instruction_anchors_count": 91
+        },
+        {
+          "relative_start": 701,
+          "relative_end_exclusive": 933,
+          "absolute_start": 6958454,
+          "absolute_end_exclusive": 6958686,
+          "source_sha256": "c31a34b6dd1d7ce71d3c99732a8cae10201dc883c242340d2ac6de35369473a9",
+          "instruction_anchors_count": 40
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30445,
+      "name": "",
+      "offset": 6959202,
+      "size": 37,
+      "bytecode_sha256": "30b956bf6d158d9dc327eedd582dd465d51793d2d1b440722502f58d8ff0982c",
+      "disassembly_file": "30445.disassembly.txt",
+      "disassembly_sha256": "952ef4212e7ad67bc895a6213ac023318bbe809fdbaf7203d91195a5ffd2a77a",
+      "pseudocode_file": "30445.pseudo.js",
+      "pseudocode_sha256": "8efd05f087410884337ac19232645e03a9753c0dd91d486ae94cada841cb0353",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 37,
+          "absolute_start": 6959202,
+          "absolute_end_exclusive": 6959239,
+          "source_sha256": "30b956bf6d158d9dc327eedd582dd465d51793d2d1b440722502f58d8ff0982c",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30446,
+      "name": "",
+      "offset": 6959239,
+      "size": 9,
+      "bytecode_sha256": "29b7cbee2a74bae3c7534d1f6a00f403f8bbf49d6d8a20aa5faf612e769abd48",
+      "disassembly_file": "30446.disassembly.txt",
+      "disassembly_sha256": "3d71b405f683faa72480b3110841e48d9af0b280ff70ea1ac18156e8843693ed",
+      "pseudocode_file": "30446.pseudo.js",
+      "pseudocode_sha256": "8293c664db5b140e6f07a7805358790e4605e1023b492c4262339a292483d876",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6959239,
+          "absolute_end_exclusive": 6959248,
+          "source_sha256": "29b7cbee2a74bae3c7534d1f6a00f403f8bbf49d6d8a20aa5faf612e769abd48",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30447,
+      "name": "?anon_0_",
+      "offset": 6959248,
+      "size": 371,
+      "bytecode_sha256": "d46dcaddcfe78e7f077364b912d5e4d081b3dae59b601e5e30f73b57b156e7bb",
+      "disassembly_file": "30447.disassembly.txt",
+      "disassembly_sha256": "00c23b5712cc98e1cbc36eb615ca2b4b0d621a011527212ddd73ad648fe74e28",
+      "pseudocode_file": "30447.pseudo.js",
+      "pseudocode_sha256": "4f6d6fe751cba964a0782c257ec855ffd66bb7e6888187bfab5c139ceb7141ea",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 371,
+          "absolute_start": 6959248,
+          "absolute_end_exclusive": 6959619,
+          "source_sha256": "d46dcaddcfe78e7f077364b912d5e4d081b3dae59b601e5e30f73b57b156e7bb",
+          "instruction_anchors_count": 107
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30448,
+      "name": "",
+      "offset": 6959619,
+      "size": 113,
+      "bytecode_sha256": "c859038fe36e05ebab357da531312e4fc5933892d05c9e388adde8c4b3873b5a",
+      "disassembly_file": "30448.disassembly.txt",
+      "disassembly_sha256": "b5ba84757c25ed0f581167ae6e4793c3821915e96db1b5c171de8e576de24e8f",
+      "pseudocode_file": "30448.pseudo.js",
+      "pseudocode_sha256": "3a14aaeca9cbc017c6fba040f8f9ecd76ed4951831aed33cc1460877ad3c7165",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 113,
+          "absolute_start": 6959619,
+          "absolute_end_exclusive": 6959732,
+          "source_sha256": "c859038fe36e05ebab357da531312e4fc5933892d05c9e388adde8c4b3873b5a",
+          "instruction_anchors_count": 27
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30449,
+      "name": "",
+      "offset": 6959732,
+      "size": 101,
+      "bytecode_sha256": "f439e4df06797c69449a73d7564451126eb28499d84e0082ef8ad7a38401e9bc",
+      "disassembly_file": "30449.disassembly.txt",
+      "disassembly_sha256": "e95eb237ecdb51467c2679ffd84cfc3757a3eca500cf2e5d79154b38aa75af69",
+      "pseudocode_file": "30449.pseudo.js",
+      "pseudocode_sha256": "5c0a5117be6f0772274d5619f60fd4f6a97ed217b5cd222a6dd6a81d1634b8d8",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 101,
+          "absolute_start": 6959732,
+          "absolute_end_exclusive": 6959833,
+          "source_sha256": "f439e4df06797c69449a73d7564451126eb28499d84e0082ef8ad7a38401e9bc",
+          "instruction_anchors_count": 25
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30450,
+      "name": "",
+      "offset": 6959833,
+      "size": 146,
+      "bytecode_sha256": "a7f3e2454aa03d21c35c18f37fb81ec2860bd8ecf025f86b9095d0856ceb0ecf",
+      "disassembly_file": "30450.disassembly.txt",
+      "disassembly_sha256": "1295b154c06bbae9cffa8a3596f67502772ea3affb0607665eebef534fdde014",
+      "pseudocode_file": "30450.pseudo.js",
+      "pseudocode_sha256": "bcfae672b8fed62d5ae60a1f552dcd813dbbe41b9afe91eb99fe6340b4de9cab",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 146,
+          "absolute_start": 6959833,
+          "absolute_end_exclusive": 6959979,
+          "source_sha256": "a7f3e2454aa03d21c35c18f37fb81ec2860bd8ecf025f86b9095d0856ceb0ecf",
+          "instruction_anchors_count": 37
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30452,
+      "name": "",
+      "offset": 6959979,
+      "size": 46,
+      "bytecode_sha256": "2aa69416a3a6135a96a68c7f49a46727eb58cd2de10446ea21ee97fe92249619",
+      "disassembly_file": "30452.disassembly.txt",
+      "disassembly_sha256": "b49700cb82e96f6124766bb727e4cf82d42d752bf22302c0a52f7e536539e812",
+      "pseudocode_file": "30452.pseudo.js",
+      "pseudocode_sha256": "f3fc0dbec72180e97b7cbaaa45f863cb1449bee107288658be3c715f12028ae7",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 46,
+          "absolute_start": 6959979,
+          "absolute_end_exclusive": 6960025,
+          "source_sha256": "2aa69416a3a6135a96a68c7f49a46727eb58cd2de10446ea21ee97fe92249619",
+          "instruction_anchors_count": 13
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30453,
+      "name": "",
+      "offset": 6960025,
+      "size": 21,
+      "bytecode_sha256": "bbfa09ec634129c3311b41fec88768586de655035bf447dc397532ac7726cf47",
+      "disassembly_file": "30453.disassembly.txt",
+      "disassembly_sha256": "e5220b0ae3660649c13207628864256369e435bab393ebbc4cb5084841b08660",
+      "pseudocode_file": "30453.pseudo.js",
+      "pseudocode_sha256": "7971c9e0208384866daa410c2f0bd6d2b0c4401183be0514edc5910e6a75a987",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 21,
+          "absolute_start": 6960025,
+          "absolute_end_exclusive": 6960046,
+          "source_sha256": "bbfa09ec634129c3311b41fec88768586de655035bf447dc397532ac7726cf47",
+          "instruction_anchors_count": 6
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30454,
+      "name": "parseWidgetDeepLink",
+      "offset": 6960046,
+      "size": 514,
+      "bytecode_sha256": "7c1a72ebadd39cbae26b7a9a25d207052ca1cdd35cc1a3f6450643b079ffaec2",
+      "disassembly_file": "30454.disassembly.txt",
+      "disassembly_sha256": "7f4ab18f9f639e2107840840c3aa67a672b0324a1fb0e8eea242964fa966fb4e",
+      "pseudocode_file": "30454.pseudo.js",
+      "pseudocode_sha256": "9a5a4c339244c2eb05f4e35c87bc6324cd5da5a6ad8ebbb9ce59ff646c657396",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 514,
+          "absolute_start": 6960046,
+          "absolute_end_exclusive": 6960560,
+          "source_sha256": "7c1a72ebadd39cbae26b7a9a25d207052ca1cdd35cc1a3f6450643b079ffaec2",
+          "instruction_anchors_count": 132
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30455,
+      "name": "useWidgetDeepLinkActions",
+      "offset": 6960560,
+      "size": 227,
+      "bytecode_sha256": "c69cc9dd7fb3e57ed1ff9e0fb2b607fd760c155d35cd82f5814b3c7434e9e6cb",
+      "disassembly_file": "30455.disassembly.txt",
+      "disassembly_sha256": "5f34ebaaf3c195fab3f3b1d1d2739d7c2265f0e9ead38cad938f3d4cb244ad26",
+      "pseudocode_file": "30455.pseudo.js",
+      "pseudocode_sha256": "1f28a70076ae6d055612faada117ed7aaa6155c3381fa9698b8043c213fe7ed0",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 227,
+          "absolute_start": 6960560,
+          "absolute_end_exclusive": 6960787,
+          "source_sha256": "c69cc9dd7fb3e57ed1ff9e0fb2b607fd760c155d35cd82f5814b3c7434e9e6cb",
+          "instruction_anchors_count": 62
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30459,
+      "name": "useHandleWidgetDeepLink",
+      "offset": 6960883,
+      "size": 880,
+      "bytecode_sha256": "7dba7a8ff73e3f3c35f8a8f9d74a0104bda42e34bf034b92b60d62fba486c392",
+      "disassembly_file": "30459.disassembly.txt",
+      "disassembly_sha256": "1250fd56f830f5d059ee13fdddc873ea0d28f86dd948c189c146caffc115b60f",
+      "pseudocode_file": "30459.pseudo.js",
+      "pseudocode_sha256": "a60ade2942f248029d9c553fa4d30f2ece42b71098011ee242b1afb68f6d68b6",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 187,
+          "absolute_start": 6960883,
+          "absolute_end_exclusive": 6961070,
+          "source_sha256": "1d81e00e06c2c41cfe0bf7e2f30a214b93398f32e1b4173c984df5a03fee1377",
+          "instruction_anchors_count": 42
+        },
+        {
+          "relative_start": 590,
+          "relative_end_exclusive": 636,
+          "absolute_start": 6961473,
+          "absolute_end_exclusive": 6961519,
+          "source_sha256": "08a9d7962e78031ab844c70688ff71322a97bbee92f8458d8b9078a543b107a7",
+          "instruction_anchors_count": 10
+        },
+        {
+          "relative_start": 740,
+          "relative_end_exclusive": 878,
+          "absolute_start": 6961623,
+          "absolute_end_exclusive": 6961761,
+          "source_sha256": "cf18636c13d870bc00c5ba37a38749d13f3eb04fc70efa8d0d804f40cc9da676",
+          "instruction_anchors_count": 32
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68573,
+      "name": "",
+      "offset": 12570200,
+      "size": 389,
+      "bytecode_sha256": "4804b99bac240f153bd1ec47794d64850a89f5bc3ed9b85c96f5783b901f0e89",
+      "disassembly_file": "68573.disassembly.txt",
+      "disassembly_sha256": "8d281c3c2e3402e0b4178cbad2d818af1e81a4155ef66c3eeee79ede353a0f55",
+      "pseudocode_file": "68573.pseudo.js",
+      "pseudocode_sha256": "e1c1d1958642555000d95ff62cf039c7fdce3be944508c0c0ca77a481b40ab01",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 389,
+          "absolute_start": 12570200,
+          "absolute_end_exclusive": 12570589,
+          "source_sha256": "4804b99bac240f153bd1ec47794d64850a89f5bc3ed9b85c96f5783b901f0e89",
+          "instruction_anchors_count": 88
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68579,
+      "name": "getRowsSignature",
+      "offset": 12570754,
+      "size": 39,
+      "bytecode_sha256": "f30281c8019a809f113fa4109f2057aba1f8d2b41f6b4aa8a69580f49079e41d",
+      "disassembly_file": "68579.disassembly.txt",
+      "disassembly_sha256": "6073d00b22671d064cdf37ff185dcdbb7753870959b17865f3115ae1d58c4677",
+      "pseudocode_file": "68579.pseudo.js",
+      "pseudocode_sha256": "e9325ff5058bbb10e3ea0db6a0b3a4845f57315ab4e46679e39bcd71f7452792",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 39,
+          "absolute_start": 12570754,
+          "absolute_end_exclusive": 12570793,
+          "source_sha256": "f30281c8019a809f113fa4109f2057aba1f8d2b41f6b4aa8a69580f49079e41d",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68585,
+      "name": "",
+      "offset": 12571389,
+      "size": 41,
+      "bytecode_sha256": "975d7711431c8cd084cb633d0dce4f32dc2b9b687ed21e2e1c8b05bd3b761263",
+      "disassembly_file": "68585.disassembly.txt",
+      "disassembly_sha256": "9a76cb791c50cd20598f55b33ca0cf20705df7d6fc6eb468a0e521e21b1db49d",
+      "pseudocode_file": "68585.pseudo.js",
+      "pseudocode_sha256": "7293c7d89aa34a9c722b43f9f41540500f6667c83b7a3672ee36d0e3ffd81614",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12571389,
+          "absolute_end_exclusive": 12571430,
+          "source_sha256": "975d7711431c8cd084cb633d0dce4f32dc2b9b687ed21e2e1c8b05bd3b761263",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68586,
+      "name": "",
+      "offset": 12571430,
+      "size": 11,
+      "bytecode_sha256": "9fcf69b010c8abaf8d58825addd3080261628789d9ce1e9ac05fd4498897e3b0",
+      "disassembly_file": "68586.disassembly.txt",
+      "disassembly_sha256": "32d32aa79ca98cf39b3e8acf76242171e8e60235f48fed663ccae6ae05c5f4d6",
+      "pseudocode_file": "68586.pseudo.js",
+      "pseudocode_sha256": "bee786ad31b2d4ae3b5b26056b70bd37e0a7f82b810d9b85c4a014d51e24dcf5",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12571430,
+          "absolute_end_exclusive": 12571441,
+          "source_sha256": "9fcf69b010c8abaf8d58825addd3080261628789d9ce1e9ac05fd4498897e3b0",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68587,
+      "name": "?anon_0_",
+      "offset": 12571441,
+      "size": 110,
+      "bytecode_sha256": "9f4370f4ad6843cfe00958ee75a4819c289e74d5481fa82dfb410ba12a249e2a",
+      "disassembly_file": "68587.disassembly.txt",
+      "disassembly_sha256": "6facaed9ce0975dfd1ff63c1950fecd15a35d43cb07ebb33d7d02e7705c48190",
+      "pseudocode_file": "68587.pseudo.js",
+      "pseudocode_sha256": "338121480966856f76af03c73cc3e3f1610d3873fb3a1e833e97aa3c17a8f681",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 110,
+          "absolute_start": 12571441,
+          "absolute_end_exclusive": 12571551,
+          "source_sha256": "9f4370f4ad6843cfe00958ee75a4819c289e74d5481fa82dfb410ba12a249e2a",
+          "instruction_anchors_count": 35
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68588,
+      "name": "getCachedPayload",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68588.disassembly.txt",
+      "disassembly_sha256": "8021148347872ca45db21a21362960d5f9439b8c70c535f8fb9dd6c670a7590f",
+      "pseudocode_file": "68588.pseudo.js",
+      "pseudocode_sha256": "cfd88223962e007c7a8f33ce679628ac602010cd446e64e9b503923d2f94eafe",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68589,
+      "name": "",
+      "offset": 12571551,
+      "size": 41,
+      "bytecode_sha256": "17e8ec51f8a88a35753be5e005308f95b49cb7c50fa453307ce8942977bcd038",
+      "disassembly_file": "68589.disassembly.txt",
+      "disassembly_sha256": "60158fec2920330554891ff9bc2ba7bd9fe09bfd7cfac5c891d8855c750a1100",
+      "pseudocode_file": "68589.pseudo.js",
+      "pseudocode_sha256": "925c2417cf2b69de1144ec88ced8aafa0fb9cd1509aa991dde9c47883f409094",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12571551,
+          "absolute_end_exclusive": 12571592,
+          "source_sha256": "17e8ec51f8a88a35753be5e005308f95b49cb7c50fa453307ce8942977bcd038",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68590,
+      "name": "",
+      "offset": 12571592,
+      "size": 11,
+      "bytecode_sha256": "1e2cb9c0c826eca88746af152fac15e05e2ff6a50364258308c2c3e6c3da91e5",
+      "disassembly_file": "68590.disassembly.txt",
+      "disassembly_sha256": "43f600eba693d4c0a2fb79c0618a6d5e8d3b0532a1e47e90cd7f5f98abac8bf8",
+      "pseudocode_file": "68590.pseudo.js",
+      "pseudocode_sha256": "0f0ccc7f941afd4092ce9e6b9689bc6561e1dfa9d8cf42972472a49df262e954",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12571592,
+          "absolute_end_exclusive": 12571603,
+          "source_sha256": "1e2cb9c0c826eca88746af152fac15e05e2ff6a50364258308c2c3e6c3da91e5",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68591,
+      "name": "?anon_0_",
+      "offset": 12571603,
+      "size": 90,
+      "bytecode_sha256": "358db8d1ae892d74d7020fff1e620a959a4404baf296b4f4ae80a84d3886f6b1",
+      "disassembly_file": "68591.disassembly.txt",
+      "disassembly_sha256": "e2519764fb5e7cb994c73e58cc59f6ec6c4b2cb61d9b114f9b9eb9a5b9c37c84",
+      "pseudocode_file": "68591.pseudo.js",
+      "pseudocode_sha256": "cb1ca1e441a0550df589001872fd9b4515bf32094d31c56f7deb3a3411114064",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 90,
+          "absolute_start": 12571603,
+          "absolute_end_exclusive": 12571693,
+          "source_sha256": "358db8d1ae892d74d7020fff1e620a959a4404baf296b4f4ae80a84d3886f6b1",
+          "instruction_anchors_count": 27
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68592,
+      "name": "persistPayload",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68592.disassembly.txt",
+      "disassembly_sha256": "4f9442233181c4dde988550d69e3cfda54b6232294e9d82a4bdf9d526ea1e43a",
+      "pseudocode_file": "68592.pseudo.js",
+      "pseudocode_sha256": "8811257f289335488398876ee661f4dc2c523b39a1685f73775f9e931fe4f938",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68593,
+      "name": "",
+      "offset": 12571693,
+      "size": 41,
+      "bytecode_sha256": "63e9e66ba7336525861c91dbce71ca44ec683e18fca54e0f2f2a16f5aa756a75",
+      "disassembly_file": "68593.disassembly.txt",
+      "disassembly_sha256": "d4f4789882d018dd711700c420432065f4b6d2f62da3b6a3becd2d336103a191",
+      "pseudocode_file": "68593.pseudo.js",
+      "pseudocode_sha256": "3f53d6c39d99f58c15b9007e17934d79021597ab8cbaf3f866b3ba6ff83e8729",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12571693,
+          "absolute_end_exclusive": 12571734,
+          "source_sha256": "63e9e66ba7336525861c91dbce71ca44ec683e18fca54e0f2f2a16f5aa756a75",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68594,
+      "name": "",
+      "offset": 12571734,
+      "size": 11,
+      "bytecode_sha256": "ac5e767114d0c8b8354d3e97696dd81530a225f2ae40bacf5a94de576969db35",
+      "disassembly_file": "68594.disassembly.txt",
+      "disassembly_sha256": "3aaa484e728a6e6451f5047a735fe91345e1ad2ca928f4f9aa9e4b8aef70426a",
+      "pseudocode_file": "68594.pseudo.js",
+      "pseudocode_sha256": "c6061d740ff94ad4b47eb1517dd73ae64e3204bf54223f7f63c72a48d4001bff",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12571734,
+          "absolute_end_exclusive": 12571745,
+          "source_sha256": "ac5e767114d0c8b8354d3e97696dd81530a225f2ae40bacf5a94de576969db35",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68595,
+      "name": "?anon_0_",
+      "offset": 12571745,
+      "size": 173,
+      "bytecode_sha256": "b4277674bbce2b7b3b71c74cfbdd95fe37df447ff14f2f17eafbb2fa34e8bcac",
+      "disassembly_file": "68595.disassembly.txt",
+      "disassembly_sha256": "b6146b0856a367e38540489c148f71312d6fe085cf8fd9da332e2d82e370b32f",
+      "pseudocode_file": "68595.pseudo.js",
+      "pseudocode_sha256": "38c3c81c1f6bb8aba8cee1415f741678b9f0de739afe0fbab85ec5b9c3c6252e",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 173,
+          "absolute_start": 12571745,
+          "absolute_end_exclusive": 12571918,
+          "source_sha256": "b4277674bbce2b7b3b71c74cfbdd95fe37df447ff14f2f17eafbb2fa34e8bcac",
+          "instruction_anchors_count": 50
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68596,
+      "name": "getBestCardNearbyPayloadForCoordinates",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68596.disassembly.txt",
+      "disassembly_sha256": "016cbf0b389c6ef5febbfddf7621aadaeaca8f804273d2c4802c47606bde9454",
+      "pseudocode_file": "68596.pseudo.js",
+      "pseudocode_sha256": "92e772f189208a769530f846595e80a55efbfe5d1ad7606cf50a61a52cd8d33a",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68597,
+      "name": "",
+      "offset": 12571918,
+      "size": 41,
+      "bytecode_sha256": "eef4533a5583b5e84b5b9c341e508a4cf7b2b8da25ca0d6471b0c3ffdbddc974",
+      "disassembly_file": "68597.disassembly.txt",
+      "disassembly_sha256": "9667aa7be58fa86daad157d564a077b1b8ff79e4b9778f39c94c0deb6233d6c3",
+      "pseudocode_file": "68597.pseudo.js",
+      "pseudocode_sha256": "8101d7f73524437582c84fd0f87f69f9fdf9c1399ef63c49f0bdff3dbb01d1ed",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12571918,
+          "absolute_end_exclusive": 12571959,
+          "source_sha256": "eef4533a5583b5e84b5b9c341e508a4cf7b2b8da25ca0d6471b0c3ffdbddc974",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68598,
+      "name": "",
+      "offset": 12571959,
+      "size": 11,
+      "bytecode_sha256": "d6633d80682186585b910139a28f182c44b16631f2954d0e21644f9fa0970d83",
+      "disassembly_file": "68598.disassembly.txt",
+      "disassembly_sha256": "02027ff68f67b5ddb99883d2a41fb3a5ffe2892fd7c4473f9d1271cecc231e6c",
+      "pseudocode_file": "68598.pseudo.js",
+      "pseudocode_sha256": "c02d8ebb415aacf71756ca9a41e9e8069ffda9a94b94980ad9a4c825cce3e5be",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12571959,
+          "absolute_end_exclusive": 12571970,
+          "source_sha256": "d6633d80682186585b910139a28f182c44b16631f2954d0e21644f9fa0970d83",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68600,
+      "name": "refreshBestCardNearbyLiveActivityForLocation",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68600.disassembly.txt",
+      "disassembly_sha256": "e442e24c19a63818c8db183601f84a3501f45742be7ea84795d55509648abf99",
+      "pseudocode_file": "68600.pseudo.js",
+      "pseudocode_sha256": "f7dc6d4ff54446751cbe4aee330a17997f912fb0bf955d789c6bbb7390f57d03",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68601,
+      "name": "",
+      "offset": 12572523,
+      "size": 302,
+      "bytecode_sha256": "e284b254f859b65950b4bc4b321f3a3357dc89dbb652789da4f5b582321af751",
+      "disassembly_file": "68601.disassembly.txt",
+      "disassembly_sha256": "c96ab25221e45ea783bbb78e134aef5b1180019ad47d3092a2deaeddf458ee4d",
+      "pseudocode_file": "68601.pseudo.js",
+      "pseudocode_sha256": "a0ea5c23ef8e8fae43a90fa81a56da2290d6af3a4858ea59feba9bcc576038a3",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 302,
+          "absolute_start": 12572523,
+          "absolute_end_exclusive": 12572825,
+          "source_sha256": "e284b254f859b65950b4bc4b321f3a3357dc89dbb652789da4f5b582321af751",
+          "instruction_anchors_count": 71
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68615,
+      "name": "t4",
+      "offset": 12573830,
+      "size": 178,
+      "bytecode_sha256": "8e1835297c2b4f3790c231a7afbe7ae028f4b42df0e8bb97ef05cb8a75f68fc3",
+      "disassembly_file": "68615.disassembly.txt",
+      "disassembly_sha256": "730cb5087ebe04a3280824522aad625352063d11df0fef6a44bfb18324c3e114",
+      "pseudocode_file": "68615.pseudo.js",
+      "pseudocode_sha256": "68de1d96e6f2261365c77f140ed67ef5173e0d2eeb9a159add7d30590516ad90",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 178,
+          "absolute_start": 12573830,
+          "absolute_end_exclusive": 12574008,
+          "source_sha256": "8e1835297c2b4f3790c231a7afbe7ae028f4b42df0e8bb97ef05cb8a75f68fc3",
+          "instruction_anchors_count": 39
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68617,
+      "name": "updateCurrentActivityRef",
+      "offset": 12574124,
+      "size": 129,
+      "bytecode_sha256": "e14b54f670a4019e8f034695da5d107e6eb2b9914e7d56156b36ab2cfdefb44a",
+      "disassembly_file": "68617.disassembly.txt",
+      "disassembly_sha256": "1c6e041c6bb4d46436a038aaa75ee8c4d8cd6bd0a2c63a84632be7df2a2bb8ff",
+      "pseudocode_file": "68617.pseudo.js",
+      "pseudocode_sha256": "2866d58bb84f5b899802cc9552484ccc9eba43ca475692efd030bf2666259f43",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 129,
+          "absolute_start": 12574124,
+          "absolute_end_exclusive": 12574253,
+          "source_sha256": "e14b54f670a4019e8f034695da5d107e6eb2b9914e7d56156b36ab2cfdefb44a",
+          "instruction_anchors_count": 34
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68618,
+      "name": "",
+      "offset": 12574253,
+      "size": 41,
+      "bytecode_sha256": "9abdde53d422ed7bad83a79268fae12693f12bf64269f7e453a21a76b7758a6d",
+      "disassembly_file": "68618.disassembly.txt",
+      "disassembly_sha256": "8b5808a262938edb0a9154938bf59bd7e419656e75dfdb37ca0b038243210166",
+      "pseudocode_file": "68618.pseudo.js",
+      "pseudocode_sha256": "945289312585f78240b428b2bd3378c4f1b5b6b75f8a369cfc6c4f39423b4ffa",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12574253,
+          "absolute_end_exclusive": 12574294,
+          "source_sha256": "9abdde53d422ed7bad83a79268fae12693f12bf64269f7e453a21a76b7758a6d",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68619,
+      "name": "",
+      "offset": 12574294,
+      "size": 11,
+      "bytecode_sha256": "f07bc2a7a5c5bc3c8e4b10da544aa3c92190e368d19d65aa0ed90c498d8d12cf",
+      "disassembly_file": "68619.disassembly.txt",
+      "disassembly_sha256": "bda187f46d32a859cd9ab28c20057074fcbe9f3f329243fcf338961b8495add6",
+      "pseudocode_file": "68619.pseudo.js",
+      "pseudocode_sha256": "55e393a80404500600cb924bc3f474a722ae03e101a8dc5a69f5cd62bffa28e1",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12574294,
+          "absolute_end_exclusive": 12574305,
+          "source_sha256": "f07bc2a7a5c5bc3c8e4b10da544aa3c92190e368d19d65aa0ed90c498d8d12cf",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68620,
+      "name": "?anon_0_",
+      "offset": 12574305,
+      "size": 166,
+      "bytecode_sha256": "dc8f21864aa70afbc10ef0d8b0f2f0e1bedc614419d240beb7f71e8130045e5c",
+      "disassembly_file": "68620.disassembly.txt",
+      "disassembly_sha256": "03869342057f26cddc1faed5dd0a9d09d00218a91c29dc108df8100252df9f04",
+      "pseudocode_file": "68620.pseudo.js",
+      "pseudocode_sha256": "4c952aa868f439c400d42e3a24b3d27af7c779aceb50cc57ce1a116f6bbac4c7",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 166,
+          "absolute_start": 12574305,
+          "absolute_end_exclusive": 12574471,
+          "source_sha256": "dc8f21864aa70afbc10ef0d8b0f2f0e1bedc614419d240beb7f71e8130045e5c",
+          "instruction_anchors_count": 48
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68621,
+      "name": "start",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68621.disassembly.txt",
+      "disassembly_sha256": "040d1c2b6f26b5af9666f5fa3e19d886ce82d9a76cb8460441b81cb6398a5845",
+      "pseudocode_file": "68621.pseudo.js",
+      "pseudocode_sha256": "9bb99d067a7a2426da9102281782cbdc90dfbb1ab6caac0b445cf21ad7817f25",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68622,
+      "name": "",
+      "offset": 12574471,
+      "size": 41,
+      "bytecode_sha256": "274974bd29ed35b28d2aa4ccd5d1b0630caf29940af78ff747e901ff6d1278ef",
+      "disassembly_file": "68622.disassembly.txt",
+      "disassembly_sha256": "e8e9a414931024c5dcf1cf8a0cec86153f316229df5d6b2e9cc54d53e1dc1c4f",
+      "pseudocode_file": "68622.pseudo.js",
+      "pseudocode_sha256": "04f70b6e71ecdf42de50735e242ad1c6fbe7d69006599f8af36bcabad631e2c9",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12574471,
+          "absolute_end_exclusive": 12574512,
+          "source_sha256": "274974bd29ed35b28d2aa4ccd5d1b0630caf29940af78ff747e901ff6d1278ef",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68623,
+      "name": "",
+      "offset": 12574512,
+      "size": 11,
+      "bytecode_sha256": "08fb3aa5558826bf37143678baa080a66cf28b488555681e41770d7317f7ce9f",
+      "disassembly_file": "68623.disassembly.txt",
+      "disassembly_sha256": "f53c3a7594257e43c161f85b867da553a829faa433dac2a4b4edc590eeef294c",
+      "pseudocode_file": "68623.pseudo.js",
+      "pseudocode_sha256": "316ee9169e0ace3b7828d45b50bc44b4538e2db9e5acf7c3543e5673674e4ca6",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12574512,
+          "absolute_end_exclusive": 12574523,
+          "source_sha256": "08fb3aa5558826bf37143678baa080a66cf28b488555681e41770d7317f7ce9f",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68624,
+      "name": "?anon_0_",
+      "offset": 12574523,
+      "size": 218,
+      "bytecode_sha256": "ce5e40890f8bd5fc0c832a240c8aea2e7158c18c87a2fd533157661f4b285b6a",
+      "disassembly_file": "68624.disassembly.txt",
+      "disassembly_sha256": "fba7dd27df67c6ac6179d3bd9c626efcfd8465b3ce17bc75cb096573e4f6c4af",
+      "pseudocode_file": "68624.pseudo.js",
+      "pseudocode_sha256": "fdd01a27c1d4309476af4ccdf621b3a03f8a18e3395c44a217a23e8562ccd04a",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 218,
+          "absolute_start": 12574523,
+          "absolute_end_exclusive": 12574741,
+          "source_sha256": "ce5e40890f8bd5fc0c832a240c8aea2e7158c18c87a2fd533157661f4b285b6a",
+          "instruction_anchors_count": 59
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68625,
+      "name": "update",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68625.disassembly.txt",
+      "disassembly_sha256": "125f565c85901b2b536d0a3c5d5af07fb93186c0aeb720a9db0ed139b2017009",
+      "pseudocode_file": "68625.pseudo.js",
+      "pseudocode_sha256": "0b4b42436595904e890822789060c603a0a2244678d7a6760c2b1791d00609e2",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68626,
+      "name": "",
+      "offset": 12574741,
+      "size": 41,
+      "bytecode_sha256": "99371a5b600f3d57cc94749c0d242f149a3c7567b8eb2514ed7bbf9de2080d5d",
+      "disassembly_file": "68626.disassembly.txt",
+      "disassembly_sha256": "c5504281da27cce325a18ea9f4d1e3bb0615b21b5f0b84f32ce814a330cf45ec",
+      "pseudocode_file": "68626.pseudo.js",
+      "pseudocode_sha256": "b7b3c24a135a830208cd046e9fc1d80f2e906fcfc23b46c5bf6b5f7dacc8dc57",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12574741,
+          "absolute_end_exclusive": 12574782,
+          "source_sha256": "99371a5b600f3d57cc94749c0d242f149a3c7567b8eb2514ed7bbf9de2080d5d",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68627,
+      "name": "",
+      "offset": 12574782,
+      "size": 11,
+      "bytecode_sha256": "4e77a8d970bf122b286457a8d1c851de06b9f5dc6b3ac9d6c7cabd45e92e676d",
+      "disassembly_file": "68627.disassembly.txt",
+      "disassembly_sha256": "6c1a36093d3780f799528f125ec07e705f4e9db3ce6d63504e82558d14ffee92",
+      "pseudocode_file": "68627.pseudo.js",
+      "pseudocode_sha256": "a3d78ae3a66fddfb9f63921a46628d7863a3e8ca557eeff18f525a19b33df115",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12574782,
+          "absolute_end_exclusive": 12574793,
+          "source_sha256": "4e77a8d970bf122b286457a8d1c851de06b9f5dc6b3ac9d6c7cabd45e92e676d",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68628,
+      "name": "?anon_0_",
+      "offset": 12574793,
+      "size": 108,
+      "bytecode_sha256": "b643450a4fb6a72ca84207d33c8b52085ffd69af904b7d500e1c8ae81a395f50",
+      "disassembly_file": "68628.disassembly.txt",
+      "disassembly_sha256": "12a8475f5762c0b86ab6fe87a6036974b471921eff3d96735cb915d19992401b",
+      "pseudocode_file": "68628.pseudo.js",
+      "pseudocode_sha256": "3fc368592f60d9c577078b61f27c635dd5c8bd78ed05c1684d9b7a79dec10d3c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 108,
+          "absolute_start": 12574793,
+          "absolute_end_exclusive": 12574901,
+          "source_sha256": "b643450a4fb6a72ca84207d33c8b52085ffd69af904b7d500e1c8ae81a395f50",
+          "instruction_anchors_count": 32
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68629,
+      "name": "startBestCardNearby",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68629.disassembly.txt",
+      "disassembly_sha256": "f1647691121a9e45baf8b4d69fb3e55a063104726e8c2d5be9c0e2235df98d99",
+      "pseudocode_file": "68629.pseudo.js",
+      "pseudocode_sha256": "01c17a92d379af49d8245eee4ef610ac5f4832d3963ffba0394d5b7421dc741c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68630,
+      "name": "",
+      "offset": 12574901,
+      "size": 41,
+      "bytecode_sha256": "dabbf28c19e6f62dcffcc74474c103975c40cf086e04bb7bd85211a6ef05d41c",
+      "disassembly_file": "68630.disassembly.txt",
+      "disassembly_sha256": "f0fd52d809d8bae09a40d2944a4c92d6e7ecef9121f9708dc23bb4c05a520907",
+      "pseudocode_file": "68630.pseudo.js",
+      "pseudocode_sha256": "5acb03a7c2eb8913ed2443d47923fc68d6ee3d0ac91769c09b00806f7e49c785",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12574901,
+          "absolute_end_exclusive": 12574942,
+          "source_sha256": "dabbf28c19e6f62dcffcc74474c103975c40cf086e04bb7bd85211a6ef05d41c",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68631,
+      "name": "",
+      "offset": 12574942,
+      "size": 11,
+      "bytecode_sha256": "199a6b50155c7e73421d78e3c3168d0b7bbdd09ec96cb730d6bb8253d0e03405",
+      "disassembly_file": "68631.disassembly.txt",
+      "disassembly_sha256": "7a8f49cb2bafe99c7acac12bbbd829c10efac0d312fb4ffc3343c385b7c0fe0a",
+      "pseudocode_file": "68631.pseudo.js",
+      "pseudocode_sha256": "1f5862921c832cddd6a89f1ec35c0b7c9baef6450b02b1d6a619612449b353ea",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12574942,
+          "absolute_end_exclusive": 12574953,
+          "source_sha256": "199a6b50155c7e73421d78e3c3168d0b7bbdd09ec96cb730d6bb8253d0e03405",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68632,
+      "name": "?anon_0_",
+      "offset": 12574953,
+      "size": 184,
+      "bytecode_sha256": "4634b9bb53613883e6811d09603be8a956e72fcda3fa8cedc7c13bae792f66fb",
+      "disassembly_file": "68632.disassembly.txt",
+      "disassembly_sha256": "8ea5df73d8d57932af5a1433fab9e6ca039888084e38f0f132088b9377e5dc1e",
+      "pseudocode_file": "68632.pseudo.js",
+      "pseudocode_sha256": "bc4a23bd5ee4bf9af133bcfb3c5e66995d51ba8cc712a09b2ca7c89841f3a458",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 184,
+          "absolute_start": 12574953,
+          "absolute_end_exclusive": 12575137,
+          "source_sha256": "4634b9bb53613883e6811d09603be8a956e72fcda3fa8cedc7c13bae792f66fb",
+          "instruction_anchors_count": 51
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68633,
+      "name": "updateBestCardNearby",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68633.disassembly.txt",
+      "disassembly_sha256": "10b08f73efbaef9833e2217fc8dc1c01f7f5860ff4a30e5d75157f9b65a8bd72",
+      "pseudocode_file": "68633.pseudo.js",
+      "pseudocode_sha256": "e4ae9932629695e623885b4f5256c200648d1279e381ea222d9d617a97c644d9",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68634,
+      "name": "",
+      "offset": 12575137,
+      "size": 41,
+      "bytecode_sha256": "b85fcfe23ffc87b97effe52b6369aaf7a9796fecb9b295362ba6e0546309309b",
+      "disassembly_file": "68634.disassembly.txt",
+      "disassembly_sha256": "f2b9d11833ffed6d7d8b7d26a1007cca25b1b7b03b409430f5f162e0d7a13c3c",
+      "pseudocode_file": "68634.pseudo.js",
+      "pseudocode_sha256": "8b07eb09f551c78e4b3fc36d941841db29f9b39ce44df519827df0c542f509b6",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12575137,
+          "absolute_end_exclusive": 12575178,
+          "source_sha256": "b85fcfe23ffc87b97effe52b6369aaf7a9796fecb9b295362ba6e0546309309b",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68635,
+      "name": "",
+      "offset": 12575178,
+      "size": 11,
+      "bytecode_sha256": "b155d652ba90bbd7271bfb9ba959b9ab02637f4ab69bfd5b9a85b55060e28203",
+      "disassembly_file": "68635.disassembly.txt",
+      "disassembly_sha256": "0f29f89e32ca0ad20b72765cf0c584d05f56bad858aa96ee451151593aa0d798",
+      "pseudocode_file": "68635.pseudo.js",
+      "pseudocode_sha256": "89d6d344ac33d4d60668cf0ba0216aed4e1acc6494c5ebc4ce43f84adff412a0",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 11,
+          "absolute_start": 12575178,
+          "absolute_end_exclusive": 12575189,
+          "source_sha256": "b155d652ba90bbd7271bfb9ba959b9ab02637f4ab69bfd5b9a85b55060e28203",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68636,
+      "name": "?anon_0_",
+      "offset": 12575189,
+      "size": 90,
+      "bytecode_sha256": "40a782d3c7a7ad620985fa32f2d7300d7091aac00a8abe2fd2cc09baa42ab3d2",
+      "disassembly_file": "68636.disassembly.txt",
+      "disassembly_sha256": "adbca19885989bcd5ffaac3f652697f3b3d71740e766934446057eeb4b9d0408",
+      "pseudocode_file": "68636.pseudo.js",
+      "pseudocode_sha256": "2620f7c1109c8f445ff6b6aa2de90873408c94fe796c3c741beec64af3941af4",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 90,
+          "absolute_start": 12575189,
+          "absolute_end_exclusive": 12575279,
+          "source_sha256": "40a782d3c7a7ad620985fa32f2d7300d7091aac00a8abe2fd2cc09baa42ab3d2",
+          "instruction_anchors_count": 28
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68637,
+      "name": "end",
+      "offset": 4305573,
+      "size": 30,
+      "bytecode_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+      "disassembly_file": "68637.disassembly.txt",
+      "disassembly_sha256": "ab55aa933dd08ecc4a9eaaf88a6c0019770fe7d90d83998a10fc98320bfe1b76",
+      "pseudocode_file": "68637.pseudo.js",
+      "pseudocode_sha256": "f2686017aef8644aee7692af6a09f70a38e479f57d7cc1aca55cf4d86e1ac5e6",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 4305573,
+          "absolute_end_exclusive": 4305603,
+          "source_sha256": "0f1fd04e8f303bce1d95aa5cbbb4af80a9ccaf0ab7595436c9fc2a3bfe85fcda",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": true
+    },
+    {
+      "function_id": 68703,
+      "name": "",
+      "offset": 12584488,
+      "size": 160,
+      "bytecode_sha256": "5a974d107477c98b352e1fa8ec03f29a13c2c0a6d35ce2af7f16d4b847821c37",
+      "disassembly_file": "68703.disassembly.txt",
+      "disassembly_sha256": "ae151b5371c491ee2641235d5c61e63fb4e5f941956b3340e55a3cc5929a4d72",
+      "pseudocode_file": "68703.pseudo.js",
+      "pseudocode_sha256": "519fe96141f6da005b98406e488f756a2a03dfeba49fc0347c5136cd9a1c2b0d",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 160,
+          "absolute_start": 12584488,
+          "absolute_end_exclusive": 12584648,
+          "source_sha256": "5a974d107477c98b352e1fa8ec03f29a13c2c0a6d35ce2af7f16d4b847821c37",
+          "instruction_anchors_count": 40
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68705,
+      "name": "t0",
+      "offset": 12584838,
+      "size": 119,
+      "bytecode_sha256": "30ec07ffa9d25582f3d4946505b716bc2d21647fbc272318bf34b30c722e6af5",
+      "disassembly_file": "68705.disassembly.txt",
+      "disassembly_sha256": "7904216b7e578f142078ed6f7674095cda37effd6e92d12b6617813a0c5dc04e",
+      "pseudocode_file": "68705.pseudo.js",
+      "pseudocode_sha256": "2df3b80aab14d91dd07691117a7063e429ae5898c33b45bebf0bb25dffaae47c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 119,
+          "absolute_start": 12584838,
+          "absolute_end_exclusive": 12584957,
+          "source_sha256": "30ec07ffa9d25582f3d4946505b716bc2d21647fbc272318bf34b30c722e6af5",
+          "instruction_anchors_count": 30
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68706,
+      "name": "",
+      "offset": 12584957,
+      "size": 71,
+      "bytecode_sha256": "dd17c691f5597ad1eba02a9c33955d22b3869ece661fd3c4178c8357bf0f0016",
+      "disassembly_file": "68706.disassembly.txt",
+      "disassembly_sha256": "a916b2498c22f120cd972fa6fdbd596dfa3769fcc94cf0e13a7f25b61e9854cd",
+      "pseudocode_file": "68706.pseudo.js",
+      "pseudocode_sha256": "6cd1cb9f9bbe0c5df3772499f839b1aff79ac32635f06e52394deab1a9009224",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 71,
+          "absolute_start": 12584957,
+          "absolute_end_exclusive": 12585028,
+          "source_sha256": "dd17c691f5597ad1eba02a9c33955d22b3869ece661fd3c4178c8357bf0f0016",
+          "instruction_anchors_count": 17
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68712,
+      "name": "",
+      "offset": 12585408,
+      "size": 176,
+      "bytecode_sha256": "4f0018a871450557a7c0ef00a1fec95879e4530ffea96c97210f7b8e01154039",
+      "disassembly_file": "68712.disassembly.txt",
+      "disassembly_sha256": "c356d0487066b14083508cc325fec07abbfe78f776be4082e8fc0a7400200e73",
+      "pseudocode_file": "68712.pseudo.js",
+      "pseudocode_sha256": "782d75d21e92eba6b7a3f56c723b87b2d97758297459215f176f08c50bb21b04",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 176,
+          "absolute_start": 12585408,
+          "absolute_end_exclusive": 12585584,
+          "source_sha256": "4f0018a871450557a7c0ef00a1fec95879e4530ffea96c97210f7b8e01154039",
+          "instruction_anchors_count": 44
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68714,
+      "name": "t0",
+      "offset": 12585888,
+      "size": 140,
+      "bytecode_sha256": "497963f8c6158910ad6e920e0d7a24869f2674310653b43abd9ecc2e521fcac3",
+      "disassembly_file": "68714.disassembly.txt",
+      "disassembly_sha256": "eab5d7fc3ab8887112c97687e5b403a29f31c3c331322b52126200ff7629f89f",
+      "pseudocode_file": "68714.pseudo.js",
+      "pseudocode_sha256": "62905f0018d8bb188849a3ab535db59af21f2f0184f931198c1c708bb08699d2",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 140,
+          "absolute_start": 12585888,
+          "absolute_end_exclusive": 12586028,
+          "source_sha256": "497963f8c6158910ad6e920e0d7a24869f2674310653b43abd9ecc2e521fcac3",
+          "instruction_anchors_count": 35
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30502,
+      "name": "",
+      "offset": 6964752,
+      "size": 192,
+      "bytecode_sha256": "e064e89c6a7b89311aff62ca90f2202b4e3563d95a4550953bbc4250307ee430",
+      "disassembly_file": "30502.disassembly.txt",
+      "disassembly_sha256": "d603c6885475990a97a669aa98d3ca416e6f0c9fb21b4ec20c08b835a0f418c2",
+      "pseudocode_file": "30502.pseudo.js",
+      "pseudocode_sha256": "05347278ad6013d8875dcd23bea84c1b21e0a1acba9bc293381f372e29225d46",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 192,
+          "absolute_start": 6964752,
+          "absolute_end_exclusive": 6964944,
+          "source_sha256": "e064e89c6a7b89311aff62ca90f2202b4e3563d95a4550953bbc4250307ee430",
+          "instruction_anchors_count": 47
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30541,
+      "name": "",
+      "offset": 6966595,
+      "size": 419,
+      "bytecode_sha256": "d9dc3d0466c2394380d39824d29ba89d528cbd4692564e050bd00dc1d45b22e9",
+      "disassembly_file": "30541.disassembly.txt",
+      "disassembly_sha256": "d1f73183c95ba46066b2f20b0da24dc02c0cdfdfe4590b3d0ff8f457f3c48313",
+      "pseudocode_file": "30541.pseudo.js",
+      "pseudocode_sha256": "563457d4c1424eb203c5e2f405de1a2701b0601d7d5c8b4e287b8f24b213a3ec",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 16,
+          "relative_end_exclusive": 79,
+          "absolute_start": 6966611,
+          "absolute_end_exclusive": 6966674,
+          "source_sha256": "dc143b6f0192bcb31e9f18fdce7468a09d89da08e8d832940e3a79e340b986a6",
+          "instruction_anchors_count": 14
+        },
+        {
+          "relative_start": 222,
+          "relative_end_exclusive": 283,
+          "absolute_start": 6966817,
+          "absolute_end_exclusive": 6966878,
+          "source_sha256": "873e144fbb4418c17c08e555df8a32224e3ff91bff7a5af14c3c4636df340157",
+          "instruction_anchors_count": 11
+        },
+        {
+          "relative_start": 305,
+          "relative_end_exclusive": 419,
+          "absolute_start": 6966900,
+          "absolute_end_exclusive": 6967014,
+          "source_sha256": "a36b41878a40d1aa3eee18d990fc3b77142ac4a2a45161dcc79b71f6b74f48c9",
+          "instruction_anchors_count": 26
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30637,
+      "name": "",
+      "offset": 6977569,
+      "size": 257,
+      "bytecode_sha256": "1cd52bf17de81b6069898014d84bb46b66f5e5ae63c853b5359999599655ddd7",
+      "disassembly_file": "30637.disassembly.txt",
+      "disassembly_sha256": "51508f83e71546b116a94eb27e01c9bd929266e016b6eb2a4850b12e33423179",
+      "pseudocode_file": "30637.pseudo.js",
+      "pseudocode_sha256": "d2de48d1b411afaaeafc10a20526d683d967ee031994833f19125f90d0abf129",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 16,
+          "relative_end_exclusive": 25,
+          "absolute_start": 6977585,
+          "absolute_end_exclusive": 6977594,
+          "source_sha256": "c5ec4c15fe359ca4db6f3cc8ba0b500c93f65d68fc63bac72daf166b9eef0e96",
+          "instruction_anchors_count": 2
+        },
+        {
+          "relative_start": 94,
+          "relative_end_exclusive": 116,
+          "absolute_start": 6977663,
+          "absolute_end_exclusive": 6977685,
+          "source_sha256": "c1931a58537f6dcd6f38c4b2b1ef5a35b1a587ca8fb9f86f532b41df9946cd50",
+          "instruction_anchors_count": 4
+        },
+        {
+          "relative_start": 138,
+          "relative_end_exclusive": 257,
+          "absolute_start": 6977707,
+          "absolute_end_exclusive": 6977826,
+          "source_sha256": "edb60109f847f9eeb2a723147085b482fa80f0f7ca978f6594e12f097a8e1d60",
+          "instruction_anchors_count": 28
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68609,
+      "name": "isDebugBridgeEnabled",
+      "offset": 12573145,
+      "size": 41,
+      "bytecode_sha256": "5b23223032e31c00662bc536f460e2c3da00e0a1abf4c4601dcb52e5035085f6",
+      "disassembly_file": "68609.disassembly.txt",
+      "disassembly_sha256": "71e6c45350a13d64bc0393f2eecd65a9f780bfc05dfc13c0d9a18dc06378f659",
+      "pseudocode_file": "68609.pseudo.js",
+      "pseudocode_sha256": "f291054bf925a60c3f68c392a83e5e6781111f69d40a28d83fbb1ea14aa61cd8",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 41,
+          "absolute_start": 12573145,
+          "absolute_end_exclusive": 12573186,
+          "source_sha256": "5b23223032e31c00662bc536f460e2c3da00e0a1abf4c4601dcb52e5035085f6",
+          "instruction_anchors_count": 11
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68610,
+      "name": "LiveActivityDebugBridge",
+      "offset": 12573186,
+      "size": 366,
+      "bytecode_sha256": "4378b154c91f52b300262cb4cf24a5bb28967c220f50a90748b0b007d3e789bc",
+      "disassembly_file": "68610.disassembly.txt",
+      "disassembly_sha256": "9ffae73789963730883ff0338b1f1f609e1493b8c8f6cb87e46885d813331f02",
+      "pseudocode_file": "68610.pseudo.js",
+      "pseudocode_sha256": "94b91f58767a93a80a00cef16ef2c5bbc3a3afe3290932486d6422a6a26c01a1",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 24,
+          "relative_end_exclusive": 114,
+          "absolute_start": 12573210,
+          "absolute_end_exclusive": 12573300,
+          "source_sha256": "fab4e8b0c2b5c26eefa82e8405a2c113be771f3bf051e7a510b92772663534fa",
+          "instruction_anchors_count": 20
+        },
+        {
+          "relative_start": 321,
+          "relative_end_exclusive": 366,
+          "absolute_start": 12573507,
+          "absolute_end_exclusive": 12573552,
+          "source_sha256": "b9fb2484dff867458fea22b1f9f0b819bebf2427e08f5bbd8a09050a01a9cb90",
+          "instruction_anchors_count": 11
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30505,
+      "name": "",
+      "offset": 6964944,
+      "size": 121,
+      "bytecode_sha256": "36ef338e9e6a7d99df7301873987a7690c5d7fe5630dd7343734b6125652fd27",
+      "disassembly_file": "30505.disassembly.txt",
+      "disassembly_sha256": "a689af8be3a649c460c6254fb6efb5d60eb2b38648f045369605f5b9bf7810e1",
+      "pseudocode_file": "30505.pseudo.js",
+      "pseudocode_sha256": "12cad99a26a2b6a74268980cf6e2c9d9873e40e36c52557f73bab992cdd942fa",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 121,
+          "absolute_start": 6964944,
+          "absolute_end_exclusive": 6965065,
+          "source_sha256": "36ef338e9e6a7d99df7301873987a7690c5d7fe5630dd7343734b6125652fd27",
+          "instruction_anchors_count": 32
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30544,
+      "name": "_getActivityId",
+      "offset": 6967014,
+      "size": 53,
+      "bytecode_sha256": "d7520a14e3d22c6129d4822b271081b32755ba417fc1ab4ccaa1c438ad25bd1d",
+      "disassembly_file": "30544.disassembly.txt",
+      "disassembly_sha256": "b1a622e144fc62bc26e5964942e44635108ecf1a3420493716177e302701bf4b",
+      "pseudocode_file": "30544.pseudo.js",
+      "pseudocode_sha256": "4a9ed16dee6d3753816874fc1e0efbc5bc3551c8a6b6f21eb0225e8a9ca379a3",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 53,
+          "absolute_start": 6967014,
+          "absolute_end_exclusive": 6967067,
+          "source_sha256": "d7520a14e3d22c6129d4822b271081b32755ba417fc1ab4ccaa1c438ad25bd1d",
+          "instruction_anchors_count": 15
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30545,
+      "name": "",
+      "offset": 6967067,
+      "size": 9,
+      "bytecode_sha256": "7ebf5aa3aa8faef1f82ae213ebe2f8dca24fd32df37322cf967ff3ca44f3ce04",
+      "disassembly_file": "30545.disassembly.txt",
+      "disassembly_sha256": "c8594d8828be0908ec3e23414fc1a043d2f3e28ceb061cea881865018bff1a70",
+      "pseudocode_file": "30545.pseudo.js",
+      "pseudocode_sha256": "9f23af25767758cd11a049d75d64c7def86fd60b1111ceea9282358648342d6c",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6967067,
+          "absolute_end_exclusive": 6967076,
+          "source_sha256": "7ebf5aa3aa8faef1f82ae213ebe2f8dca24fd32df37322cf967ff3ca44f3ce04",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30546,
+      "name": "?anon_0_",
+      "offset": 6967076,
+      "size": 67,
+      "bytecode_sha256": "ca601c91174ba87fa6fd3a97686bd1c21e8b86e7cfa40435ce1abf0a78d9d160",
+      "disassembly_file": "30546.disassembly.txt",
+      "disassembly_sha256": "956a372b7470415c92a4fe7bbe1c5a05f189bd3b99955d567d4be7e68e481c1f",
+      "pseudocode_file": "30546.pseudo.js",
+      "pseudocode_sha256": "d52d05c7ce166fb968d084beb6f7c9dc1cacb228a0de645e73c67e4ef84e3a54",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 67,
+          "absolute_start": 6967076,
+          "absolute_end_exclusive": 6967143,
+          "source_sha256": "ca601c91174ba87fa6fd3a97686bd1c21e8b86e7cfa40435ce1abf0a78d9d160",
+          "instruction_anchors_count": 22
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30552,
+      "name": "_startActivity",
+      "offset": 6967261,
+      "size": 53,
+      "bytecode_sha256": "2892ea67e1bd9ec4d927c331ab73bd9b9c787d25b027dc242d526802f2538a07",
+      "disassembly_file": "30552.disassembly.txt",
+      "disassembly_sha256": "888a1567d78037d074a3d0dfe37aeccefba9f88bb83f2dd0acb8b75d1fb882a8",
+      "pseudocode_file": "30552.pseudo.js",
+      "pseudocode_sha256": "c0debedb023201a9daf8ec2b885dff4cf179479c98604321de86ee67493376be",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 53,
+          "absolute_start": 6967261,
+          "absolute_end_exclusive": 6967314,
+          "source_sha256": "2892ea67e1bd9ec4d927c331ab73bd9b9c787d25b027dc242d526802f2538a07",
+          "instruction_anchors_count": 15
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30553,
+      "name": "",
+      "offset": 6967314,
+      "size": 9,
+      "bytecode_sha256": "8a38ff85ebc728a49da7ccfcae6d9cef1f2d087675f743a64d1333a8823349ac",
+      "disassembly_file": "30553.disassembly.txt",
+      "disassembly_sha256": "a35fd071349761d0733198c02fafd95b361dace85169e34de59b2ca935d5006a",
+      "pseudocode_file": "30553.pseudo.js",
+      "pseudocode_sha256": "01c190a42059181d855308b353ce1925403cfa5ea361dc992dcb50628ec6d57b",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6967314,
+          "absolute_end_exclusive": 6967323,
+          "source_sha256": "8a38ff85ebc728a49da7ccfcae6d9cef1f2d087675f743a64d1333a8823349ac",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30554,
+      "name": "?anon_0_",
+      "offset": 6967323,
+      "size": 86,
+      "bytecode_sha256": "4378a209c8d0240349053e64779e54ce327963ebc175dda0bfe1f39b56337f2f",
+      "disassembly_file": "30554.disassembly.txt",
+      "disassembly_sha256": "d760eed8259d3cb22be4c2944762cb6a7296c8f61f683106828f88ad2733851d",
+      "pseudocode_file": "30554.pseudo.js",
+      "pseudocode_sha256": "a19d94296393876d61e2cf688d5214675b2dfa751d005fab2ce74a55a53ce819",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 86,
+          "absolute_start": 6967323,
+          "absolute_end_exclusive": 6967409,
+          "source_sha256": "4378a209c8d0240349053e64779e54ce327963ebc175dda0bfe1f39b56337f2f",
+          "instruction_anchors_count": 29
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30556,
+      "name": "_startOrUpdateActivity",
+      "offset": 6967409,
+      "size": 53,
+      "bytecode_sha256": "134fb176e0a3e43c1dfdff2cfc45b09bfba37d16a304b2e9c81a5ee0535f9023",
+      "disassembly_file": "30556.disassembly.txt",
+      "disassembly_sha256": "c9a4bbd8ac1777400c07ae0254204970f172ec4949b5284acb0e35c432a2f502",
+      "pseudocode_file": "30556.pseudo.js",
+      "pseudocode_sha256": "da0a0bd1a13dacbea46025ba36854a2b76ac6174e6cb2f221f9082ce439010a3",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 53,
+          "absolute_start": 6967409,
+          "absolute_end_exclusive": 6967462,
+          "source_sha256": "134fb176e0a3e43c1dfdff2cfc45b09bfba37d16a304b2e9c81a5ee0535f9023",
+          "instruction_anchors_count": 15
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30557,
+      "name": "",
+      "offset": 6967462,
+      "size": 9,
+      "bytecode_sha256": "cc9691ea8c9ef050663e2c15b4805c8eb83c6f1c0c2fb6e3ed85f54fc281ce66",
+      "disassembly_file": "30557.disassembly.txt",
+      "disassembly_sha256": "970f72ed956e943ef9ae2efc94f78a34544a4336620728a11b372fe5ac5e750e",
+      "pseudocode_file": "30557.pseudo.js",
+      "pseudocode_sha256": "c524b43e0a1f57c0cebe09020bdabac299f80d388809faa8fc7f9218dd62fac5",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6967462,
+          "absolute_end_exclusive": 6967471,
+          "source_sha256": "cc9691ea8c9ef050663e2c15b4805c8eb83c6f1c0c2fb6e3ed85f54fc281ce66",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30558,
+      "name": "?anon_0_",
+      "offset": 6967471,
+      "size": 112,
+      "bytecode_sha256": "b7598ffc7897fe48950d57229f3c16b72e2c3e078996882dc778eba7c411376c",
+      "disassembly_file": "30558.disassembly.txt",
+      "disassembly_sha256": "0af2a8f811f310a0926ba9b0a898ed99e1029cc0937e0f236096836357f1ffe7",
+      "pseudocode_file": "30558.pseudo.js",
+      "pseudocode_sha256": "e9ef6b4e49d9f05ebc02c980266f51132607682d292e052d641d097303d7916c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 112,
+          "absolute_start": 6967471,
+          "absolute_end_exclusive": 6967583,
+          "source_sha256": "b7598ffc7897fe48950d57229f3c16b72e2c3e078996882dc778eba7c411376c",
+          "instruction_anchors_count": 37
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30560,
+      "name": "_updateActivity",
+      "offset": 6967583,
+      "size": 53,
+      "bytecode_sha256": "269de7af798613f58ca560b65c1ff5d29d226e27a0b7c5c1cddf2917ec7f050a",
+      "disassembly_file": "30560.disassembly.txt",
+      "disassembly_sha256": "48f56c03cd6689cf53125c7b54aeefaba9db8484b323d3ff12545950a2e0227c",
+      "pseudocode_file": "30560.pseudo.js",
+      "pseudocode_sha256": "8ce00cd86629c90d9964d578b0851230ca04d0524b51ed9fb769c27963df3a40",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 53,
+          "absolute_start": 6967583,
+          "absolute_end_exclusive": 6967636,
+          "source_sha256": "269de7af798613f58ca560b65c1ff5d29d226e27a0b7c5c1cddf2917ec7f050a",
+          "instruction_anchors_count": 15
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30561,
+      "name": "",
+      "offset": 6967636,
+      "size": 9,
+      "bytecode_sha256": "68139bc53830a3206206f804cd33d31851e48657b89dc457957b36b34495b61f",
+      "disassembly_file": "30561.disassembly.txt",
+      "disassembly_sha256": "e9691b9918fd5004619e616e24dbf2cac2530df0bd3a3f34817b80685aa15aee",
+      "pseudocode_file": "30561.pseudo.js",
+      "pseudocode_sha256": "ca6ad2ab97d7d2955259cd9e5f551113afc5fa71efbfa5db522dde1e6288fec8",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6967636,
+          "absolute_end_exclusive": 6967645,
+          "source_sha256": "68139bc53830a3206206f804cd33d31851e48657b89dc457957b36b34495b61f",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30562,
+      "name": "?anon_0_",
+      "offset": 6967645,
+      "size": 100,
+      "bytecode_sha256": "4c196f939ec525a280b3e6610e066338b5aaf6f78a2f8599769582a8d2257ce3",
+      "disassembly_file": "30562.disassembly.txt",
+      "disassembly_sha256": "5e2c1b67ed755dd72abc5a33eabf654c885221b61736c19a42b11ec544401336",
+      "pseudocode_file": "30562.pseudo.js",
+      "pseudocode_sha256": "070b5f04c4f98c607d4b6acd376f4580d36eef7575efc001944be916cc51b51a",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 100,
+          "absolute_start": 6967645,
+          "absolute_end_exclusive": 6967745,
+          "source_sha256": "4c196f939ec525a280b3e6610e066338b5aaf6f78a2f8599769582a8d2257ce3",
+          "instruction_anchors_count": 35
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30570,
+      "name": "normalizePayload",
+      "offset": 6967871,
+      "size": 94,
+      "bytecode_sha256": "520a290f665f6450705f13fc0d2929e4ab105f68edbe4afdfa353a8c286d4fd8",
+      "disassembly_file": "30570.disassembly.txt",
+      "disassembly_sha256": "63709d8f47e561b97e90c02eb826ce6c9302fd1684a95632e89a49274caed62a",
+      "pseudocode_file": "30570.pseudo.js",
+      "pseudocode_sha256": "005688b8f833f60f37ad2adb80528c36f441b9eb58517c588a43da7373595f6d",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 94,
+          "absolute_start": 6967871,
+          "absolute_end_exclusive": 6967965,
+          "source_sha256": "520a290f665f6450705f13fc0d2929e4ab105f68edbe4afdfa353a8c286d4fd8",
+          "instruction_anchors_count": 27
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30640,
+      "name": "_reloadAllTimelines",
+      "offset": 6977826,
+      "size": 53,
+      "bytecode_sha256": "fa9f6d437a134ee253ddbaba8603b0dd2a0385e2d3e413c96cab3f1898639299",
+      "disassembly_file": "30640.disassembly.txt",
+      "disassembly_sha256": "4b907ff5eab4da2136ec3ed44af5790fcee10eab96788b8f57c7afe5588b6765",
+      "pseudocode_file": "30640.pseudo.js",
+      "pseudocode_sha256": "7655d4d0f993c44040508e63372e490202932f2a5a45174a4c05c7bd5b600082",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 53,
+          "absolute_start": 6977826,
+          "absolute_end_exclusive": 6977879,
+          "source_sha256": "fa9f6d437a134ee253ddbaba8603b0dd2a0385e2d3e413c96cab3f1898639299",
+          "instruction_anchors_count": 15
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30641,
+      "name": "",
+      "offset": 6977879,
+      "size": 9,
+      "bytecode_sha256": "a3f06eaff3a11d4cb5cda9303ea737bbb18114fc2893fde7bedba6a8b520dd30",
+      "disassembly_file": "30641.disassembly.txt",
+      "disassembly_sha256": "3811478c3449ed4c26ba0a5bb582d13d2ff50b12931513c5e9085aa811bcbfc3",
+      "pseudocode_file": "30641.pseudo.js",
+      "pseudocode_sha256": "dbdc2522fa86c4b56dd32f45bdd52ec8325c9a63edf88c04bf937cfc3b55c776",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6977879,
+          "absolute_end_exclusive": 6977888,
+          "source_sha256": "a3f06eaff3a11d4cb5cda9303ea737bbb18114fc2893fde7bedba6a8b520dd30",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30642,
+      "name": "?anon_0_",
+      "offset": 6977888,
+      "size": 120,
+      "bytecode_sha256": "10d60701d5d5faab78ad59369c195ef9a2ff455f8b7938b6029f5b68ac9faffd",
+      "disassembly_file": "30642.disassembly.txt",
+      "disassembly_sha256": "c4553d4510cda99d55a8d1859dc5663bdd2af70d09328b0c1cb7338a7a862b08",
+      "pseudocode_file": "30642.pseudo.js",
+      "pseudocode_sha256": "008a18912ca0027b896bac0b8b4b27c9c11fe64b4f302406dd12649bc545a681",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 120,
+          "absolute_start": 6977888,
+          "absolute_end_exclusive": 6978008,
+          "source_sha256": "10d60701d5d5faab78ad59369c195ef9a2ff455f8b7938b6029f5b68ac9faffd",
+          "instruction_anchors_count": 38
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 68639,
+      "name": "",
+      "offset": 12575279,
+      "size": 43,
+      "bytecode_sha256": "8baaeff1528e8db1fc23dd529db561f71fec11411269a12d55258f3fb4a78f9f",
+      "disassembly_file": "68639.disassembly.txt",
+      "disassembly_sha256": "1f7cdbbd20700dc9eae6df4a781078f834905885b4d17fa28a790d97fa203805",
+      "pseudocode_file": "68639.pseudo.js",
+      "pseudocode_sha256": "9658381f44a57145962c3949e882671b6d2518a6c54b1843c2a59425f580d02e",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 43,
+          "absolute_start": 12575279,
+          "absolute_end_exclusive": 12575322,
+          "source_sha256": "8baaeff1528e8db1fc23dd529db561f71fec11411269a12d55258f3fb4a78f9f",
+          "instruction_anchors_count": 11
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30513,
+      "name": "",
+      "offset": 6965252,
+      "size": 37,
+      "bytecode_sha256": "f2e72dea8e1188f8c1a99c98f72bfae8d8439bfb35ec7e3285823ae1e9cb7ae2",
+      "disassembly_file": "30513.disassembly.txt",
+      "disassembly_sha256": "0348709b386fed483da47ed4eb529b7cc991a164f17d8343524eb7f1687c565e",
+      "pseudocode_file": "30513.pseudo.js",
+      "pseudocode_sha256": "271a7922ad23fc4eaea7194e70b36d91e8dfa2103cf678f9cca603ad7f15e8f6",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 37,
+          "absolute_start": 6965252,
+          "absolute_end_exclusive": 6965289,
+          "source_sha256": "f2e72dea8e1188f8c1a99c98f72bfae8d8439bfb35ec7e3285823ae1e9cb7ae2",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30515,
+      "name": "",
+      "offset": 6965289,
+      "size": 9,
+      "bytecode_sha256": "ce4edec121019c9bf95525f0ce2eec991087e16532d534ba4ca3314c1e7822c0",
+      "disassembly_file": "30515.disassembly.txt",
+      "disassembly_sha256": "bfb4cf6e3a6682ecc0fd2921b86e8fc0984fb853faccadb091993e094c0c3279",
+      "pseudocode_file": "30515.pseudo.js",
+      "pseudocode_sha256": "c83d2584f5bd038efec8a947cd9878c53475c753f81289714136ccff34de7199",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6965289,
+          "absolute_end_exclusive": 6965298,
+          "source_sha256": "ce4edec121019c9bf95525f0ce2eec991087e16532d534ba4ca3314c1e7822c0",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30516,
+      "name": "?anon_0_",
+      "offset": 6965298,
+      "size": 69,
+      "bytecode_sha256": "c60818450b0454a226166cc3a509d41e0ec833844a714cfbdc8d0b4499f6e290",
+      "disassembly_file": "30516.disassembly.txt",
+      "disassembly_sha256": "b03e166881762ae4416593341135868ffa77215aac0bcabc16a1bcd06880dd31",
+      "pseudocode_file": "30516.pseudo.js",
+      "pseudocode_sha256": "e48b6a87808b209d7d62628ba0fa142c01eaef52376e3401fcd554e5dd9c7bfa",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 69,
+          "absolute_start": 6965298,
+          "absolute_end_exclusive": 6965367,
+          "source_sha256": "c60818450b0454a226166cc3a509d41e0ec833844a714cfbdc8d0b4499f6e290",
+          "instruction_anchors_count": 22
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30517,
+      "name": "",
+      "offset": 6965367,
+      "size": 68,
+      "bytecode_sha256": "39ae0a613ba7bb055dcf5b5dd9a42de5ff47caed62cd3e48329254ba38956ace",
+      "disassembly_file": "30517.disassembly.txt",
+      "disassembly_sha256": "4d3118edf47d302695ca8c08cc0017d40c617899cba7c26da5381367e7548efb",
+      "pseudocode_file": "30517.pseudo.js",
+      "pseudocode_sha256": "412d97061aa121126f7d5e6fe1b8b5339e090765ff7227e43b1c2a35a72aeb5a",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 68,
+          "absolute_start": 6965367,
+          "absolute_end_exclusive": 6965435,
+          "source_sha256": "39ae0a613ba7bb055dcf5b5dd9a42de5ff47caed62cd3e48329254ba38956ace",
+          "instruction_anchors_count": 20
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30518,
+      "name": "",
+      "offset": 6965435,
+      "size": 123,
+      "bytecode_sha256": "9a30e3dabc0f184572ddc590bedc2d5eb1cd7b838d3a0250b016239120a55882",
+      "disassembly_file": "30518.disassembly.txt",
+      "disassembly_sha256": "e4dccee9af531802d1a450cc8c5b4a3f183bf3c79632faedeb6faece18334d17",
+      "pseudocode_file": "30518.pseudo.js",
+      "pseudocode_sha256": "2cd1f0f8d4f02eb751f997d942d981537a281a069237a7e10973fb10bd8a9a04",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 123,
+          "absolute_start": 6965435,
+          "absolute_end_exclusive": 6965558,
+          "source_sha256": "9a30e3dabc0f184572ddc590bedc2d5eb1cd7b838d3a0250b016239120a55882",
+          "instruction_anchors_count": 35
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30519,
+      "name": "",
+      "offset": 6965558,
+      "size": 37,
+      "bytecode_sha256": "79ba65073dfa238079416487eeede54a0dc3af8e605df22b71ba55a332eab8b5",
+      "disassembly_file": "30519.disassembly.txt",
+      "disassembly_sha256": "25a6bdf551d4b5404628653a46de0fedc340b2517d0d1748b6968f194363f228",
+      "pseudocode_file": "30519.pseudo.js",
+      "pseudocode_sha256": "c632652f561280d2fdd2f608800f28df8ca1962c938b03612005ff0f1be16861",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 37,
+          "absolute_start": 6965558,
+          "absolute_end_exclusive": 6965595,
+          "source_sha256": "79ba65073dfa238079416487eeede54a0dc3af8e605df22b71ba55a332eab8b5",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30521,
+      "name": "",
+      "offset": 6965595,
+      "size": 9,
+      "bytecode_sha256": "85b6f52a794fb14cb5da3ef7c1fa6804d26b70c945072d0aae27526280e0ff42",
+      "disassembly_file": "30521.disassembly.txt",
+      "disassembly_sha256": "86627588869fe391932bcdd369d954498df5f26998a58f593f5ee73fca378dce",
+      "pseudocode_file": "30521.pseudo.js",
+      "pseudocode_sha256": "a779a4e61100d85ac59f0a3a1dfd594a82f1a0f3cf94f13532465b7e3bdfee08",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6965595,
+          "absolute_end_exclusive": 6965604,
+          "source_sha256": "85b6f52a794fb14cb5da3ef7c1fa6804d26b70c945072d0aae27526280e0ff42",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30522,
+      "name": "?anon_0_",
+      "offset": 6965604,
+      "size": 76,
+      "bytecode_sha256": "5be4bcd34d00b05a0576ad3e1e26b1db9462105d8961496287a797eee334b659",
+      "disassembly_file": "30522.disassembly.txt",
+      "disassembly_sha256": "feebac516a43157163b068dc20ce41e2878dda4dd3b7e85cd8be76ccf94a6cae",
+      "pseudocode_file": "30522.pseudo.js",
+      "pseudocode_sha256": "077d31a80e3bc339020bf8360dfbbec3eb84da4c5d25d0c44933926fdc803e3c",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 76,
+          "absolute_start": 6965604,
+          "absolute_end_exclusive": 6965680,
+          "source_sha256": "5be4bcd34d00b05a0576ad3e1e26b1db9462105d8961496287a797eee334b659",
+          "instruction_anchors_count": 24
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30523,
+      "name": "",
+      "offset": 6965680,
+      "size": 119,
+      "bytecode_sha256": "e5d851ab0e1baa0f0ada2dbdd0e699d1ce94ec122fa9e68cba2d88e386d5af28",
+      "disassembly_file": "30523.disassembly.txt",
+      "disassembly_sha256": "3ec366697cdf281f820f51df8054b5b56ab90d98f7b0a2645d0da99b0347af86",
+      "pseudocode_file": "30523.pseudo.js",
+      "pseudocode_sha256": "47cea1e925a319a7229815fb962d73ebe98fe68e1f14986812295e29cfb34728",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 119,
+          "absolute_start": 6965680,
+          "absolute_end_exclusive": 6965799,
+          "source_sha256": "e5d851ab0e1baa0f0ada2dbdd0e699d1ce94ec122fa9e68cba2d88e386d5af28",
+          "instruction_anchors_count": 32
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30524,
+      "name": "",
+      "offset": 6965799,
+      "size": 42,
+      "bytecode_sha256": "d8291dd7bfe5b45a4874296ea04138a9ba71ce32c5ea5f0e392f4a3c4c1e28d8",
+      "disassembly_file": "30524.disassembly.txt",
+      "disassembly_sha256": "f92c3757209cc41a39bf3d0e46aba9b4fa13094a9aa89a95d78e526bfa530b5c",
+      "pseudocode_file": "30524.pseudo.js",
+      "pseudocode_sha256": "5748b1407aebfc8cc4a94498592146d83c571693f181cfd19bcec65283d02eac",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 42,
+          "absolute_start": 6965799,
+          "absolute_end_exclusive": 6965841,
+          "source_sha256": "d8291dd7bfe5b45a4874296ea04138a9ba71ce32c5ea5f0e392f4a3c4c1e28d8",
+          "instruction_anchors_count": 14
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30456,
+      "name": "t0",
+      "offset": 6960787,
+      "size": 36,
+      "bytecode_sha256": "9c844a0c037374374edb2c25f8c8a955fbb62d308bc715f9cfd1713927b5a6fd",
+      "disassembly_file": "30456.disassembly.txt",
+      "disassembly_sha256": "39d8136a325ce36a45552692bb2bad9ea37d87e3c938ab340fd2274918e85f2d",
+      "pseudocode_file": "30456.pseudo.js",
+      "pseudocode_sha256": "9f955c6d9f959d5b13befd084021620e18972ea82a4e222c86289288a7ee2edc",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 36,
+          "absolute_start": 6960787,
+          "absolute_end_exclusive": 6960823,
+          "source_sha256": "9c844a0c037374374edb2c25f8c8a955fbb62d308bc715f9cfd1713927b5a6fd",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30457,
+      "name": "t1",
+      "offset": 6960823,
+      "size": 30,
+      "bytecode_sha256": "d0f44483a149cda46b55b2198800a3e60716b642c306795e40213556eceba116",
+      "disassembly_file": "30457.disassembly.txt",
+      "disassembly_sha256": "30046e5bebe979084c90d2aab9b8a79a72f586f8aa12b3c59249738eeca2c887",
+      "pseudocode_file": "30457.pseudo.js",
+      "pseudocode_sha256": "14c2dd3f3b204480e2351d4ac007cc6541372d3c89a823a77e4d9b8cbff209f3",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 6960823,
+          "absolute_end_exclusive": 6960853,
+          "source_sha256": "d0f44483a149cda46b55b2198800a3e60716b642c306795e40213556eceba116",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30458,
+      "name": "",
+      "offset": 6960853,
+      "size": 30,
+      "bytecode_sha256": "3aa631d6e1f90e167126eb2888effec20056a1492c6445730ba1a35fb46d41c6",
+      "disassembly_file": "30458.disassembly.txt",
+      "disassembly_sha256": "5ff462ad09351304c79cc37a90dedbaa83b8559920c9406dd8bb0f05cccadbad",
+      "pseudocode_file": "30458.pseudo.js",
+      "pseudocode_sha256": "dce1a366226d95e08799d1d16675f3d2ec7d1f56fb5d2f44e553afaa1ea3da0a",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 30,
+          "absolute_start": 6960853,
+          "absolute_end_exclusive": 6960883,
+          "source_sha256": "3aa631d6e1f90e167126eb2888effec20056a1492c6445730ba1a35fb46d41c6",
+          "instruction_anchors_count": 9
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30460,
+      "name": "",
+      "offset": 6961763,
+      "size": 9,
+      "bytecode_sha256": "1abd5f95d22bcdf43a135390e6709c1af0758ab02bbee8950fa62f8f5fa26b4c",
+      "disassembly_file": "30460.disassembly.txt",
+      "disassembly_sha256": "6149c3fd0b17ef0f93b56dc6dd770872b11428b5c196ca5c6fbc00f7b2ce5674",
+      "pseudocode_file": "30460.pseudo.js",
+      "pseudocode_sha256": "ee4ed3c01cecb90865903a3447fca0370d272f7ccc7529d5b10d67d99abf0671",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 30461,
+      "name": "?anon_0_",
+      "offset": 6961772,
+      "size": 129,
+      "bytecode_sha256": "1896aff62efc83a9b9482f5e7705f5ea52ae35c0ac09c0b82232d16d98443207",
+      "disassembly_file": "30461.disassembly.txt",
+      "disassembly_sha256": "693ad910fd0017cf869cdb87137d7c1709a58cd7af6735f580f5e5515df8b71b",
+      "pseudocode_file": "30461.pseudo.js",
+      "pseudocode_sha256": "00febdd580f2d43d2ce838af437c09456b82357a4187a472764dba1bc53e5a2a",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 30463,
+      "name": "",
+      "offset": 6961949,
+      "size": 9,
+      "bytecode_sha256": "3d3a9382fa4443ad9d8f2b54786eb3affa3a9c4009ebc12c323e758a8f879e0f",
+      "disassembly_file": "30463.disassembly.txt",
+      "disassembly_sha256": "9411d68033dffe1fa05df5cd2b57244f65e2399e2818fd8b9fe78ee0060cf639",
+      "pseudocode_file": "30463.pseudo.js",
+      "pseudocode_sha256": "a85cffc72d3f326181005a415e7360478fe2a6bbeca32bd79aede0e010fe1f9c",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 6961949,
+          "absolute_end_exclusive": 6961958,
+          "source_sha256": "3d3a9382fa4443ad9d8f2b54786eb3affa3a9c4009ebc12c323e758a8f879e0f",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30464,
+      "name": "?anon_0_",
+      "offset": 6961958,
+      "size": 518,
+      "bytecode_sha256": "6e62c356c7776be3e284aa27cb958ea87adeae7bd6070a80e309b30d3878f1db",
+      "disassembly_file": "30464.disassembly.txt",
+      "disassembly_sha256": "b1124f24cd156b51ce6b07eda17c4095bb86ac888768a199fde8f822b5650a13",
+      "pseudocode_file": "30464.pseudo.js",
+      "pseudocode_sha256": "80fa082632d5f23018753687e28153927f845dad8b9ccc7ec1096beb4543e272",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 518,
+          "absolute_start": 6961958,
+          "absolute_end_exclusive": 6962476,
+          "source_sha256": "6e62c356c7776be3e284aa27cb958ea87adeae7bd6070a80e309b30d3878f1db",
+          "instruction_anchors_count": 138
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30475,
+      "name": "saveWidgetDeepLink",
+      "offset": 6962662,
+      "size": 257,
+      "bytecode_sha256": "d4b6935711ae84ea7dba8d509c5e26cc882f43f56e08867ab32ab348b9e3ce96",
+      "disassembly_file": "30475.disassembly.txt",
+      "disassembly_sha256": "eb5086e5454e0ef6886c46cfdf189f0325884fe395eb5715316d616c0fced13b",
+      "pseudocode_file": "30475.pseudo.js",
+      "pseudocode_sha256": "ebf9de2c27ebda42918b4f9f9ef2fa90db51466bfcfdc4fa261b089540e8ff4a",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 257,
+          "absolute_start": 6962662,
+          "absolute_end_exclusive": 6962919,
+          "source_sha256": "d4b6935711ae84ea7dba8d509c5e26cc882f43f56e08867ab32ab348b9e3ce96",
+          "instruction_anchors_count": 70
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30481,
+      "name": "",
+      "offset": 6963226,
+      "size": 992,
+      "bytecode_sha256": "5af8deb23fd6a27b2c31a4901df21a5ff9fc3d3e69aa370a9cfd55d9fe9ae005",
+      "disassembly_file": "30481.disassembly.txt",
+      "disassembly_sha256": "6ed30eb710712149c29d32100d07cfcf6511e940b741ef84bcc50d3a458927dd",
+      "pseudocode_file": "30481.pseudo.js",
+      "pseudocode_sha256": "b489b0c726fd143fb8464248dccca951e67e64bcb364d6d292a5adc8b224e664",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 159,
+          "relative_end_exclusive": 342,
+          "absolute_start": 6963385,
+          "absolute_end_exclusive": 6963568,
+          "source_sha256": "d9bac3c8c2fd61ddea1cea84e023c066b6600ddb6d107386d3167530fa4d1b90",
+          "instruction_anchors_count": 40
+        },
+        {
+          "relative_start": 342,
+          "relative_end_exclusive": 421,
+          "absolute_start": 6963568,
+          "absolute_end_exclusive": 6963647,
+          "source_sha256": "03a22596abb4638ede97b41355eb5251aaef6ba56b2f5d94aa8befd298e1dbd1",
+          "instruction_anchors_count": 17
+        },
+        {
+          "relative_start": 488,
+          "relative_end_exclusive": 564,
+          "absolute_start": 6963714,
+          "absolute_end_exclusive": 6963790,
+          "source_sha256": "27df9ba9bdb708883c0f59710e9727f92bff37f23782b6259486a6ad11d5b977",
+          "instruction_anchors_count": 16
+        },
+        {
+          "relative_start": 564,
+          "relative_end_exclusive": 843,
+          "absolute_start": 6963790,
+          "absolute_end_exclusive": 6964069,
+          "source_sha256": "ccf017efffe8f3c7c5e73b8b15faee9340151d12e7edcb0131e72d882e3af9a4",
+          "instruction_anchors_count": 64
+        },
+        {
+          "relative_start": 845,
+          "relative_end_exclusive": 992,
+          "absolute_start": 6964071,
+          "absolute_end_exclusive": 6964218,
+          "source_sha256": "68ba133d5ac5332e5f2992f06fb8ae5f797c85db6af7037ead23a57ed87298cd",
+          "instruction_anchors_count": 33
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30500,
+      "name": "",
+      "offset": 6964628,
+      "size": 124,
+      "bytecode_sha256": "65cd939d96136c2f1a658737f6c07a1259ce17b0208a857fa69b006b2855d57b",
+      "disassembly_file": "30500.disassembly.txt",
+      "disassembly_sha256": "5dc41638afc260f379a7e40b615356f07f70e6f4500b138bc906cd956d1a0268",
+      "pseudocode_file": "30500.pseudo.js",
+      "pseudocode_sha256": "4b49b0548f2cccf4c81278a89a47ac6633f529f281bb62270e356454d9029d47",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 27753,
+      "name": "get",
+      "offset": 6718876,
+      "size": 39,
+      "bytecode_sha256": "29bb65e625fbdd91d599af0c7302feee1721ccf94387b66d45c4cd0e9960e9b3",
+      "disassembly_file": "27753.disassembly.txt",
+      "disassembly_sha256": "48882a353d042d97da01f1fac5ec5fce4aaa463547839f091c888b97057b31b9",
+      "pseudocode_file": "27753.pseudo.js",
+      "pseudocode_sha256": "9fa264e1e0c26c7fe0703cfbef16ad5086c452f669f20b79af545e6bc760af36",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 39,
+          "absolute_start": 6718876,
+          "absolute_end_exclusive": 6718915,
+          "source_sha256": "29bb65e625fbdd91d599af0c7302feee1721ccf94387b66d45c4cd0e9960e9b3",
+          "instruction_anchors_count": 10
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30486,
+      "name": "",
+      "offset": 6964251,
+      "size": 77,
+      "bytecode_sha256": "e8925f753f8d1979f62f44ed3520b1e7eb5102d778f78f547099d04a001fd4be",
+      "disassembly_file": "30486.disassembly.txt",
+      "disassembly_sha256": "54e2b94ef73c6ba5dd6a196d1048c917053b3c1ba8a04d1685cc36bbeef93efb",
+      "pseudocode_file": "30486.pseudo.js",
+      "pseudocode_sha256": "10d5650b774ff46f78da8fe9e5a7d7c2bb9987b115711101a488a3a6b3eefe8d",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 30487,
+      "name": "",
+      "offset": 6964328,
+      "size": 88,
+      "bytecode_sha256": "19821baa8a86a084943333483a9bb88cd848fd8343240652e67fa4c75da06772",
+      "disassembly_file": "30487.disassembly.txt",
+      "disassembly_sha256": "c8f059424ea7a520775ef565fd2a14f194f5cedc7f011bdba40f5f470ff506ca",
+      "pseudocode_file": "30487.pseudo.js",
+      "pseudocode_sha256": "60e71d035477b48fd8f4069b01116f4f86f3c9144530ad20952711065c90aab7",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 88,
+          "absolute_start": 6964328,
+          "absolute_end_exclusive": 6964416,
+          "source_sha256": "19821baa8a86a084943333483a9bb88cd848fd8343240652e67fa4c75da06772",
+          "instruction_anchors_count": 21
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30488,
+      "name": "",
+      "offset": 6964416,
+      "size": 71,
+      "bytecode_sha256": "e4cb706f0bb2fcb3138e54605e0e6bf4885a86c0d47a562f807f874e0f78ec37",
+      "disassembly_file": "30488.disassembly.txt",
+      "disassembly_sha256": "a68c24ca2d37ee1d68ac44f418b5cbe5a8b04be47f0ff6d580fe2427152b8c2c",
+      "pseudocode_file": "30488.pseudo.js",
+      "pseudocode_sha256": "02a76a8d8db13cad73ca30d878184dbbe4a97516ce0b7a25f035f359dadcd5ca",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 71,
+          "absolute_start": 6964416,
+          "absolute_end_exclusive": 6964487,
+          "source_sha256": "e4cb706f0bb2fcb3138e54605e0e6bf4885a86c0d47a562f807f874e0f78ec37",
+          "instruction_anchors_count": 17
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30491,
+      "name": "",
+      "offset": 6964487,
+      "size": 35,
+      "bytecode_sha256": "81ae5f3e26c4e31530ca81290d79d8a2477ea58abc3b8664b396376d5665631f",
+      "disassembly_file": "30491.disassembly.txt",
+      "disassembly_sha256": "7bb63d8db9c175c71aa7afa1bda9ad1c4cdee544ce4e7ee5f030eb1538a15823",
+      "pseudocode_file": "30491.pseudo.js",
+      "pseudocode_sha256": "416d2327d1034e9e62814e39bdbc8ab84c4bf012a1352315d673c2c69622811a",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 30495,
+      "name": "",
+      "offset": 6964522,
+      "size": 35,
+      "bytecode_sha256": "1135c6cde513c84a9327bea7a4465b9ad7f37e7a0a675e540da7ae83f8ec7d1e",
+      "disassembly_file": "30495.disassembly.txt",
+      "disassembly_sha256": "023aed667103656158ab734aef68a3d2fc1389fe66390918b6a736ebc2a68288",
+      "pseudocode_file": "30495.pseudo.js",
+      "pseudocode_sha256": "bb6a13ad0d73def07eb80987ee712fb7b81d5882387685a5cd9fbf03ce113ad1",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [],
+      "review_status": "decoded contextual candidate; no independent report claim",
+      "shared_body": false
+    },
+    {
+      "function_id": 25947,
+      "name": "",
+      "offset": 6557066,
+      "size": 113,
+      "bytecode_sha256": "a3369ff7d1009e3ccb976537417651a1d1046ff00012e3f4a1ea58bfc00362ff",
+      "disassembly_file": "25947.disassembly.txt",
+      "disassembly_sha256": "e8345a381ec03d9a1aac74fb0f87233c2e8eb91e2da0f830b81ff48a7115f89c",
+      "pseudocode_file": "25947.pseudo.js",
+      "pseudocode_sha256": "a40a5764f69c269d1ef59fe547a3e6fdf96bab4a1d4790ccf383731c93b8f734",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 113,
+          "absolute_start": 6557066,
+          "absolute_end_exclusive": 6557179,
+          "source_sha256": "a3369ff7d1009e3ccb976537417651a1d1046ff00012e3f4a1ea58bfc00362ff",
+          "instruction_anchors_count": 29
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 25948,
+      "name": "debounce",
+      "offset": 6557179,
+      "size": 306,
+      "bytecode_sha256": "cc846297aad2f8516d84587bfc648eb858dd09746de5f9b7df65eeca16eab866",
+      "disassembly_file": "25948.disassembly.txt",
+      "disassembly_sha256": "798d861c5b64e0f1d24be449b883a012bf2db3261920a1a5559e558709db9634",
+      "pseudocode_file": "25948.pseudo.js",
+      "pseudocode_sha256": "826a7d59a9e142ff6f82b5b58981d9405ffef0884e9984cff642d8aad402aa0b",
+      "fallback": false,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 306,
+          "absolute_start": 6557179,
+          "absolute_end_exclusive": 6557485,
+          "source_sha256": "cc846297aad2f8516d84587bfc648eb858dd09746de5f9b7df65eeca16eab866",
+          "instruction_anchors_count": 79
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30571,
+      "name": "",
+      "offset": 6967965,
+      "size": 114,
+      "bytecode_sha256": "cd8f9aa66cf62baaf1202598897cfedad123e99376ae9e5d130b5a332bfea06e",
+      "disassembly_file": "30571.disassembly.txt",
+      "disassembly_sha256": "f9ed32a8dcebf476a8f425fe98a0697a2bd23ea5626165c0ab4ffd981170c23f",
+      "pseudocode_file": "30571.pseudo.js",
+      "pseudocode_sha256": "ca55d4998b1682d3c6d7b3687d046a8606113ae22f720aa2538b7703c752af09",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 114,
+          "absolute_start": 6967965,
+          "absolute_end_exclusive": 6968079,
+          "source_sha256": "cd8f9aa66cf62baaf1202598897cfedad123e99376ae9e5d130b5a332bfea06e",
+          "instruction_anchors_count": 29
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    },
+    {
+      "function_id": 30645,
+      "name": "",
+      "offset": 6978036,
+      "size": 114,
+      "bytecode_sha256": "7677152fca99de2dc9dcb16e65a772f54f81ad93a5e3a4417ebd93a77dc8426a",
+      "disassembly_file": "30645.disassembly.txt",
+      "disassembly_sha256": "82719af879b79c9c4e7bc26f3df4266d552047495ad89e969203e39f1f639c91",
+      "pseudocode_file": "30645.pseudo.js",
+      "pseudocode_sha256": "b8d6e022339db293387a702ef9d3b66960e9566c686b1f1954ca639050e79917",
+      "fallback": true,
+      "scope": "Offline Hermes decoder, not REA native output; pseudocode is not original/reconstructed runnable source",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 114,
+          "absolute_start": 6978036,
+          "absolute_end_exclusive": 6978150,
+          "source_sha256": "7677152fca99de2dc9dcb16e65a772f54f81ad93a5e3a4417ebd93a77dc8426a",
+          "instruction_anchors_count": 29
+        }
+      ],
+      "review_status": "selected static regions interpreted",
+      "shared_body": false
+    }
+  ],
+  "reused": [
+    {
+      "function_id": 28785,
+      "path": "maxrewards/native/hermes-functions/28785.disassembly.txt",
+      "offset": 6808617,
+      "size": 85,
+      "bytecode_sha256": "07a3572d2dc7eda7fccf3be50da6ece4423e944fca69941b735ac97eaa68efcc",
+      "disassembly_sha256": "79e42678ddbeb02ea6a542faf941ea311d2e1979491faea228cbf756ae977197",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 85,
+          "absolute_start": 6808617,
+          "absolute_end_exclusive": 6808702,
+          "source_sha256": "07a3572d2dc7eda7fccf3be50da6ece4423e944fca69941b735ac97eaa68efcc",
+          "instruction_anchors_count": 23
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 30443,
+      "path": "maxrewards/native/hermes-functions/30443.disassembly.txt",
+      "offset": 6958902,
+      "size": 138,
+      "bytecode_sha256": "753eb65da2dd2563f8036f3424f6fef15c68c608177b90ba121ae98532077af2",
+      "disassembly_sha256": "efc070baac82dfd5870644f1054dec07a5092ec7f9ef48719a36553623c2c571",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 138,
+          "absolute_start": 6958902,
+          "absolute_end_exclusive": 6959040,
+          "source_sha256": "753eb65da2dd2563f8036f3424f6fef15c68c608177b90ba121ae98532077af2",
+          "instruction_anchors_count": 30
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27668,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27668.disassembly.txt",
+      "offset": 6711094,
+      "size": 1375,
+      "bytecode_sha256": "62ce8b9b815c9b6e8cb2eb9ce137d19c97c497ea4c3a6880faac9a07f6f2bb8f",
+      "disassembly_sha256": "66ca3e93197dcfc3858b7049c23d29b164bcbe89e3bf54a94845b6049e831bcf",
+      "reviewed_regions": [
+        {
+          "relative_start": 429,
+          "relative_end_exclusive": 455,
+          "absolute_start": 6711523,
+          "absolute_end_exclusive": 6711549,
+          "source_sha256": "955d232aff2ce15f258bb5dff2315e428f21c87b98b8caa4c439c57d3d113d7c",
+          "instruction_anchors_count": 6
+        },
+        {
+          "relative_start": 1038,
+          "relative_end_exclusive": 1071,
+          "absolute_start": 6712132,
+          "absolute_end_exclusive": 6712165,
+          "source_sha256": "a0fd44dfc0fa3a6ed0632a5e5aa1573ea4e01a40dba71fa42877e0399a1a80d4",
+          "instruction_anchors_count": 8
+        },
+        {
+          "relative_start": 1174,
+          "relative_end_exclusive": 1207,
+          "absolute_start": 6712268,
+          "absolute_end_exclusive": 6712301,
+          "source_sha256": "98ba993671032e08deb1278e6ae0c768688869aa7b410c74af3744b16ffe0cf4",
+          "instruction_anchors_count": 8
+        },
+        {
+          "relative_start": 1240,
+          "relative_end_exclusive": 1273,
+          "absolute_start": 6712334,
+          "absolute_end_exclusive": 6712367,
+          "source_sha256": "fbbbfd71de09fa37f8745f53091293af69e1abb5636752129c50a7d8bae1c020",
+          "instruction_anchors_count": 8
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27683,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27683.disassembly.txt",
+      "offset": 4126120,
+      "size": 9,
+      "bytecode_sha256": "9cefccb7345a56728ea2aa215d1849f24841864370c571745ce11fc30d151879",
+      "disassembly_sha256": "cde065a7c84b5e7544399ffe1b5eead08b0b3ca016a952caeb1f3f1eb2d46489",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 9,
+          "absolute_start": 4126120,
+          "absolute_end_exclusive": 4126129,
+          "source_sha256": "9cefccb7345a56728ea2aa215d1849f24841864370c571745ce11fc30d151879",
+          "instruction_anchors_count": 3
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27744,
+      "path": "maxrewards/native-recommendation-review/functions/27744.disassembly.txt",
+      "offset": 6717717,
+      "size": 136,
+      "bytecode_sha256": "567f5a30232ddc266bebd1a0961a2051bb72652b7aa737ed77301e3d29555f38",
+      "disassembly_sha256": "6ae180b38e3ce421c0f5d5a4a0950120ee86ec95b5cfd4f40fbe9cb95d072b2f",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 136,
+          "absolute_start": 6717717,
+          "absolute_end_exclusive": 6717853,
+          "source_sha256": "567f5a30232ddc266bebd1a0961a2051bb72652b7aa737ed77301e3d29555f38",
+          "instruction_anchors_count": 31
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27745,
+      "path": "maxrewards/native-recommendation-review/functions/27745.disassembly.txt",
+      "offset": 6717853,
+      "size": 952,
+      "bytecode_sha256": "cf0669d028494605a0fa026cc0a9643c670ecc0969a154c3f08fd4bbb28b6d0f",
+      "disassembly_sha256": "01f2c12c2f04b835c0706f179e5af4aae253d5d216ed5d7568078cb42e28f1f8",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 60,
+          "absolute_start": 6717853,
+          "absolute_end_exclusive": 6717913,
+          "source_sha256": "a3126bd8e3ee649e1a8e050313f15d8a9cdc433d4bc2eaf2b87192fa0766ab66",
+          "instruction_anchors_count": 17
+        },
+        {
+          "relative_start": 705,
+          "relative_end_exclusive": 947,
+          "absolute_start": 6718558,
+          "absolute_end_exclusive": 6718800,
+          "source_sha256": "8444ba56b3eff9c4ada33819eeadfc858e9e5183564b4fbb8fc2030d6bfda848",
+          "instruction_anchors_count": 63
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27757,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27757.disassembly.txt",
+      "offset": 6719013,
+      "size": 156,
+      "bytecode_sha256": "a424c5e5fb002041ed5a38c30ec8a8a0a96d2e25d37ad37a6a53f032f53378c0",
+      "disassembly_sha256": "88ba81c2f87d8d1460cdef80071ffec9bc96911769a2adc49cbaf4d2070595a7",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 156,
+          "absolute_start": 6719013,
+          "absolute_end_exclusive": 6719169,
+          "source_sha256": "a424c5e5fb002041ed5a38c30ec8a8a0a96d2e25d37ad37a6a53f032f53378c0",
+          "instruction_anchors_count": 36
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27758,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27758.disassembly.txt",
+      "offset": 6719169,
+      "size": 186,
+      "bytecode_sha256": "c5e6c41c075ac6f99f3b3f970ec6824c2b147961b75f976f719c14b029f0ab9e",
+      "disassembly_sha256": "f031c5b2dab5fed17be0f5e7fa568c3e24d932b602fe8501462c22b68c1756a4",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 186,
+          "absolute_start": 6719169,
+          "absolute_end_exclusive": 6719355,
+          "source_sha256": "c5e6c41c075ac6f99f3b3f970ec6824c2b147961b75f976f719c14b029f0ab9e",
+          "instruction_anchors_count": 50
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27760,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27760.disassembly.txt",
+      "offset": 6719385,
+      "size": 76,
+      "bytecode_sha256": "ab75062a1e75e607e9bcf77336061080133d6d0a7333b4b5d0121b7bd93ca313",
+      "disassembly_sha256": "3b00497739aa4f064d0ede09230b36351e5f8333eefcf20ccc86b238a123254b",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 76,
+          "absolute_start": 6719385,
+          "absolute_end_exclusive": 6719461,
+          "source_sha256": "ab75062a1e75e607e9bcf77336061080133d6d0a7333b4b5d0121b7bd93ca313",
+          "instruction_anchors_count": 18
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27761,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27761.disassembly.txt",
+      "offset": 6719461,
+      "size": 27,
+      "bytecode_sha256": "f07b9f8ae48f3281f426783d27ca2d50cda7f904b3fd4132fcf4e38082ae4d48",
+      "disassembly_sha256": "6ec5dc805cdd2e7905f2196be04d1e8aaa176b9066fa773fadd1bc99bbc0a00e",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 27,
+          "absolute_start": 6719461,
+          "absolute_end_exclusive": 6719488,
+          "source_sha256": "f07b9f8ae48f3281f426783d27ca2d50cda7f904b3fd4132fcf4e38082ae4d48",
+          "instruction_anchors_count": 7
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27762,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27762.disassembly.txt",
+      "offset": 6719488,
+      "size": 51,
+      "bytecode_sha256": "af26ed39875740ec090a031fc6788f971f7fe6b69f30073e4dda38caf66e0db0",
+      "disassembly_sha256": "e534ef88f9fad09b37a1779d425964f1d252334fb0fb3af3007062c7eef895ca",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 51,
+          "absolute_start": 6719488,
+          "absolute_end_exclusive": 6719539,
+          "source_sha256": "af26ed39875740ec090a031fc6788f971f7fe6b69f30073e4dda38caf66e0db0",
+          "instruction_anchors_count": 12
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27766,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27766.disassembly.txt",
+      "offset": 6719741,
+      "size": 74,
+      "bytecode_sha256": "fe3e818a4f38a22d9f331cb35100203d40927bf649deb3e8aaa61257d874d6b6",
+      "disassembly_sha256": "8ae97583c376118e47784772735fb0d15c9f5a2478c067158f816f9b1923d559",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 74,
+          "absolute_start": 6719741,
+          "absolute_end_exclusive": 6719815,
+          "source_sha256": "fe3e818a4f38a22d9f331cb35100203d40927bf649deb3e8aaa61257d874d6b6",
+          "instruction_anchors_count": 19
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 27767,
+      "path": "continuation-20261027/maxrewards-recommendation/functions/27767.disassembly.txt",
+      "offset": 6719815,
+      "size": 75,
+      "bytecode_sha256": "60f98512deea193ae7c48f7e6b0c2588297e6db729fe3aa23dfeeb73051e6aaa",
+      "disassembly_sha256": "aa2d02d877529eddb9254f6756a091ef15f8e1796b28155dd6146ba3dd9297a2",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 75,
+          "absolute_start": 6719815,
+          "absolute_end_exclusive": 6719890,
+          "source_sha256": "60f98512deea193ae7c48f7e6b0c2588297e6db729fe3aa23dfeeb73051e6aaa",
+          "instruction_anchors_count": 18
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 68582,
+      "path": "ipad-followup-20261027/maxrewards/68582.disassembly.txt",
+      "offset": 12571047,
+      "size": 129,
+      "bytecode_sha256": "22481eceb9df995dc151e298d3a38614c871b921ed5e6a5d414f0156d1808737",
+      "disassembly_sha256": "930fcde7af57f9c0e129a4a8d0f45667bdbadffbdf74d89cf565081ec631acc0",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 129,
+          "absolute_start": 12571047,
+          "absolute_end_exclusive": 12571176,
+          "source_sha256": "22481eceb9df995dc151e298d3a38614c871b921ed5e6a5d414f0156d1808737",
+          "instruction_anchors_count": 35
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 68583,
+      "path": "ipad-followup-20261027/maxrewards/68583.disassembly.txt",
+      "offset": 12571176,
+      "size": 119,
+      "bytecode_sha256": "0763f23d9d4ca9429ba467d4b0d2cc60cc5be2926ef26d287e20a3502b4fbfdc",
+      "disassembly_sha256": "a790cfa04e9bed5b56eda1d063b3ed0863deab0ad9cc9228d1dafb8475b9900c",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 119,
+          "absolute_start": 12571176,
+          "absolute_end_exclusive": 12571295,
+          "source_sha256": "0763f23d9d4ca9429ba467d4b0d2cc60cc5be2926ef26d287e20a3502b4fbfdc",
+          "instruction_anchors_count": 31
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 68584,
+      "path": "ipad-followup-20261027/maxrewards/68584.disassembly.txt",
+      "offset": 12571295,
+      "size": 94,
+      "bytecode_sha256": "2911cd3e2db86128fc24d9bb892bf91b60a29e32a3dcc9cf686dc1b64668166d",
+      "disassembly_sha256": "6296e6a4425ea2635728fbe2a7b23c90a3b465d5a8cf3de5f2637a671c8b4a5b",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 94,
+          "absolute_start": 12571295,
+          "absolute_end_exclusive": 12571389,
+          "source_sha256": "2911cd3e2db86128fc24d9bb892bf91b60a29e32a3dcc9cf686dc1b64668166d",
+          "instruction_anchors_count": 20
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    },
+    {
+      "function_id": 68599,
+      "path": "ipad-followup-20261027/maxrewards/68599.disassembly.txt",
+      "offset": 12571970,
+      "size": 553,
+      "bytecode_sha256": "89cc3edf49374a82976f5f890d903eaa6a1365225ac18a45efe33609c111e5ea",
+      "disassembly_sha256": "cdabc4d340b3aea89564d096e13df03a11a44ae3da8214cb26717d9069015dc9",
+      "reviewed_regions": [
+        {
+          "relative_start": 0,
+          "relative_end_exclusive": 553,
+          "absolute_start": 12571970,
+          "absolute_end_exclusive": 12572523,
+          "source_sha256": "89cc3edf49374a82976f5f890d903eaa6a1365225ac18a45efe33609c111e5ea",
+          "instruction_anchors_count": 152
+        }
+      ],
+      "status": "Retained prior decode reused; contextual old output may be newly interpreted, never counted as new decode."
+    }
+  ],
+  "module_bindings_file": "module-bindings.json",
+  "scope": "Six P2 seeds, direct closures/import bindings, finite neighboring header contexts and known F0 registrations only. No whole-bundle body scan, REA producer/import, target execution, network, device, auth-value or live storage access.",
+  "retained_full_anchor_ledger": "continuation-20261027/maxrewards-apple-integrations/evidence.json in original local archive"
+}

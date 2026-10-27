@@ -1,0 +1,17 @@
+{
+  "source_sha256": "447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0",
+  "relative_descriptor": {
+    "address": "0x1013a6a20",
+    "bytes_hex": "5007edff600000000000000000000000",
+    "signed_relative_entry": -1243312,
+    "resolved_entry": "0x101277170",
+    "context_size": 96
+  },
+  "indirect_symbol_table": {
+    "0x1012b3244": "_$sSo22NSManagedObjectContextC8CoreDataE7perform8schedule_xAbCE17ScheduledTaskTypeO_xyKctYaKlF",
+    "0x1012b3220": "_$sSo22NSManagedObjectContextC8CoreDataE17ScheduledTaskTypeOMa",
+    "0x1012b5338": "_swift_task_switch"
+  },
+  "assembly_sha256": "10b64513c043db39128519053a53bdf4840844fc86b0f45add8a1d7228241a91",
+  "scope": "Selected static scheduling edge; no HTTP decoder or target execution"
+}

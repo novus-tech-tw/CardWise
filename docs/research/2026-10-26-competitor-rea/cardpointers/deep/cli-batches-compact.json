@@ -1,0 +1,86 @@
+[
+  {
+    "batch": 2,
+    "evidence_id": "ev_1a2867498d79adf883fd3f336c3331325545c680318ac95073c78a957296b264",
+    "files": 36,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-02-evidence.json"
+  },
+  {
+    "batch": 3,
+    "evidence_id": "ev_82907745d7da1e6f76869eb660ef709f08e72964b71f5b24f8642da86903954a",
+    "files": 39,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-03-evidence.json"
+  },
+  {
+    "batch": 4,
+    "evidence_id": "ev_67dee14b8ac03e8e12fa874aa492bedfe9ea69066fa75b7edba778c7ac6e4108",
+    "files": 53,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-04-evidence.json"
+  },
+  {
+    "batch": 5,
+    "evidence_id": "ev_8002f29a88016d655b63ece02207f6b5f2a34bcdf0e8fb7612fbf8c9490823e2",
+    "files": 53,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-05-evidence.json"
+  },
+  {
+    "batch": 6,
+    "evidence_id": "ev_a56e58a1db5a114e64b680a006366239b8481edcad722a72b40138b934ff2008",
+    "files": 54,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-06-evidence.json"
+  },
+  {
+    "batch": 7,
+    "evidence_id": "ev_188af236296b439de4378164197615478fc4684c85714208765d321b514138b5",
+    "files": 53,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-07-evidence.json"
+  },
+  {
+    "batch": 8,
+    "evidence_id": "ev_e5b3a66a0db525c0fbfb092bce9ebcb02968ef46be8b79ef50cc3bc5699d675b",
+    "files": 55,
+    "parse_failures": 0,
+    "semantic_status": "unknown",
+    "semantic_truncated": false,
+    "omitted_nodes": 0,
+    "omitted_relations": 0,
+    "limits": [],
+    "retained_archive_path": "cardpointers/deep/content-batch-08-evidence.json"
+  }
+]
