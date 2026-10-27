@@ -1,6 +1,6 @@
-# Active REA continuation — 2026-10-27
+# REA continuation — paused checkpoint, 2026-10-27
 
-Rich explicitly required CardWise and Closer analysis to continue. The preceding reachable-only closeout was premature: selected tool completion and provider failures did not answer all remaining product questions. **Only Orbit is paused.** This supplement records newly traced client behavior while preserving earlier evidence and both completed app logins. It does not restart whole-app acquisition or import.
+**Paused at Rich's explicit request on 2026-10-27.** Earlier instructions to continue are historical. Retain the delivered analysis and both completed app logins; no new offline or physical investigation is queued. Resume only on a new explicit user request, beginning at the [pause and resume checkpoint](pause-checkpoint-20261027.md). Unexecuted cases remain pending rather than complete.
 
 ## New evidence delivered
 
@@ -8,7 +8,7 @@ Rich explicitly required CardWise and Closer analysis to continue. The preceding
 - [MaxRewards benefits and offers](maxrewards-benefits-offers.md): manual activation confirmation with optimistic update/rollback and service request; bounded offer-value estimates; annual versus expiring totals; separate limited-time acquisition offers. [Function identities](maxrewards-benefits-functions.json), [validation](maxrewards-benefits-validation.json).
 - [CardPointers wallet field provenance](cardpointers-wallet.md): selected NewDataResponse/Wallet/Pointer/PointerCard reflection chain, copy-to-materializer map, and Core Data scheduling handoff. [Selected metadata and span identities](cardpointers-wallet-evidence.json). Upstream producer/decoder remains partial.
 - [MaxRewards cap/category/valuation input producers](maxrewards-input-producers.md): exact service projections, wallet atom/selected-card path, user-tag gate, decimal stored valuation and numerical rounding. [Evidence](maxrewards-input-producers-evidence.json).
-- [MaxRewards widgets and Live Activities](maxrewards-apple-integrations.md): App Group/native bridge, debounce, cache/throttle/dedup and deep links. Native extension reader/timeline analysis continues separately. [Evidence](maxrewards-apple-integrations-evidence.json).
+- [MaxRewards widgets and Live Activities](maxrewards-apple-integrations.md): App Group/native bridge, debounce, cache/throttle/dedup and deep links. Selected native extension reader/timeline findings are linked below. [Evidence](maxrewards-apple-integrations-evidence.json).
 - [CardPointers native scheduling and save queue](cardpointers-sync.md): active-account gates, optional schedule, macOS helper registration/status and actor task/UUID cleanup. [Evidence](cardpointers-sync-evidence.json).
 - [Benefit progress and summary populations](maxrewards-benefit-progress.md): selected unused/threshold populations, dedupe, effective actual, period/date rules and gross versus remaining value. [Evidence](maxrewards-benefit-progress-evidence.json).
 - [Native widget readers and Live Activity defaults](maxrewards-native-widgets.md): clear-code category read/decode/timeline and error policies, shared Live Activity payload/cache/content and optional staleDate. [Evidence](maxrewards-native-widget-evidence.json).
@@ -29,7 +29,7 @@ Rich explicitly required CardWise and Closer analysis to continue. The preceding
 
 ## Remaining question ledger
 
-| Question | Evidence state | Next bounded work |
+| Question | Evidence state | Next bounded work after explicit resume |
 | --- | --- | --- |
 | MaxRewards store → category/merchant/nearby recommendation surfaces | Selected client paths answered; current category-summary and Dining detail runtime observed; merchant/nearby output unverified | Keep server candidate generation and runtime result separate |
 | MaxRewards manual benefit activation, progress and summaries | Selected screen/action, scope/dedup/numeric helpers and caller populations answered | Server tracker creation/reset, all-writer offer-store population and issuer authority remain unverified |
@@ -40,9 +40,9 @@ Rich explicitly required CardWise and Closer analysis to continue. The preceding
 | CardPointers Apple integration | Selected Mac Intents output and actual WidgetKit config/provider → shared read → timeline result/policy answered | OS render, external reload sources, other declared intents and current iPad behavior remain unobserved |
 | Authenticated read-only feature flows | Selected CP8.1.5 category/Offers/Cards sources and MR4.8.35 Home, Wallet/card and Dining detail now verified; both logins preserved | Continue remaining read-only paths; system notification declined and overlapping window minimized with settled global proof; MR Wallet/card and Dining detail now observed, while Offers/Benefits each opened an introductory route; continue CP/MR search using the visual gate |
 | Signed controller provisioning | Repaired; own userspace WDA start/status/cleanup and selected CardPointers input verified | Reuse proven userspace route; DDI already mounted. Historical native Xcode/CoreDevice failure is not overall OS incompatibility |
-| Closer analysis | Continues in its existing session/evidence set | Coordinate physical iPad; its work is not silently paused or counted as CardWise evidence |
+| Closer analysis | Separate PR50 evidence set; paused by the same explicit user request | Preserve its delivered source findings and unexecuted native cases; do not count them as CardWise results |
 
-No additional app login or installation is presently identified as necessary. Do not create account fixtures, enroll offers, sync banks, alter valuations/categories, redeem benefits or change security settings merely to obtain evidence. Ordinary read navigation is authorized once an exclusive controller window is established. Runtime access failure, untried static paths and hidden server implementation remain different classifications.
+No additional app login or installation is presently identified as necessary. Do not create account fixtures, enroll offers, sync banks, alter valuations/categories, redeem benefits or change security settings merely to obtain evidence. After an explicit resume request, ordinary read navigation still requires current human-state confirmation and an exclusive controller window. Runtime access failure, untried static paths and hidden server implementation remain different classifications.
 
 ## Method and delivery
 

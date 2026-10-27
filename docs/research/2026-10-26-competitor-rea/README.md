@@ -1,7 +1,8 @@
 # CardPointers and MaxRewards REA investigation
 
-Status: **active continuation required by Rich**. The earlier reachable-only closeout was premature; both CardWise and Closer must continue, while only Orbit is paused. Both iPad logins are verified. Reuse the prior PR/evidence and follow the [new findings and remaining questions](continuation/README.md); controller failures do not establish feature completion. Delivered checkpoints remain on [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81), without merging main or releasing the app.
+Status: **paused at Rich's explicit request on 2026-10-27**. Preserve the existing analysis, both completed app logins and private evidence. No new offline investigation or device operation is queued; resume only when Rich explicitly asks. The [pause and resume checkpoint](continuation/pause-checkpoint-20261027.md) records completed observations, remaining cases, controller limits and private-evidence retention. PR #81 remains unmerged; publishing this checkpoint does not release the app.
 
+- [Paused checkpoint and explicit-resume procedure](continuation/pause-checkpoint-20261027.md)
 - [Consolidated findings](report.md)
 - [iPad installation status and focused static followup](followup/README.md)
 - [Live progress and remaining work](progress.md)
