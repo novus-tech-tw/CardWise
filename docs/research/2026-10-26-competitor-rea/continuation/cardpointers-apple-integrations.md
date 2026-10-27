@@ -1,5 +1,7 @@
 # CardPointers 8.1.4 macOS Apple integrations: configuration options to shared data
 
+The later [actual Widget timeline](cardpointers-widget-timeline.md) and [local card-ordering getter](cardpointers-recommendation-order.md) continuations resolve selected downstream questions listed as open below.
+
 This focused offline pass recovers one actual Intents configuration output path. `CPPointersWidgetExtension.IntentHandler` takes a `PointersWidgetOneIntent` options request, obtains shared Core Data parents, maps them into `WidgetOnePointer` options, includes a fixed “Last Viewed” choice, and invokes the completion block with an `INObjectCollection` and a nil error. The WidgetKit executable also contains an options handler that calls the same named shared-persistence and fetch helpers. This does not establish its WidgetKit timeline, rendered entry, or refresh policy.
 
 The targets are the installed **macOS** CardPointers 8.1.4, build 20261019 extensions. This report does not equate them with an iPad build. No extension, intent, permission flow, device, app group directory, or user database was executed or accessed. No Ghidra import was made. All addresses below are unslid virtual addresses in the retained arm64 slice of `CPPointersWidgetExtension`, except the expressly marked CPWidget comparison. Raw LLVM nearest-symbol comments such as `plcrash…+offset` and `_write+offset` are not treated as function identities.

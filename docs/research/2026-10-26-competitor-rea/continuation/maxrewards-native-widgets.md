@@ -1,5 +1,7 @@
 # MaxRewards acquired extension reader boundary
 
+The later [LockWidget continuation](maxrewards-lock-widget.md) supersedes the header-only LockWidget coverage statement below; its encrypted dispatch boundary remains explicit.
+
 This addendum inspects only the three acquired widget/Live Activity extension carriers in the already acquired official **4.8.35 / build 1792099341** package. It does not reuse the encrypted main executable as a substitute for extension identity. `native-reader-boundary.json` contains exact hashes, allowlisted plist fields, Mach-O load commands/section mappings and bounded clear-string/symbol matches. It is supplementary static parsing, not new REA Evidence. No extension was launched, decrypted or modified.
 
 The retained native package provenance is `maxrewards/native/provenance.json`. Existing REA package inventory parent is `ev_5f183e69c10e069f64ed18f69c51596ebf11f77a4320517f0856751ecc96e4e2`, with inventory `ev_1788543234267b19830e387ea0eddfae4a15437b26fdfad24ac912c3883d5d63`; the prior main-Mach-O parent `ev_d4c4152c3e50fb513c3b63114a9ad2147331c9c3d4abe2f154476757f3db7667` describes **main only**, not these newly selected extension headers.

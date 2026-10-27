@@ -1,5 +1,7 @@
 # CardPointers wallet input provenance: focused continuation
 
+The subsequent [wallet network continuation](cardpointers-wallet-network.md) closes the selected network-data → typed-decoder → persistence-input edge that remained open at this checkpoint.
+
 Date: 2026-10-27. This pass reuses the saved native pseudocode and materializer dossier, then reads selected Swift reflection records and selected instruction ranges from the unchanged Mac 8.1.4 arm64 carrier. It does not import the image again, execute the app, inspect user storage or contact the iPad. The source SHA-256 remains `447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0`.
 
 ## CPW-01: the candidate input types are now concrete

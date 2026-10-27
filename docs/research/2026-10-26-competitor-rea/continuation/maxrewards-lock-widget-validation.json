@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "source_hash_verified": "c8cf678113102892d46a77919a572e239ee68fd1a6f66be637d40520ce44e599",
+  "unique_functions": 16,
+  "dossier_records": 16,
+  "function_body_encrypted_overlap_bytes": 0,
+  "anchor_regions": 15,
+  "source_instruction_branch_checks": 9,
+  "bundle_records": 26,
+  "prior_protected_digests_unchanged": 4,
+  "new_target_imports": [
+    "MaxRewardsLockWidget"
+  ],
+  "prior_reimports": [],
+  "device_network_auth_app_storage_operations": 0,
+  "binary_and_mcp_closed": true,
+  "report_evidence_ids_verified": 14,
+  "clear_indirect_symbol_import_bindings": 7,
+  "owned_worker_and_session_closed": true
+}
