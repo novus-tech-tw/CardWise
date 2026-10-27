@@ -1,6 +1,6 @@
 # Investigation progress
 
-Status: **in progress**. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix.
+Status: **completed offline investigation, delivered through PR #81**. Updated 2026-10-27; initial request was 2026-10-26 America/Phoenix. Final-head CI status is reported on the PR rather than inferred from an earlier commit.
 
 ## Current execution mode
 
@@ -23,10 +23,10 @@ The user requested an unattended method after interactive login/UI checks requir
 | --- | --- | --- | --- |
 | CardPointers extension and public web | Official Firefox XPI 8.0.8 hash verified; all six JS parsed; all 344 content factories covered using bounded partitions without resource truncation; popup/vendor/helpers analyzed; Safari bridge analyzed | Final compact ledgers integrated under `cardpointers/`; dynamic/external bindings remain explicitly unknown | Reachable extension static scope delivered |
 | MaxRewards public web and extension | 38-file frontend classified; official Firefox 0.1.7 and all nine JS parsed; untruncated business/core follow-up; public routes/planner observed; all 74 public Connect descriptors fetched without bank execution | Reports and compact Evidence integrated; server/runtime limits retained | Offline scope delivered |
-| CardPointers native Mac app | Official Mac App Store download succeeded; 8.1.4/build20261019; signed universal Mach-O and three extensions inventoried; Core Data model 24 entities/637 objects decoded; 70 compiled intent actions inventoried | Scoped Ghidra 12.1.3 main and Safari-extension native analysis; offline only | Active |
+| CardPointers native Mac app | Official 8.1.4/build20261019; native inventory, 24 entities/637 objects, 70 intent declarations; selected main refresh/materialization/consumer and Safari bridge paths recovered | Canonical main 24/Safari 4 records exported; all owned sessions closed | Offline scope delivered |
 | MaxRewards native iPhone/iPad-compatible Mac app | Official 4.8.35/build1792099341; native inventory and cryptid=1 metadata; Hermes v96 all headers/strings parsed; 17 focused entry functions decoded | Digest-bound report integrated; no FairPlay bypass | Offline scope delivered |
 | Native recommendation cross-check | All distinct bodies/instructions traversed for bounded identifier searches; 100 selected functions and 28 byte-range anchors reviewed | Date/category/cap/bonus/merchant findings and explicit limits integrated | Offline scope delivered |
-| Consolidation and PR | Dedicated worktree; first-pass reports, hashes, evidence ledger and CardWise baseline recorded | Integrate follow-up results, reconcile findings, validate files and publish updates | Active |
+| Consolidation and PR | Dedicated worktree; final reports, hashes, ledgers, baseline, method and progress reconciled | Final publication validation and CI recorded through PR #81 | Documentation delivered |
 
 ## Open questions
 
@@ -40,7 +40,7 @@ The user requested an unattended method after interactive login/UI checks requir
 
 ## Completion gate
 
-Do not describe the whole investigation as complete merely because a report or PR exists. Finish all reachable public-artifact work, verify artifact identities and report links, reconcile each open question to evidence or a concrete external blocker, preserve exact continuation steps, and update this ledger and PR. Do not convert unknown native or authenticated behavior into an absence claim. No personal accounts, credentials, bank sessions or payment submissions have been used. Authenticated behavior requires a selected authorized test fixture; an account creation or a bank connection must not be silently substituted for that missing evidence.
+The selected offline scope is complete: reachable static questions were reconciled to observations, bounded partial findings or explicit method limits; exact artifacts and continuation locations are preserved. Unknown native or authenticated behavior is not converted into an absence claim. No real banking credential, bank session or payment submission was used by the static analysis. Historical login/UI work is supplemental and no further test fixture, account creation or bank connection is pending. Future live/server questions require a separately selected scope rather than silently expanding this completed investigation.
 
 ## Validation so far
 
@@ -54,4 +54,4 @@ Do not describe the whole investigation as complete merely because a report or P
 
 ## Native engine recovery
 
-The first extended Ghidra attempts stalled in Swift demangling because the scoped PATH lacked `swift-demangle` and its `swift` fallback resolved to an unrelated OpenStack Python CLI. The native worker preserved thread/log evidence, canceled only owned analysis processes, and restarted with the actual Xcode toolchain bin prefixed in its process PATH. Default analyzers remain enabled, and neither global configuration nor target bytes were changed. Exact current jobs and recovery evidence are in `native/`; native function completion is still pending.
+The first extended Ghidra attempts stalled in Swift demangling because the scoped PATH lacked `swift-demangle` and its `swift` fallback resolved to an unrelated OpenStack Python CLI. The native worker preserved diagnostics, canceled only owned analysis processes, and restarted with the Xcode toolchain bin prefixed in its process PATH. Default analyzers remained enabled; auto-analysis completed in 461 seconds for the main app and 159 seconds for Safari. Selected native results were exported and all owned jobs closed. Neither global configuration nor target bytes changed. Exact recovery evidence and former job IDs are in `native/`.

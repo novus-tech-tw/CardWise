@@ -1,0 +1,27 @@
+{
+  "validated_on": "2026-10-27",
+  "scope": "Completed unattended offline competitor investigation; server/live banking behavior remains outside the proven static scope.",
+  "markdown_relative_links": {
+    "status": "passed",
+    "files": 16
+  },
+  "strict_json": {
+    "status": "passed",
+    "files_excluding_this_record": 45
+  },
+  "independent_root_provenance": {
+    "status": "passed",
+    "hermes_carrier_sha256": "efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9",
+    "supplemental_bytecode_spans": 100,
+    "main_output_pairs": 17,
+    "unique_selected_function_ids": 117,
+    "native_canonical_export_sha256": [
+      "22bd9ac5a523e916921723e1dccbce1c75cb629c403a56bf03013553a84ce027",
+      "5083426b24f050f1e8bee7b45b8dbb2bf4343bcbdac4733605169a4c1e5cc840"
+    ]
+  },
+  "native_owned_jobs_running": 0,
+  "git_paths": "Only docs/research/2026-10-26-competitor-rea/** changed relative to main; no application/release changes.",
+  "private_material": "Raw credentials, customer financial values, receipts, user containers, screenshots, vendor code and large canonical Evidence are excluded from the public PR. Focused JWT/token/private-email scans passed.",
+  "ci": "Final-head status is checked and reported on PR #81; this record does not reuse an earlier head status."
+}

@@ -200,10 +200,36 @@
     "gaps_count": 0,
     "actions_executed": 0
   },
-  "function_analysis_status": "Ghidra default profile running under extended per-process deadline; no native function conclusion yet",
+  "function_analysis_status": "Selected main-app and Safari static questions completed; canonical exports retained; all owned sessions closed",
   "local_bundle_files": [
     "cardpointers-native-resources-evidence.json",
     "cardpointers-native-ui-evidence-local.json"
   ],
-  "publication_boundary": "Do not publish raw AX values, auth/session data, application receipts or vendor binaries. This index contains static metadata and allowlisted UI structure only."
+  "publication_boundary": "Do not publish raw AX values, auth/session data, application receipts or vendor binaries. This index contains static metadata and allowlisted UI structure only.",
+  "native_safari_function_ledger": "safari-bridge-findings.json",
+  "native_safari_status": "Complete within selected static bridge question;4dossiers/default-profile auto-analysis exported; no native-runtime claim",
+  "native_main_function_ledger": "main-native-findings.json",
+  "native_main_status": "24 canonical records; selected store/materializer/consumer/reconciliation questions complete within static limits",
+  "canonical_function_exports": [
+    {
+      "file": "main-native-functions-evidence.json",
+      "bytes": 7877435,
+      "sha256": "22bd9ac5a523e916921723e1dccbce1c75cb629c403a56bf03013553a84ce027",
+      "records": 24,
+      "capture_records": 0,
+      "unknown_entries": 0,
+      "interpretation": "Zero structured unknown entries does not mean complete semantic recovery."
+    },
+    {
+      "file": "safari-native-functions-evidence.json",
+      "bytes": 5720654,
+      "sha256": "5083426b24f050f1e8bee7b45b8dbb2bf4343bcbdac4733605169a4c1e5cc840",
+      "records": 4,
+      "capture_records": 0,
+      "unknown_entries": 0,
+      "interpretation": "Zero structured unknown entries does not mean complete semantic recovery."
+    }
+  ],
+  "running_owned_jobs": 0,
+  "updated_utc": "2026-10-27T07:20:32.424219+00:00"
 }

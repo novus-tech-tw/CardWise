@@ -1,6 +1,6 @@
 # CardPointers and MaxRewards offline REA
 
-Status: **in progress**. Browser/extension and MaxRewards bytecode work is delivered; the two CardPointers native Ghidra jobs are still running. This report and [progress ledger](progress.md) distinguish completed static work from remaining native analysis. The active method is fully unattended/offline; no further login or UI participation is required.
+Status: **completed offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). All selected static work is finished and owned analysis jobs are closed. The [progress ledger](progress.md) records exact scope, artifacts, Evidence and continuation limits. No further login or UI participation is required.
 
 ## Main findings
 
@@ -13,7 +13,7 @@ For CardWise, the strongest near-term opportunities are consistent cap-aware inp
 | Target | Selected distribution | Actual analysis |
 | --- | --- | --- |
 | CardPointers X | Official Firefox 8.0.8; XPI SHA-256 `691c287f0c640e5c0cefd77fed49c3e9e6a4630ee0c8461a3e2fdf6022327af3` | Six original JS source families, all 344 content factories through source-bound partitions, popup/vendor/helper scopes; resource omissions resolved in final bounded passes |
-| CardPointers Mac | Official Mac App Store 8.1.4/build 20261019; main universal Mach-O SHA-256 `e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa` | Package/signature/plist/dispatch, three extensions, Core Data model and compiled App Intents; main and Safari native function analysis active |
+| CardPointers Mac | Official Mac App Store 8.1.4/build 20261019; main universal Mach-O SHA-256 `e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa` | Package/signature/plist/dispatch, three extensions, Core Data model, compiled App Intents and selected main/Safari native function paths completed |
 | MaxRewards Firefox | Official 0.1.7; XPI SHA-256 `5a8866b7c1760bddf125564249bc174548db4264e3a28c62ff0f6be856bd0c4b` | All nine shipped JS files parsed, focused six-source core reanalysis without resource truncation, plus all 74 acquired public provider descriptors |
 | MaxRewards native | Official iPhone/iPad-compatible 4.8.35/build 1792099341; bundle `com.max.MaxRewards` | REA inventory of 1,078 files/456 directories, metadata and encrypted-Mach-O boundary; separate Hermes v96 business resource parsed offline |
 | MaxRewards web | 38 acquired files, exact URL/digest manifest | 17 business/inline files REA-parsed; 21 SDK/shared files inventoried, not claimed as fully semantically audited |
@@ -30,7 +30,11 @@ A different helper implements **Amex offer-enrollment allocation**: normalize ca
 
 Bank requests use the browser's bank session; own-account synchronization is a separate boundary. A conditional sync branch constructs card/offer objects for the CardPointers service. No bank session, real credential, enrollment or upload was executed, and neither broad permissions nor object-field names establish a confirmed leak.
 
-The native Mac package adds concrete domain evidence: 24 Core Data entities, all 637 archived model objects decoded, including pointer values/order, selected bonus plans/categories, profiles, credit offers and offer-sync accounts/cards/history. Tier fields such as `boaTier` establish a model concept, not a proved rewards formula. Seventy compiled App Intents declarations cover several action families; not all are necessarily public, discoverable or usable. Native code results remain active in the [native report](native/report.md).
+The native Mac package adds concrete domain evidence: 24 Core Data entities, all 637 archived model objects decoded, including pointer values/order, selected bonus plans/categories, profiles, credit offers and offer-sync accounts/cards/history. Tier fields such as `boaTier` establish a model concept, not a proved rewards formula. Seventy compiled App Intents declarations cover several action families; not all are necessarily public, discoverable or usable.
+
+Four actual native Safari function dossiers corroborate the JavaScript bridge. The `getWallet` handler retrieves own-account authorization and entitlement state and constructs its reply; despite its name, this path does not return a complete card-row wallet. Static Keychain retrieval code was analyzed without reading any actual stored token.
+
+Main native code establishes a 400 ms model-change debounce followed by filtered Core Data publication, plus incoming `points`, `total_value` and order materialization with two parent reconciliation call sites. A selected consumer formats estimated cents per dollar and welcome value. Exact Swift sort keypaths and the full upstream value producer remain unresolved. Packaged ranking help is labeled as vendor explanation rather than a verified formula. All selected native questions and limits are in the [native report](native/report.md).
 
 Detailed evidence: [initial extension report](cardpointers/report.md), [deep static findings](cardpointers/deep-findings.md), [native Mac report](native/report.md).
 
@@ -77,8 +81,8 @@ Some native UI observations were also made, but provider window/AX limitations a
 
 ## Delivery and limits
 
-- Completed: official artifact identities, extension/source partitions, public configuration snapshots, MaxRewards package/bytecode review, source-bound comparison and compact provenance.
-- Still running: CardPointers main/Safari native Ghidra function questions; exact jobs/logs/checkpoints are recorded in [native progress](native/progress.md) and [jobs](native/jobs.json).
+- Completed: official artifact identities, extension/source partitions, public configuration snapshots, CardPointers main/Safari native questions, MaxRewards package/bytecode review, source-bound comparison and compact provenance.
+- Evidence and cleanup: CardPointers main 24 and Safari 4 canonical records exported; all owned native jobs closed. Exact former jobs/logs/checkpoints are recorded in [native progress](native/progress.md) and [jobs](native/jobs.json).
 - Static-scope limits: hidden server implementation, real bank acceptance/uptime, account-specific paid entitlements and universal recommendation accuracy. These are not tasks awaiting user participation.
 
 All conclusions distinguish observations, inferences and unknowns. Successful parsing, an untruncated graph partition, a complete summary view or a stored field never proves complete behavior. Full third-party artifacts and large raw Evidence are [retained locally](artifacts.md); public files contain digests, source/byte offsets, schema and compact ledgers.

@@ -1,6 +1,6 @@
 # CardPointers and MaxRewards REA investigation
 
-Status: **in progress, unattended offline analysis**. Official native apps and extensions have been acquired. Parallel workers are finishing native function analysis and bytecode cross-checks without further login or GUI intervention. This is not a claim of complete server-side or live banking behavior.
+Status: **completed offline investigation**, delivered through [PR #81](https://github.com/novus-tech-tw/CardWise/pull/81). All selected native, extension and bytecode work is finished; owned analysis jobs are closed. Server-side and live banking behavior remain explicit method limits, with no further login or GUI intervention pending.
 
 - [Consolidated findings](report.md)
 - [Live progress and remaining work](progress.md)

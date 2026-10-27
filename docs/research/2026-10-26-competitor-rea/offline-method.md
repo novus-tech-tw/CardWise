@@ -27,7 +27,7 @@ rea analyze-javascript-application /absolute/path/to/extracted-extension --json
 
 For a new distribution, first inventory it and choose exact relevant sources. A complete summary projection is not complete semantic analysis. Large graphs are analyzed in source-bound partitions with exact original offsets/digests; omitted outer bindings and dynamic dependencies remain explicit. Reuse retained Evidence rather than re-running a producer to recover a truncated display.
 
-Ghidra uses the task-local verified tool distribution, existing JDK, and scoped process environment documented under `native/`. Running job IDs/logs and selected artifacts are recorded in [native progress](native/progress.md) and [job snapshots](native/jobs.json). The apps themselves are not executed for this native code pass. MaxRewards' main Mach-O encryption is not bypassed: its separately shipped unencrypted Hermes bytecode is a different, legitimate static carrier.
+Ghidra uses the task-local verified tool distribution, existing JDK, and scoped process environment documented under `native/`. Job IDs/logs and selected artifacts are recorded in [native progress](native/progress.md) and [job snapshots](native/jobs.json); all investigation jobs are now closed. The apps themselves are not executed for this native code pass. MaxRewards' main Mach-O encryption is not bypassed: its separately shipped unencrypted Hermes bytecode is a different, legitimate static carrier.
 
 ## Completion is evidence-based
 

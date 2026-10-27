@@ -1,57 +1,50 @@
-# Native REA progress and resume checkpoint
+# Native REA final offline checkpoint
 
-Current scope: **offline REA only**, per the user's latest steering on 2026-10-26 America/Phoenix. Analyze the already acquired official native apps and extension artifacts. No GUI, login, additional accessibility capture, banking activity, account setup or live fixture is pending under this scope. Historical passive UI evidence is supplemental only.
+Current scope: **offline REA only**, per the user's latest steering. The selected CardPointers native questions are complete within the static coverage in `report.md` and `main-native-findings.json`. No GUI, login, accessibility capture, account setup, bank activity or runtime fixture is pending. All owned REA/Ghidra analysis jobs are closed; original app processes were not terminated by analysis cleanup.
 
-## Selected artifacts and owners
+## Exact selected artifacts and owners
 
-- This worker owns CardPointers Mac **8.1.4**, build **20261019**, bundle `com.getcardpointers.app`, acquired by root from the Mac App Store at `/Applications/CardPointers.app`.
-- Main universal executable SHA-256: `e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa`.
-- Derived arm64 executable SHA-256: `447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0`; derived with Apple's `lipo`, without decryption. Input/output mapping is in `binary-provenance.json`.
-- Native Safari app-extension universal SHA-256: `94cb7c00e9433e4cfdbfcf35a2a95c3330db7ab8905d77b226f89b9951689c7d`; derived arm64 SHA-256: `77da6a6bf88efcbb4bbf7ae1139dde529d526dd2d3ade0820a8c595ff05131ba`.
-- The MaxRewards worker separately owns the official MaxRewards native app and any bundled JavaScript. Do not duplicate that pass here.
-- The CardPointers extension worker owns Firefox/Safari JavaScript and native-message-call-site analysis. This worker owns native metadata and the compiled Safari handler.
+- CardPointers Mac **8.1.4**, build **20261019**, bundle `com.getcardpointers.app`, obtained by root from the Mac App Store at `/Applications/CardPointers.app`.
+- Main universal SHA-256: `e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa`; derived arm64: `447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0`.
+- Safari native universal SHA-256: `94cb7c00e9433e4cfdbfcf35a2a95c3330db7ab8905d77b226f89b9951689c7d`; derived arm64: `77da6a6bf88efcbb4bbf7ae1139dde529d526dd2d3ade0820a8c595ff05131ba`.
+- Apple's `lipo` produced the arm64 inputs; no decryption or bypass. `binary-provenance.json` records the mapping. Host native8.1.4 and Safari web-manifest8.1.3 are distinct.
+- This subtree owns CardPointers native static evidence. Separate workers own MaxRewards native/web and CardPointers extension JavaScript. Root owns overall PR staging, commit, publication and final CI.
 
-## Current completion matrix
+## Final question status
 
-| Question | Status | Evidence / next action |
-| --- | --- | --- |
-| Official artifact identity, original/derived hashes | Complete | Original package and explicit arm64 derivation retained |
-| Package and Apple application graph | Complete within package inventory | 167 regular files, 3 app extensions; full inventory/projection Evidence |
-| Main Mach-O, signature and Info.plist | Complete within tool coverage | 105 dependencies; non-exhaustive import/export inventories remain labeled |
-| CoreData model schema | Complete within shipped model | REA decoded all 637 archive objects; 24 entities; no live rows or object instantiation |
-| AppIntents declaration inventory | Complete within shipped resource | 70 declarations including legacy/hidden/version-specific actions; no execution claim |
-| Native dispatch metadata | Maximum supported pass completed | 20,000-record request retained; unresolved pointers, metadata-family caps and unsupported resilient/generic Swift remain provider limits |
-| Main native ranking/offer/wallet function questions | In progress | Default-profile Ghidra auto-analysis running under extended per-process startup deadline |
-| Native Safari `getWallet` handler/data boundary | In progress in parallel | Smaller compiled app-extension target in a second owned Ghidra session |
-| Authenticated/live bank/server behavior | Static-scope limit | No runtime fixture deliverable; do not substitute static paths for observed execution |
-| Research PR integration | Checkpoint integrated; updates ongoing | Only this `native/**` subtree is edited here; root stages, commits and publishes |
+| Question | Status / exact boundary |
+| --- | --- |
+| Artifact identity, package graph, Mach-O/signature/plist | Complete within selected package/tool inventory;105dependencies; imports/exports non-exhaustive |
+| CoreData model | All637 archive objects decoded;24entities; no live records |
+| AppIntents |70 declarations, including hidden/legacy/platform-specific; not all exposed/executed actions |
+| Native metadata | Maximum 20,000-record pass retained; unresolved pointers/family budgets/unsupported Swift metadata remain explicit |
+| PointersStore refresh | Wrapper→400ms debounce→work item→filtered CoreData publication chain recovered |
+| Pointer value writer and caller | Incoming points/total_value copied into DBPointerCard; two parent reconciliation call sites and relationship cleanup recovered |
+| Value consumer and ranking explanation | Selected display arithmetic recovered; vendor ranking help separately labeled; exact sort keypaths/upstream formula unproven |
+| Safari native getWallet | Four native dossiers plus independent JS correspondence; own-account auth/entitlement reply, not full card-row reply |
+| Remote/server/bank/full offer automation | Stated static-method limit; no live execution claim or runtime deliverable pending |
+| Canonical export and cleanup | Main24records +Safari4records retained; both sessions closed; final recorded process check found0owned workers |
+| PR handoff | Native subtree final, unstaged by this worker; root owns final delivery |
 
-## Active owned jobs
+## Durable jobs and results
 
-All job outputs are under `/Users/rich/Desktop/CardWise-REA-2026-10-26/native` outside the repository. `native-jobs.json` records the latest process tree, exact selected request and log locations. Worktree files are public-reviewable compact summaries.
+All large results remain outside Git under `/Users/rich/Desktop/CardWise-REA-2026-10-26/native`.
 
-| Job | Worker / REA server / JVM PID | Unified exec session | Current output |
+| Job | Former worker / REA / JVM | Former unified exec session | Final result |
 | --- | --- | --- | --- |
-| Main arm64 default Ghidra pass | 35337 / 35344 / 36873 | 66241 | `ghidra-business-procedures-extended.json` when complete; state `native-worker-state.json` |
-| Safari native handler default Ghidra pass | 42411 / 42413 / 42949 | 57682 | `safari-native-procedures.json` when complete; state `safari-native-worker-state.json` |
+| Main native |7919 /7928 /9739 |62773 |24 canonical records in `main-native-functions-evidence.json`; closed after export |
+| Safari native |8084 /8085 /9744 |92657 |4 canonical records in `safari-native-functions-evidence.json`; closed after export |
 
-The main pass began at **2026-10-27 06:43:55 UTC**; the Safari pass began at **06:45:45 UTC**. Each uses the documented per-process `REA_GHIDRA_STARTUP_TIMEOUT_MS=1800000` setting. The earlier main pass reached the default 330-second startup deadline and returned no function result; its diagnostic is preserved in `ghidra-initial-timeout-summary.json`. The changed deadline is the resolved input difference for the retry. No analyzer was disabled and no native partial database was represented as a completed result.
+`jobs.json` retains per-process final absence checks, exact state/result/log paths, export sizes/hashes and superseded worker identities. `evidence-index.json` links the compact ledgers. Main export SHA-256: `22bd9ac5a523e916921723e1dccbce1c75cb629c403a56bf03013553a84ce027` (7,877,435bytes). Safari export SHA-256: `5083426b24f050f1e8bee7b45b8dbb2bf4343bcbdac4733605169a4c1e5cc840` (5,720,654bytes). Zero structured unknown entries in these files does not mean complete semantic recovery.
 
-Engine: REA 6.5.0, official Ghidra 12.1.3 SHA-256-verified distribution, task-local native decompiler built from its bundled source, existing JDK 22. No global REA/client configuration or system dependency installation changed. See `tool-provenance.json`; build log is local `tools/ghidra-native-build.log`. Current Ghidra log snapshots are local `logs/main-ghidra.log` and `logs/safari-ghidra.log`; live source paths are in `native-jobs.json`.
+## Provider recovery retained
 
-## Resume the existing work
+Official Ghidra 12.1.3, existing JDK 22, task-local native decompiler compiled from bundled official source, and REA 6.5.0 were used. No global configuration or system dependency install changed. Initial startup timed out; longer attempts then stalled in SwiftNativeDemangler. Own JVM dumps showed a subprocess pipe wait, and host PATH resolved `swift` to OpenStack's Python client instead of Apple's compiler. Prepending the existing Xcode toolchain to the two workers' PATH fixed the issue. Default analyzers were preserved; auto-analysis then completed in 461 seconds (main) and 159 seconds (Safari). `engine-recovery.json`, `tool-provenance.json`, and local diagnostic/log snapshots preserve this history. Superseded attempts were cancelled; their nonexistent function results are not claimed.
 
-1. Read `native-worker-state.json`, `safari-native-worker-state.json` and `native-jobs.json`; inspect existing owned jobs before submitting anything again.
-2. When a current search completes, read its saved result and coverage. Do not rerun the same import just to retrieve output.
-3. Resolve returned function identities and inspect focused native functions/references for ranking/value ordering, wallet synchronization, and the Safari `getWallet` reply boundary.
-4. Export each current REA session's Evidence before closing it. Preserve original and derived artifact identities and all decompiler warnings/unknowns.
-5. Update `report.md`, `evidence-index.json`, this progress file and compact ledgers in the worktree; root owns staging/commit/PR updates.
-6. Close owned analysis sessions only after the meaningful offline questions are answered or a concrete provider/static-evidence limit is documented. No GUI or user intervention is required for this resume path.
+## Continue only if scope changes
 
-## Retention and history
+No analysis job should be restarted for the current completed static scope. Read the existing canonical exports and compact ledgers first. A future question about backend calculation, full offer automation, live payloads or runtime outcomes needs a separately selected evidence target and scope; the current report does not silently claim them. Root can finalize the existing PR without further user intervention.
 
-Large original/static Evidence remains local under the external native directory. Do not publish vendor binaries, receipts, user containers, credentials, raw accessibility trees or screenshots. Public files include static metadata, schema fields, action identifiers and sanitized UI role counts only.
+## Retention and historical acquisition
 
-Before the user selected already-installed phone apps and requested Mac equivalents, public mirror acquisition was audited. Those attempts and official iOS/Android store metadata remain in local `acquisition-attempts.json`, `store-identities.json` and the historical acquisition `report.md`. They are no longer the active work path or a missing-artifact blocker.
-
-A historical passive native observation captured 44 AX nodes, with no screenshot, no actions, no truncation and no gaps, under Evidence `ev_1831e6a489f8666cc897d8097c45df0ec598a05b21d5faceedc6dadc8c53d1ba`. Only allowlisted labels/roles are in `ui-structure.json`. There is no further UI capture task.
+Do not publish vendor binaries, full pseudocode, receipts, user containers, real credentials, raw accessibility trees or screenshots. Only metadata/schema/identifiers/analysis and allowlisted historical UI structure belong in this subtree. Earlier mirror-acquisition attempts remain historical local files; official Mac acquisition superseded them. The44-node passive screenshot-free/no-action observation is supplemental, with exact reference in `ui-structure.json`; no further UI task exists.
