@@ -221,5 +221,51 @@
       "cp-end.json": "bfda9d7bea7630a23ae6da9c0c4613f012a1f084b5ef654cc51b654cb3fb6d13",
       "cp-close-click.json": "e8359307aa390fbd595136d9b83ef59c53243b41967ed5649d5f25cc5e559eb4"
     }
+  },
+  "maxrewards-native-image-policy": {
+    "local_archive_directory": "continuation-20261027/maxrewards-apple-integrations/native-image-policy",
+    "files": {
+      "evidence.json": "652440430670faf06dcb044b0cb2ade4a34315bca84265885a08c8a66ae21250",
+      "import-bindings.json": "38e104c307a633b5939f92b18e35befcb2f18db07c0d669882ad2e34d80fbb5b",
+      "report.md": "e7a56475cbad1c54be8b2f74729c3c69db127780919c5300ef6d92027a3fe6ef",
+      "output-hashes.json": "d3df202a0c8e011acc90c53ea1e827502c13d01280e7bc4f06c311a7bbe17703",
+      "compact-evidence.json": "5f4192d2a34e7e55a5169c4cf37425f5a39b27f3f24287ed13134762da378306",
+      "validation.json": "781be1797d8756d18577f198a22ef06e6a42ed8a2fd349e87712371d42a6618a"
+    }
+  },
+  "runtime-window-02": {
+    "local_archive_directory": "continuation-20261027/runtime-readonly/window-02",
+    "files": {
+      "foreground-discrepancy.png": "f0dcfbb4b7446817b0797a3834734b4b2f70bdcb5fac53270f4c5939531fd338",
+      "cp-start.json": "fa24f5d2ed531a7ef945e1a46513d7ea6e7c75688fc4be6b5e2d712c901d4327",
+      "cp-appstate.json": "fa5a47d47c78ce827eafac687f024676d96185a627f958eb774c7b7d7161ec9c",
+      "mr-notification-alert.json": "4f2913b5f13e690cc7c93d668670c4b88f67cc53a8325b5141b08fd949eae55b",
+      "cp-resume.json": "83ee5df15c4a758ca7112d401d2d1f049598ce4d0d541a7241de69af125b1917",
+      "lock-read.json": "d33589f25fd7c5bca2f7805cefe3231a4a50d4f5d931c33ee82f25a1760177fe",
+      "mr-recent-diagnostic.json": "32b18c5d7826c013d329e694ff72b61740e21a3f909c7250383b5c108e0d5416",
+      "ui-session-private.json": "888e007b15492bc07505a7ae1d3ca0359a35ef9c28b09219acc353ef29c4ee17",
+      "mr-notification-decline.json": "f27fc7f83ad0fac4bcca0e5d2aeec4ae28d466ecb116b40adddd049ba42e3b15"
+    }
+  },
+  "runtime-window-03": {
+    "local_archive_directory": "continuation-20261027/runtime-readonly/window-03",
+    "files": {
+      "cp-offer-view-check.png": "15298551ac53ac66ee11dc239bad6c6744d1296339bd02ab617c2ef2ef42da2d",
+      "cp-start.json": "f04d227fd9afdf76350a1d2fd9871b84c83e8ff0b739dacae539872f8771b3bf",
+      "cp-offer-view-check.json": "5997d8e3347966172b07fc6beb9b9e4989d72d6b30c492fbc8d07cd8b8665140",
+      "cp-offers.xml": "25fe7d43e99121f87ae8bbb84fa61614d581389acf6ae94872942beb36422f50",
+      "cp-offers.json": "09f14ae174381960f5354e6cdfd4ad32f9979cbea0bd1e86386d34cbea5a3c3b",
+      "cp-home.json": "6054a957f87ccab17df76c1a8045b7d577a53b3151ff797943152e7a159efed8",
+      "cp-active-offers-click.json": "0941e790a667434ee2f91ee6605b938f8fda9695894fb127a93a7046c79b233e",
+      "cp-offers-click.json": "fdb7bcf281190f8cd2b869007c2a9248ff9f4523a655535cd90e0784504ca364",
+      "cp-offers-find.json": "b1ec89975cfe2fc72d0395eff1725dd43c4d8900406aa39730651305f58ab62f",
+      "cp-home.xml": "25fe7d43e99121f87ae8bbb84fa61614d581389acf6ae94872942beb36422f50",
+      "cp-active-offers-find.json": "ffbe4e782c80b2c88a4065dac4c628ced0d1b55f3abc26f9b12e21dbbd2fbc67",
+      "cp-focus.json": "4a5ae0032f556d5d873240ddd87f61242a815a939498d90a57823eec7ee8ab4b",
+      "ui-session-private.json": "0458046e0a2ec8e0e38695b770a151bfcce668cf98a87f822141f3366b732d4d",
+      "cp-active-offers.json": "f09cc47f009989ffead656545be34ecc278e03218b7ff1a50df70c4102fc0161",
+      "cp-active-offers.xml": "25fe7d43e99121f87ae8bbb84fa61614d581389acf6ae94872942beb36422f50",
+      "home-focus.json": "4a5ae0032f556d5d873240ddd87f61242a815a939498d90a57823eec7ee8ab4b"
+    }
   }
 }

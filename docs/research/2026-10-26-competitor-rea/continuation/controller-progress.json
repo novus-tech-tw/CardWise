@@ -27,7 +27,7 @@
     "no_launch_input_capture_or_controller_lifecycle": true,
     "owned_lease_released": true
   },
-  "next": "Read-only selected-app MaxRewards diagnostic/ordinary userspace launch check after fresh handoff; Closer continues its own bounded UI window",
+  "next": "After fresh handoff, require global visual target ownership plus visible-app/alert gates before remaining CP/MR input; Closer continues independently",
   "app_login": "Both app logins already confirmed; no new login expiry observed",
   "limits": "Historical Xcode/CoreDevice failures are not current transport/installed-version conclusions. Selected CardPointers input is now proven; all-feature correctness and MaxRewards actionable UI remain unverified. Device/session/account identifiers excluded.",
   "previous_xcode_start": {
@@ -48,5 +48,11 @@
       "CardPointers": "8.1.5/20261023",
       "MaxRewards": "4.8.35/1792099341"
     }
+  },
+  "latest_scene_conditions": {
+    "system_notification": "MaxRewards authorization prompt visually observed and explicit Don\u2019t Allow acknowledged",
+    "multiwindow": "Closer floating over CP despite target-specific metadata; accepted CP navigation did not produce verified destination",
+    "focus_sequence": "Home/CP activate acknowledged, visual result unverified",
+    "input_reliability": "Selected earlier CP transitions verified; later ACKs are not generalized success"
   }
 }
