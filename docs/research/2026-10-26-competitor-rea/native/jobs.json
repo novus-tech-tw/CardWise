@@ -1,0 +1,96 @@
+{
+  "updated_utc": "2026-10-27T06:51:39.748836+00:00",
+  "scope": "offline static analysis only",
+  "jobs": [
+    {
+      "name": "main",
+      "session_id": 66241,
+      "worker_state": "native-worker-state.json",
+      "state": {
+        "pid": 35337,
+        "status": "running",
+        "name": "search_procedures",
+        "arguments": {
+          "pattern": "Wallet|Pointer|Reward|Safari|Inventory",
+          "mode": "regex",
+          "case_sensitive": false
+        },
+        "file": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/ghidra-business-procedures-extended.json",
+        "startedAt": "2026-10-27T06:43:55.350Z"
+      },
+      "processes": [
+        {
+          "pid": 35337,
+          "kind": "worker"
+        },
+        {
+          "pid": 35344,
+          "kind": "rea-server"
+        },
+        {
+          "pid": 36873,
+          "kind": "jvm"
+        }
+      ],
+      "log_snapshots": [
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-Jq4StA/ghidra.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/main-ghidra.log",
+          "size": 70176
+        },
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-Jq4StA/script.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/main-script.log",
+          "size": 0
+        }
+      ]
+    },
+    {
+      "name": "safari",
+      "session_id": 57682,
+      "worker_state": "safari-native-worker-state.json",
+      "state": {
+        "pid": 42411,
+        "status": "running",
+        "name": "search_procedures",
+        "arguments": {
+          "pattern": "Safari|message|wallet|handler",
+          "mode": "regex",
+          "case_sensitive": false
+        },
+        "file": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/safari-native-procedures.json",
+        "startedAt": "2026-10-27T06:45:45.052Z"
+      },
+      "processes": [
+        {
+          "pid": 42411,
+          "kind": "worker"
+        },
+        {
+          "pid": 42413,
+          "kind": "rea-server"
+        },
+        {
+          "pid": 42949,
+          "kind": "jvm"
+        },
+        {
+          "pid": 65224,
+          "kind": "worker"
+        }
+      ],
+      "log_snapshots": [
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-dQHco1/ghidra.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/safari-ghidra.log",
+          "size": 12204
+        },
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-dQHco1/script.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/safari-script.log",
+          "size": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ghidra_12.1.3_PUBLIC_20260817.zip",
+  "url": "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.3_build/ghidra_12.1.3_PUBLIC_20260817.zip",
+  "sha256": "93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54",
+  "size": 569445154,
+  "ghidra_install_dir": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/tools/ghidra_12.1.3_PUBLIC",
+  "configuration_scope": "per-process only; no REA/client config edit",
+  "native_decompiler": {
+    "path": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/tools/ghidra_12.1.3_PUBLIC/Ghidra/Features/Decompiler/os/mac_arm_64/decompile",
+    "sha256": "fc4cfa5f63644d95b565a47d1cf1da6e3dc6b515e0746b8c185bd6e44b14f17b",
+    "build_command": [
+      "make",
+      "-j4",
+      "ghidra_opt",
+      "ARCH_TYPE=-arch arm64",
+      "ADDITIONAL_FLAGS=-mmacosx-version-min=12.0 -w",
+      "CXX=clang++ -std=c++11"
+    ],
+    "source": "Official upstream release ZIP, verified against published release SHA-256; native executable built locally",
+    "completed_utc": "2026-10-27T06:35:59.861474+00:00"
+  }
+}

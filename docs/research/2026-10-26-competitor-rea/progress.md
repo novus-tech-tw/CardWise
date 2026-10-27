@@ -2,6 +2,10 @@
 
 Status: **in progress**. Updated 2026-10-26 America/Phoenix; raw tool timestamps can be 2026-10-27 UTC.
 
+## Current execution mode
+
+The user requested an unattended method after interactive login/UI checks required repeated participation. The investigation now runs **fully offline** against the already acquired official apps, extensions, public configuration snapshots and bytecode. No further user login, GUI navigation, native runtime capture or banking demonstration is required. Complete the remaining static analysis; classify unavailable server internals and live banking outcomes as scope limits rather than user-blocked tasks.
+
 ## Reconnect and continue
 
 - Repository: `novus-tech-tw/CardWise` (the existing origin URL redirects from `tmj-studio/CardWise`).
@@ -19,8 +23,8 @@ Status: **in progress**. Updated 2026-10-26 America/Phoenix; raw tool timestamps
 | --- | --- | --- | --- |
 | CardPointers extension and public web | Official Firefox XPI 8.0.8 hash verified; all six JS parsed; all 344 content factories covered using bounded partitions without resource truncation; popup/vendor/helpers analyzed; Safari bridge analyzed | Final compact ledgers integrated under `cardpointers/`; dynamic/external bindings remain explicitly unknown | Reachable extension static scope delivered |
 | MaxRewards public web and extension | Public frontend classified; official Firefox 0.1.7 and all nine JS parsed; untruncated business/core follow-up; eight public routes captured; all 74 public Connect descriptors fetched without bank execution | Finish source-bound data/offer/valuation report and compact Evidence | Active |
-| CardPointers native Mac app | Official Mac App Store download succeeded; 8.1.4/build20261019; signed universal Mach-O and three extensions inventoried; Core Data model 24 entities/637 objects decoded; 70 compiled intent actions inventoried | Scoped Ghidra 12.1.3 native analysis and passive UI observations | Active |
-| MaxRewards native iPhone/iPad-compatible Mac app | Official Mac App Store download succeeded; 4.8.35/build1792099341; native inventory and cryptid=1 metadata; separate Hermes v96 bytecode decoded with pinned offline parser | Focused bytecode function/dataflow analysis and native UI; no FairPlay bypass | Active |
+| CardPointers native Mac app | Official Mac App Store download succeeded; 8.1.4/build20261019; signed universal Mach-O and three extensions inventoried; Core Data model 24 entities/637 objects decoded; 70 compiled intent actions inventoried | Scoped Ghidra 12.1.3 main and Safari-extension native analysis; offline only | Active |
+| MaxRewards native iPhone/iPad-compatible Mac app | Official Mac App Store download succeeded; 4.8.35/build1792099341; native inventory and cryptid=1 metadata; separate Hermes v96 bytecode decoded with pinned offline parser | Focused bytecode function/dataflow analysis; offline only; no FairPlay bypass | Active |
 | Native recommendation cross-check | Same exact MaxRewards Hermes artifact and existing parser reused | Independent cap/activation/signup/merchant candidate analysis in `native-recommendation-review/` | Active |
 | Consolidation and PR | Dedicated worktree; first-pass reports, hashes, evidence ledger and CardWise baseline recorded | Integrate follow-up results, reconcile findings, validate files and publish updates | Active |
 
@@ -31,8 +35,8 @@ Status: **in progress**. Updated 2026-10-26 America/Phoenix; raw tool timestamps
 | Extension upstream ranking and cap handling | CardPointers Amex enrollment ordering is now recovered separately from shopping order; MaxRewards client display/row ordering is partly decoded | Partial; external server-ranking formula still unknown |
 | MaxRewards extension offer handling | Provider descriptor/interpreter and enrollment branches are now acquired; preserve exact version/minVersion limits | Static analysis active; no bank execution |
 | Native implementation and local data model | Both official native artifacts acquired; CardPointers Core Data decoded, MaxRewards React/Hermes/Expo metadata and bytecode identified | Native analysis active |
-| Authenticated recommendation correctness and bank activation | Suitable authorized test wallet/session and known fixtures | Not executed; real user banking access is outside current scope |
-| Paid feature behavior | Authorized test entitlement or unsubmitted public purchase UI | Vendor claims/source branches only |
+| Authenticated recommendation correctness and bank activation | Actual execution cannot be established from static artifacts | Outside current offline scope; no user action requested |
+| Paid feature behavior | Shipped entitlement branches and official plan descriptions can be analyzed statically | Live entitlement/checkout behavior outside offline scope |
 
 ## Completion gate
 

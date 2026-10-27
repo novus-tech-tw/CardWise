@@ -1,10 +1,10 @@
 # CardPointers and MaxRewards REA competitor analysis
 
-Requested: 2026-10-26, America/Phoenix. REA timestamps can fall on 2026-10-27 UTC. Analysis uses REA 6.5.0. This report is a bounded public-artifact investigation, not a native iOS decompilation or an authenticated banking test.
+Requested: 2026-10-26, America/Phoenix. REA timestamps can fall on 2026-10-27 UTC. Analysis uses REA 6.5.0. **Investigation in progress:** the first browser/extension pass is complete, and official native app analysis is now underway. See the [current progress ledger](progress.md) for the authoritative delivery status. No authenticated banking test or FairPlay bypass has been performed.
 
 ## Decision
 
-CardPointers is the closer comparison for a card-selection utility, and its publicly distributed extension exposes substantial offer-handling logic. MaxRewards' public flow demonstrates account infrastructure and a mobile-app handoff, while its bank connectors and reward computation remain outside the acquired evidence. CardWise can use this distinction to prioritize a quick and explainable purchase decision while keeping its current local-first architecture.
+CardPointers is the closer comparison for a card-selection utility, and its distributed extension exposes substantial offer-handling logic. MaxRewards' official extension and remotely shipped provider descriptions expose bank-session integration, while its native Hermes bytecode exposes specific client reward-valuation functions. These go beyond the original public signup flow; server-side ranking and successful banking execution remain unverified. CardWise can use this distinction to prioritize a quick and explainable purchase decision while keeping its current local-first architecture.
 
 These are product recommendations, not measurements of retention, revenue, recommendation accuracy, or product-market fit.
 
@@ -14,6 +14,8 @@ These are product recommendations, not measurements of retention, revenue, recom
 | --- | --- | --- |
 | CardPointers | Officially linked Mozilla distribution of CardPointers X 8.0.8; shipped JavaScript/static resources analyzed by REA; focused source anchors retained; fresh-browser observation of the unauthenticated legacy web app | Firefox extension implementation and legacy-web login gate. No claim that the same code implements native iOS recommendation or in-app offer sync |
 | MaxRewards | Public product page, a declared fresh-browser scenario through Start Earning More to signup, and downloaded public web bundles; REA static analysis of seven selected business-relevant sources | Marketing and web onboarding. No native IPA/APK, authenticated wallet, or live banking connector |
+| CardPointers native | Official Mac App Store application 8.1.4/build20261019, signed universal Mach-O, three extensions, compiled Core Data model and App Intents metadata; scoped native analysis underway | Mac distribution; do not silently equate its exact version or behavior with the user's iPhone build |
+| MaxRewards native | Official iPhone/iPad-compatible application 4.8.35/build1792099341 downloaded through the Mac App Store; React/Hermes/Expo artifacts and a separate unencrypted Hermes v96 bytecode bundle | Main native executable declares encrypted bytes; no bypass. Offline bytecode findings concern exact decoded client functions, not original source or server ranking |
 | CardWise | Focused ordinary source inspection at commit `5f7b9823e053924ee3d353e3198c88738f66af0d` | Read-only source comparison; no app execution or test-based defect reproduction |
 
 Detailed identity, Evidence IDs, source anchors, and limitations are in [CardPointers analysis](cardpointers/report.md), [MaxRewards analysis](maxrewards/report.md), and the [CardWise baseline](cardwise-baseline.md). Public acquired artifacts and exported REA Evidence are retained beside those reports.
@@ -26,6 +28,16 @@ Detailed identity, Evidence IDs, source anchors, and limitations are in [CardPoi
 | MaxRewards public web scenario | `ev_ea10ac8fd04e2f98a2eebf6f667e47d98d7beb2f1863021bfc1edd94cb37ba01` |
 
 ## Findings
+
+### Native and follow-up extension results extend the first-pass evidence
+
+CardPointers' follow-up covers all 344 content factories through source-bound partitions, plus popup/vendor/helper scopes without resource truncation. Its Amex offer-enrollment helper has a category-bonus preference with manual-priority and original-order tie breaks; this is separate from the general shopping-card list. See [deep findings](cardpointers/deep-findings.md).
+
+The acquired CardPointers Mac application contains a compiled Core Data model with 24 entities; REA decoded all 637 archived model objects. Model fields include card-pointer values/order, profiles, selected bonus plans/categories, offers, and offer-sync account/card/history entities. This establishes shipped schema, not observed user records. Core Data model Evidence: `ev_7ab422a3a5c0172bcad15d4eed7f3c923a7853a895a3e249b0f15ce8f9f6e642`. Native code and UI follow-up remain active.
+
+MaxRewards' official Firefox extension 0.1.7 has now been acquired and parsed. Its background code maps merchant hostname to an authenticated best-card query, then checks the cookie owner before caching and returning the result. Its public Connect catalog/descriptors have also been acquired without contacting bank endpoints. Detailed follow-up evidence and version limitations are being integrated in the MaxRewards report.
+
+MaxRewards' separate `main.jsbundle` is Hermes v96 bytecode, not ordinary JavaScript text. A pinned offline decoder has recovered exact function disassembly/pseudocode for client percentage valuation and row sorting. These provide specific local formulas and fallback chains; they do not establish the entire server-side card-ranking algorithm. Independent cap/activation/bonus review is still running.
 
 ### CardPointers: a bank-offer integration layer is visible in the extension
 
@@ -49,7 +61,7 @@ The inspected shopping-selection function joins prepared merchant/category card 
 
 **Inference for CardWise:** the inspected public flow introduces an account/setup step before the mobile handoff. CardWise can make its immediate, account-free experience visible. This does not establish that every MaxRewards feature or native-app entry route requires the same flow.
 
-**Unknown:** native app implementation, banking-connector internals, how reward caps influence actual ranking, merchant classification accuracy, authenticated transaction handling, and the operational reliability of offer activation. The Webflow marketing stack is not evidence of a Webflow mobile app.
+**Unknown from the initial web pass:** native implementation and banking internals were not established by the signup bundles. Subsequent official extension/native acquisition now partially addresses those questions; full server ranking, merchant accuracy, authenticated transaction handling and successful banking activation still need further evidence. The Webflow marketing stack is not evidence of a Webflow mobile app.
 
 ### Paid feature positioning comes from vendor documentation
 
@@ -78,7 +90,7 @@ The P0 observation is not a repaired or runtime-reproduced defect. No implementa
 | Resolve official public target/artifact identity | Answered for CardPointers extension and MaxRewards public web surfaces |
 | Run actual REA analysis | Answered: shipped JavaScript and browser-scenario Evidence retained |
 | Trace public offer/account data boundaries | Partially answered: static extension branches and web account flow; no authenticated banking execution |
-| Explain mobile recommendation internals | Unresolved: no native mobile artifacts or authenticated flow acquired |
+| Explain mobile recommendation internals | Partially answered by acquired native artifacts and MaxRewards client bytecode; native/fixture follow-up remains active |
 | Verify paid-feature operation | Unresolved: official plan descriptions only |
 | Identify grounded CardWise priorities | Answered as analyst recommendations, with source-based verification candidates |
 
