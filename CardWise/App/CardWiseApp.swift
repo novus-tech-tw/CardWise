@@ -63,6 +63,8 @@ struct CardWiseApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.openURL) private var openURL
 
+    @ObservedObject private var preferences = RecommendationSettingsStore.shared
+
     @StateObject private var updateChecker = AppUpdateChecker()
     @State private var whatsNewNotes: [ReleaseNote] = []
 
@@ -81,10 +83,14 @@ struct CardWiseApp: App {
                     .environmentObject(cardViewModel)
                     .environmentObject(spendingViewModel)
                     .onChange(of: scenePhase) { _, newPhase in
-                        if newPhase == .background {
+                        if newPhase == .background || newPhase == .active {
                             updateWidgetData()
                         }
                     }
+                    .onChange(of: cardViewModel.userCards) { _, _ in updateWidgetData() }
+                    .onChange(of: cardViewModel.allCards) { _, _ in updateWidgetData() }
+                    .onChange(of: spendingViewModel.spendings) { _, _ in updateWidgetData() }
+                    .onChange(of: preferences.settings) { _, _ in updateWidgetData() }
                     .onAppear {
                         updateWidgetData()
                         NotificationService.shared.refreshRotatingReminders(
@@ -98,6 +104,7 @@ struct CardWiseApp: App {
                         lastSeenVersion = AppVersion.current
                         await updateChecker.checkIfDue()
                         await RemoteCatalogService().refresh()
+                        cardViewModel.reloadCatalog()
                     }
                     .sheet(isPresented: Binding(
                         get: { !whatsNewNotes.isEmpty },

@@ -28,9 +28,12 @@ class SpendingViewModel: ObservableObject {
 
     enum SpendingError: LocalizedError {
         case cardNotFound
+        case invalidAmount
 
         var errorDescription: String? {
             switch self {
+            case .invalidAmount:
+                return "Enter a positive, finite purchase amount"
             case .cardNotFound:
                 return "Card not found in your wallet"
             }
@@ -45,41 +48,28 @@ class SpendingViewModel: ObservableObject {
         date: Date = Date(),
         note: String? = nil,
         cardViewModel: CardViewModel,
-        notifyCapAlerts: Bool = false
+        notifyCapAlerts: Bool = false,
+        settings: RecommendationSettings? = nil,
+        includeConditionalRewards: Bool = false
     ) throws {
         // Calculate reward earned
         guard let userCard = cardViewModel.getUserCard(byCardId: cardUsed),
-              let card = cardViewModel.getCard(byId: cardUsed) else {
+              cardViewModel.getCard(byId: cardUsed) != nil else {
             throw SpendingError.cardNotFound
         }
 
-        let reward = card.getReward(
-            for: category,
-            selectedCategories: userCard.selectedCategories
-        )
-
-        let rewardEarned = calculateReward(
-            amount: amount,
-            multiplier: reward.multiplier,
-            isPercentage: reward.isPercentage,
-            rewardType: card.rewardType
-        )
-
-        // Find optimal card
+        guard amount.isFinite, amount > 0 else { throw SpendingError.invalidAmount }
+        var rewardSettings = settings ?? RecommendationSettingsStore.shared.settings
+        // Missed rewards compare this purchase only, independently of sign-up-goal ordering.
+        rewardSettings.ranking = .purchaseReward
         let recommendations = RecommendationEngine.shared.getRecommendations(
-            for: category,
-            amount: amount,
-            userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards
+            for: category, amount: amount, userCards: cardViewModel.userCards,
+            allCards: cardViewModel.allCards, spendings: spendings, settings: rewardSettings, asOf: date, includeConditionalRewards: includeConditionalRewards
         )
-
+        let rewardEarned = recommendations.first { $0.userCard.id == userCard.id }?.estimatedReward ?? 0
         let optimalCard = recommendations.first
-        let missedReward: Double? = {
-            if let optimal = optimalCard, optimal.card.id != cardUsed {
-                return optimal.estimatedReward - rewardEarned
-            }
-            return nil
-        }()
+        let difference = max(0, (optimalCard?.estimatedReward ?? rewardEarned) - rewardEarned)
+        let missedReward: Double? = difference > 0 ? difference : nil
 
         let spending = Spending(
             amount: amount,
@@ -89,7 +79,7 @@ class SpendingViewModel: ObservableObject {
             date: date,
             note: note,
             rewardEarned: rewardEarned,
-            optimalCardId: optimalCard?.card.id != cardUsed ? optimalCard?.card.id : nil,
+            optimalCardId: difference > 0 ? optimalCard?.card.id : nil,
             missedReward: missedReward
         )
 
@@ -108,15 +98,6 @@ class SpendingViewModel: ObservableObject {
     func deleteSpending(_ spending: Spending) {
         spendings.removeAll { $0.id == spending.id }
         saveSpendings()
-    }
-
-    private func calculateReward(amount: Double, multiplier: Double, isPercentage: Bool, rewardType: RewardType) -> Double {
-        if isPercentage {
-            return amount * (multiplier / 100)
-        } else {
-            // Points/miles - estimate at standard cpp
-            return amount * multiplier * RewardConstants.defaultPointsValueCPP
-        }
     }
 
     // MARK: - Analytics

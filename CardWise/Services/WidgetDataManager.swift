@@ -2,125 +2,55 @@ import Foundation
 import WidgetKit
 
 @MainActor
-class WidgetDataManager {
+final class WidgetDataManager {
     static let shared = WidgetDataManager()
-
     private static let appGroupID = "group.com.cardwise.app"
     private static let widgetDataKey = "widget_data"
-
-    private let defaults: UserDefaults? = {
-        let suite = UserDefaults(suiteName: appGroupID)
-        if suite == nil {
-            assertionFailure("Failed to create UserDefaults suite '\(appGroupID)' — check App Group entitlements")
-        }
-        return suite
-    }()
-
+    private let defaults = UserDefaults(suiteName: appGroupID)
     private init() {}
 
-    // MARK: - Widget Data Model
-
-    struct WidgetPayload: Codable {
-        let topCategory: String
-        let topCategoryIcon: String
-        let bestCard: String
-        let bestCardColor: String
-        let rewardRate: String
-        let rotatingCategories: [String]
-        let rotatingCard: String?
-        let spendingThisMonth: Double
-        let rewardsThisMonth: Double
-    }
-
-    // MARK: - Write Widget Data
-
-    func updateWidgetData(
-        cardViewModel: CardViewModel,
-        spendingViewModel: SpendingViewModel
-    ) {
-        // Find best card for common category (Dining as default)
-        let diningRecs = RecommendationEngine.shared.getRecommendations(
-            for: .dining,
-            amount: 100,
-            userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards
-        )
-
-        var payload: WidgetPayload
-
-        if let topRec = diningRecs.first {
-            // Get rotating categories
-            let currentQ = Date().currentQuarter
-            let currentY = RotatingCategory.currentYear()
-
-            var rotatingCategories: [String] = []
-            var rotatingCard: String?
-
-            for userCard in cardViewModel.userCards {
-                guard let card = cardViewModel.getCard(for: userCard),
-                      let rotating = card.rotatingCategories,
-                      let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) else {
-                    continue
-                }
-
-                rotatingCategories = currentRotating.categories.map { $0.rawValue }
-                rotatingCard = userCard.nickname ?? card.name
-                break
-            }
-
-            // This month stats
-            let thisMonthSpendings = spendingViewModel.spendingsThisMonth()
-            let totalSpent = thisMonthSpendings.reduce(0) { $0 + $1.amount }
-            let totalRewards = thisMonthSpendings.reduce(0) { $0 + $1.rewardEarned }
-
-            payload = WidgetPayload(
-                topCategory: "Dining",
-                topCategoryIcon: "fork.knife",
-                bestCard: topRec.userCard.nickname ?? topRec.card.name,
-                bestCardColor: topRec.card.imageColor,
-                rewardRate: topRec.displayReward,
-                rotatingCategories: rotatingCategories,
-                rotatingCard: rotatingCard,
-                spendingThisMonth: totalSpent,
-                rewardsThisMonth: totalRewards
-            )
-        } else {
-            let thisMonthSpendings = spendingViewModel.spendingsThisMonth()
-            let totalSpent = thisMonthSpendings.reduce(0) { $0 + $1.amount }
-            let totalRewards = thisMonthSpendings.reduce(0) { $0 + $1.rewardEarned }
-
-            payload = WidgetPayload(
-                topCategory: "Dining",
-                topCategoryIcon: "fork.knife",
-                bestCard: "Add Cards",
-                bestCardColor: "#808080",
-                rewardRate: "-",
-                rotatingCategories: [],
-                rotatingCard: nil,
-                spendingThisMonth: totalSpent,
-                rewardsThisMonth: totalRewards
-            )
-        }
-
-        writePayload(payload)
-    }
-
-    private func writePayload(_ payload: WidgetPayload) {
-        if let jsonData = try? JSONEncoder().encode(payload) {
-            defaults?.set(jsonData, forKey: Self.widgetDataKey)
-        }
-
+    func updateWidgetData(cardViewModel: CardViewModel, spendingViewModel: SpendingViewModel) {
+        let payload = Self.makePayload(userCards: cardViewModel.userCards, allCards: cardViewModel.allCards,
+                                       spendings: spendingViewModel.spendings, settings: RecommendationSettingsStore.shared.settings)
+        if let data = try? JSONEncoder().encode(payload) { defaults?.set(data, forKey: Self.widgetDataKey) }
         WidgetCenter.shared.reloadAllTimelines()
     }
 
-    // MARK: - Read Widget Data (for Widget extension)
+    static func makePayload(userCards: [UserCard], allCards: [CreditCard], spendings: [Spending],
+                            settings: RecommendationSettings, asOf date: Date = Date()) -> WidgetPayload {
+        let category = settings.effectiveWidgetCategory
+        let top = RecommendationEngine.shared.getRecommendations(
+            for: category, amount: settings.validWidgetAmount, userCards: userCards, allCards: allCards,
+            spendings: spendings, settings: settings, asOf: date, includeConditionalRewards: settings.widgetConditionalRewards
+        ).first
+        let rotating = userCards.compactMap { userCard -> (String, RotatingCategory)? in
+            guard let card = allCards.first(where: { $0.id == userCard.cardId }), let rotating = card.rotatingCategory(asOf: date) else { return nil }
+            return (userCard.nickname ?? card.name, rotating)
+        }.first
+        let month = Calendar.current.dateInterval(of: .month, for: date)
+        let monthlySpending = spendings.filter { $0.date >= (month?.start ?? date) && $0.date <= date }
+        let nextDay = Calendar.current.dateInterval(of: .day, for: date)?.end ?? date.addingTimeInterval(86400)
+        let deadlines = userCards.compactMap { userCard in
+            allCards.first(where: { $0.id == userCard.cardId }).flatMap { userCard.signUpBonusDeadline(for: $0) }
+        }.filter { $0 > date }
+        let validUntil = min(nextDay, deadlines.min() ?? nextDay)
+        let merchant = settings.widgetMerchant.trimmingCharacters(in: .whitespacesAndNewlines)
+        let context = "\(merchant.isEmpty ? category.displayName : merchant) · \(settings.validWidgetAmount.formatted(.currency(code: "USD")))"
+        return WidgetPayload(
+            topCategory: category.displayName, topCategoryIcon: category.icon,
+            bestCard: top.map { $0.userCard.nickname ?? $0.card.name } ?? "Add Cards",
+            bestCardColor: top?.card.imageColor ?? "#808080", rewardRate: top?.displayReward ?? "–",
+            rotatingCategories: rotating?.1.categories.map(\.displayName) ?? [], rotatingCard: rotating?.0,
+            spendingThisMonth: monthlySpending.reduce(0) { $0 + $1.amount },
+            rewardsThisMonth: monthlySpending.reduce(0) { $0 + $1.rewardEarned },
+            purchaseContext: context,
+            explanation: top.map { "\($0.formattedEstimatedReward) est. · \(settings.ranking.title)" },
+            generatedAt: date, validUntil: validUntil
+        )
+    }
 
     static func loadWidgetPayload() -> WidgetPayload? {
-        let defaults = UserDefaults(suiteName: appGroupID)
-        guard let data = defaults?.data(forKey: widgetDataKey) else {
-            return nil
-        }
-
+        guard let data = UserDefaults(suiteName: appGroupID)?.data(forKey: widgetDataKey) else { return nil }
         return try? JSONDecoder().decode(WidgetPayload.self, from: data)
     }
 }

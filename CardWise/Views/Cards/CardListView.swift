@@ -389,6 +389,7 @@ struct CardSelectionRow: View {
 }
 
 struct CardDetailView: View {
+    @EnvironmentObject var spendingViewModel: SpendingViewModel
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cardViewModel: CardViewModel
     let userCard: UserCard
@@ -505,45 +506,22 @@ struct CardDetailView: View {
                 if let credits = card.credits, !credits.isEmpty {
                     Section("Statement Credits") {
                         ForEach(credits) { credit in
-                            let periodKey = CreditPeriod.key(for: Date(), cadence: credit.cadence)
-                            let used = cardViewModel.usedAmount(cardID: card.id, creditID: credit.id, periodKey: periodKey)
-                            VStack(alignment: .leading, spacing: 6) {
-                                HStack {
-                                    Label(credit.description,
-                                          systemImage: credit.category?.icon ?? "creditcard")
-                                    Spacer()
-                                    Text("$\(Int(credit.amount)) / \(credit.cadence.displayName)")
-                                        .foregroundStyle(Theme.success)
-                                }
-                                HStack {
-                                    Text("Used this \(credit.cadence.displayName)")
-                                        .font(.app(.caption))
-                                        .foregroundStyle(Theme.textSecondary)
-                                    Spacer()
-                                    Text("$")
-                                    TextField("0", text: Binding(
-                                        get: { used == 0 ? "" : String(Int(used)) },
-                                        set: { newValue in
-                                            let entered = min(max(Double(newValue) ?? 0, 0), credit.amount)
-                                            cardViewModel.setUsedAmount(entered, cardID: card.id,
-                                                                        creditID: credit.id, periodKey: periodKey)
-                                        }))
-                                        .keyboardType(.numberPad)
-                                        .multilineTextAlignment(.trailing)
-                                        .frame(width: 60)
-                                    Text("/ $\(Int(credit.amount)) · $\(Int(credit.amount - used)) left")
-                                        .font(.app(.caption))
-                                        .foregroundStyle(Theme.textSecondary)
-                                }
-                            }
-                            .padding(.vertical, 2)
+                            CreditUsageEditor(card: card, credit: credit)
                         }
                     }
                 }
 
+                SignUpBonusSection(card: card, userCard: userCard)
+
                 // Rotating Categories
                 if let rotating = card.rotatingCategories {
                     Section("Rotating Categories") {
+                        if let current = card.rotatingCategory(asOf: Date()), current.activationRequired {
+                            Toggle("Activated with issuer for Q\(current.quarter) \(current.year)", isOn: Binding(
+                                get: { cardViewModel.getUserCard(byCardId: card.id)?.hasActivatedRotating(quarter: current.quarter, year: current.year) ?? false },
+                                set: { cardViewModel.setRotatingActivated(for: userCard, activated: $0) }
+                            ))
+                        }
                         ForEach(rotating) { rot in
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack {
@@ -565,6 +543,14 @@ struct CardDetailView: View {
                 // Selectable Categories
                 if let config = card.selectableConfig {
                     Section("Select Your Category (\(config.maxSelections) max)") {
+                        let suggestions = RecommendationEngine.shared.suggestCategorySelections(
+                            userCards: [userCard], allCards: [card], spendingHistory: spendingViewModel.spendings
+                        )[userCard.id] ?? []
+                        if !suggestions.isEmpty {
+                            Button("Use spending-based suggestion") { selectedCategories = Set(suggestions) }
+                        }
+                        Text("Match these choices with your issuer. Changes here update CardWise only.")
+                            .font(.caption).foregroundStyle(Theme.textSecondary)
                         ForEach(config.availableCategories, id: \.self) { category in
                             HStack {
                                 Label(category.displayName, systemImage: category.icon)
@@ -626,9 +612,7 @@ struct CardDetailView: View {
                         if nickname != (userCard.nickname ?? "") {
                             cardViewModel.updateNickname(for: userCard, nickname: nickname.isEmpty ? nil : nickname)
                         }
-                        if !selectedCategories.isEmpty {
-                            cardViewModel.updateSelectedCategories(for: userCard, categories: Array(selectedCategories))
-                        }
+                        cardViewModel.updateSelectedCategories(for: userCard, categories: Array(selectedCategories))
                         // Save credit limit and balance
                         let newLimit = Double(creditLimitText)
                         let newBalance = Double(currentBalanceText)

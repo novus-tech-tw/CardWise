@@ -16,3 +16,14 @@ enum CreditPeriod {
         }
     }
 }
+
+extension CreditPeriod {
+    static func nextReset(for date: Date, cadence: CreditCadence,
+                          calendar: Calendar = Calendar(identifier: .gregorian)) -> Date {
+        let months = 12 / cadence.periodsPerYear
+        let components = calendar.dateComponents([.year, .month], from: date)
+        let startMonth = ((components.month ?? 1) - 1) / months * months + 1
+        let start = calendar.date(from: DateComponents(year: components.year, month: startMonth, day: 1)) ?? date
+        return calendar.date(byAdding: .month, value: months, to: start) ?? date
+    }
+}
