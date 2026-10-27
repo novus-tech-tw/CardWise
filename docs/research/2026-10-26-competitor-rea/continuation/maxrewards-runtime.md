@@ -1,0 +1,11 @@
+# Selected MaxRewards authenticated runtime
+
+MaxRewards4.8.35 changed from Home to **Best Card**, then from its Location-selected view to **Category**, under the exclusive owned controller and global-image/source/input gates. The following source and global image showed multiple category rows with reward-percentage presentation and recommended-card art. [Retained observation identities](maxrewards-runtime-evidence.json). No new login was needed.
+
+The initial Best Card view displayed an enable-location message and the system presented a location authorization prompt. The operator explicitly selected `Don’t Allow`; no location permission was granted. After the prompt settled, Category remained accessible. The selected nearby/GPS result is therefore unverified, while location authorization is not required for this observed category-list route. Previously visible Home Nearby content is not evidence of a fresh GPS result or a payload's age.
+
+The actual accessible tab name was `Category, Category`. An initial shorter `Category` locator found no element; the corrected locator came from the current source. A following Category source and global image verified selection, multiple category rows, displayed percentages/card art and a search affordance. Personal rates and card selection are excluded. The category detail and a synthetic search query were not executed in this window; the later attempted local verification stopped at the app-operation deadline before a tap.
+
+Normal portrait staging was acknowledged after recording the MR interface's original LANDSCAPE value. A restoration attempt and known-session DELETE later encountered the already-closed controller bridge; neither is reported successful. The pending original orientation was recorded for the next exclusive owner. Exact own-runner absence before host teardown, host/supervisor exit, free local port and lease release were independently confirmed. This pending presentation cleanup must be resolved separately from the verified controller cleanup.
+
+Offers, Benefits and Wallet destination checks, category detail and synthetic search continue under fresh handoffs. Category presentation does not recover hidden server aggregation, issuer acceptance or all-category correctness. Raw account data, card/rate selections, the permission dialog's map and private screenshots remain local.

@@ -17,6 +17,7 @@ Rich explicitly required CardWise and Closer analysis to continue. The preceding
 - [CardPointers actual Widget timeline](cardpointers-widget-timeline.md): configuration/provider witness → shared fetch → selected/default entry or empty entries → `.never` policy. [Evidence](cardpointers-widget-timeline-evidence.json).
 - [CardPointers local pointer-card ordering](cardpointers-recommendation-order.md): candidate relationships, exact Visa rules, first pin then signed order, and sponsored wrappers. [Evidence](cardpointers-recommendation-order-evidence.json).
 - [MaxRewards LockWidget](maxrewards-lock-widget.md): clear Date-only timeline/12h request and nearby/Live Activity launcher; encrypted protocol-dispatch boundary retained. [Evidence](maxrewards-lock-widget-evidence.json).
+- [MaxRewards authenticated runtime](maxrewards-runtime.md): actual Best Card → location authorization boundary → Category list without a location grant. [Evidence](maxrewards-runtime-evidence.json).
 - [Settled app navigation](runtime-settled-navigation.md): actual CP Offers/Cards destinations after OS Minimize, plus settled authenticated MR Home/native navigation. [Evidence](runtime-settled-navigation-evidence.json).
 - [Actual authenticated iPad navigation](authenticated-runtime.md): current package versions, verified CardPointers promotion-close/navigation/category output, and guarded MaxRewards foreground mismatch. [Evidence](authenticated-runtime-evidence.json).
 - [System alerts and overlapping iPad windows](runtime-scene-boundaries.md): notification prompt, accepted clicks without destination transition, and the required global visual ownership gate. [Evidence](runtime-scene-boundaries-evidence.json).
@@ -29,7 +30,7 @@ Rich explicitly required CardWise and Closer analysis to continue. The preceding
 
 | Question | Evidence state | Next bounded work |
 | --- | --- | --- |
-| MaxRewards store → category/merchant/nearby recommendation surfaces | Answered for selected client paths; account-specific output unobserved | Keep server candidate generation and runtime result separate |
+| MaxRewards store → category/merchant/nearby recommendation surfaces | Selected client paths answered; current category-summary runtime observed, deeper detail/merchant/nearby output unverified | Keep server candidate generation and runtime result separate |
 | MaxRewards manual benefit activation, progress and summaries | Selected screen/action, scope/dedup/numeric helpers and caller populations answered | Server tracker creation/reset, all-writer offer-store population and issuer authority remain unverified |
 | MaxRewards cap/category/valuation inputs and units | Client producer/store/action paths answered; category aggregation units/period remain partial | Keep exact incoming field contracts separate from hidden posted/pending/reset aggregation |
 | MaxRewards Apple integration payload and refresh | JS writer/bridge/cache/deep links plus selected native reader/timeline/content/default paths answered | Native row-preparation policy now answered: first-three input order with image-filename enrichment; selected image URL/cache/download/error/thumbnail/write policy now answered, with generic-map inference and framework/OS render limits retained. LockWidget exact protocol slots remain encrypted |
