@@ -604,6 +604,6 @@
   "limits": [
     "No target execution or runtime metadata; reflection field order alone does not establish field memory offsets.",
     "No claim that response type names establish HTTP origin or decoder execution.",
-    "Generic/resilient witness and indirect async dispatch remain unresolved."
+    "This field-only query does not resolve generic/resilient witnesses or indirect async dispatch. Four selected Decodable conformances are resolved by the subsequent selected-conformances/decoder-edge records; other witness coverage remains untraced."
   ]
 }

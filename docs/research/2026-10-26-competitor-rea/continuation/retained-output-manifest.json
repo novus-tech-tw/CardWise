@@ -36,11 +36,22 @@
     "files": {
       "wallet-capture-handoff.asm": "e8ecd217f467bbed07e2a531cca0815d71fe5b0e1a0c5ae8a08953d4c78482a5",
       "wallet-parent-thunk.asm": "b27c90cae943e1f3998d82e4b69942604b1a075e08b94a7d40d519d1c81e6ac1",
+      "read-wallet-fields-b56814b.py": "17f479655dd187805e2d03a5ed9165ca2028c229c193929461e960113336f1fd",
       "response-accessor.asm": "ec258c59120966969aa75931b7f5aa7af15b4f1aaf1cae5c46b817fa7a5db712",
-      "report.md": "c3ddc2f2b3c3f0d20bfdd98b2e602a0a299791ecbebfd272dab2425e9192aa2f",
-      "read-wallet-fields.py": "17f479655dd187805e2d03a5ed9165ca2028c229c193929461e960113336f1fd",
+      "report.md": "bd3ad6cf5eddb0471f20d88405f23da22d99e1c4a5cab51d423a936b55186c14",
+      "response-decodable-witness.asm": "c6dd2c53b718e1958125436c1b0ebd0b59ca1f5dfbb62035e0d2dcf27687b92b",
+      "pointercard-decoder-selected.asm": "923e1b4f6b330784719e41e4f9df41314dd816fac18c4094535a73510cde3f31",
+      "coredata-schedule.asm": "10b64513c043db39128519053a53bdf4840844fc86b0f45add8a1d7228241a91",
+      "pointercard-decodable-witness.asm": "8bdca18b24ac1c05395f668da027566a793f2d591de4a7b2a0dfd19326382aed",
+      "schedule-edge.json": "fb17463874a5d9fb15a5a346fd08c91a209986bda6d8740ebb62b335396fb88f",
+      "wallet-url-exact-address-candidates.json": "034b840d55996078ce237415a3a43014050d07324fe0a22a82d96186571a23fe",
+      "wallet-region-json-decoder-callers.json": "dc5b2ea50ad2deb1634ae1ea7325bc369447a619ac696a399669d02373ca84a6",
+      "read-wallet-fields.py": "5744ed3db0c51b3d554adce4a70416a00f5a6383f00bb7e8c104dd379702f853",
       "wallet-field-provenance.json": "9785f64f47d7e7194d7bfb5300b7503462695b9c0b816bd30330b320ab688fbc",
-      "wallet-parent-direct-callers.json": "ec8de15cc0c88db1112f5a05f45e70543cdc92182824fc803ae3b0ab2186cba8"
+      "decoder-edge.json": "3d5f3a0d79fef0f448bd0e7d53c02d075dee88a51f73bde2c81907c0a91b86bc",
+      "read-selected-conformances.py": "3554f1b2cc9fa8ca1dede80d1d2bfc87e7d5d714ff2ac67bec22dfe4767be2d3",
+      "wallet-parent-direct-callers.json": "ec8de15cc0c88db1112f5a05f45e70543cdc92182824fc803ae3b0ab2186cba8",
+      "selected-conformances.json": "a8210ae0d0860abc01f8640ffd8046b4df5d28f3f68390094170d6ac13740d54"
     }
   },
   "provider-diagnosis": {
@@ -51,6 +62,102 @@
       "fresh-frida-metadata-probe.mjs": "47893e594a419f3224acf48674d55563606f0f70c207d784822dc24a1a39a430",
       "viewer-input-and-audio.md": "7336e8f5e3d12c1f4284cc2b147ccc683face59e09feeaf79b83e00c09ee6e7d",
       "fresh-frida-result.jsonl": "b489fb29bc81e59c737fb67f54e57aa925fefc1764a9ed0015c86216a0bc8c52"
+    }
+  },
+  "maxrewards-input-producers": {
+    "local_archive_directory": "continuation-20261027/maxrewards-input-producers",
+    "files": {
+      "decoded-functions.json": "57039d1d35f254f09c4605b550ae310ff0fbf2a5c051a0e469d3b97280fa419e",
+      "evidence.json": "d436c64af168fe4c8978dda918bc2c7638e5001f2f332d77fdd6204fe03968be",
+      "selected-strings.py": "5edc2e503a8d8ec39d0da9b3a3de73390f5870759c5122b37645e30be0248000",
+      "report.md": "8014c372b42dd04a277eb6e62584c1b4b09c8a2b781d52995a8c1fc0b0d08b1e",
+      "module-bindings.json": "76beb383bd899bdfa002ecb4b9bfcb4ef1346cee4938cf2907b280739a1bf75b",
+      "validate.py": "73057483e34743ea5eeba529ac29e75bacfa2fc841ed60863d25e1ea5cb158f7",
+      "reused-functions.json": "3f18abb457d89c09d7a874c187716c0f6c56e3ec6bbe49a445c0e45f9af9c61f",
+      "validation.json": "55fb54896bee86bb6f35673f32c58f87579b32b48f69bc0b70bb09d0c03e8ba0",
+      "selected-shipped-query-strings.json": "449b11e8720459b0533639792a78ac914ec30fd11fc5842fa007ff7a80833689",
+      "decode.py": "65f0b2b1d4fd5277556fd82055da2a064ca3255ba9c2a06c08b88e76e18da567"
+    }
+  },
+  "maxrewards-apple-integrations": {
+    "local_archive_directory": "continuation-20261027/maxrewards-apple-integrations",
+    "files": {
+      "decoded-functions.json": "a3322360e10593c2b257db1145780a226261899a3007ebcbab83e820490012fd",
+      "evidence.json": "78549ef500d09858df6a372341b750910ac528ce1281e6b0908ed3d02d95f917",
+      "deduplication.json": "b2893ba4647e8c638e8d5c76563aff0bf2f3ef929abe47cfa3a0b389a5f1b87a",
+      "report.md": "8a19818ba075cb21e9d51100911cf49f24a7548e04b01042e114851227339c87",
+      "module-bindings.json": "a03b80ffb1c872fc39d9c3bd5b0059ecf7ab3cd9d8d5bc6cf3588c9994ffdacd",
+      "hashes.json": "3165af40411ed5bf4e35d9bdf2262de26254143ff94bfd4101ade793ed934df0",
+      "native-boundary-inspect.py": "355258fd95e93a9a6e2f7027fba3af14d7e5d1c1537ee8af599f609fa830a144",
+      "registration-contexts.py": "076bb49fc26817f8eb3cf6c3856737a15dbe04f4aef8621dbd433183df5f9f7f",
+      "validation.json": "ca5454be7aeef9d4c6a28699837b26c9a963028b09c6785219e0c802a38b22f8",
+      "native-reader-boundary.json": "dccc46bfcc43bfe912b60cc73d1cdfb6699375a7cd6ec186e523cdd043e33b4f",
+      "coverage.json": "b4a8046ed0711a248fe7281823739add1f3a00123b7e02d361e485a3fe1e6493",
+      "collect-evidence.py": "76319fa8a319f40e734a825ed158fcedb356b8cfcdb23a1391bfe3c100021f06",
+      "decode.py": "bac24bd6da8bfcfb722059b088916ebe555d6746f7e166e1cf842c09093fa725",
+      "native-reader-boundary.md": "2c92baa23e755f2da3e854abadd902907e33e99c693ffbac0b83e96afba356cb",
+      "native-analysis/function-anchor-coverage-ledger.json": "7651e524db55f3f1d2622786f6a550b5aff9471402e11b44f623f4e971b5b1d8",
+      "native-analysis/validation.json": "e61d2f5dd0c6d7a4d9af25b2117a3992ce31fb7c355de0dab902bbb9f904313d",
+      "native-analysis/hashes.json": "c89cabf6851ce491e88440b2acbce91963ba780fda717ba0142c1c89cff206bd",
+      "native-analysis/category-evidence-bundle.json": "83595f8b1e3ab30d0700890044b1948a676ac012126470abb4c555911adca5f0",
+      "native-analysis/live-evidence-bundle.json": "4bb6f7fcbac455fc2e4312f68dcdfecee6ac0b3ba2673daad8fa557817091a4b",
+      "native-analysis/job.json": "f5386db3a0b5767fa0481fdef00fd1c1488701123defabc03c5cb03c49458a87",
+      "native-analysis/category-worker-state.json": "637b8107ea2c78ee4dbd1db120b24bb50e29b26e1f3f81333bfad4ed4a974a98"
+    }
+  },
+  "cardpointers-sync": {
+    "local_archive_directory": "continuation-20261027/cardpointers-sync",
+    "files": {
+      "objc-stub-bindings.py": "95f35da9dcbcd0d3f739fac638d2c47af7c67a549daeed5154562bceeec4936f",
+      "evidence.json": "6b44aa83720ec4a387a77a14b4a40b2111b5056bdbdaa137fa5bfa6ac51860d8",
+      "reader-provenance.json": "c663bafd41200e8c248df830de92fb45532db179a27d240184dab0fe63a16c3e",
+      "selected-metadata.json": "a3299e665d15b2c20dd12faca1c506baf5dcb4276fcd8aac1e49e7c0cfa535d1",
+      "import-bindings.json": "d64624ec0fb924ba0dcc2b2ef17dfb8f8ce85872b87fcd5c92abe7d1965691cb",
+      "report.md": "854f1c77077731d607eb6c395fb15d9f51295461c8e63e87190edd88cbbcfc30",
+      "compact-evidence.json": "a15da4a1b5b386f64d92b5dc239ea2ab378d239db7847b40bc6174e243b1520d",
+      "decode-metadata.py": "81c79bdda3d9a5a975a1bedd682bd84322239a7a5cb5c6487b429d5c617832d5",
+      "validate.py": "6594a65f0d3f9e59a39192cef84738b8df1bee148095cc9a83779871ed008a33",
+      "exact-xrefs.py": "e7e69980cb906898b3d712191bbeb87ed06b74c7e1b3d2c3bfd0f4881b217cda",
+      "decode-dependencies.py": "acc7b3c9876d6c78ee3f624bf6ee1ad610ec7d040cdffefeac15d4a7b10b768e",
+      "objc-stub-bindings.json": "0ff0dd6519b02bd89533c62b0bb54f105959618626f97af42477b608150113ea",
+      "validation.json": "4bcca81e0e5bf02652b86355e08169a9a909dd287d3a7e33abfac700e72783ae",
+      "exact-xrefs.json": "c07f0f22c1689bae16f9ca2b54e60cef1ebb398ebb1810fa2574911c115b83f5",
+      "archive-manifest.json": "dfb99ace0a09804ce54dd39c452ae3e05cca8a44a6fd7bf6fcf4ab55f9ef7fe3",
+      "import-bindings.py": "6b6f2f70203d19b98ad560f027e9e70afe777de8857cfccf26e26c2eafd485dd",
+      "collect-evidence.py": "d5b7e154c289f18e7d1a31a4d5446d8c93d1e5bde740decfcdc20c0b5fab7719",
+      "selected-abi-dependencies.json": "75d03eb799b2ffbf26ab6b5a5c968208f3196601fcae844e0a898ddf552653b0"
+    }
+  },
+  "maxrewards-benefit-progress": {
+    "local_archive_directory": "continuation-20261027/maxrewards-benefit-progress",
+    "files": {
+      "decoded-functions.json": "29a4ddb67960c70f3b97f041d49c12f9c1cd1410b2a4253a886767ada080b29c",
+      "evidence.json": "dc7365efd6b58f7cfbbf3206133db619c9a38002af8773104cb24e4dbb2319ef",
+      "check.py": "26c58a295d84e64503e6a06325491c3e2a7259aef2e917c180516643881874a4",
+      "report.md": "d09f5fa2490d1d3b561f83f8995bcca7dde352543beb1263c1a0125817fcda15",
+      "checks.json": "bf5f180e3611cf965b299d8de7acd44c0bafb0e1a8e5cd43a8b7cca71952e6af",
+      "reused-functions.json": "d9970432214e7afb8fa70ba044d10553355e7317c4cc465ddefefe6304d3d0cc",
+      "decode.py": "2570fd44b524ceaeb4f6eddc3b92763ae8d5fb3daba3719668a7aa58708c751d"
+    }
+  },
+  "cardpointers-apple-integrations": {
+    "local_archive_directory": "continuation-20261027/cardpointers-apple-integrations",
+    "files": {
+      "selected-static-dependencies.json": "11c9cd2935f292a162d0795a3ffe681f78d0f685f5475a958bb60d481710a2d0",
+      "evidence.json": "a0088a2fa230fbd26dbc4ec0392093ca8e76f61864448a00266c1420b11919bf",
+      "macho.py": "141be4294b0e6e4fc7400fbca7b8e0e5aca001a98cc19f2aafb31d985ef95099",
+      "reader-provenance.json": "95f650e2dd71f0e0c49f5326c5ecc80e4113c31f29b6532e0a274942355767bd",
+      "report.md": "4132f3cb99f579c000ab60240758ae2fea2c3d7dd2a7368d2e5511ebec3bcace",
+      "output-hashes.json": "24a291d94ec1622f565f2c371c365ecc64428dc0f81a414b0927c7872783f400",
+      "compact-evidence.json": "5772f70a6160849c72755640451a045d1bad27f0302b559797553617ac040fa5",
+      "finalize.py": "612a5137d583cee838880046430fa766e95bbf3e32e4cc28d25895d63badcbbc",
+      "intent-bindings.json": "fc4e19c0174164c98b6997b7ced0db474ee752aeded07a8efbe0198b7a479d26",
+      "artifact-manifest.json": "cc5ffa970a783a40efdf25cf841008eec850fa76e373fad7c428dfce18ff885f",
+      "validation.json": "4a59f851b2b1bd190462f501b4a300772fe7653379c88930117c992f7b32d902",
+      "bindings.py": "6d961b76b7ae2fa08b4fa9f2b3e71d411a06c9d3797efc226b5a45ae4ac0f4e5",
+      "intent-store-callers.json": "e670e26bc5a8e2ce661d200d9bd474cda59e8cae11e99d9e4c8af47d51932458",
+      "options-body-comparison.json": "1bf1827156a7fde43b6d2a36df6d844738f81d2be0fd8cf8c92e21a9605c6511",
+      "dependencies.py": "d8295f6afda2b6cd3e31c305968b3019aaac90022b0ee4f5f5976494fe2a7df9"
     }
   }
 }

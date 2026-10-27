@@ -1,6 +1,6 @@
 # CardPointers wallet input provenance: focused continuation
 
-Date: 2026-10-27. This pass reuses the saved native pseudocode and materializer dossier, then reads selected Swift reflection records and three small instruction ranges from the unchanged Mac 8.1.4 arm64 carrier. It does not import the image again, execute the app, inspect user storage or contact the iPad. The source SHA-256 remains `447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0`.
+Date: 2026-10-27. This pass reuses the saved native pseudocode and materializer dossier, then reads selected Swift reflection records and selected instruction ranges from the unchanged Mac 8.1.4 arm64 carrier. It does not import the image again, execute the app, inspect user storage or contact the iPad. The source SHA-256 remains `447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0`.
 
 ## CPW-01: the candidate input types are now concrete
 
@@ -48,6 +48,23 @@ An offline scan of aligned immediate ARM64 `B`/`BL` instructions finds one direc
 A bounded ADRP/ADD reference finds the thunk captured at `0x1012776ac` in funclet `0x101277458–0x1012776ff`. That funclet references the NewDataResponse accessor at `0x1012775cc–0x1012775dc`, copies the value through helper `0x1000b2c00` at `0x10127764c–0x101277658`, and hands the thunk plus capture to a continuation at `0x1012776e4` (`br x2`). The relative descriptor at `0x1013a6a20` resolves to **0x101277170**, which reaches the imported `NSManagedObjectContext.perform(schedule:_:)` stub at `0x1012772c0`. The image's indirect symbol table identifies stub `0x1012b3244` with that exact Core Data import; `0x1012b5338` is `swift_task_switch`. This closes the persistence-scheduling handoff. It is not an HTTP decoder or scoring function. The objdump nearest-symbol headings are unrelated preceding symbols and are intentionally ignored; claims use exact instruction addresses.
 
 **Current status: partial.** The new evidence links concrete input type candidates, a capture/copy handoff, parent vectors, persistence fields and the previously decoded value consumer (`0x1002b7a00`, cents-per-dollar/welcome presentation). The remaining origin is the callback/decoder/producer before the capture, including any transformation of `PointerCard.points`, `total_value` or `order`. It is not yet justified to label that entire unresolved client edge hidden server computation. No Ghidra re-import or device retry was used to obtain these findings.
+
+## CPW-04: selected Decodable witnesses and actual field decoding
+
+A new finite metadata query resolves the four selected types' **Decodable** conformances. Their protocol binds to imported `_$sSeMp` (Swift.Decodable), and their resilient requirement binds to `_$sSe4fromxs7Decoder_p_tKcfCTq` (the decoder initializer). The selected conformance records carry flags `0x30000`: the witness-table-pattern relative field is **null**, and the implementation comes from the resilient-witness entry. Treating a null relative pointer as a table at its own field address would be incorrect. Generic runtime witness-table instantiation was not executed.
+
+| Type descriptor | Conformance | Decoder witness |
+| --- | --- | --- |
+| NewDataResponse `0x1013d9cbc` | `0x1013a1458` | `0x10121dac0`, calls `0x10121d6f0` |
+| Wallet `0x1013d9dfc` | `0x1013a1888` | `0x10122101c` |
+| Pointer `0x1013d9f64` | `0x1013a2160` | `0x1012293ac` |
+| PointerCard `0x1013d9f80` | `0x1013a2250` | `0x101229d88`, calls `0x1012450f4` |
+
+The PointerCard witness copies **0x3b1 bytes** from the successful initializer output (`0x101229da8–0x101229db8`), matching the parent reconciliation copy size. Its initializer calls the imported `Decoder.container(keyedBy:)` at `0x1012451d4`. The selected CodingKeys metadata at `0x101820b40` resolves to descriptor `0x1013da2d8`, whose reflected cases are exactly `points,total_value,feature,sponsored,card_id,card,color,order,inventory_id` in that order.
+
+For key index **0**, the call at `0x101245200` reaches the imported `KeyedDecodingContainer.decode(Float,forKey:)`, and `0x10124520c` stores returned `s0` at local `+0xe38`. Key index **1** uses the same Float decoder at `0x101245224` and stores at `+0xe3c`. No scoring arithmetic intervenes in these selected return-to-store spans. The initializer sets key index **7** at `0x1012453e4`, invokes the optional-integer decoder at `0x1012453f8`, stores its value at local `+0x11d0` and optional tag at `structBase+0x3a0`. The relative offset `0x11d0-0xe38 = 0x398` matches the materializer's `order` read.
+
+**New conclusion:** the inspected type has an actual keyed-decoding path for supplied `points`, `total_value` and optional `order`; these are not merely coincidental field-name strings. This closes the selected decoder-to-struct-to-persistence interpretation. It does not prove which network/cache/data source supplied the Decoder or that every caller uses these synthesized initializers. The producer before that input boundary and any other local ranking path remain unresolved. New selected-conformance/decoder evidence is retained locally; no main-image Ghidra analysis was repeated.
 
 ## Retained outputs
 

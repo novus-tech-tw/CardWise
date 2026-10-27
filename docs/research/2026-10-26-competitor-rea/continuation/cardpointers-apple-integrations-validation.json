@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "Chained pointer reader format assumption matches all participating image segments",
+      "bundle": "CPWidgetExtension",
+      "pointer_formats": [
+        6,
+        6
+      ],
+      "passed": true
+    },
+    {
+      "check": "Chained pointer reader format assumption matches all participating image segments",
+      "bundle": "CPPointersWidgetExtension",
+      "pointer_formats": [
+        6,
+        6
+      ],
+      "passed": true
+    },
+    {
+      "check": "Carrier/slice/plist digest and arm64 slice equality",
+      "bundle": "CPWidgetExtension",
+      "passed": true
+    },
+    {
+      "check": "Carrier/slice/plist digest and arm64 slice equality",
+      "bundle": "CPPointersWidgetExtension",
+      "passed": true
+    },
+    {
+      "check": "All selected regions match LC_FUNCTION_STARTS, carrier byte spans, every instruction hash, disassembly output hash",
+      "count": 25,
+      "anchors": 2215,
+      "passed": true
+    },
+    {
+      "check": "Both extension selected raw BL encodings resolve to exact named shared/fetch symbols",
+      "count": 4,
+      "passed": true
+    },
+    {
+      "check": "Every selected Objective-C selector resolved again from ADRP/LDR and chained pointer",
+      "count": 34,
+      "passed": true
+    },
+    {
+      "check": "Selected literal/class/KVC spans and bindings re-read from bytes",
+      "passed": true
+    },
+    {
+      "check": "Exact Objective-C named options methods independently visible in nm inventory",
+      "count": 2,
+      "passed": true
+    },
+    {
+      "check": "sortBy=3, callback nil error, fetch error/success branch anchors",
+      "passed": true
+    },
+    {
+      "check": "Critical selected entry/store/fetch/result raw direct branch edges",
+      "count": 12,
+      "edges": [
+        {
+          "source": "0x100005d2c",
+          "target": "0x1000068e8"
+        },
+        {
+          "source": "0x100006918",
+          "target": "0x10018d4fc"
+        },
+        {
+          "source": "0x10000693c",
+          "target": "0x1001b3eec"
+        },
+        {
+          "source": "0x1001b3f04",
+          "target": "0x1001b42c4"
+        },
+        {
+          "source": "0x1001b5374",
+          "target": "0x1001b3f08"
+        },
+        {
+          "source": "0x1001b4304",
+          "target": "0x1001e0068"
+        },
+        {
+          "source": "0x1001b4208",
+          "target": "0x1001e00a4"
+        },
+        {
+          "source": "0x100006a7c",
+          "target": "0x1000056b8"
+        },
+        {
+          "source": "0x100006ad4",
+          "target": "0x1001e3d00"
+        },
+        {
+          "source": "0x10018d5e8",
+          "target": "0x10018c230"
+        },
+        {
+          "source": "0x10018eebc",
+          "target": "0x1001a5b50"
+        },
+        {
+          "source": "0x1001a5ee4",
+          "target": "0x1001e4580"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "distinct_binaries": 2,
+  "selected_region_count": 25,
+  "selected_instruction_anchors": 2215,
+  "limitations": [
+    "Static offline evidence only; no app group directory or real database access, no intent/widget execution.",
+    "No WidgetKit timeline/render/refresh routing or iPad equivalence claim.",
+    "The profile override utility and resolve entry retained in raw output are not promoted to this selected options path."
+  ]
+}

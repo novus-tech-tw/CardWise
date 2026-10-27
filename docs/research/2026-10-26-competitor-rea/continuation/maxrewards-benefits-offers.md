@@ -1,5 +1,7 @@
 # MaxRewards benefits and offers: focused offline continuation
 
+The subsequent [benefit progress/population continuation](maxrewards-benefit-progress.md) resolves the helper, deduplication and selected caller-population gaps listed below; issuer/server and runtime limits remain distinct.
+
 Date: 2026-10-27. Target: official MaxRewards 4.8.35/build 1792099341, separately shipped Hermes v96 carrier. This new work answers client-feature questions left open by the earlier selected review. No app execution, device command, bank connection, activation, credential/container read, new acquisition, whole-app REA producer/import or repository edit occurred.
 
 Carrier: `maxrewards/native/main.jsbundle`, SHA-256 `efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9`, 12,633,156 bytes. Decoder: existing P1sec/hermes-dec commit `2e796663e1fedb93dca51060797ebf3327b3fedb`. Function offsets below are absolute byte offsets unless marked relative. Disassembly, source spans and output hashes are in `decoded-functions.json` / `source-anchors.json`; validation is in `validation.json`. These are supplementary local static references, not invented REA Evidence IDs. Pseudocode is reconstructed and is not treated as original source or runtime.
