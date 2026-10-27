@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct RecommendView: View {
+    @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @State private var includeConditionalRewards = false
     @EnvironmentObject var cardViewModel: CardViewModel
     @EnvironmentObject var spendingViewModel: SpendingViewModel
     @State private var searchText = ""
@@ -32,7 +34,10 @@ struct RecommendView: View {
             for: effectiveCategory,
             amount: amountValue,
             userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards
+            allCards: cardViewModel.allCards,
+            spendings: spendingViewModel.spendings,
+            settings: preferences.settings,
+            includeConditionalRewards: includeConditionalRewards
         )
     }
 
@@ -304,6 +309,13 @@ struct RecommendView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
+                        PurchaseConditionsToggle(isOn: $includeConditionalRewards)
+                        Text(preferences.settings.ranking.explanation)
+                            .font(.caption)
+                            .foregroundStyle(Theme.textSecondary)
+                        Text("Estimates use recorded spending and local merchant categories. Issuer coding and redemption values can differ.")
+                            .font(.caption2)
+                            .foregroundStyle(Theme.textSecondary)
                         ForEach(Array(recommendations.enumerated()), id: \.element.id) { index, rec in
                             RecommendationDetailRow(
                                 recommendation: rec,
@@ -342,61 +354,64 @@ struct RecommendationDetailRow: View {
     let isTop: Bool
 
     var body: some View {
-        HStack(spacing: 16) {
-            // Rank
-            RankBadge(rank: rank)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 16) {
+                // Rank
+                RankBadge(rank: rank)
 
-            // Card info
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    CardImageView(
-                        imageURL: recommendation.card.imageURL,
-                        fallbackColor: recommendation.card.imageColor,
-                        width: 40,
-                        height: 26,
-                        cornerRadius: 4
-                    )
+                // Card info
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        CardImageView(
+                            imageURL: recommendation.card.imageURL,
+                            fallbackColor: recommendation.card.imageColor,
+                            width: 40,
+                            height: 26,
+                            cornerRadius: 4
+                        )
 
-                    VStack(alignment: .leading) {
-                        Text(recommendation.userCard.nickname ?? recommendation.card.name)
-                            .font(.app(.headline))
-                            .foregroundStyle(Theme.textPrimary)
-                        Text(recommendation.card.issuer)
-                            .font(.app(.caption))
-                            .foregroundStyle(Theme.textSecondary)
+                        VStack(alignment: .leading) {
+                            Text(recommendation.userCard.nickname ?? recommendation.card.name)
+                                .font(.app(.headline))
+                                .foregroundStyle(Theme.textPrimary)
+                            Text(recommendation.card.issuer)
+                                .font(.app(.caption))
+                                .foregroundStyle(Theme.textSecondary)
+                        }
+                    }
+
+                    Text(recommendation.reason)
+                        .font(.app(.caption))
+                        .foregroundStyle(Theme.textSecondary)
+
+                    if recommendation.needsActivation {
+                        Button {
+                            cardViewModel.setRotatingActivated(for: recommendation.userCard, activated: true)
+                        } label: {
+                            Label("Confirm issuer activation", systemImage: "exclamationmark.triangle.fill")
+                                .font(.app(.caption))
+                                .foregroundStyle(Theme.warning)
+                        }
+                        .buttonStyle(.borderless)
                     }
                 }
 
-                Text(recommendation.reason)
-                    .font(.app(.caption))
-                    .foregroundStyle(Theme.textSecondary)
+                Spacer()
 
-                if recommendation.needsActivation {
-                    Button {
-                        cardViewModel.setRotatingActivated(for: recommendation.userCard, activated: true)
-                    } label: {
-                        Label("Needs activation — tap once activated", systemImage: "exclamationmark.triangle.fill")
-                            .font(.app(.caption))
-                            .foregroundStyle(Theme.warning)
-                    }
-                    .buttonStyle(.borderless)
+                // Reward info
+                VStack(alignment: .trailing, spacing: 4) {
+                    RewardBadge(text: recommendation.displayReward, emphasized: isTop)
+
+                    Text(recommendation.formattedEstimatedReward)
+                        .font(.app(.subheadline))
+                        .foregroundStyle(Theme.textSecondary)
+
+                    Text("estimated")
+                        .font(.app(.caption2))
+                        .foregroundStyle(Theme.textSecondary)
                 }
             }
-
-            Spacer()
-
-            // Reward info
-            VStack(alignment: .trailing, spacing: 4) {
-                RewardBadge(text: recommendation.displayReward, emphasized: isTop)
-
-                Text(recommendation.formattedEstimatedReward)
-                    .font(.app(.subheadline))
-                    .foregroundStyle(Theme.textSecondary)
-
-                Text("estimated")
-                    .font(.app(.caption2))
-                    .foregroundStyle(Theme.textSecondary)
-            }
+            RecommendationContextView(recommendation: recommendation)
         }
         .padding(.vertical, 8)
         .listRowBackground(isTop ? Theme.accentSoft() : Color.clear)

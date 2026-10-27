@@ -14,6 +14,9 @@ struct WidgetData {
     let rotatingCard: String?
     let spendingThisMonth: Double
     let rewardsThisMonth: Double
+    var purchaseContext: String?
+    var explanation: String?
+    var statsTitle = "This Month"
 
     static let placeholder = WidgetData(
         topCategory: "Dining",
@@ -28,19 +31,22 @@ struct WidgetData {
         rewardsThisMonth: 45.50
     )
 
-    static func load() -> WidgetData {
+    static func load(at date: Date = Date()) -> WidgetData {
         if let payload = WidgetStorageHelper.loadPayload() {
             return WidgetData(
                 topCategory: payload.topCategory,
                 topCategoryIcon: payload.topCategoryIcon,
-                bestCard: payload.bestCard,
+                bestCard: payload.isStale(at: date) ? "Open CardWise to refresh" : payload.bestCard,
                 bestCardColor: payload.bestCardColor,
                 bestCardImageURL: nil,
-                rewardRate: payload.rewardRate,
-                rotatingCategories: payload.rotatingCategories,
-                rotatingCard: payload.rotatingCard,
+                rewardRate: payload.isStale(at: date) ? "–" : payload.rewardRate,
+                rotatingCategories: payload.isStale(at: date) ? [] : payload.rotatingCategories,
+                rotatingCard: payload.isStale(at: date) ? nil : payload.rotatingCard,
                 spendingThisMonth: payload.spendingThisMonth,
-                rewardsThisMonth: payload.rewardsThisMonth
+                rewardsThisMonth: payload.rewardsThisMonth,
+                purchaseContext: payload.purchaseContext,
+                explanation: payload.isStale(at: date) ? "Saved estimate has expired" : payload.explanation,
+                statsTitle: payload.isStale(at: date) ? "Saved Month" : "This Month"
             )
         }
 
@@ -60,18 +66,6 @@ struct WidgetData {
 }
 
 // MARK: - Widget Storage Helper
-
-private struct WidgetPayload: Codable {
-    let topCategory: String
-    let topCategoryIcon: String
-    let bestCard: String
-    let bestCardColor: String
-    let rewardRate: String
-    let rotatingCategories: [String]
-    let rotatingCard: String?
-    let spendingThisMonth: Double
-    let rewardsThisMonth: Double
-}
 
 private enum WidgetStorageHelper {
     static let appGroupID = "group.com.cardwise.app"
@@ -100,10 +94,13 @@ struct CardWiseProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<CardWiseEntry>) -> Void) {
-        let entry = CardWiseEntry(date: Date(), data: WidgetData.load())
-        // Update every hour
-        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
-        let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+        let now = Date()
+        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: now) ?? now.addingTimeInterval(3600)
+        var entries = [CardWiseEntry(date: now, data: WidgetData.load(at: now))]
+        if let expiry = WidgetStorageHelper.loadPayload()?.validUntil, expiry > now {
+            entries.append(CardWiseEntry(date: expiry, data: WidgetData.load(at: expiry)))
+        }
+        let timeline = Timeline(entries: entries, policy: .after(nextUpdate))
         completion(timeline)
     }
 }
@@ -125,7 +122,8 @@ struct CardWiseWidgetSmallView: View {
                 Image(systemName: entry.data.topCategoryIcon)
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                Text(entry.data.topCategory)
+                Text(entry.data.purchaseContext ?? entry.data.topCategory)
+                    .lineLimit(1)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -154,6 +152,10 @@ struct CardWiseWidgetSmallView: View {
             }
 
             Spacer()
+
+            if let explanation = entry.data.explanation {
+                Text(explanation).font(.caption2).foregroundStyle(.secondary).lineLimit(2)
+            }
 
             // Rotating reminder (if applicable)
             if entry.data.rotatingCard != nil, !entry.data.rotatingCategories.isEmpty {
@@ -189,7 +191,8 @@ struct CardWiseWidgetMediumView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Image(systemName: entry.data.topCategoryIcon)
-                    Text(entry.data.topCategory)
+                    Text(entry.data.purchaseContext ?? entry.data.topCategory)
+                    .lineLimit(1)
                 }
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -222,7 +225,7 @@ struct CardWiseWidgetMediumView: View {
 
             // Right side - This month stats
             VStack(alignment: .leading, spacing: 8) {
-                Text("This Month")
+                Text(entry.data.statsTitle)
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
@@ -252,6 +255,10 @@ struct CardWiseWidgetMediumView: View {
                 }
 
                 Spacer()
+
+                if let explanation = entry.data.explanation {
+                    Text(explanation).font(.caption2).foregroundStyle(.secondary).lineLimit(2)
+                }
 
                 // Rotating categories
                 if !entry.data.rotatingCategories.isEmpty {
@@ -285,15 +292,17 @@ struct CardWiseLockScreenView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(entry.data.topCategory)
+            Text(entry.data.purchaseContext ?? entry.data.topCategory)
+                    .lineLimit(1)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             Text(entry.data.bestCard)
+                .lineLimit(1)
                 .font(.caption)
                 .fontWeight(.semibold)
-            Text(entry.data.rewardRate)
-                .font(.caption)
-                .foregroundStyle(.green)
+            Text(entry.data.explanation ?? entry.data.rewardRate)
+                .font(.caption2)
+                .lineLimit(1)
         }
         .containerBackground(for: .widget) {
             Color.clear

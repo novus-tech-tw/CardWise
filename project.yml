@@ -15,6 +15,7 @@ targets:
     type: application
     platform: iOS
     sources:
+      - path: Shared
       - path: CardWise
         excludes:
           - "**/.DS_Store"
@@ -63,6 +64,7 @@ targets:
     type: app-extension
     platform: iOS
     sources:
+      - path: Shared
       - path: CardWiseWidget
     settings:
       base:
