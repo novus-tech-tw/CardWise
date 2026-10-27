@@ -1,6 +1,6 @@
 {
-  "version": 7,
-  "updatedAt": "2026-10-17T06:00:00Z",
+  "version": 8,
+  "updatedAt": "2026-10-27T12:00:00Z",
   "cards": [
     {
       "id": "chase-chase-sapphire-preferred",
@@ -8,14 +8,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "travel",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -23,7 +23,7 @@
         {
           "category": "dining",
           "multiplier": 3,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -31,23 +31,31 @@
         {
           "category": "travel",
           "multiplier": 5,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Booked through Chase Travel"
         },
         {
-          "category": "grocery",
+          "category": "streaming",
           "multiplier": 3,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
         },
         {
-          "category": "streaming",
+          "category": "gas",
           "multiplier": 3,
-          "isPercentage": true,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 3,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -81,14 +89,22 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 795,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
-          "category": "travel",
+          "category": "airlines",
           "multiplier": 4,
-          "isPercentage": true,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 4,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -96,7 +112,7 @@
         {
           "category": "travel",
           "multiplier": 8,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Booked through Chase Travel"
@@ -104,7 +120,7 @@
         {
           "category": "dining",
           "multiplier": 3,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -154,7 +170,7 @@
         {
           "id": "csr-doordash",
           "description": "DoorDash credit",
-          "amount": 25,
+          "amount": 35,
           "cadence": "monthly",
           "category": "dining"
         },
@@ -171,6 +187,13 @@
           "amount": 10,
           "cadence": "monthly",
           "category": "fitness"
+        },
+        {
+          "id": "csr-apple-tv-music",
+          "description": "Apple TV and Apple Music subscriptions",
+          "amount": 324,
+          "cadence": "annual",
+          "category": "streaming"
         }
       ]
     },
@@ -282,6 +305,7 @@
           "year": 2026,
           "categories": [
             "gas",
+            "transit",
             "evCharging",
             "entertainment"
           ],
@@ -295,9 +319,21 @@
           "quarter": 4,
           "year": 2026,
           "categories": [
-            "amazon",
-            "wholesale",
-            "paypal"
+            "grocery",
+            "dining"
+          ],
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": 1500,
+          "capPeriod": "quarterly",
+          "activationRequired": true
+        },
+        {
+          "quarter": 1,
+          "year": 2027,
+          "categories": [
+            "grocery",
+            "streaming"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -363,9 +399,9 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "travel",
@@ -412,7 +448,16 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_preferred_card.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_preferred_card.png",
+      "credits": [
+        {
+          "id": "ink-preferred-doordash",
+          "description": "DoorDash non-restaurant order credit",
+          "amount": 10,
+          "cadence": "monthly",
+          "category": "other"
+        }
+      ]
     },
     {
       "id": "chase-ink-business-cash",
@@ -428,8 +473,8 @@
           "category": "officeSupplies",
           "multiplier": 5,
           "isPercentage": true,
-          "cap": null,
-          "capPeriod": null,
+          "cap": 25000,
+          "capPeriod": "yearly",
           "note": null
         },
         {
@@ -469,7 +514,16 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_cash_card.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_cash_card.png",
+      "credits": [
+        {
+          "id": "ink-cash-instacart",
+          "description": "Instacart credit (active Instacart+ membership)",
+          "amount": 20,
+          "cadence": "monthly",
+          "category": "grocery"
+        }
+      ]
     },
     {
       "id": "chase-ink-business-unlimited",
@@ -478,14 +532,23 @@
       "network": "visa",
       "annualFee": 0,
       "rewardType": "cashback",
-      "baseReward": 1,
+      "baseReward": 1.5,
       "baseIsPercentage": true,
       "categoryRewards": [],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_unlimited_card.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ink_unlimited_card.png",
+      "credits": [
+        {
+          "id": "ink-unlimited-instacart",
+          "description": "Instacart credit (active Instacart+ membership)",
+          "amount": 20,
+          "cadence": "monthly",
+          "category": "grocery"
+        }
+      ]
     },
     {
       "id": "chase-ink-business-premier",
@@ -494,9 +557,18 @@
       "network": "visa",
       "annualFee": 195,
       "rewardType": "cashback",
-      "baseReward": 1,
+      "baseReward": 2,
       "baseIsPercentage": true,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Booked through Chase Travel"
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -509,14 +581,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 350,
-      "rewardType": "cashback",
+      "rewardType": "miles",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
           "multiplier": 4,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "United purchases"
@@ -524,7 +596,7 @@
         {
           "category": "travel",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -532,7 +604,7 @@
         {
           "category": "dining",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -540,10 +612,18 @@
         {
           "category": "streaming",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Prepaid through Renowned Hotels and Resorts for United Cardmembers"
         }
       ],
       "rotatingCategories": null,
@@ -586,6 +666,13 @@
           "amount": 200,
           "cadence": "annual",
           "category": "airlines"
+        },
+        {
+          "id": "united-quest-avis",
+          "description": "Avis/Budget car rental credit (United TravelBank cash)",
+          "amount": 80,
+          "cadence": "annual",
+          "category": "travel"
         }
       ]
     },
@@ -595,30 +682,30 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 150,
-      "rewardType": "cashback",
+      "rewardType": "miles",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
-          "multiplier": 2,
-          "isPercentage": true,
+          "multiplier": 3,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "United purchases"
         },
         {
-          "category": "travel",
+          "category": "hotels",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
-          "note": null
+          "note": "Booked directly with the hotel"
         },
         {
           "category": "dining",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -657,6 +744,13 @@
           "amount": 100,
           "cadence": "annual",
           "category": "airlines"
+        },
+        {
+          "id": "united-explorer-avis",
+          "description": "Avis/Budget car rental credit (United TravelBank cash)",
+          "amount": 50,
+          "cadence": "annual",
+          "category": "travel"
         }
       ]
     },
@@ -666,14 +760,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
-      "rewardType": "cashback",
+      "rewardType": "miles",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "United purchases"
@@ -681,7 +775,7 @@
         {
           "category": "gas",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -689,7 +783,7 @@
         {
           "category": "transit",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -707,14 +801,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 695,
-      "rewardType": "cashback",
+      "rewardType": "miles",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
-          "multiplier": 2,
-          "isPercentage": true,
+          "multiplier": 5,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "United purchases"
@@ -722,7 +816,7 @@
         {
           "category": "travel",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -730,10 +824,18 @@
         {
           "category": "dining",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Prepaid through Renowned Hotels and Resorts for United Cardmembers"
         }
       ],
       "rotatingCategories": null,
@@ -769,6 +871,13 @@
           "amount": 20,
           "cadence": "monthly",
           "category": "grocery"
+        },
+        {
+          "id": "united-club-avis",
+          "description": "Avis/Budget car rental credit (United TravelBank cash)",
+          "amount": 100,
+          "cadence": "annual",
+          "category": "travel"
         }
       ]
     },
@@ -778,14 +887,14 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 229,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
           "multiplier": 4,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Southwest purchases"
@@ -793,7 +902,15 @@
         {
           "category": "dining",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -827,24 +944,56 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 99,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
           "multiplier": 2,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Southwest purchases"
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": 5000,
+          "capPeriod": "yearly",
+          "note": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": 5000,
+          "capPeriod": "yearly",
+          "note": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_plus_card_New.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/swa_plus_card_New.png",
+      "credits": [
+        {
+          "id": "sw-plus-doordash",
+          "description": "DoorDash credit",
+          "amount": 10,
+          "cadence": "quarterly",
+          "category": "other"
+        },
+        {
+          "id": "sw-plus-instacart",
+          "description": "Instacart credit",
+          "amount": 10,
+          "cadence": "monthly",
+          "category": "grocery"
+        }
+      ]
     },
     {
       "id": "chase-southwest-rapid-rewards-premier",
@@ -852,17 +1001,33 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 149,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "airlines",
           "multiplier": 3,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Southwest purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": 8000,
+          "capPeriod": "yearly",
+          "note": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": 8000,
+          "capPeriod": "yearly",
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -893,17 +1058,41 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
+      "rewardType": "points",
+      "baseReward": 2,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "hotels",
           "multiplier": 17,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Marriott Bonvoy purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 6000,
+          "capPeriod": "yearly",
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 6000,
+          "capPeriod": "yearly",
+          "note": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": 6000,
+          "capPeriod": "yearly",
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -918,6 +1107,13 @@
           "amount": 10,
           "cadence": "quarterly",
           "category": "other"
+        },
+        {
+          "id": "boundless-airline",
+          "description": "Airline credit ($50 per half-year after $250 airline spend; limited-time offer)",
+          "amount": 50,
+          "cadence": "semiannual",
+          "category": "airlines"
         }
       ]
     },
@@ -927,24 +1123,73 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 0,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "hotels",
           "multiplier": 14,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Marriott Bonvoy purchases"
+        },
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "phone",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "streaming",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Select streaming services"
+        },
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Rideshare (taxicabs and limousines)"
+        },
+        {
+          "category": "internet",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott_bonvoy_bold_card_NAF.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/marriott_bonvoy_bold_card_NAF.png",
+      "credits": [
+        {
+          "id": "bold-doordash",
+          "description": "DoorDash credit",
+          "amount": 10,
+          "cadence": "quarterly",
+          "category": "other"
+        }
+      ]
     },
     {
       "id": "chase-marriott-bonvoy-bountiful",
@@ -952,17 +1197,33 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 250,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
+      "rewardType": "points",
+      "baseReward": 2,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "hotels",
           "multiplier": 18.5,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Marriott Bonvoy purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": 15000,
+          "capPeriod": "yearly",
+          "note": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": 15000,
+          "capPeriod": "yearly",
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -986,17 +1247,41 @@
       "issuer": "Chase",
       "network": "mastercard",
       "annualFee": 99,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
+      "rewardType": "points",
+      "baseReward": 3,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "hotels",
           "multiplier": 26,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "IHG Hotels purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "airlines",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Airline tickets purchased directly from airlines"
         }
       ],
       "rotatingCategories": null,
@@ -1018,33 +1303,72 @@
           "amount": 50,
           "cadence": "annual",
           "category": "airlines"
+        },
+        {
+          "id": "ihg-premier-instacart",
+          "description": "Instacart credit (requires Instacart+)",
+          "amount": 10,
+          "cadence": "monthly",
+          "category": "grocery"
         }
       ]
     },
     {
       "id": "chase-ihg-one-rewards-traveler",
-      "name": "IHG One Rewards Traveler",
+      "name": "IHG One Rewards Credit Card",
       "issuer": "Chase",
       "network": "mastercard",
       "annualFee": 0,
-      "rewardType": "cashback",
-      "baseReward": 1,
-      "baseIsPercentage": true,
+      "rewardType": "points",
+      "baseReward": 2,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "hotels",
           "multiplier": 17,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "IHG Hotels purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ihg-traveler-card.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/ihg-traveler-card.png",
+      "credits": [
+        {
+          "id": "ihg-traveler-doordash",
+          "description": "DoorDash credit",
+          "amount": 10,
+          "cadence": "quarterly",
+          "category": "other"
+        },
+        {
+          "id": "ihg-traveler-instacart",
+          "description": "Instacart credit (requires Instacart+)",
+          "amount": 10,
+          "cadence": "monthly",
+          "category": "grocery"
+        }
+      ]
     },
     {
       "id": "chase-world-of-hyatt",
@@ -1052,24 +1376,65 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "hotels",
           "multiplier": 9,
-          "isPercentage": true,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": "Hyatt purchases"
+        },
+        {
+          "category": "airlines",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Airline tickets purchased directly from airlines"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "fitness",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Fitness club and gym memberships"
+        },
+        {
+          "category": "transit",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Local transit & commuting"
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/world_of_hyatt_card.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/world_of_hyatt_card.png",
+      "credits": [
+        {
+          "id": "hyatt-doordash",
+          "description": "DoorDash credit",
+          "amount": 10,
+          "cadence": "quarterly",
+          "category": "other"
+        }
+      ]
     },
     {
       "id": "chase-prime-visa",
@@ -1224,7 +1589,16 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003B73",
-      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/disney-rewards2025.png"
+      "imageURL": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/disney-rewards2025.png",
+      "credits": [
+        {
+          "id": "disney-doordash",
+          "description": "DoorDash credit",
+          "amount": 10,
+          "cadence": "quarterly",
+          "category": "other"
+        }
+      ]
     },
     {
       "id": "chase-disney-premier-visa-card",
@@ -1243,6 +1617,30 @@
           "cap": null,
           "capPeriod": null,
           "note": "Disney purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "grocery",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -1271,22 +1669,6 @@
       "baseIsPercentage": true,
       "categoryRewards": [
         {
-          "category": "grocery",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null,
-          "note": null
-        },
-        {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null,
-          "note": null
-        },
-        {
           "category": "gas",
           "multiplier": 2,
           "isPercentage": true,
@@ -1304,6 +1686,14 @@
         },
         {
           "category": "dining",
+          "multiplier": 2,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "streaming",
           "multiplier": 2,
           "isPercentage": true,
           "cap": null,
@@ -1364,14 +1754,46 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [
         {
           "category": "grocery",
           "multiplier": 3,
-          "isPercentage": true,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Air Canada purchases"
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 2,
+          "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
@@ -1389,6 +1811,13 @@
           "amount": 10,
           "cadence": "quarterly",
           "category": "other"
+        },
+        {
+          "id": "aeroplan-air-canada",
+          "description": "Air Canada statement credit",
+          "amount": 50,
+          "cadence": "semiannual",
+          "category": "airlines"
         }
       ]
     },
@@ -1398,10 +1827,27 @@
       "issuer": "Chase",
       "network": "visa",
       "annualFee": 95,
-      "rewardType": "cashback",
+      "rewardType": "points",
       "baseReward": 1,
-      "baseIsPercentage": true,
-      "categoryRewards": [],
+      "baseIsPercentage": false,
+      "categoryRewards": [
+        {
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "British Airways, Aer Lingus, Iberia, LEVEL flights booked direct"
+        },
+        {
+          "category": "hotels",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Booked directly with the hotel"
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -1438,15 +1884,16 @@
           "category": "airlines",
           "multiplier": 5,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 500000,
+          "capPeriod": "yearly"
         },
         {
           "category": "hotels",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Prepaid hotels booked through Amex Travel"
         }
       ],
       "rotatingCategories": null,
@@ -1521,7 +1968,7 @@
         {
           "id": "amex-plat-clear",
           "description": "CLEAR Plus",
-          "amount": 209,
+          "amount": 219,
           "cadence": "annual",
           "category": "travel"
         },
@@ -1548,22 +1995,33 @@
           "category": "dining",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 50000,
+          "capPeriod": "yearly",
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 25000,
+          "capPeriod": "yearly",
+          "note": null
         },
         {
           "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Prepaid hotels booked through AmexTravel.com"
         }
       ],
       "rotatingCategories": null,
@@ -1643,7 +2101,7 @@
         {
           "id": "amex-green-clear",
           "description": "CLEAR Plus",
-          "amount": 209,
+          "amount": 219,
           "cadence": "annual",
           "category": "travel"
         }
@@ -1828,7 +2286,7 @@
       "network": "amex",
       "annualFee": 0,
       "rewardType": "points",
-      "baseReward": 1,
+      "baseReward": 3,
       "baseIsPercentage": false,
       "categoryRewards": [
         {
@@ -1851,6 +2309,14 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 7,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hilton portfolio hotels & resorts"
         }
       ],
       "rotatingCategories": null,
@@ -1866,7 +2332,7 @@
       "network": "amex",
       "annualFee": 150,
       "rewardType": "points",
-      "baseReward": 1,
+      "baseReward": 3,
       "baseIsPercentage": false,
       "categoryRewards": [
         {
@@ -1886,6 +2352,21 @@
         {
           "category": "gas",
           "multiplier": 6,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 12,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hilton portfolio hotels & resorts"
+        },
+        {
+          "category": "onlineShopping",
+          "multiplier": 4,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
@@ -1921,7 +2402,8 @@
           "multiplier": 14,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hilton portfolio hotels & resorts"
         },
         {
           "category": "airlines",
@@ -1961,7 +2443,7 @@
         {
           "id": "aspire-clear",
           "description": "CLEAR Plus",
-          "amount": 209,
+          "amount": 219,
           "cadence": "annual",
           "category": "travel"
         }
@@ -1990,7 +2472,7 @@
       "network": "amex",
       "annualFee": 250,
       "rewardType": "points",
-      "baseReward": 1,
+      "baseReward": 2,
       "baseIsPercentage": false,
       "categoryRewards": [
         {
@@ -1998,14 +2480,22 @@
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Marriott Bonvoy hotels"
         },
         {
           "category": "dining",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 15000,
+          "capPeriod": "yearly"
+        },
+        {
+          "category": "grocery",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": 15000,
+          "capPeriod": "yearly"
         }
       ],
       "rotatingCategories": null,
@@ -2021,7 +2511,7 @@
       "network": "amex",
       "annualFee": 650,
       "rewardType": "points",
-      "baseReward": 1,
+      "baseReward": 2,
       "baseIsPercentage": false,
       "categoryRewards": [
         {
@@ -2029,21 +2519,24 @@
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Marriott Bonvoy hotels"
         },
         {
           "category": "dining",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "airlines",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -2121,7 +2614,8 @@
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Delta purchases"
         }
       ],
       "rotatingCategories": null,
@@ -2136,6 +2630,20 @@
           "amount": 100,
           "cadence": "annual",
           "category": "hotels"
+        },
+        {
+          "id": "delta-gold-flight-credit",
+          "description": "Delta flight credit (requires $10,000/calendar-year spend)",
+          "amount": 200,
+          "cadence": "annual",
+          "category": "airlines"
+        },
+        {
+          "id": "delta-gold-rideshare",
+          "description": "Rideshare credit (after first renewal; enrollment required)",
+          "amount": 10,
+          "cadence": "monthly",
+          "category": "transit"
         }
       ]
     },
@@ -2154,28 +2662,32 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Delta purchases"
         },
         {
           "category": "hotels",
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -2222,7 +2734,8 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Delta purchases"
         }
       ],
       "rotatingCategories": null,
@@ -2263,7 +2776,16 @@
       "rewardType": "cashback",
       "baseReward": 2,
       "baseIsPercentage": true,
-      "categoryRewards": [],
+      "categoryRewards": [
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hotels, car rentals and attractions booked through Citi Travel"
+        }
+      ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -2368,15 +2890,7 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null,
-          "note": "Hotels booked through thankyou.com"
-        },
-        {
-          "category": "travel",
-          "multiplier": 3,
-          "isPercentage": false,
-          "cap": null,
-          "capPeriod": null,
-          "note": null
+          "note": "Hotels, car rentals and attractions booked through cititravel.com"
         },
         {
           "category": "dining",
@@ -2401,6 +2915,30 @@
           "cap": null,
           "capPeriod": null,
           "note": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "airlines",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -2420,7 +2958,7 @@
     },
     {
       "id": "citi-citi-rewards-card",
-      "name": "Citi Rewards+ Card",
+      "name": "Citi Strata Card",
       "issuer": "Citi",
       "network": "mastercard",
       "annualFee": 0,
@@ -2430,7 +2968,7 @@
       "categoryRewards": [
         {
           "category": "grocery",
-          "multiplier": 2,
+          "multiplier": 3,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null,
@@ -2438,11 +2976,43 @@
         },
         {
           "category": "gas",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "transit",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Select transit"
+        },
+        {
+          "category": "dining",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
           "capPeriod": null,
           "note": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hotels, car rentals and attractions booked through cititravel.com"
         }
       ],
       "rotatingCategories": null,
@@ -2479,6 +3049,14 @@
       "categoryRewards": [
         {
           "category": "gas",
+          "multiplier": 4,
+          "isPercentage": true,
+          "cap": 7000,
+          "capPeriod": "yearly",
+          "note": null
+        },
+        {
+          "category": "evCharging",
           "multiplier": 4,
           "isPercentage": true,
           "cap": 7000,
@@ -2594,6 +3172,22 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hotels, vacation rentals and rental cars booked through Capital One Travel"
+        },
+        {
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hotels, vacation rentals, rental cars booked through Capital One Travel"
         }
       ],
       "rotatingCategories": null,
@@ -2639,6 +3233,22 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hotels, vacation rentals and rental cars booked through Capital One Travel"
+        },
+        {
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Hotels, vacation rentals, rental cars booked through Capital One Travel"
         }
       ],
       "rotatingCategories": null,
@@ -2662,14 +3272,16 @@
           "multiplier": 10,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hotels & rental cars booked through Capital One Travel"
         },
         {
           "category": "airlines",
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Flights booked through Capital One Travel"
         }
       ],
       "rotatingCategories": null,
@@ -2702,14 +3314,16 @@
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hotels, vacation rentals & rental cars booked through Capital One Travel"
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#004977",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/venture.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/pages/open-graph/venture.png",
+      "credits": null
     },
     {
       "id": "capital-one-capital-one-ventureone-rewards",
@@ -2726,14 +3340,16 @@
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hotels, vacation rentals & rental cars booked through Capital One Travel"
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0066A1",
-      "imageURL": "https://ecm.capitalone.com/WCM/card/products/og/ventureone.png"
+      "imageURL": "https://ecm.capitalone.com/WCM/card/products/og/ventureone.png",
+      "credits": null
     },
     {
       "id": "capital-one-capital-one-quicksilver-cash-rewards",
@@ -2782,8 +3398,9 @@
           "quarter": 1,
           "year": 2026,
           "categories": [
-            "dining",
-            "drugstore"
+            "grocery",
+            "wholesale",
+            "streaming"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -2795,8 +3412,7 @@
           "quarter": 2,
           "year": 2026,
           "categories": [
-            "gas",
-            "evCharging",
+            "dining",
             "homeImprovement"
           ],
           "multiplier": 5,
@@ -2809,8 +3425,9 @@
           "quarter": 3,
           "year": 2026,
           "categories": [
-            "grocery",
-            "walmart"
+            "gas",
+            "transit",
+            "drugstore"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -2822,8 +3439,11 @@
           "quarter": 4,
           "year": 2026,
           "categories": [
-            "amazon",
-            "target"
+            "dining",
+            "entertainment",
+            "utilities",
+            "internet",
+            "phone"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -2889,7 +3509,7 @@
       "annualFee": 0,
       "rewardType": "miles",
       "baseReward": 1.5,
-      "baseIsPercentage": true,
+      "baseIsPercentage": false,
       "categoryRewards": [],
       "rotatingCategories": null,
       "selectableConfig": null,
@@ -2912,8 +3532,9 @@
           "quarter": 1,
           "year": 2026,
           "categories": [
-            "dining",
-            "drugstore"
+            "grocery",
+            "wholesale",
+            "streaming"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -2925,8 +3546,7 @@
           "quarter": 2,
           "year": 2026,
           "categories": [
-            "gas",
-            "evCharging",
+            "dining",
             "homeImprovement"
           ],
           "multiplier": 5,
@@ -2939,8 +3559,9 @@
           "quarter": 3,
           "year": 2026,
           "categories": [
-            "grocery",
-            "walmart"
+            "gas",
+            "transit",
+            "drugstore"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -2952,8 +3573,11 @@
           "quarter": 4,
           "year": 2026,
           "categories": [
-            "amazon",
-            "target"
+            "dining",
+            "entertainment",
+            "utilities",
+            "internet",
+            "phone"
           ],
           "multiplier": 5,
           "isPercentage": true,
@@ -2994,15 +3618,15 @@
           "category": "grocery",
           "multiplier": 2,
           "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
+          "cap": 2500,
+          "capPeriod": "quarterly"
         },
         {
           "category": "wholesale",
           "multiplier": 2,
           "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
+          "cap": 2500,
+          "capPeriod": "quarterly"
         }
       ],
       "rotatingCategories": null,
@@ -3127,7 +3751,8 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Booked through BofA Travel"
         }
       ],
       "rotatingCategories": null,
@@ -3154,7 +3779,7 @@
     },
     {
       "id": "bank-of-america-alaska-airlines-visa-signature",
-      "name": "Alaska Airlines Visa Signature",
+      "name": "Atmos Rewards Ascent Visa Signature",
       "issuer": "Bank of America",
       "network": "visa",
       "annualFee": 95,
@@ -3167,7 +3792,8 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Alaska Airlines and Hawaiian Airlines purchases"
         },
         {
           "category": "gas",
@@ -3185,6 +3811,13 @@
         },
         {
           "category": "transit",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "evCharging",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3344,7 +3977,7 @@
     },
     {
       "id": "wells-fargo-bilt-mastercard",
-      "name": "Bilt Mastercard",
+      "name": "Bilt Mastercard (Wells Fargo, retired)",
       "issuer": "Wells Fargo",
       "network": "mastercard",
       "annualFee": 0,
@@ -3446,15 +4079,15 @@
           "category": "gas",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 1000,
+          "capPeriod": "quarterly"
         },
         {
           "category": "evCharging",
           "multiplier": 4,
           "isPercentage": false,
-          "cap": null,
-          "capPeriod": null
+          "cap": 1000,
+          "capPeriod": "quarterly"
         },
         {
           "category": "streaming",
@@ -3469,6 +4102,21 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "hotels",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "Prepaid hotels and car rentals booked in the U.S. Bank Travel Center"
         }
       ],
       "rotatingCategories": null,
@@ -3662,21 +4310,24 @@
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "JetBlue purchases"
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -3709,28 +4360,32 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "JetBlue purchases"
         },
         {
           "category": "dining",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         },
         {
           "category": "grocery",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#003876",
-      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/JBM_card_NoFee_WM_Flat_230x157.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/JBM_card_NoFee_WM_Flat_230x157.png",
+      "credits": null
     },
     {
       "id": "barclays-wyndham-rewards-earner-plus",
@@ -3747,7 +4402,8 @@
           "multiplier": 6,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hotels by Wyndham"
         },
         {
           "category": "grocery",
@@ -3755,13 +4411,52 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "gas",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0072CE",
-      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/WYF_card_rRGB_Fee_EarnerPlus_VS_Flat_230x157.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/WYF_card_rRGB_Fee_EarnerPlus_VS_Flat_230x157.png",
+      "credits": [
+        {
+          "id": "wyndham-earner-plus-meal-delivery",
+          "description": "Meal delivery credit (up to $25 every six months)",
+          "amount": 25,
+          "cadence": "semiannual",
+          "category": "dining"
+        }
+      ]
     },
     {
       "id": "barclays-wyndham-rewards-earner",
@@ -3778,7 +4473,8 @@
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hotels by Wyndham"
         },
         {
           "category": "gas",
@@ -3793,6 +4489,21 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": null
         }
       ],
       "rotatingCategories": null,
@@ -3816,7 +4527,8 @@
           "multiplier": 3,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Hawaiian Airlines and Alaska Airlines purchases"
         },
         {
           "category": "dining",
@@ -3827,6 +4539,13 @@
         },
         {
           "category": "gas",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "grocery",
           "multiplier": 2,
           "isPercentage": false,
           "cap": null,
@@ -3854,7 +4573,8 @@
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Frontier purchases"
         },
         {
           "category": "dining",
@@ -3868,7 +4588,16 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#004225",
-      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/FTA_CD_Flat_Card_Art_230x157.png"
+      "imageURL": "https://cards.barclaycardus.com/content/dam/bcuspublic/card-plastic/card-front/FTA_CD_Flat_Card_Art_230x157.png",
+      "credits": [
+        {
+          "id": "frontier-flight-voucher",
+          "description": "$100 Frontier Flight Voucher each account anniversary (after $2,500/year in purchases)",
+          "amount": 100,
+          "cadence": "annual",
+          "category": "airlines"
+        }
+      ]
     },
     {
       "id": "barclays-priceline-vip-rewards-visa",
@@ -3885,7 +4614,8 @@
           "multiplier": 5,
           "isPercentage": false,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Priceline bookings"
         },
         {
           "category": "dining",
@@ -3906,7 +4636,16 @@
       "selectableConfig": null,
       "signUpBonus": null,
       "imageColor": "#0064D2",
-      "imageURL": null
+      "imageURL": null,
+      "credits": [
+        {
+          "id": "priceline-global-entry-tsa",
+          "description": "Global Entry or TSA PreCheck application fee credit, up to $120 each anniversary year (requires $10,000/year in purchases)",
+          "amount": 120,
+          "cadence": "annual",
+          "category": "travel"
+        }
+      ]
     },
     {
       "id": "navy-federal-navy-federal-more-rewards",
@@ -4056,6 +4795,27 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 5,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "streaming",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
@@ -4087,7 +4847,7 @@
       "network": "visa",
       "annualFee": 95,
       "rewardType": "points",
-      "baseReward": 1,
+      "baseReward": 1.5,
       "baseIsPercentage": false,
       "categoryRewards": [
         {
@@ -4096,6 +4856,29 @@
           "isPercentage": false,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "travel",
+          "multiplier": 4,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "PenFed Honors Advantage members"
+        },
+        {
+          "category": "dining",
+          "multiplier": 2,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null
+        },
+        {
+          "category": "dining",
+          "multiplier": 3,
+          "isPercentage": false,
+          "cap": null,
+          "capPeriod": null,
+          "note": "PenFed Honors Advantage members"
         }
       ],
       "rotatingCategories": null,
@@ -4148,7 +4931,7 @@
         },
         {
           "category": "grocery",
-          "multiplier": 2,
+          "multiplier": 3,
           "isPercentage": true,
           "cap": 3000,
           "capPeriod": "yearly"
@@ -4279,15 +5062,7 @@
       "rewardType": "cashback",
       "baseReward": 3,
       "baseIsPercentage": true,
-      "categoryRewards": [
-        {
-          "category": "travel",
-          "multiplier": 5,
-          "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
-        }
-      ],
+      "categoryRewards": [],
       "rotatingCategories": null,
       "selectableConfig": null,
       "signUpBonus": null,
@@ -4455,6 +5230,13 @@
           "isPercentage": true,
           "cap": null,
           "capPeriod": null
+        },
+        {
+          "category": "evCharging",
+          "multiplier": 4,
+          "isPercentage": true,
+          "cap": null,
+          "capPeriod": null
         }
       ],
       "rotatingCategories": null,
@@ -4485,7 +5267,8 @@
           "multiplier": 3,
           "isPercentage": true,
           "cap": null,
-          "capPeriod": null
+          "capPeriod": null,
+          "note": "Sam's Club/SamsClub.com purchases for Sam's Club Plus members; Club members earn 1%"
         },
         {
           "category": "dining",
@@ -4495,11 +5278,12 @@
           "capPeriod": null
         },
         {
-          "category": "travel",
-          "multiplier": 3,
+          "category": "evCharging",
+          "multiplier": 5,
           "isPercentage": true,
-          "cap": null,
-          "capPeriod": null
+          "cap": 6000,
+          "capPeriod": "yearly",
+          "note": null
         }
       ],
       "rotatingCategories": null,
