@@ -33,14 +33,15 @@
       "No location access was granted to enable nearby results",
       "Category rows are observed presentation, not proof of backend aggregation or universal recommendation correctness",
       "Earlier Home Nearby content is not proof of a fresh GPS result or payload freshness",
-      "Offers, Benefits, Wallet destination checks, category detail and synthetic search remain pending"
+      "Offers/Benefits introductory routes, Wallet/card detail and category detail observed later in window07; synthetic search remains pending."
     ],
     "presentation_cleanup": {
       "portrait_staging_acknowledged": true,
       "previous_MR_interface_orientation": "LANDSCAPE",
       "late_restore_attempt": "Closed bridge URLError after controller shutdown; not reported restored",
-      "pending_original_orientation_restore": true,
-      "next_owner_notified": true
+      "pending_original_orientation_restore": false,
+      "next_owner_notified": true,
+      "later_resolution": "Peer restored original orientation; independent window07 GET confirmed LANDSCAPE. See maxrewards-runtime-followup.json."
     },
     "controller_cleanup": {
       "exact_own_runner_absence_before_host_teardown": true,

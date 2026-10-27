@@ -4,7 +4,7 @@ Status: **active continuation**. Rich explicitly required CardWise and Closer to
 
 ## Current continuation checkpoint
 
-The userspace own-controller start/status/cleanup and selected CardPointers8.1.5 promotion-close/navigation/category output are verified. Exact selected USB metadata confirms MaxRewards4.8.35. Native row/image policy follows the existing reader/content work; prior engine imports and old whole-app producers were not repeated. The [actual runtime record](continuation/authenticated-runtime.md) and [scene boundaries](continuation/runtime-scene-boundaries.md) separate successful destination changes from system prompts and accepted clicks under a foreign floating window. Remaining read-only CP/MR paths and Closer research stay active; raw account/fixture screenshots remain private.
+The userspace own-controller start/status/cleanup and selected CardPointers8.1.5 promotion-close/navigation/category output are verified. Exact selected USB metadata confirms MaxRewards4.8.35. Native row/image policy follows the existing reader/content work; prior engine imports and old whole-app producers were not repeated. The [actual runtime record](continuation/authenticated-runtime.md) and [scene boundaries](continuation/runtime-scene-boundaries.md) separate successful destination changes from system prompts and accepted clicks under a foreign floating window. The [later MaxRewards followup](continuation/maxrewards-runtime-followup.md) adds actual Wallet/card and Dining detail, Offers/Benefits introductory routes and confirmed orientation restoration. CP/MR search and Closer research stay active; raw account/fixture screenshots remain private.
 
 ## Original completed execution mode
 
