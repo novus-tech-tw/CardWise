@@ -1,0 +1,376 @@
+{
+  "platform": "macOS only, CPWidgetExtension 8.1.4 build 20261019",
+  "carrier_sha256": "12423833a32a5f9ca18563746b8bab634a6b19ce38551d54f6ee2dfce256946e",
+  "method": "Exact-name Swift metadata index query, resilient witness ABI parsing and bounded LC_FUNCTION_STARTS llvm disassembly; no Ghidra",
+  "prior_snapshot": {
+    "path": "output-hashes.json",
+    "sha256": "24a291d94ec1622f565f2c371c365ecc64428dc0f81a414b0927c7872783f400",
+    "unchanged": true
+  },
+  "findings": [
+    {
+      "id": "CPTL-01",
+      "observation": "Widget body constructs IntentConfiguration with the exact intent/provider; resilient witness binds provider getTimeline to 0x10007188c -> 0x10007b728.",
+      "inference": "This is the actual shipped configuration/provider timeline requirement path.",
+      "limits": "The OS did not invoke the extension during this investigation."
+    },
+    {
+      "id": "CPTL-02",
+      "observation": "Missing option/identifier synthesizes String 0; valid 0 selects first getDefaultDBPointerParents(sortBy:1) result, ordered lastViewedAt descending, sort_order/name ascending. Valid nonzero ID selects a matching parent.id. Invalid or absent matching ID yields no entry.",
+      "inference": "Default selection implements the last-viewed configuration option in this finite path.",
+      "limits": "Current data, nil-date ordering and runtime fetch success are not established."
+    },
+    {
+      "id": "CPTL-03",
+      "observation": "Entry card-state helper consumes smartPointerCardsSortedWithSponsored and resolvedWidgetProfileUUID(nil), with suite group.getcardpointers.app/key focusUser/empty-string fallback; ALL_PROFILES is String 0. It permits matching or missing inventory.profile_uuid, then computes sponsored-true count < 2.",
+      "inference": "Profile filtering here feeds the field named userHasCards; it is separate from parent-ID selection.",
+      "limits": "Upstream sponsored-card getter and downstream render filtering are not expanded."
+    },
+    {
+      "id": "CPTL-04",
+      "observation": "Selected record yields one Date()-stamped PointersWidgetOneEntry, isPlaceholder false and config flags. Fetch empty/error or missing ID yields empty entries. Both call Timeline(entries:policy:) with exact never policy import and invoke completion.",
+      "inference": "This timeline does not request a timed refresh.",
+      "limits": "No conclusion about external reloads, OS scheduling or rendering."
+    }
+  ],
+  "regions": [
+    {
+      "source": {
+        "address": "0x1000710b8",
+        "file_offset": 463032,
+        "size": 1492,
+        "sha256": "26c50b3a6d506364380a1a0b0232c8517689d6b7b48bd394eee42635066ddb58"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x1000710b8.disassembly.txt",
+      "output_sha256": "85822c53198d46254b117542c59791198d5c9560924c4abf3b560b910c799de3"
+    },
+    {
+      "source": {
+        "address": "0x10007168c",
+        "file_offset": 464524,
+        "size": 472,
+        "sha256": "ecfc33bbc22e8ca778f7bb8dbb85e86091e02192b66789cf451815cf43077be9"
+      },
+      "exact_symbols": [],
+      "review_status": "Neighboring placeholder body retained only; not promoted to timeline result",
+      "disassembly": "timeline/0x10007168c.disassembly.txt",
+      "output_sha256": "8b5bc2859bc4ca8ef60f98f5d1666949793efc5ef260591c27b27b82387f9cf5"
+    },
+    {
+      "source": {
+        "address": "0x100071864",
+        "file_offset": 464996,
+        "size": 20,
+        "sha256": "5cb9bbb22fdd9132ef335cd4ab34d110b0aafb62b87035d360a9a98e550faf1f"
+      },
+      "exact_symbols": [],
+      "review_status": "Default recommendations witness retained only",
+      "disassembly": "timeline/0x100071864.disassembly.txt",
+      "output_sha256": "2c11b36bb6aefd9665c03d56c281194b6598f411ef97d0bac68961955c85076f"
+    },
+    {
+      "source": {
+        "address": "0x100071878",
+        "file_offset": 465016,
+        "size": 4,
+        "sha256": "b49e92f3686c7fa8f2f111473258cf5428f86130129b9d2e0c72acdad32209e6"
+      },
+      "exact_symbols": [],
+      "review_status": "Placeholder witness retained only",
+      "disassembly": "timeline/0x100071878.disassembly.txt",
+      "output_sha256": "3554897fa54c18df53a5b8184052d6235bc9f8807f779f13d117c7952d4809b3"
+    },
+    {
+      "source": {
+        "address": "0x10007187c",
+        "file_offset": 465020,
+        "size": 16,
+        "sha256": "f0b3c046d697eaaa5b9713ca305991bc349f8a65a8dc2633ca75e373b06cebf5"
+      },
+      "exact_symbols": [],
+      "review_status": "Snapshot witness retained only",
+      "disassembly": "timeline/0x10007187c.disassembly.txt",
+      "output_sha256": "1b66370b1ee0952f7de4366f26a39e33d8f7e85cb8eca7a3f93556e757bf5cd5"
+    },
+    {
+      "source": {
+        "address": "0x10007188c",
+        "file_offset": 465036,
+        "size": 4,
+        "sha256": "3aa9bcde1df09639b8fae31dfd5c5530a6b34025ca8e3addbfe8f42d1b10a9ca"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007188c.disassembly.txt",
+      "output_sha256": "9f73e7bd4999ba7bdfec6f9dd0c79b01e1ea513b8cd868b4fbc1d0afafb4c3b0"
+    },
+    {
+      "source": {
+        "address": "0x10007a8c4",
+        "file_offset": 501956,
+        "size": 992,
+        "sha256": "28f1f5d12aa2813dc6b1b71868d4b91e39ade8df663493f991ad1eec46c03f31"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007a8c4.disassembly.txt",
+      "output_sha256": "51e680fbe1ce07d9b8239e3612c1bb20b686265f2d4746eb80839760fd036786"
+    },
+    {
+      "source": {
+        "address": "0x10007acc4",
+        "file_offset": 502980,
+        "size": 32,
+        "sha256": "4674ca7d4870cc330cecbe6d73eb3854b631d253d33319f9fc1b284f05123d68"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007acc4.disassembly.txt",
+      "output_sha256": "012794982084e751c12f4582dfb2a17a48162587285fa70cdf0912f919a8dde6"
+    },
+    {
+      "source": {
+        "address": "0x10007ace4",
+        "file_offset": 503012,
+        "size": 8,
+        "sha256": "395e26f8773c74086ce0af4320888bed8d87403f5f4f8a066a1f17da81d80cf8"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007ace4.disassembly.txt",
+      "output_sha256": "9736d89975eb89dad0f0c9b079d84b5b469b7b8c08846db8336337f504c0a0ae"
+    },
+    {
+      "source": {
+        "address": "0x10007acec",
+        "file_offset": 503020,
+        "size": 20,
+        "sha256": "06016a44e4dd486f3d1d473ff247bdef580063bb795934af26236827e8ab0b00"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007acec.disassembly.txt",
+      "output_sha256": "e3f6a68820c26d70fdb89626f8f8b50570a90b64211edf05066826d5615a9a97"
+    },
+    {
+      "source": {
+        "address": "0x10007ad00",
+        "file_offset": 503040,
+        "size": 64,
+        "sha256": "b8766fd66422a51e01bae97971f497c058ba2608090eb39d776d70717606dd87"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007ad00.disassembly.txt",
+      "output_sha256": "5d607288c7c1bc089a5019f6263aff596b110b6843a650b62483e068d1718633"
+    },
+    {
+      "source": {
+        "address": "0x10007b4f0",
+        "file_offset": 505072,
+        "size": 568,
+        "sha256": "a8702644108868e158cd1247e6424cff31e59436cffd5a255e90585d0a68ddcb"
+      },
+      "exact_symbols": [],
+      "review_status": "Neighboring snapshot body retained only; not promoted to timeline result",
+      "disassembly": "timeline/0x10007b4f0.disassembly.txt",
+      "output_sha256": "ae0410b7f815f572c8c577b2fdcac5350756697f91f5131788ccb52e5ed9e327"
+    },
+    {
+      "source": {
+        "address": "0x10007b728",
+        "file_offset": 505640,
+        "size": 2084,
+        "sha256": "305562506cf0a6e7cb037e1b61032186258dceecab47b894ad081eff495205af"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007b728.disassembly.txt",
+      "output_sha256": "c848ed3b0d6bc41cb604669223d558ff2e53bf2171e517bb4a03ceaa04714058"
+    },
+    {
+      "source": {
+        "address": "0x10007cc18",
+        "file_offset": 511000,
+        "size": 68,
+        "sha256": "41852c2cedce4412ce54102c1495c22b0733c5cb25a2dbadccb695094b038074"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10007cc18.disassembly.txt",
+      "output_sha256": "ee543ebbb506754071926d2b1dc0bb5d9a44698fbdd8e6d84674c73feb1f1aae"
+    },
+    {
+      "source": {
+        "address": "0x10029612c",
+        "file_offset": 2711852,
+        "size": 12,
+        "sha256": "612e6ea2a4ba04bfbea620f8a0e644e5e653e2c897bb595956dc3b47a1751da2"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared12ALL_PROFILESSSvau"
+      ],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x10029612c.disassembly.txt",
+      "output_sha256": "b43f60fd66eb369950a97378b72ff2eb726400d2cf7a7513ef4304075e0c1547"
+    },
+    {
+      "source": {
+        "address": "0x100296144",
+        "file_offset": 2711876,
+        "size": 264,
+        "sha256": "d2e47a20564411c5e65f7a989c99951bbaaa9bd6c394e89ff091935604d9c7d2"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared25resolvedWidgetProfileUUID21configurationOverrideS2SSg_tF"
+      ],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x100296144.disassembly.txt",
+      "output_sha256": "a54098282b8837ffd625ac43125caef601fbfabf0832db7b3de79f94512d7ec6"
+    },
+    {
+      "source": {
+        "address": "0x1002ba1f8",
+        "file_offset": 2859512,
+        "size": 28,
+        "sha256": "ac078584ce18090b3d47723f10890c082408700fca08804b1be72926c0c99e4e"
+      },
+      "exact_symbols": [
+        "_$s18CardPointersShared14CoreDataHelperC26getDefaultDBPointerParents6sortBy7contextSayAA0I6ParentCGSi_So22NSManagedObjectContextCtFZ"
+      ],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x1002ba1f8.disassembly.txt",
+      "output_sha256": "4250b13009634b1761161807fa539d16359cb4edc31e047d941ae45a32db667a"
+    },
+    {
+      "source": {
+        "address": "0x1002ba214",
+        "file_offset": 2859540,
+        "size": 928,
+        "sha256": "2b03b34975f819708c278d381307319dbd65b19995771b0ee85737e0c070b1c8"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x1002ba214.disassembly.txt",
+      "output_sha256": "356069dce2f9af8d1edcc5b1993cae8857c1d3ae310d624d2befc8cbef0b492e"
+    },
+    {
+      "source": {
+        "address": "0x1002ba5d0",
+        "file_offset": 2860496,
+        "size": 92,
+        "sha256": "34ecf412681b1b5d2956a9bcc6bce6673b31b14a7319a7318312615598e35cec"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x1002ba5d0.disassembly.txt",
+      "output_sha256": "d16bef846da1572579125a7c4d0bf29783d5ae222ca76f80074d2492ebf524c8"
+    },
+    {
+      "source": {
+        "address": "0x1002bb564",
+        "file_offset": 2864484,
+        "size": 24,
+        "sha256": "763c13d104f9c2b9dcdc63a54c4898339f3381ba35506b10bbca30b8062339d6"
+      },
+      "exact_symbols": [],
+      "review_status": "Selected timeline/configuration/helper instruction semantics reviewed",
+      "disassembly": "timeline/0x1002bb564.disassembly.txt",
+      "output_sha256": "61f08c0123aec5b1a5dd96dabc536136b54de4d75ea41562da2c194fc1f9f9f5"
+    }
+  ],
+  "provider_timeline_witness": {
+    "requirement": {
+      "bind": "_$s9WidgetKit22IntentTimelineProviderP03getD03for2in10completiony0C0Qz_AA0dE7ContextVyAA0D0Vy5EntryQzGctFTq"
+    },
+    "requirement_indirect_ref": {
+      "address": "0x1003a03f8",
+      "file_offset": 3802104,
+      "size": 8,
+      "sha256": "b16dcc1df0aa03d5f1a5de3693e18743d49368ee72bf89bf290af41b777e2e69"
+    },
+    "implementation": "0x10007188c",
+    "span": {
+      "address": "0x1002f635c",
+      "file_offset": 3105628,
+      "size": 8,
+      "sha256": "1d3fc056219c3e777b5d88eafe7e211f5b0b5d8e4a8865184fd007572ae27b2b"
+    }
+  },
+  "raw_edges": [
+    {
+      "source": "0x10007ace8",
+      "target": "0x10007a8c4"
+    },
+    {
+      "source": "0x10007aa04",
+      "target": "0x100116084"
+    },
+    {
+      "source": "0x10007aa38",
+      "target": "0x10007ad00"
+    },
+    {
+      "source": "0x10007ad28",
+      "target": "0x1002e4968"
+    },
+    {
+      "source": "0x10007aa80",
+      "target": "0x1002e2ab4"
+    },
+    {
+      "source": "0x10007188c",
+      "target": "0x10007b728"
+    },
+    {
+      "source": "0x10007bbd4",
+      "target": "0x100297980"
+    },
+    {
+      "source": "0x10007bbf8",
+      "target": "0x1002ba1f8"
+    },
+    {
+      "source": "0x1002ba210",
+      "target": "0x1002ba5d0"
+    },
+    {
+      "source": "0x1002ba610",
+      "target": "0x1002e3324"
+    },
+    {
+      "source": "0x1002bb570",
+      "target": "0x1002ba214"
+    },
+    {
+      "source": "0x1002ba514",
+      "target": "0x1002e3360"
+    },
+    {
+      "source": "0x10007bd04",
+      "target": "0x1000710b8"
+    },
+    {
+      "source": "0x1000710dc",
+      "target": "0x1002bf2cc"
+    },
+    {
+      "source": "0x1000710ec",
+      "target": "0x100296144"
+    },
+    {
+      "source": "0x100071368",
+      "target": "0x10029612c"
+    },
+    {
+      "source": "0x10007be84",
+      "target": "0x1002e2ae4"
+    },
+    {
+      "source": "0x10007bec8",
+      "target": "0x1002e2b50"
+    }
+  ]
+}

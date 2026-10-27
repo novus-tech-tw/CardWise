@@ -1,0 +1,235 @@
+{
+  "product": "CardPointers Mac",
+  "version": "8.1.4",
+  "build": "20261019",
+  "bundle_id": "com.getcardpointers.app",
+  "selected_app": "/Applications/CardPointers.app",
+  "executable_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+  "derived_arm64_sha256": "447e88aced06f027f75b4037a54f089e6750c0e8dc46e648a56ec416966754d0",
+  "records": [
+    {
+      "evidence_id": "ev_0987faf6bfda51f3907f997f9414cd82ca018a3ecae9a98549a6ceac3f40d031",
+      "operation": "inspect_keyed_archive",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "archive_path": "Contents/Resources/coredata.momd/coredata.mom",
+      "archive_sha256": "7cf0ae1c213ffbda05fa07011a162bcbdbb252327f5d7db719ab6ca854ac2dbc",
+      "total_objects": 637,
+      "returned_objects": 100,
+      "truncated": true
+    },
+    {
+      "evidence_id": "ev_49d990fa0b0b46eaf3c03fc5b0e414a0db53b89ec573c8f2e5d92dac7a042a80",
+      "operation": "inventory_artifact",
+      "target_sha256": "08fa096e7f521b091107a157130b9fac4d0a2276fd3471c3b81460e4ea4e73c7",
+      "authority": "shipped-artifact",
+      "confidence": "observed"
+    },
+    {
+      "evidence_id": "ev_6103a886610fdf7b92bc7f18b8cc29672ba4ff3c3ba186a816300ecbc5004d1f",
+      "operation": "inspect_native_dispatch_metadata",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "derived",
+      "max_records": 3000,
+      "coverage": [
+        {
+          "facet": "objc_class_method_ivar_metadata",
+          "status": "partial",
+          "examined": 114,
+          "decoded": 227
+        },
+        {
+          "facet": "binary_relative_pointers",
+          "status": "partial",
+          "examined": 643,
+          "decoded": 643
+        },
+        {
+          "facet": "objc_properties_categories",
+          "status": "partial",
+          "examined": 0,
+          "decoded": 0
+        },
+        {
+          "facet": "pointer_fixups",
+          "status": "complete",
+          "examined": 2,
+          "decoded": 2
+        },
+        {
+          "facet": "swift_generic_resilient_witnesses_overrides_async_coroutines",
+          "status": "unsupported",
+          "examined": 0,
+          "decoded": 0
+        },
+        {
+          "facet": "swift_conformances_static_witness_slots",
+          "status": "partial",
+          "examined": 0,
+          "decoded": 0
+        },
+        {
+          "facet": "swift_class_vtable_descriptors",
+          "status": "partial",
+          "examined": 0,
+          "decoded": 0
+        }
+      ]
+    },
+    {
+      "evidence_id": "ev_7ab422a3a5c0172bcad15d4eed7f3c923a7853a895a3e249b0f15ce8f9f6e642",
+      "operation": "inspect_keyed_archive",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "archive_path": "Contents/Resources/coredata.momd/coredata.mom",
+      "archive_sha256": "7cf0ae1c213ffbda05fa07011a162bcbdbb252327f5d7db719ab6ca854ac2dbc",
+      "total_objects": 637,
+      "returned_objects": 637,
+      "truncated": false
+    },
+    {
+      "evidence_id": "ev_9a7472d5ac62be0b4e8636df3fe09934221c9779b683eb27dc586cf00cd4de3f",
+      "operation": "inspect_signature",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "observed"
+    },
+    {
+      "evidence_id": "ev_d133d71e2fcf19be7be9b94471ccd2a6f8aa8d7adea14cd4771f220767a55938",
+      "operation": "inspect_plist",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "observed"
+    },
+    {
+      "evidence_id": "ev_e2b55f906cb4f7892bf9116465390e95e66761ae60c42c619a4fbd94d312c051",
+      "operation": "inspect_macho",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "observed"
+    },
+    {
+      "evidence_id": "ev_efd3886ab6ff0e0dc4ea8589202f66907974517293e3052d286dbb77eb649378",
+      "operation": "inspect_native_dispatch_metadata",
+      "target_sha256": "e5e4947e7c6dd288b50f3b84a26efd7f7df8f20e1b2a0c8f573063ea80c09afa",
+      "authority": "shipped-artifact",
+      "confidence": "derived",
+      "max_records": 20000,
+      "coverage": [
+        {
+          "facet": "objc_class_method_ivar_metadata",
+          "status": "partial",
+          "examined": 574,
+          "decoded": 1148
+        },
+        {
+          "facet": "binary_relative_pointers",
+          "status": "partial",
+          "examined": 9389,
+          "decoded": 9389
+        },
+        {
+          "facet": "objc_properties_categories",
+          "status": "partial",
+          "examined": 20,
+          "decoded": 19
+        },
+        {
+          "facet": "pointer_fixups",
+          "status": "complete",
+          "examined": 2,
+          "decoded": 2
+        },
+        {
+          "facet": "swift_generic_resilient_witnesses_overrides_async_coroutines",
+          "status": "unsupported",
+          "examined": 0,
+          "decoded": 0
+        },
+        {
+          "facet": "swift_conformances_static_witness_slots",
+          "status": "partial",
+          "examined": 2783,
+          "decoded": 25
+        },
+        {
+          "facet": "swift_class_vtable_descriptors",
+          "status": "partial",
+          "examined": 0,
+          "decoded": 0
+        }
+      ]
+    }
+  ],
+  "apple_projection": {
+    "evidence_id": "ev_ea9dd48026ce14aa8a28b979b71f9fde2cee333dac98c21d5a59c878997863a3"
+  },
+  "passive_ui": {
+    "evidence_id": "ev_1831e6a489f8666cc897d8097c45df0ec598a05b21d5faceedc6dadc8c53d1ba",
+    "operation": "observe_native_ui",
+    "selected_pid": 2578,
+    "selected_window_id": 1406,
+    "screenshot": false,
+    "allowlisted_labels_present": [
+      "CardPointers",
+      "Cancel"
+    ],
+    "raw_evidence_policy": "Local only; no arbitrary accessibility values/account details copied to PR",
+    "limitations": [
+      "Only the explicitly selected already-running process/window is admitted. REA starts no target process and does not change permissions, foreground applications, or restore application data.",
+      "Click uses AXPress; scroll uses AXIncrement/AXDecrement; key-entry sets the selected element's AXValue. Unsupported elements fail without global event fallback.",
+      "Each completed action is followed immediately by capture; delayed UI changes require explicit wait steps. A failed after-capture can follow a completed action, so failure does not prove absence of application effects.",
+      "Scenarios can change app data, cause app network activity and persist changes. The caller explicitly chooses leave-as-is; automatic restoration is unsupported.",
+      "Window matching uses exact PID and window ID for screenshots and unique accessibility geometry. Accessibility paths can change as the UI changes; stale or ambiguous paths fail. Screenshots are scaled to at most 2048 pixels; scenario output is budgeted at 64 MiB and execution is cancelled after 180 seconds."
+    ],
+    "node_count": 44,
+    "roles": {
+      "AXWindow": 1,
+      "AXGroup": 16,
+      "AXButton": 16,
+      "AXSheet": 1,
+      "AXHeading": 5,
+      "AXTextField": 1,
+      "AXPopUpButton": 2,
+      "AXStaticText": 2
+    },
+    "truncated": false,
+    "gaps_count": 0,
+    "actions_executed": 0
+  },
+  "function_analysis_status": "Selected main-app and Safari static questions completed; canonical exports retained; all owned sessions closed",
+  "local_bundle_files": [
+    "cardpointers-native-resources-evidence.json",
+    "cardpointers-native-ui-evidence-local.json"
+  ],
+  "publication_boundary": "Do not publish raw AX values, auth/session data, application receipts or vendor binaries. This index contains static metadata and allowlisted UI structure only.",
+  "native_safari_function_ledger": "safari-bridge-findings.json",
+  "native_safari_status": "Complete within selected static bridge question;4dossiers/default-profile auto-analysis exported; no native-runtime claim",
+  "native_main_function_ledger": "main-native-findings.json",
+  "native_main_status": "24 canonical records; selected store/materializer/consumer/reconciliation questions complete within static limits",
+  "canonical_function_exports": [
+    {
+      "file": "main-native-functions-evidence.json",
+      "bytes": 7877435,
+      "sha256": "22bd9ac5a523e916921723e1dccbce1c75cb629c403a56bf03013553a84ce027",
+      "records": 24,
+      "capture_records": 0,
+      "unknown_entries": 0,
+      "interpretation": "Zero structured unknown entries does not mean complete semantic recovery."
+    },
+    {
+      "file": "safari-native-functions-evidence.json",
+      "bytes": 5720654,
+      "sha256": "5083426b24f050f1e8bee7b45b8dbb2bf4343bcbdac4733605169a4c1e5cc840",
+      "records": 4,
+      "capture_records": 0,
+      "unknown_entries": 0,
+      "interpretation": "Zero structured unknown entries does not mean complete semantic recovery."
+    }
+  ],
+  "running_owned_jobs": 0,
+  "updated_utc": "2026-10-27T07:20:32.424219+00:00"
+}

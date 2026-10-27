@@ -1,0 +1,24 @@
+{
+  "observed_utc": "2026-10-27T07:01:13.521849+00:00",
+  "bottleneck": "Both owned Ghidra main threads blocked in SwiftNativeDemangler.demangle BufferedReader.readLine; no active decompiler children",
+  "path_observation": {
+    "swift": "/opt/homebrew/bin/swift",
+    "swift_launcher": "Python swiftclient.shell (OpenStack CLI)",
+    "swift_demangle": null,
+    "verified_correct_demangler": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-demangle"
+  },
+  "ghidra_behavior": "Bundled source tries swift-demangle --version, then swift --version; fallback passes for wrong OpenStack CLI",
+  "remediation": "Prepend existing Xcode toolchain/bin only in scoped worker PATH, keep default analyzers; no global config mutation",
+  "retained_diagnostics": [
+    "logs/main-jvm-threads.txt",
+    "logs/safari-jvm-threads.txt",
+    "logs/main-ghidra.log",
+    "logs/safari-ghidra.log"
+  ],
+  "cancelled_owned_pids": [
+    35337,
+    42411,
+    36873,
+    42949
+  ]
+}

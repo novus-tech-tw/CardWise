@@ -10,6 +10,12 @@ struct ReleaseNote: Identifiable, Equatable {
 /// Bundled "What's New" content. Edit `all` each release (newest first).
 enum ReleaseNotes {
     static let all: [ReleaseNote] = [
+        ReleaseNote(version: "1.0.4", highlights: [
+            "Enhanced merchant & category search with natural language keywords and instant suggestions.",
+            "Smarter reward engine with automatic fallback for related categories.",
+            "Redesigned, searchable 2-column category selector with polished UI.",
+            "Fixed reward category matching and updated rotating category database."
+        ]),
         ReleaseNote(version: "1.0.3", highlights: [
             "See every card's statement credits and your net annual fee in card detail.",
             "New home summary shows credits you haven't used yet — don't let them expire.",

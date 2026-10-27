@@ -244,6 +244,40 @@ struct AddCardView: View {
                 }
             }
 
+            // Check reward categories (e.g. dining, travel, groceries, amazon)
+            if card.categoryRewards.contains(where: {
+                $0.category.displayName.localizedCaseInsensitiveContains(searchLower) ||
+                $0.category.rawValue.localizedCaseInsensitiveContains(searchLower)
+            }) {
+                return true
+            }
+
+            // Check rotating categories
+            if let rotating = card.rotatingCategories {
+                for rot in rotating where rot.categories.contains(where: {
+                    $0.displayName.localizedCaseInsensitiveContains(searchLower) ||
+                    $0.rawValue.localizedCaseInsensitiveContains(searchLower)
+                }) {
+                    return true
+                }
+            }
+
+            // Check selectable categories
+            if let selectable = card.selectableConfig {
+                if selectable.availableCategories.contains(where: {
+                    $0.displayName.localizedCaseInsensitiveContains(searchLower) ||
+                    $0.rawValue.localizedCaseInsensitiveContains(searchLower)
+                }) {
+                    return true
+                }
+            }
+
+            // Check reward type ("cashback", "points", "miles")
+            if card.rewardType.displayName.localizedCaseInsensitiveContains(searchLower) ||
+               card.rewardType.rawValue.localizedCaseInsensitiveContains(searchLower) {
+                return true
+            }
+
             return false
         }
     }

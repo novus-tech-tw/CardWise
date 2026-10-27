@@ -176,12 +176,15 @@ struct CreditCard: Identifiable, Codable, Equatable {
             return (categoryReward.multiplier, categoryReward.isPercentage)
         }
 
-        // Check rotating categories for current quarter
+        // Check rotating categories for current quarter (with fallback to latest year if current year not present)
         if let rotating = rotatingCategories {
             let currentQ = RotatingCategory.currentQuarter()
             let currentY = RotatingCategory.currentYear()
 
-            if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) {
+            let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY })
+                ?? rotating.filter { $0.quarter == currentQ }.max(by: { $0.year < $1.year })
+
+            if let currentRotating = currentRotating {
                 if currentRotating.categories.contains(category) {
                     return (currentRotating.multiplier, currentRotating.isPercentage)
                 }
@@ -192,6 +195,22 @@ struct CreditCard: Identifiable, Codable, Equatable {
         if let config = selectableConfig, let selected = selectedCategories {
             if selected.contains(category) {
                 return (config.multiplier, config.isPercentage)
+            }
+        }
+
+        // Check related fallback categories (e.g. Travel covering Hotels/Airlines, Grocery covering Whole Foods)
+        let related: [SpendingCategory]
+        switch category {
+        case .hotels, .airlines: related = [.travel]
+        case .wholeFoods: related = [.grocery]
+        case .evCharging: related = [.gas]
+        case .amazon: related = [.onlineShopping]
+        case .target, .walmart: related = [.onlineShopping, .grocery]
+        default: related = []
+        }
+        for rel in related {
+            if let reward = categoryRewards.first(where: { $0.category == rel }) {
+                return (reward.multiplier, reward.isPercentage)
             }
         }
 

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "manifest.json",
+    "source_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/Resources/manifest.json",
+    "bytes": 1222,
+    "sha256": "d5de12579a274f536e5501f76577e4f872a77554d0591296620b73323bf836f8"
+  },
+  {
+    "name": "popup.js",
+    "source_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/Resources/popup.js",
+    "bytes": 375474,
+    "sha256": "262e32c27bf1ac39dfd36d389554526bc7d81a5523918cf2f1f44c6b21386226"
+  },
+  {
+    "name": "products.js",
+    "source_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/Resources/products.js",
+    "bytes": 727,
+    "sha256": "4a8292dde004464f1c292868c71c749786aa0707a3f45c2769166c5bd9067730"
+  },
+  {
+    "name": "background.js",
+    "source_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/Resources/background.js",
+    "bytes": 13848,
+    "sha256": "7935e61af1865dd84a4e0c277e80f6e0ff9d686fc48cc85272decd43878ff822"
+  },
+  {
+    "name": "content.js",
+    "source_path": "/Applications/CardPointers.app/Contents/PlugIns/CPSafariExtension.appex/Contents/Resources/content.js",
+    "bytes": 1238593,
+    "sha256": "35ba9a14b9134b3c8be9fbe8726ec126bba7e76aa98f6a845b080fa58b4fc024"
+  }
+]

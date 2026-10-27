@@ -185,12 +185,34 @@ class RecommendationEngine {
         let needsActivation: Bool
     }
 
+    /// Broader / related fallback categories (e.g. Travel covers Hotels & Airlines, Grocery covers Whole Foods)
+    private func relatedCategories(for category: SpendingCategory) -> [SpendingCategory] {
+        switch category {
+        case .hotels, .airlines:
+            return [.travel]
+        case .wholeFoods:
+            return [.grocery]
+        case .evCharging:
+            return [.gas]
+        case .amazon:
+            return [.onlineShopping]
+        case .target:
+            return [.onlineShopping, .grocery]
+        case .walmart:
+            return [.grocery]
+        case .macys, .kohls, .gap, .nordstrom:
+            return [.onlineShopping]
+        default:
+            return []
+        }
+    }
+
     private func calculateEffectiveReward(
         card: CreditCard,
         userCard: UserCard,
         category: SpendingCategory
     ) -> RewardInfo {
-        // Check fixed category rewards first
+        // Check fixed category rewards first (exact match)
         if let categoryReward = card.categoryRewards.first(where: { $0.category == category }) {
             return RewardInfo(
                 multiplier: categoryReward.multiplier,
@@ -202,13 +224,21 @@ class RecommendationEngine {
             )
         }
 
-        // Check rotating categories
+        let related = relatedCategories(for: category)
+
+        // Check rotating categories (with fallback to latest year if current year is not yet configured)
         if let rotating = card.rotatingCategories {
             let currentQ = RotatingCategory.currentQuarter()
             let currentY = RotatingCategory.currentYear()
 
-            if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) {
-                if currentRotating.categories.contains(category) {
+            let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY })
+                ?? rotating.filter { $0.quarter == currentQ }.max(by: { $0.year < $1.year })
+
+            if let currentRotating = currentRotating {
+                let matchesCategory = currentRotating.categories.contains(category) ||
+                    related.contains(where: { currentRotating.categories.contains($0) })
+
+                if matchesCategory {
                     let needsActivation = currentRotating.activationRequired
                         && !userCard.hasActivatedRotating(quarter: currentQ, year: currentY)
 
@@ -239,7 +269,8 @@ class RecommendationEngine {
 
         // Check selectable categories
         if let config = card.selectableConfig {
-            if let selected = userCard.selectedCategories, selected.contains(category) {
+            if let selected = userCard.selectedCategories,
+               selected.contains(category) || related.contains(where: { selected.contains($0) }) {
                 return RewardInfo(
                     multiplier: config.multiplier,
                     isPercentage: config.isPercentage,
@@ -248,7 +279,8 @@ class RecommendationEngine {
                     isSelectable: true,
                     needsActivation: false
                 )
-            } else if config.availableCategories.contains(category) {
+            } else if config.availableCategories.contains(category) ||
+                        related.contains(where: { config.availableCategories.contains($0) }) {
                 // Could be selected but isn't
                 return RewardInfo(
                     multiplier: card.baseReward,
@@ -256,6 +288,20 @@ class RecommendationEngine {
                     reason: "Base reward (can select \(category.displayName) for \(config.multiplier)\(config.isPercentage ? "%" : "x"))",
                     isRotating: false,
                     isSelectable: true,
+                    needsActivation: false
+                )
+            }
+        }
+
+        // Check related category rewards (e.g., Travel card covers Hotels/Airlines, Grocery covers Whole Foods)
+        for relatedCat in related {
+            if let categoryReward = card.categoryRewards.first(where: { $0.category == relatedCat }) {
+                return RewardInfo(
+                    multiplier: categoryReward.multiplier,
+                    isPercentage: categoryReward.isPercentage,
+                    reason: "\(categoryReward.displayMultiplier) on \(relatedCat.displayName) (includes \(category.displayName))",
+                    isRotating: false,
+                    isSelectable: false,
                     needsActivation: false
                 )
             }
@@ -304,18 +350,33 @@ class RecommendationEngine {
         var cap: Double?
         var capPeriod: CapPeriod?
 
+        let related = relatedCategories(for: category)
+
         // Check fixed category rewards
         if let categoryReward = card.categoryRewards.first(where: { $0.category == category }) {
             cap = categoryReward.cap
             capPeriod = categoryReward.capPeriod
+        }
+        if cap == nil {
+            for relatedCat in related {
+                if let categoryReward = card.categoryRewards.first(where: { $0.category == relatedCat }) {
+                    cap = categoryReward.cap
+                    capPeriod = categoryReward.capPeriod
+                    break
+                }
+            }
         }
 
         // Check rotating categories
         if cap == nil, let rotating = card.rotatingCategories {
             let currentQ = RotatingCategory.currentQuarter()
             let currentY = RotatingCategory.currentYear()
-            if let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY }) {
-                if currentRotating.categories.contains(category) {
+            let currentRotating = rotating.first(where: { $0.quarter == currentQ && $0.year == currentY })
+                ?? rotating.filter { $0.quarter == currentQ }.max(by: { $0.year < $1.year })
+
+            if let currentRotating = currentRotating {
+                if currentRotating.categories.contains(category) ||
+                    related.contains(where: { currentRotating.categories.contains($0) }) {
                     cap = currentRotating.cap
                     capPeriod = .quarterly
                 }
@@ -324,7 +385,8 @@ class RecommendationEngine {
 
         // Check selectable categories
         if cap == nil, let config = card.selectableConfig,
-           let selected = userCard.selectedCategories, selected.contains(category) {
+           let selected = userCard.selectedCategories,
+           selected.contains(category) || related.contains(where: { selected.contains($0) }) {
             cap = config.cap
             capPeriod = config.capPeriod
         }
@@ -333,10 +395,11 @@ class RecommendationEngine {
             return SpendingCapInfo(remaining: nil, isNearCap: false)
         }
 
-        // Calculate spending in this period for this card in this category
+        // Calculate spending in this period for this card in this category (or related categories)
         let periodStart = period.startDate
+        let categoriesToTrack = [category] + related
         let spentInPeriod = spendings
-            .filter { $0.cardUsed == userCard.cardId && $0.category == category && $0.date >= periodStart }
+            .filter { $0.cardUsed == userCard.cardId && categoriesToTrack.contains($0.category) && $0.date >= periodStart }
             .reduce(0) { $0 + $1.amount }
 
         let remaining = max(0, spendingCap - spentInPeriod)

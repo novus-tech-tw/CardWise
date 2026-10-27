@@ -352,4 +352,40 @@ final class RecommendationEngineTests: XCTestCase {
 
         XCTAssertNil(detectedCategory, "Unknown merchant should return nil category")
     }
+
+    // MARK: - Related Category Fallback Tests
+
+    func testRelatedCategoryFallbackHotelsToTravel() {
+        // CSP has 2x points on travel, 1x on other, no specific hotel category
+        let csp = allCards.first { $0.id == "chase-sapphire-preferred" }!
+        let userCard = UserCard(card: csp)
+
+        let recommendations = RecommendationEngine.shared.getRecommendations(
+            for: .hotels,
+            amount: 100,
+            userCards: [userCard],
+            allCards: [csp]
+        )
+
+        let rec = recommendations.first { $0.card.id == csp.id }
+        XCTAssertNotNil(rec)
+        XCTAssertEqual(rec?.effectiveReward, 5.0, "CSP should earn 5x travel rate when category is hotels")
+    }
+
+    func testRelatedCategoryFallbackWholeFoodsToGrocery() {
+        // Amex Gold has 4x on grocery, no specific wholeFoods category
+        let amexGold = allCards.first { $0.id == "amex-gold" }!
+        let userCard = UserCard(card: amexGold)
+
+        let recommendations = RecommendationEngine.shared.getRecommendations(
+            for: .wholeFoods,
+            amount: 100,
+            userCards: [userCard],
+            allCards: [amexGold]
+        )
+
+        let rec = recommendations.first { $0.card.id == amexGold.id }
+        XCTAssertNotNil(rec)
+        XCTAssertEqual(rec?.effectiveReward, 4.0, "Amex Gold should earn 4x grocery rate when category is wholeFoods")
+    }
 }

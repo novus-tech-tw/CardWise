@@ -1,0 +1,175 @@
+{
+  "updated_utc": "2026-10-27T07:20:32.424219+00:00",
+  "scope": "offline static analysis only",
+  "jobs": [
+    {
+      "name": "main",
+      "session_id": 62773,
+      "worker_state": "main-path-fixed-worker-state.json",
+      "state": {
+        "pid": 7919,
+        "status": "complete_closed",
+        "lastName": "close_binary",
+        "lastFile": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/main-native-complete-close.json",
+        "finishedAt": "2026-10-27T07:19:16.121Z",
+        "completed_utc": "2026-10-27T07:20:32.424219+00:00",
+        "result": "24 canonical records exported; selected pointer refresh, materializer, consumer and reconciliation boundary questions answered within static limits",
+        "evidence_bundle": "main-native-functions-evidence.json"
+      },
+      "processes": [
+        {
+          "pid": 7919,
+          "kind": "worker",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 7928,
+          "kind": "rea-server",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 9739,
+          "kind": "jvm",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11484,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11491,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11497,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11530,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11532,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11557,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11585,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11587,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11594,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 11619,
+          "kind": "decompiler",
+          "present_at_final_check": false
+        }
+      ],
+      "log_snapshots": [
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-Ojce4U/ghidra.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/main-path-fixed-ghidra.log",
+          "size": 77095
+        },
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-Ojce4U/script.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/main-path-fixed-script.log",
+          "size": 0
+        }
+      ],
+      "completion": "Default-profile native analysis and selected function/reference questions completed; export retained; close_binary and SDK transport closed; own idle worker terminated after closure"
+    },
+    {
+      "name": "safari",
+      "session_id": 92657,
+      "worker_state": "safari-path-fixed-worker-state.json",
+      "state": {
+        "pid": 8084,
+        "status": "complete_closed",
+        "lastName": "close_binary",
+        "lastFile": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/safari-native-complete-close.json",
+        "finishedAt": "2026-10-27T07:08:31.317Z",
+        "completed_utc": "2026-10-27T07:08:31.951652+00:00",
+        "result": "Four function dossiers exported; native getWallet/keychain/defaults boundary answered within static scope",
+        "evidence_bundle": "safari-native-functions-evidence.json"
+      },
+      "processes": [
+        {
+          "pid": 8084,
+          "kind": "worker",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 8085,
+          "kind": "rea-server",
+          "present_at_final_check": false
+        },
+        {
+          "pid": 9744,
+          "kind": "jvm",
+          "present_at_final_check": false
+        }
+      ],
+      "log_snapshots": [
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-Q9EMrj/ghidra.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/safari-path-fixed-ghidra.log",
+          "size": 15606
+        },
+        {
+          "source": "/var/folders/x_/61cmx2_j08v88cmy5l_mkv4h0000gn/T/rea-ghidra-Q9EMrj/script.log",
+          "snapshot": "/Users/rich/Desktop/CardWise-REA-2026-10-26/native/logs/safari-path-fixed-script.log",
+          "size": 0
+        }
+      ],
+      "completion": "Default-profile native analysis and4 focused dossiers completed; export retained; owned session closed"
+    }
+  ],
+  "superseded_attempts": {
+    "diagnostic": "ghidra-swift-path-recovery.json",
+    "old_main_worker": 35337,
+    "old_safari_worker": 42411,
+    "state": "cancelled after confirmed blocked SwiftNativeDemangler subprocess; no function results claimed"
+  },
+  "status": "complete_closed",
+  "running_owned_jobs": 0,
+  "final_process_check_utc": "2026-10-27T07:20:32.424219+00:00",
+  "exports": [
+    {
+      "file": "main-native-functions-evidence.json",
+      "bytes": 7877435,
+      "sha256": "22bd9ac5a523e916921723e1dccbce1c75cb629c403a56bf03013553a84ce027",
+      "records": 24,
+      "capture_records": 0,
+      "unknown_entries": 0,
+      "interpretation": "Zero structured unknown entries does not mean complete semantic recovery."
+    },
+    {
+      "file": "safari-native-functions-evidence.json",
+      "bytes": 5720654,
+      "sha256": "5083426b24f050f1e8bee7b45b8dbb2bf4343bcbdac4733605169a4c1e5cc840",
+      "records": 4,
+      "capture_records": 0,
+      "unknown_entries": 0,
+      "interpretation": "Zero structured unknown entries does not mean complete semantic recovery."
+    }
+  ]
+}

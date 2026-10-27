@@ -1,0 +1,87 @@
+{
+  "scope": "Exact original factory source slices wrapped in parentheses followed by semicolon/newline. No source code is republished; runtime/dependencies are not reconstructed.",
+  "full_retained_archive_path": "cardpointers/deep/full-content-app-provenance.json",
+  "partitions": [
+    {
+      "derived_sha256": "4254cb790c81456a83a1c652605ea4cee973a50e5b7ffe0bcffaa83c8d18e5f2",
+      "module_id": 12,
+      "start": 135022,
+      "end": 135695,
+      "sha256": "3929d45d329afb7ba7b609ea746b2d673ad1e310c763f77d922a45d18aa579dd",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "4079a3d059dc12fd7631d5fad7445d112ecc067a8c3ec81b95c9fb93368ebff8",
+      "module_id": 13,
+      "start": 135696,
+      "end": 136561,
+      "sha256": "1d0885d98ac5fc4c3037bae64b93b3ac2d38f32997677b98e9c9b3f1e736eb4c",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "2abffb69af852bcc00491c99e5b31b9bbff5259aaf0049b5fd8f6336368031af",
+      "module_id": 30,
+      "start": 226902,
+      "end": 228259,
+      "sha256": "3183773c1c599dc5c44a6c0098b41351d9d62452b0fa942a89ff48dce234e124",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "3a104df99973705b9851c7323c9ca1503277ef9ff57035559b859810f75601fd",
+      "module_id": 31,
+      "start": 228260,
+      "end": 229029,
+      "sha256": "66ec199615d7802b7b8a544e51e1e8d096801e1ddf026c3996f40f44ebafa0b1",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "ce11050c9ad3f984405e72d2d5dba938c1e361301a22b2618483e285f158d85d",
+      "module_id": 76,
+      "start": 290003,
+      "end": 290465,
+      "sha256": "31e76ff43b406e84fcca53605e98d4c8f6fc7d5ca59c2ee33e49833d6feb63a7",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "829325da72cb9211fff37063d66fba7f4f3603a28025488314c0c1ac27b94544",
+      "module_id": 135,
+      "start": 415172,
+      "end": 416388,
+      "sha256": "91a8c79a6e11738d29bcd3ab5607b1e195ef414f6d4c85ec874931bbdcf1f2c4",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "be964932583247bab873aad60971bab60dbcfa64b9ee65417620bc135551e0d3",
+      "module_id": 138,
+      "start": 417018,
+      "end": 421457,
+      "sha256": "9e37abb8b2d15557fa4232b3b8a4e7343775d41f2b40dc297646474c3c78f7a0",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "b3218628b196d0f313d47e224930ddeb2f664fb4dbf2d731e898d2377c7a22ea",
+      "module_id": 216,
+      "start": 572595,
+      "end": 576544,
+      "sha256": "b4d30a78045b43ac244e2af95d9095a36de63018354439bfebe3754a063e1a5f",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    },
+    {
+      "derived_sha256": "b229a389dea46fdaae09130adabba0fd5f87243a9fe3eefeb33314fcb125fc61",
+      "module_id": 342,
+      "start": 947195,
+      "end": 1215504,
+      "sha256": "565bb40d34ecc4de1ae1eacd6e2d86723fdf0f008559a138eacc40b951277bdc",
+      "original_file": "content/content.js",
+      "original_sha256": "9accaf667dd92887e000021a9a53d938739ee7fcba93debbaab9e5a9612ea9b3"
+    }
+  ]
+}

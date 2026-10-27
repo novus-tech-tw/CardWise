@@ -1,0 +1,892 @@
+{
+  "scope": "Exactly two novel extension targets. LockWidget header/resource inventory only. No original main import rerun. No device, target execution, network, auth or application data reads.",
+  "sources": {
+    "BestCardsByCategory": {
+      "path": "/Applications/MaxRewards.app/Wrapper/MaxRewards.app/PlugIns/BestCardsByCategory.appex/BestCardsByCategory",
+      "sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "excluded": [
+        233472,
+        237568
+      ]
+    },
+    "MaxRewardsLiveActivity": {
+      "path": "/Applications/MaxRewards.app/Wrapper/MaxRewards.app/PlugIns/MaxRewardsLiveActivity.appex/MaxRewardsLiveActivity",
+      "sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "excluded": [
+        368640,
+        372736
+      ]
+    }
+  },
+  "file_mapping": "Selected address_to_file_offset evidence independently confirms file offset = VA - 0x100000000; complete body ranges use that clear __TEXT mapping.",
+  "function_records": [
+    {
+      "dossier": "category-configuration-dossier.json",
+      "evidence_id": "ev_eef15d114478304429ec1535c30c5f7b09bf8e8780e1b6cce25da4b85e56362b",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x10000fe8c",
+      "ranges": [
+        {
+          "virtual_start": "0x10000fe8c",
+          "virtual_end_inclusive": "0x1000103ef",
+          "file_start": 65164,
+          "file_end_exclusive": 66544,
+          "sha256": "e443219ee7d11673c7077888c235a2eef87867fc25eb8f72e9dd71fee0a6e546",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 345,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-group-reader-dossier.json",
+      "evidence_id": "ev_7046eee5ec909bbf2a2c3b7322c134c183ec29962bb022dcf7a1e7fa203f4c5e",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x10000cbd4",
+      "ranges": [
+        {
+          "virtual_start": "0x10000cbd4",
+          "virtual_end_inclusive": "0x10000cc47",
+          "file_start": 52180,
+          "file_end_exclusive": 52296,
+          "sha256": "e27adc77a45b45996ba190a22fa63b9f9670653717c9645ac56c15b0b1cf6072",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 29,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-init-suite-dossier.json",
+      "evidence_id": "ev_42ee773cfed1cb8f8cfc83340cadadcbd59b0bf4595b1e94fafb7d69670612d1",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x10001d918",
+      "ranges": [
+        {
+          "virtual_start": "0x10001d918",
+          "virtual_end_inclusive": "0x10001d9c3",
+          "file_start": 121112,
+          "file_end_exclusive": 121284,
+          "sha256": "28471903fa61931a4872c8ceee94ad13e86c6a39d71ea7a008f9a68847e8fda0",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 43,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-key-reader-dossier.json",
+      "evidence_id": "ev_1ffd6edac16ad6d0cb7f527d4e9ce7b3261bd35d62c5ed7105d1cc58b236edd1",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x1000083b8",
+      "ranges": [
+        {
+          "virtual_start": "0x1000083b8",
+          "virtual_end_inclusive": "0x100008e47",
+          "file_start": 33720,
+          "file_end_exclusive": 36424,
+          "sha256": "e1273c9e620adca26608e831217cffb68df67aafb87dd979c52a5a2bc07a2fb4",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 676,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-key-reader2-dossier.json",
+      "evidence_id": "ev_3a1f46ec63ec82ca796a6f38b61cc07311d52c5f726ce5bd20b6514abd4c28a2",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x100009ae0",
+      "ranges": [
+        {
+          "virtual_start": "0x100009ae0",
+          "virtual_end_inclusive": "0x100009ebb",
+          "file_start": 39648,
+          "file_end_exclusive": 40636,
+          "sha256": "f43ea0c1f6434d40cf7179b72b75bf97d9b82986c20271c9f877cbc9871e5d36",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 247,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-reader-caller-dossier.json",
+      "evidence_id": "ev_e57e0430b33ec4a379a83015c4fd76515bffc30b9a0ae1d78dc0868120de6867",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x10000821c",
+      "ranges": [
+        {
+          "virtual_start": "0x10000821c",
+          "virtual_end_inclusive": "0x1000083b7",
+          "file_start": 33308,
+          "file_end_exclusive": 33720,
+          "sha256": "cc56c705d69e4b110624ac11f42ca359416efc81d3be06a43b026c4545298cef",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 103,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x100008e48",
+      "ranges": [
+        {
+          "virtual_start": "0x100008e48",
+          "virtual_end_inclusive": "0x100009adf",
+          "file_start": 36424,
+          "file_end_exclusive": 39648,
+          "sha256": "bd65f2fddd65d0eb1735ea88902a751de136b11a937955b24920b436d035ec6e",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 806,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-timeline-entry-dossier.json",
+      "evidence_id": "ev_eae20c68bba914d8cdd4b42fb0d85e56e507ae8d43670e4e7ffbc48ba2321501",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x10000ccb0",
+      "ranges": [
+        {
+          "virtual_start": "0x10000ccb0",
+          "virtual_end_inclusive": "0x10000ccfb",
+          "file_start": 52400,
+          "file_end_exclusive": 52476,
+          "sha256": "a316a3e399ca6a1f8c8f259d17625e5582c7e275087d7f60929f89b64cb83cb9",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 19,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-transform-dossier.json",
+      "evidence_id": "ev_03a4c49ed9acef3ce19789d63735271bb67eaa6b7a1917862c998dc27cf6c43c",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x100009ebc",
+      "ranges": [
+        {
+          "virtual_start": "0x100009ebc",
+          "virtual_end_inclusive": "0x100009f0f",
+          "file_start": 40636,
+          "file_end_exclusive": 40720,
+          "sha256": "d65beb3013849fa36adc0ab6e3019644ccad88e79b39d22c990aa3ee5a42f589",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 21,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "category-userdefaults-init-dossier.json",
+      "evidence_id": "ev_952e27327d38916f83c20819970c4993866d5000319810b96161c0eafe3f1173",
+      "subject": "BestCardsByCategory",
+      "source_sha256": "18a36a2d30280733ff9b1f49d2df3a43dfcec4ddea95c3bdf39b58f13d6dc2a3",
+      "procedure": "0x10000ca8c",
+      "ranges": [
+        {
+          "virtual_start": "0x10000ca8c",
+          "virtual_end_inclusive": "0x10000cacf",
+          "file_start": 51852,
+          "file_end_exclusive": 51920,
+          "sha256": "69d8d607c82ae2bd00d218436dc1ed732b9e6381b917e67f4ebe56fcea57b85a",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 17,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-activity-content-update-dossier.json",
+      "evidence_id": "ev_f2c8eed645b08b08b7fb93fdc86bee9f263a74105363afdf702d65df0fc987f2",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003cacc",
+      "ranges": [
+        {
+          "virtual_start": "0x10003cacc",
+          "virtual_end_inclusive": "0x10003d287",
+          "file_start": 248524,
+          "file_end_exclusive": 250504,
+          "sha256": "5f1407ca54d7d6800dbf3c5148104302bb4ed1ed48f63eb4e74f8da2aef8babe",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 495,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-activity-content-update2-dossier.json",
+      "evidence_id": "ev_65ac9665aed69e56389d91b0970172d393689315555bd84c9f73b4b7196b5a06",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003cacc",
+      "ranges": [
+        {
+          "virtual_start": "0x10003cacc",
+          "virtual_end_inclusive": "0x10003d287",
+          "file_start": 248524,
+          "file_end_exclusive": 250504,
+          "sha256": "5f1407ca54d7d6800dbf3c5148104302bb4ed1ed48f63eb4e74f8da2aef8babe",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 495,
+      "canonical_duplicate_of": "live-activity-content-update-dossier.json"
+    },
+    {
+      "dossier": "live-cache-reader-dossier.json",
+      "evidence_id": "ev_d68026fbbddfe091aef6efbde8d41c1d9cf676247349ef13cc484783dbc94c51",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003eb88",
+      "ranges": [
+        {
+          "virtual_start": "0x10003eb88",
+          "virtual_end_inclusive": "0x10003f5a3",
+          "file_start": 256904,
+          "file_end_exclusive": 259492,
+          "sha256": "7a6ccf86e7be95d6906d9fdca6aaf062e11df4c76f4b1e113ce14b0659c653c4",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 647,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-cache-writer-dossier.json",
+      "evidence_id": "ev_a983f3be5d9d5f685bbfa251c7f081a2e3a44d6c9cc98bb0d1beccbca9118615",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003fc7c",
+      "ranges": [
+        {
+          "virtual_start": "0x10003fc7c",
+          "virtual_end_inclusive": "0x100040087",
+          "file_start": 261244,
+          "file_end_exclusive": 262280,
+          "sha256": "092039025b8e82b22e8fc4f3540ad5a3119e92b2e6281db363ee836387b66c8d",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 259,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-content-state-result-dossier.json",
+      "evidence_id": "ev_c657a29a01e6416fcab8ed4fed96de0dfcd58f07dbf4004f654fc8053b7b4e00",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003f894",
+      "ranges": [
+        {
+          "virtual_start": "0x10003f894",
+          "virtual_end_inclusive": "0x10003fa17",
+          "file_start": 260244,
+          "file_end_exclusive": 260632,
+          "sha256": "3cfceb0b728aaa9a145e4b1c0e30162815300036aaeebac567c9980ed5712d22",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 97,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-fallback-view-dossier.json",
+      "evidence_id": "ev_97a1cfac2f7a10c7298c45ab081a0ca24f7964219fe13a9d5a50bc0a365a21ea",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10000d984",
+      "ranges": [
+        {
+          "virtual_start": "0x10000d984",
+          "virtual_end_inclusive": "0x10000df13",
+          "file_start": 55684,
+          "file_end_exclusive": 57108,
+          "sha256": "b014ce3432dd49564a84ff438c6082e7787589daecba2fe4419096c3a60d00c0",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 356,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-group-accessor-dossier.json",
+      "evidence_id": "ev_4d3f5a1592ce5a38892499110ee0b3f5a2667baac3fe02aca99b1d380878335f",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100042c7c",
+      "ranges": [
+        {
+          "virtual_start": "0x100042c7c",
+          "virtual_end_inclusive": "0x100042cbb",
+          "file_start": 273532,
+          "file_end_exclusive": 273596,
+          "sha256": "31450f56c985219025829045ac0260c403609b40ae7db1a103c53cbdc22f497a",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 16,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-group-getter-dossier.json",
+      "evidence_id": "ev_c1cd25ee9c9e3e886d40db73a7088630a5c3ede4dbacd2b82479ce05318f8e63",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100042cbc",
+      "ranges": [
+        {
+          "virtual_start": "0x100042cbc",
+          "virtual_end_inclusive": "0x100042d0b",
+          "file_start": 273596,
+          "file_end_exclusive": 273676,
+          "sha256": "c25f5a8f3d15522ab1b7d1146c38ac44cb5b0b357e16dc0b0fe5aa8f89e761b6",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 20,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-group-use-dossier.json",
+      "evidence_id": "ev_84016a2e85b6a64a13831de1bb6589ab562d01ffa5a65823189cc21f92b44e64",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100019edc",
+      "ranges": [
+        {
+          "virtual_start": "0x100019edc",
+          "virtual_end_inclusive": "0x10001a2f3",
+          "file_start": 106204,
+          "file_end_exclusive": 107252,
+          "sha256": "bfb3b09f58aa66f49fe208ae6ce39e09dfc00cd7fbac6a9e192f39185b2bbd7b",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 262,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-key-accessor-dossier.json",
+      "evidence_id": "ev_9d074ddef40fd52307676d6379b1e18d8ebeee8f72fbf9c5375d47f58c9ee439",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100042e4c",
+      "ranges": [
+        {
+          "virtual_start": "0x100042e4c",
+          "virtual_end_inclusive": "0x100042e9b",
+          "file_start": 273996,
+          "file_end_exclusive": 274076,
+          "sha256": "810c72a74169b4edaabc7f99b7d66e02f364075ea160e677e48d009de8b3b570",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 20,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-key-wrapper-dossier.json",
+      "evidence_id": "ev_5fe5f80acc83ad5509e3291397677394fe12976b5a475f2c7f045e45e11b7a34",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100042e9c",
+      "ranges": [
+        {
+          "virtual_start": "0x100042e9c",
+          "virtual_end_inclusive": "0x100042ed3",
+          "file_start": 274076,
+          "file_end_exclusive": 274132,
+          "sha256": "2ffc8a5d2f7d075db9fc09ebff47d273f87ccaa0234cdc706a7a3d70242a89cf",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 14,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-payload-reader-dossier.json",
+      "evidence_id": "ev_f37712da0daff6cbd449e0639f75840d5c25823efb924a6641bb1cd8c5d85389",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100042e0c",
+      "ranges": [
+        {
+          "virtual_start": "0x100042e0c",
+          "virtual_end_inclusive": "0x100042e4b",
+          "file_start": 273932,
+          "file_end_exclusive": 273996,
+          "sha256": "fae3c2b22f9d440a921296f4b4290dfde9dad0696285e1788e695c2e2a984cc7",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 16,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-refresh-continuation-dossier.json",
+      "evidence_id": "ev_d3101cd1297060704664dcd74dc41681fc8da550579bdb6f23dc8e297712602e",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003ca60",
+      "ranges": [
+        {
+          "virtual_start": "0x10003ca60",
+          "virtual_end_inclusive": "0x10003cacb",
+          "file_start": 248416,
+          "file_end_exclusive": 248524,
+          "sha256": "a7452ef7218f9280bf2521fab88ff07b4b1ce430f4b18ae84fa59b6aa79a5096",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 27,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-refresh-entry-dossier.json",
+      "evidence_id": "ev_8700c2ba5b1cebdb47ef5d6ba3e1c5bab49e2a32d6d66084137641e6e4e74543",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003c794",
+      "ranges": [
+        {
+          "virtual_start": "0x10003c794",
+          "virtual_end_inclusive": "0x10003ca5f",
+          "file_start": 247700,
+          "file_end_exclusive": 248416,
+          "sha256": "1150e579dea63bba07e2faff685560fd811e35eadcc9c4e1f5a87e82edf32763",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 179,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-refresh-state-body-dossier.json",
+      "evidence_id": "ev_9aa1d853dd131d8bcc4b5f2e9f7be24bb7f78d7a216007959e5d2598fcb1363b",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003f638",
+      "ranges": [
+        {
+          "virtual_start": "0x10003f638",
+          "virtual_end_inclusive": "0x10003f81f",
+          "file_start": 259640,
+          "file_end_exclusive": 260128,
+          "sha256": "b30cfcca8fcc1cd1d3c29f5eb5de37a281e8b3fd8a191ea4577317fdc20d7402",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 122,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-refresh-state-transform-dossier.json",
+      "evidence_id": "ev_a1d2542dcf8ff5e6488ac9bcf8bb8789b7d497bb583f98866688768501af7a7a",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003f5a4",
+      "ranges": [
+        {
+          "virtual_start": "0x10003f5a4",
+          "virtual_end_inclusive": "0x10003f637",
+          "file_start": 259492,
+          "file_end_exclusive": 259640,
+          "sha256": "dd8a9529747b0934ec6b10cefe102bd409258f6374418016bf1198e4b27c0ace",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 37,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-row-preparation-entry-dossier.json",
+      "evidence_id": "ev_e87e0a34537b0a81fdf653f3b7802c0d8562b2fb8c843f0d4ee95247ac0664b2",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100046170",
+      "ranges": [
+        {
+          "virtual_start": "0x100046170",
+          "virtual_end_inclusive": "0x1000461e3",
+          "file_start": 287088,
+          "file_end_exclusive": 287204,
+          "sha256": "8cc0a3e07cc1179f90c63d8df3414d8a86a9c8d40ca0d114a4df2cf9ca6225b4",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 29,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-state-transform-return-dossier.json",
+      "evidence_id": "ev_ea0a3b73f7df915e217e308522b4d19ee23a05bf1178a496fa50a3c790aeabd0",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x10003f820",
+      "ranges": [
+        {
+          "virtual_start": "0x10003f820",
+          "virtual_end_inclusive": "0x10003f893",
+          "file_start": 260128,
+          "file_end_exclusive": 260244,
+          "sha256": "016da1386bc8b522f8a7d0ca58dcd2cdcd1006b3d4b23fb4d6a6981bc9a86a6e",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 29,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-suite-init-dossier.json",
+      "evidence_id": "ev_d193b6ba0518af49c73e5f8b21352282418ea1dfbf0a3ff93f7cff3fc09c9e10",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x100056180",
+      "ranges": [
+        {
+          "virtual_start": "0x100056180",
+          "virtual_end_inclusive": "0x10005622b",
+          "file_start": 352640,
+          "file_end_exclusive": 352812,
+          "sha256": "f9e8f6d0b82e013e47954b6dac74ee932d193cc256864dbd3c89f17f00726d6d",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 43,
+      "canonical_duplicate_of": null
+    },
+    {
+      "dossier": "live-userdefaults-init-dossier.json",
+      "evidence_id": "ev_999c953a5cd70b95933e09fbf9af315f7d8659b41c17a1876612083f67381b38",
+      "subject": "MaxRewardsLiveActivity",
+      "source_sha256": "6801204ee710b2b4bbfd50cf8b57b0816601c6b9a734be445d149ef55aa640e3",
+      "procedure": "0x1000432fc",
+      "ranges": [
+        {
+          "virtual_start": "0x1000432fc",
+          "virtual_end_inclusive": "0x10004333f",
+          "file_start": 275196,
+          "file_end_exclusive": 275264,
+          "sha256": "95aaf5902d0a7db6efe14c363b8b0b1585aab9888010c5bfae4afa4e843465fb",
+          "excluded_overlap_bytes": 0
+        }
+      ],
+      "assembly_instruction_count": 17,
+      "canonical_duplicate_of": null
+    }
+  ],
+  "function_record_count": 30,
+  "unique_function_count": 29,
+  "skipped_envelopes": [
+    {
+      "file": "category-map-dossier.json",
+      "reason": "transport envelope; canonical retained evidence is exported, not reanalyzed"
+    }
+  ],
+  "semantic_exclusion": "Every claimed function body has zero overlap with LC_ENCRYPTION_INFO_64 intervals. Calls can target encrypted stubs; stub-body semantics excluded. API names use separate clear import/ABI metadata.",
+  "assembly_anchors": [
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "strict reader and Swift error branch",
+      "requested_file_range_inclusive": [
+        37488,
+        37520
+      ],
+      "assembly_count": 9,
+      "assembly_sha256": "cfebc89992978deaa0139fc0da43785d52507fb31c08c9d39839bdb1da4a3f5f"
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "15-minute calendar addition",
+      "requested_file_range_inclusive": [
+        38104,
+        38144
+      ],
+      "assembly_count": 11,
+      "assembly_sha256": "b431aa575d3644eedb71dc00fead3281aefcd4e6948ba63e4b41c1727e6c0067"
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "900-second calendar-nil fallback",
+      "requested_file_range_inclusive": [
+        38324,
+        38348
+      ],
+      "assembly_count": 7,
+      "assembly_sha256": "558cf9d606dcef9906648e1cf839c511a5b680e27bdbead36499aee03e1d213d"
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "success after policy / Timeline / callback",
+      "requested_file_range_inclusive": [
+        38484,
+        38556
+      ],
+      "assembly_count": 19,
+      "assembly_sha256": "1a29c38e9bb6dac569a6ed20082d3284e0232ca8098bb584a445dfd8e8685c2d"
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "Swift error block and log",
+      "requested_file_range_inclusive": [
+        38760,
+        38864
+      ],
+      "assembly_count": 27,
+      "assembly_sha256": "8c43a90b3099862d4933fda7864128d3027ba5d8ac24cfa81f44e13294b904f4"
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "empty error entry construction",
+      "requested_file_range_inclusive": [
+        39152,
+        39328
+      ],
+      "assembly_count": 45,
+      "assembly_sha256": "09b95af53c9c7686f4206772616b9515c2fc3426ef14973e726bb7f9e2262a40"
+    },
+    {
+      "dossier": "category-timeline-dossier.json",
+      "evidence_id": "ev_119e36414fe088df80f7c4330446c24f1beb7b8ddbef862593376c1b910d12d7",
+      "purpose": "300 seconds / error after policy / callback",
+      "requested_file_range_inclusive": [
+        39412,
+        39556
+      ],
+      "assembly_count": 37,
+      "assembly_sha256": "ed1f28a51befbeb2aff1f800dd77592aa3ee261989a6b5b594d073fb9d3b22a7"
+    },
+    {
+      "dossier": "category-key-reader2-dossier.json",
+      "evidence_id": "ev_3a1f46ec63ec82ca796a6f38b61cc07311d52c5f726ce5bd20b6514abd4c28a2",
+      "purpose": "AppGroup defaults and categoryList string read",
+      "requested_file_range_inclusive": [
+        39704,
+        39848
+      ],
+      "assembly_count": 37,
+      "assembly_sha256": "78df92156eb27716a178e185b8e8a32bcc431270b9f9dbf4d3b66288d543e36c"
+    },
+    {
+      "dossier": "category-key-reader2-dossier.json",
+      "evidence_id": "ev_3a1f46ec63ec82ca796a6f38b61cc07311d52c5f726ce5bd20b6514abd4c28a2",
+      "purpose": "JSON decode and Swift error test",
+      "requested_file_range_inclusive": [
+        40152,
+        40208
+      ],
+      "assembly_count": 15,
+      "assembly_sha256": "496f9c49ffd2a91ceea63efc37edcf9590c8720ebc21b17bf9e805030c8906d1"
+    },
+    {
+      "dossier": "category-key-reader2-dossier.json",
+      "evidence_id": "ev_3a1f46ec63ec82ca796a6f38b61cc07311d52c5f726ce5bd20b6514abd4c28a2",
+      "purpose": "strict reader errors",
+      "requested_file_range_inclusive": [
+        40452,
+        40632
+      ],
+      "assembly_count": 46,
+      "assembly_sha256": "93b30b1ea5d0784c897612b64b1e06b36d9bdde8e6237759683d6956bf0bebd2"
+    },
+    {
+      "dossier": "live-cache-reader-dossier.json",
+      "evidence_id": "ev_d68026fbbddfe091aef6efbde8d41c1d9cf676247349ef13cc484783dbc94c51",
+      "purpose": "AppGroup defaults / key accessor / stringForKey",
+      "requested_file_range_inclusive": [
+        257040,
+        257312
+      ],
+      "assembly_count": 69,
+      "assembly_sha256": "f3bdeba24b0f201dc4d92a0d441cefb45309a2373ea7bddca50bbd11ec346b58"
+    },
+    {
+      "dossier": "live-cache-reader-dossier.json",
+      "evidence_id": "ev_d68026fbbddfe091aef6efbde8d41c1d9cf676247349ef13cc484783dbc94c51",
+      "purpose": "JSON decode / x21 error",
+      "requested_file_range_inclusive": [
+        257904,
+        257996
+      ],
+      "assembly_count": 24,
+      "assembly_sha256": "82246e7040c69f3580b89f1b2c03845e7e4bf7ea07aacc84ac4c53bd9898d970"
+    },
+    {
+      "dossier": "live-cache-reader-dossier.json",
+      "evidence_id": "ev_d68026fbbddfe091aef6efbde8d41c1d9cf676247349ef13cc484783dbc94c51",
+      "purpose": "optional rows / isEmpty / acceptance",
+      "requested_file_range_inclusive": [
+        258448,
+        258832
+      ],
+      "assembly_count": 97,
+      "assembly_sha256": "8a66d9350427e3139d90a698ffaaeea889639efe8bd8b0a67d7be8948ddc71a7"
+    },
+    {
+      "dossier": "live-cache-reader-dossier.json",
+      "evidence_id": "ev_d68026fbbddfe091aef6efbde8d41c1d9cf676247349ef13cc484783dbc94c51",
+      "purpose": "none and error cleanup",
+      "requested_file_range_inclusive": [
+        259156,
+        259484
+      ],
+      "assembly_count": 83,
+      "assembly_sha256": "95303fb6fd959fafd34af22ca43198857f143273c98916c3a94e537db93fba44"
+    },
+    {
+      "dossier": "live-refresh-entry-dossier.json",
+      "evidence_id": "ev_8700c2ba5b1cebdb47ef5d6ba3e1c5bab49e2a32d6d66084137641e6e4e74543",
+      "purpose": "upstream-none cache fallback",
+      "requested_file_range_inclusive": [
+        247800,
+        247976
+      ],
+      "assembly_count": 45,
+      "assembly_sha256": "42200e729fd4e79c535fd4932551d0726824ffef53413a77bd55ebc85f06ffa1"
+    },
+    {
+      "dossier": "live-refresh-entry-dossier.json",
+      "evidence_id": "ev_8700c2ba5b1cebdb47ef5d6ba3e1c5bab49e2a32d6d66084137641e6e4e74543",
+      "purpose": "payload task / continuation",
+      "requested_file_range_inclusive": [
+        248068,
+        248240
+      ],
+      "assembly_count": 44,
+      "assembly_sha256": "80eb5b99d059f00ed6d1a3b5b10ef464b75be07cdfb314814130a1bc2b9c41d7"
+    },
+    {
+      "dossier": "live-refresh-continuation-dossier.json",
+      "evidence_id": "ev_d3101cd1297060704664dcd74dc41681fc8da550579bdb6f23dc8e297712602e",
+      "purpose": "continuation switches to ActivityContent constructor",
+      "requested_file_range_inclusive": [
+        248416,
+        248524
+      ],
+      "assembly_count": 27,
+      "assembly_sha256": "4cde3cdf4d1d3323096c9fdaafa95e3862f436179f0ab09c962db23ea280f463"
+    },
+    {
+      "dossier": "live-activity-content-update-dossier.json",
+      "evidence_id": "ev_f2c8eed645b08b08b7fb93fdc86bee9f263a74105363afdf702d65df0fc987f2",
+      "purpose": "cache write before activity content",
+      "requested_file_range_inclusive": [
+        248524,
+        248656
+      ],
+      "assembly_count": 34,
+      "assembly_sha256": "f42c6a81e37446e610f3cd1af0e5142881fc812324b2304981b488e5b1e81450"
+    },
+    {
+      "dossier": "live-activity-content-update-dossier.json",
+      "evidence_id": "ev_f2c8eed645b08b08b7fb93fdc86bee9f263a74105363afdf702d65df0fc987f2",
+      "purpose": "update: Optional<Date>.none / ActivityContent init",
+      "requested_file_range_inclusive": [
+        248852,
+        248976
+      ],
+      "assembly_count": 32,
+      "assembly_sha256": "b0c061f40a9b9e215b00712b602042d4f2786e4f72359569a7e7055464607bf1"
+    },
+    {
+      "dossier": "live-activity-content-update-dossier.json",
+      "evidence_id": "ev_f2c8eed645b08b08b7fb93fdc86bee9f263a74105363afdf702d65df0fc987f2",
+      "purpose": "new request: Optional<Date>.none / ActivityContent init",
+      "requested_file_range_inclusive": [
+        249224,
+        249344
+      ],
+      "assembly_count": 31,
+      "assembly_sha256": "9f0a25435cb5a8acf074a004b221b7bf5d459eacb9476518e069f350a946bdb2"
+    },
+    {
+      "dossier": "live-activity-content-update-dossier.json",
+      "evidence_id": "ev_f2c8eed645b08b08b7fb93fdc86bee9f263a74105363afdf702d65df0fc987f2",
+      "purpose": "Activity request boundary",
+      "requested_file_range_inclusive": [
+        249344,
+        249480
+      ],
+      "assembly_count": 35,
+      "assembly_sha256": "ca1230c1f05e832cc6469b2250bed651120edb8166526d381249bbfdf53827cc"
+    },
+    {
+      "dossier": "live-content-state-result-dossier.json",
+      "evidence_id": "ev_c657a29a01e6416fcab8ed4fed96de0dfcd58f07dbf4004f654fc8053b7b4e00",
+      "purpose": "provided timestamp or Date.now*1000; content state construction",
+      "requested_file_range_inclusive": [
+        260244,
+        260544
+      ],
+      "assembly_count": 76,
+      "assembly_sha256": "aa95df7b9c4341e11754d08b822cf03a92dacd0e53cea84d3e60ac4766e1d6fd"
+    },
+    {
+      "dossier": "live-fallback-view-dossier.json",
+      "evidence_id": "ev_97a1cfac2f7a10c7298c45ab081a0ca24f7964219fe13a9d5a50bc0a365a21ea",
+      "purpose": "ActivityViewContext state rows / isEmpty",
+      "requested_file_range_inclusive": [
+        55920,
+        56128
+      ],
+      "assembly_count": 53,
+      "assembly_sha256": "c330eddcfa1c1a158ec6a449c22efeea9f900916126eb47daf2414cd35d5fb3a"
+    },
+    {
+      "dossier": "live-fallback-view-dossier.json",
+      "evidence_id": "ev_97a1cfac2f7a10c7298c45ab081a0ca24f7964219fe13a9d5a50bc0a365a21ea",
+      "purpose": "nonempty title / default Updated now / prefix3",
+      "requested_file_range_inclusive": [
+        56128,
+        56460
+      ],
+      "assembly_count": 84,
+      "assembly_sha256": "679672939a31007de3b512fef358e0f7ec717f93ed20a53a8fcf2e6570d32097"
+    },
+    {
+      "dossier": "live-fallback-view-dossier.json",
+      "evidence_id": "ev_97a1cfac2f7a10c7298c45ab081a0ca24f7964219fe13a9d5a50bc0a365a21ea",
+      "purpose": "empty fallback literals / one-row display model",
+      "requested_file_range_inclusive": [
+        56460,
+        57000
+      ],
+      "assembly_count": 136,
+      "assembly_sha256": "5066406cbf63c20a877170ae63f623793bb5448caaef20af65bb15eddacd28d5"
+    },
+    {
+      "dossier": "live-cache-writer-dossier.json",
+      "evidence_id": "ev_a983f3be5d9d5f685bbfa251c7f081a2e3a44d6c9cc98bb0d1beccbca9118615",
+      "purpose": "encoded payload key / setObject:forKey:",
+      "requested_file_range_inclusive": [
+        261872,
+        262164
+      ],
+      "assembly_count": 74,
+      "assembly_sha256": "3c4251b3bb6b2e3640ea655cf5a4faa4dd3e151da203e71463f0c6ddcf424406"
+    }
+  ],
+  "anchor_region_count": 26
+}

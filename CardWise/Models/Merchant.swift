@@ -20,13 +20,13 @@ struct Merchant: Identifiable, Codable, Equatable {
 struct MerchantDatabase {
     static let merchants: [Merchant] = [
         // Superstore (NOT grocery for most cards like Amex Gold)
-        Merchant(name: "Walmart", category: .other, alternativeCategories: [.grocery], keywords: ["walmart", "wal-mart"]),
-        Merchant(name: "Target", category: .other, alternativeCategories: [.grocery], keywords: ["target"]),
+        Merchant(name: "Walmart", category: .walmart, alternativeCategories: [.grocery], keywords: ["walmart", "wal-mart"]),
+        Merchant(name: "Target", category: .target, alternativeCategories: [.grocery, .onlineShopping], keywords: ["target"]),
         Merchant(name: "Costco", category: .wholesale, keywords: ["costco"]),
         Merchant(name: "Sam's Club", category: .wholesale, keywords: ["sams", "sam's"]),
         Merchant(name: "BJ's Wholesale", category: .wholesale, keywords: ["bj's", "bjs"]),
         Merchant(name: "Kroger", category: .grocery, keywords: ["kroger"]),
-        Merchant(name: "Whole Foods", category: .grocery, keywords: ["whole foods", "wholefoods"]),
+        Merchant(name: "Whole Foods", category: .grocery, alternativeCategories: [.wholeFoods], keywords: ["whole foods", "wholefoods"]),
         Merchant(name: "Trader Joe's", category: .grocery, keywords: ["trader joe", "trader joes"]),
         Merchant(name: "Safeway", category: .grocery, keywords: ["safeway"]),
         Merchant(name: "Publix", category: .grocery, keywords: ["publix"]),
@@ -65,24 +65,24 @@ struct MerchantDatabase {
         Merchant(name: "Electrify America", category: .gas, keywords: ["electrify america"]),
 
         // Dining - Fast Food
-        Merchant(name: "Starbucks", category: .dining, keywords: ["starbucks"]),
-        Merchant(name: "McDonald's", category: .dining, keywords: ["mcdonalds", "mcdonald's"]),
-        Merchant(name: "Chipotle", category: .dining, keywords: ["chipotle"]),
+        Merchant(name: "Starbucks", category: .dining, keywords: ["starbucks", "coffee", "latte", "frappuccino"]),
+        Merchant(name: "McDonald's", category: .dining, keywords: ["mcdonalds", "mcdonald's", "fast food", "burger"]),
+        Merchant(name: "Chipotle", category: .dining, keywords: ["chipotle", "burrito"]),
         Merchant(name: "Chick-fil-A", category: .dining, keywords: ["chick-fil-a", "chickfila"]),
         Merchant(name: "Wendy's", category: .dining, keywords: ["wendys", "wendy's"]),
         Merchant(name: "Burger King", category: .dining, keywords: ["burger king"]),
         Merchant(name: "Taco Bell", category: .dining, keywords: ["taco bell"]),
         Merchant(name: "Subway", category: .dining, keywords: ["subway"]),
         Merchant(name: "Panda Express", category: .dining, keywords: ["panda express"]),
-        Merchant(name: "Five Guys", category: .dining, keywords: ["five guys"]),
-        Merchant(name: "In-N-Out", category: .dining, keywords: ["in-n-out", "in n out"]),
-        Merchant(name: "Shake Shack", category: .dining, keywords: ["shake shack"]),
+        Merchant(name: "Five Guys", category: .dining, keywords: ["five guys", "burger"]),
+        Merchant(name: "In-N-Out", category: .dining, keywords: ["in-n-out", "in n out", "burger"]),
+        Merchant(name: "Shake Shack", category: .dining, keywords: ["shake shack", "burger"]),
         Merchant(name: "Popeyes", category: .dining, keywords: ["popeyes"]),
         Merchant(name: "KFC", category: .dining, keywords: ["kfc", "kentucky fried"]),
-        Merchant(name: "Dunkin'", category: .dining, keywords: ["dunkin", "dunkin donuts"]),
+        Merchant(name: "Dunkin'", category: .dining, keywords: ["dunkin", "dunkin donuts", "coffee", "donuts"]),
         Merchant(name: "Panera Bread", category: .dining, keywords: ["panera"]),
-        Merchant(name: "Domino's", category: .dining, keywords: ["dominos", "domino's"]),
-        Merchant(name: "Pizza Hut", category: .dining, keywords: ["pizza hut"]),
+        Merchant(name: "Domino's", category: .dining, keywords: ["dominos", "domino's", "pizza"]),
+        Merchant(name: "Pizza Hut", category: .dining, keywords: ["pizza hut", "pizza"]),
         Merchant(name: "Papa John's", category: .dining, keywords: ["papa johns", "papa john's"]),
         Merchant(name: "Sonic", category: .dining, keywords: ["sonic"]),
         Merchant(name: "Arby's", category: .dining, keywords: ["arbys", "arby's"]),
@@ -357,23 +357,103 @@ struct MerchantDatabase {
         Merchant(name: "Earth Fare", category: .grocery, keywords: ["earth fare"]),
     ]
 
+    // Comprehensive category synonyms and keywords for natural language search
+    static let categorySynonyms: [String: SpendingCategory] = [
+        // Dining & Food
+        "dining": .dining, "restaurant": .dining, "restaurants": .dining, "food": .dining,
+        "cafe": .dining, "coffee": .dining, "eat": .dining, "eats": .dining,
+        "lunch": .dining, "dinner": .dining, "breakfast": .dining, "brunch": .dining,
+        "fast food": .dining, "takeout": .dining, "delivery": .dining, "bar": .dining,
+        "bars": .dining, "pub": .dining, "bistro": .dining, "bakery": .dining, "pizza": .dining,
+
+        // Grocery & Supermarket
+        "grocery": .grocery, "groceries": .grocery, "supermarket": .grocery,
+        "market": .grocery, "food store": .grocery, "produce": .grocery,
+
+        // Gas & Fuel
+        "gas": .gas, "gas station": .gas, "fuel": .gas, "petrol": .gas, "diesel": .gas,
+
+        // Travel
+        "travel": .travel, "trip": .travel, "vacation": .travel, "tourism": .travel,
+        "rental car": .travel, "car rental": .travel, "airbnb": .travel,
+
+        // Airlines & Hotels
+        "flight": .airlines, "flights": .airlines, "airline": .airlines, "airlines": .airlines,
+        "plane": .airlines, "airfare": .airlines, "airport": .airlines, "aviation": .airlines,
+        "hotel": .hotels, "hotels": .hotels, "motel": .hotels, "resort": .hotels,
+        "lodging": .hotels, "inn": .hotels,
+
+        // Streaming
+        "streaming": .streaming, "tv": .streaming, "music": .streaming, "subscription": .streaming,
+        "video": .streaming, "movie": .streaming, "movies": .streaming,
+
+        // Drugstore & Pharmacy
+        "drugstore": .drugstore, "pharmacy": .drugstore, "prescription": .drugstore,
+        "medicine": .drugstore, "rx": .drugstore, "chemist": .drugstore,
+
+        // Transit & Commute
+        "transit": .transit, "subway": .transit, "train": .transit, "metro": .transit,
+        "bus": .transit, "taxi": .transit, "cab": .transit, "rideshare": .transit,
+        "toll": .transit, "tolls": .transit, "parking": .transit, "ferry": .transit,
+
+        // Online Shopping
+        "online shopping": .onlineShopping, "online store": .onlineShopping, "ecommerce": .onlineShopping,
+        "e-commerce": .onlineShopping, "shopping": .onlineShopping,
+
+        // Home Improvement
+        "home improvement": .homeImprovement, "hardware": .homeImprovement, "tools": .homeImprovement,
+        "lumber": .homeImprovement, "gardening": .homeImprovement, "renovation": .homeImprovement,
+
+        // Entertainment
+        "entertainment": .entertainment, "cinema": .entertainment, "theater": .entertainment,
+        "concert": .entertainment, "concerts": .entertainment, "tickets": .entertainment,
+        "amusement park": .entertainment, "theme park": .entertainment,
+
+        // Wholesale Clubs
+        "wholesale": .wholesale, "warehouse": .wholesale, "bulk": .wholesale, "wholesale club": .wholesale,
+
+        // EV Charging
+        "ev": .evCharging, "ev charging": .evCharging, "charging": .evCharging, "electric vehicle": .evCharging,
+
+        // Utilities
+        "utilities": .utilities, "utility": .utilities, "electric": .utilities, "electricity": .utilities,
+        "water": .utilities, "power": .utilities, "gas bill": .utilities,
+
+        // Internet & Phone
+        "internet": .internet, "wifi": .internet, "cable": .internet, "broadband": .internet,
+        "phone": .phone, "cellular": .phone, "mobile": .phone, "wireless": .phone,
+
+        // Fitness & Gym
+        "fitness": .fitness, "gym": .fitness, "workout": .fitness, "health club": .fitness,
+
+        // Office & Shipping
+        "office supplies": .officeSupplies, "stationery": .officeSupplies,
+        "shipping": .shipping, "postage": .shipping, "courier": .shipping, "freight": .shipping,
+
+        // Specific Brands & Stores
+        "electronics": .electronics, "computers": .electronics,
+        "apple": .apple, "amazon": .amazon, "paypal": .paypal,
+        "target": .target, "walmart": .walmart, "whole foods": .grocery
+    ]
+
     static func findMerchant(query: String) -> Merchant? {
-        let lowercased = query.lowercased()
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !trimmed.isEmpty else { return nil }
 
         // Exact match first
-        if let exact = merchants.first(where: { $0.name.lowercased() == lowercased }) {
+        if let exact = merchants.first(where: { $0.name.lowercased() == trimmed }) {
             return exact
         }
 
         // Keyword match
         for merchant in merchants where merchant.keywords != nil {
-            for keyword in merchant.keywords! where lowercased.contains(keyword) {
+            for keyword in merchant.keywords! where trimmed.contains(keyword) {
                 return merchant
             }
         }
 
         // Partial name match
-        if let partial = merchants.first(where: { $0.name.lowercased().contains(lowercased) || lowercased.contains($0.name.lowercased()) }) {
+        if let partial = merchants.first(where: { $0.name.lowercased().contains(trimmed) || trimmed.contains($0.name.lowercased()) }) {
             return partial
         }
 
@@ -381,28 +461,88 @@ struct MerchantDatabase {
     }
 
     static func suggestCategory(for query: String) -> SpendingCategory? {
-        findMerchant(query: query)?.category
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !trimmed.isEmpty else { return nil }
+
+        // 1. Exact merchant name match
+        if let exact = merchants.first(where: { $0.name.lowercased() == trimmed }) {
+            return exact.category
+        }
+
+        // 2. Direct category match (displayName or rawValue)
+        if let direct = SpendingCategory.allCases.first(where: {
+            $0.rawValue.lowercased() == trimmed || $0.displayName.lowercased() == trimmed
+        }) {
+            return direct
+        }
+
+        // 3. Category synonym / search keyword match (e.g. "hotel" -> .hotels, "groceries" -> .grocery)
+        if let synonym = categorySynonyms[trimmed] {
+            return synonym
+        }
+
+        // 4. Keyword / partial merchant match
+        if let merchantCat = findMerchant(query: trimmed)?.category {
+            return merchantCat
+        }
+
+        // 5. Token / word matching (e.g. "Joe's Coffee" -> "coffee", "Shell Station" -> "shell")
+        let words = trimmed.components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { $0.count >= 3 }
+        for word in words {
+            if let cat = categorySynonyms[word] {
+                return cat
+            }
+            if let cat = SpendingCategory.allCases.first(where: {
+                $0.rawValue.lowercased() == word || $0.displayName.lowercased() == word
+            }) {
+                return cat
+            }
+        }
+
+        return nil
     }
 
     // Get matching merchants for autocomplete
     static func searchMerchants(query: String) -> [Merchant] {
-        guard !query.isEmpty else { return [] }
-        let lowercased = query.lowercased()
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return [] }
+        let lowercased = trimmed.lowercased()
 
-        return merchants.filter { merchant in
-            // Match name
-            if merchant.name.lowercased().contains(lowercased) {
-                return true
+        var results: [Merchant] = []
+        var seenIds = Set<String>()
+
+        // 1. Direct name matches
+        for merchant in merchants where merchant.name.lowercased().contains(lowercased) {
+            if !seenIds.contains(merchant.id) {
+                results.append(merchant)
+                seenIds.insert(merchant.id)
             }
-            // Match keywords
-            if let keywords = merchant.keywords {
-                for keyword in keywords {
-                    if keyword.contains(lowercased) || lowercased.contains(keyword) {
-                        return true
+        }
+
+        // 2. Keyword matches
+        for merchant in merchants where merchant.keywords != nil {
+            for keyword in merchant.keywords! {
+                if keyword.contains(lowercased) || lowercased.contains(keyword) {
+                    if !seenIds.contains(merchant.id) {
+                        results.append(merchant)
+                        seenIds.insert(merchant.id)
                     }
+                    break
                 }
             }
-            return false
         }
+
+        // 3. If query matches or suggests a category, include merchants from that category
+        if let cat = suggestCategory(for: trimmed) {
+            for merchant in merchants where merchant.category == cat {
+                if !seenIds.contains(merchant.id) {
+                    results.append(merchant)
+                    seenIds.insert(merchant.id)
+                }
+            }
+        }
+
+        return results
     }
 }

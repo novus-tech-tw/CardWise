@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "carrier_sha256": "efe8a8901364e9a633d0edb1810687f18932ebaf306995c235fccaef23278ba9",
+  "carrier_bytes": 12633156,
+  "new_function_count": 98,
+  "new_unique_source_spans": 94,
+  "new_interpreted_function_count": 86,
+  "reused_interpreted_function_count": 13,
+  "candidate_only_function_ids": [
+    26005,
+    26103,
+    26104,
+    26105,
+    26106,
+    26107,
+    26117,
+    26213,
+    26702,
+    26703,
+    27907,
+    29293
+  ],
+  "anchor_count": 143,
+  "old_output_collision_count": 0,
+  "all_source_and_output_hashes_verified": true,
+  "module_count": 7,
+  "scope": "No runtime/device/server/HTTP/real storage/credentials/repository operations. No full-app or prior producer repetition."
+}
