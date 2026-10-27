@@ -1,7 +1,0 @@
-{
-  "functions_validated": 100,
-  "bytecode_spans_and_digests": "checked against exact carrier",
-  "output_digests": "checked against retained disassembly/pseudocode files",
-  "instruction_start_offsets": "all inside function spans",
-  "errors": []
-}

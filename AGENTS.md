@@ -109,6 +109,13 @@ Calculates best card for a category considering:
 3. `RecommendationEngine` evaluates all user cards
 4. Results sorted by estimated reward value
 
+## Public repository: keep internal notes local
+
+This repository is public. Do not commit internal decision records, research, review
+ledgers, competitor analysis, implementation logs or planning/spec notes. Keep them in
+the local checkout under `docs/research/`, `docs/implementation/` or `docs/superpowers/`
+(all git-ignored) or outside the repository. Put durable rules here instead.
+
 ## CI / Release
 
 - **`.github/workflows/ci.yml`** — builds and runs tests + SwiftLint on every PR and on
