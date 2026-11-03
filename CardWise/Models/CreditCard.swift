@@ -188,6 +188,10 @@ struct UserCard: Identifiable, Codable, Equatable {
     var signUpBonusStartDate: Date?   // When user started tracking sign-up bonus
     var signUpBonusAchieved: Bool     // Whether bonus has been achieved
     var activatedRotatingQuarters: [String]?  // quarter keys ("2026-Q3") the user has activated; optional for pre-feature decoding
+    var isPinned: Bool?
+    var merchantOffers: [MerchantOffer]?
+    /// Actual fee totals entered by the user, keyed by calendar year; absent means unknown.
+    var annualFeesPaid: [String: Double]?
     let addedDate: Date
 
     init(card: CreditCard, nickname: String? = nil, creditLimit: Double? = nil, trackSignUpBonus: Bool = false) {

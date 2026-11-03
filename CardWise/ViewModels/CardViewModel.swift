@@ -19,6 +19,43 @@ class CardViewModel: ObservableObject {
         allCards = CardCatalog.loadCards()
     }
 
+    var sortedUserCards: [UserCard] {
+        userCards.enumerated().sorted {
+            if ($0.element.isPinned == true) != ($1.element.isPinned == true) { return $0.element.isPinned == true }
+            return $0.offset < $1.offset
+        }.map { $0.element }
+    }
+
+    func togglePin(for userCard: UserCard) {
+        guard let index = userCards.firstIndex(where: { $0.id == userCard.id }) else { return }
+        userCards[index].isPinned = !(userCards[index].isPinned ?? false)
+        saveUserCards()
+    }
+
+    func saveOffer(_ offer: MerchantOffer, for userCard: UserCard) {
+        guard offer.isValid, let index = userCards.firstIndex(where: { $0.id == userCard.id }) else { return }
+        var offers = userCards[index].merchantOffers ?? []
+        if let offerIndex = offers.firstIndex(where: { $0.id == offer.id }) { offers[offerIndex] = offer } else { offers.append(offer) }
+        userCards[index].merchantOffers = offers
+        saveUserCards()
+    }
+
+    func setOfferArchived(_ archived: Bool, offer: MerchantOffer, for userCard: UserCard) {
+        guard let index = userCards.firstIndex(where: { $0.id == userCard.id }),
+              let offerIndex = userCards[index].merchantOffers?.firstIndex(where: { $0.id == offer.id }) else { return }
+        userCards[index].merchantOffers?[offerIndex].isArchived = archived
+        saveUserCards()
+    }
+
+    func recordAnnualFee(_ amount: Double?, year: Int, for userCard: UserCard) {
+        guard amount == nil || (amount?.isFinite == true && (amount ?? -1) >= 0),
+              let index = userCards.firstIndex(where: { $0.id == userCard.id }) else { return }
+        var fees = userCards[index].annualFeesPaid ?? [:]
+        fees[String(year)] = amount
+        userCards[index].annualFeesPaid = fees
+        saveUserCards()
+    }
+
     // MARK: - Card Database (bundled)
 
     func reloadCatalog() {

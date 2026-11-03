@@ -70,6 +70,7 @@ struct CardWiseApp: App {
 
     init() {
         AppAppearance.apply()
+        CardWiseShortcuts.updateAppShortcutParameters()
         let store = CloudStore(context: AppContainer.shared.mainContext)
         store.migrateFromKeychainIfNeeded()
         _cardViewModel = StateObject(wrappedValue: CardViewModel(store: store))
@@ -88,6 +89,7 @@ struct CardWiseApp: App {
                         }
                     }
                     .onChange(of: cardViewModel.userCards) { _, _ in updateWidgetData() }
+                    .onChange(of: cardViewModel.creditUsages) { _, _ in refreshBenefitReminders() }
                     .onChange(of: cardViewModel.allCards) { _, _ in updateWidgetData() }
                     .onChange(of: spendingViewModel.spendings) { _, _ in updateWidgetData() }
                     .onChange(of: preferences.settings) { _, _ in updateWidgetData() }
@@ -147,7 +149,15 @@ struct CardWiseApp: App {
         }
     }
 
+    private func refreshBenefitReminders() {
+        BenefitReminderScheduler.shared.refresh(userCards: cardViewModel.userCards,
+                                                catalog: cardViewModel.allCards, usages: cardViewModel.creditUsages)
+    }
+
     private func updateWidgetData() {
+        refreshBenefitReminders()
+        NotificationService.shared.refreshRotatingReminders(hasRotatingCards: cardViewModel.hasRotatingCards)
+
         WidgetDataManager.shared.updateWidgetData(
             cardViewModel: cardViewModel,
             spendingViewModel: spendingViewModel

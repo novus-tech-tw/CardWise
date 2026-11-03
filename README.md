@@ -43,6 +43,11 @@ An iOS app that recommends the best credit card for every purchase. Supports 60+
 | Receipt Scanning | OCR-powered expense logging |
 | Bonus Tracker | Never miss sign-up bonus deadlines |
 | Home Widget | Quick access without opening app |
+| Benefit Reminders | Optional alerts before unused statement credits reset |
+| Siri & Shortcuts | Find a card by merchant or category and purchase amount |
+| Favorites & Pins | Save frequent purchases and pin wallet cards |
+| Merchant Offers | Track issuer offers and received savings manually |
+| Annual Card Value | Compare recorded rewards and credit usage against fees you enter |
 | Private by Design | Your data stays on-device and syncs via your own iCloud |
 
 ---

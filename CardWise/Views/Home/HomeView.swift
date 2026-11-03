@@ -44,6 +44,17 @@ struct HomeView: View {
                         showingQuickRecommend = true
                     }
 
+                    HStack {
+                        NavigationLink { AnnualValueView() } label: {
+                            Label("Annual Value", systemImage: "chart.bar.doc.horizontal")
+                        }
+                        Spacer()
+                        NavigationLink { WalletOffersView() } label: {
+                            Label("Offers", systemImage: "tag")
+                        }
+                    }
+                    .font(.subheadline).padding().sectionCard()
+
                     // Credit Utilization Overview
                     if hasAnyUtilizationData {
                         CreditUtilizationCard(isExpanded: $utilizationExpanded)

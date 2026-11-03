@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct RecommendView: View {
+    @ObservedObject private var quickAccess = QuickAccessStore.shared
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
     @State private var includeConditionalRewards = false
     @EnvironmentObject var cardViewModel: CardViewModel
@@ -50,6 +51,25 @@ struct RecommendView: View {
             VStack(spacing: 0) {
                 // Input Section
                 VStack(spacing: 12) {
+                    if !quickAccess.favorites.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(quickAccess.favorites) { favorite in
+                                    Button {
+                                        searchText = favorite.merchant
+                                        selectedCategory = favorite.category
+                                        overriddenCategory = favorite.category
+                                        showingSuggestions = false
+                                        isSearchFocused = false
+                                    } label: {
+                                        Label(favorite.title, systemImage: favorite.category.icon)
+                                            .font(.caption).padding(10).background(Theme.accentSoft())
+                                            .clipShape(Capsule())
+                                    }.accessibilityLabel("Recommend for \(favorite.title)")
+                                }
+                            }
+                        }
+                    }
                     // Merchant search with autocomplete
                     VStack(alignment: .leading, spacing: 0) {
                         AppSearchField(
@@ -309,6 +329,7 @@ struct RecommendView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
+                        MatchingMerchantOffers(merchant: searchText, amount: Double(amount) ?? 0)
                         PurchaseConditionsToggle(isOn: $includeConditionalRewards)
                         Text(preferences.settings.ranking.explanation)
                             .font(.caption)
@@ -329,6 +350,17 @@ struct RecommendView: View {
             }
             .screenBackground()
             .navigationTitle("Recommend")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    let favorite = FavoritePurchase(merchant: searchText.trimmingCharacters(in: .whitespacesAndNewlines), category: effectiveCategory)
+                    Button { quickAccess.toggle(favorite) } label: {
+                        Image(systemName: quickAccess.contains(favorite) ? "star.fill" : "star")
+                    }
+                    .accessibilityLabel(quickAccess.contains(favorite) ? "Remove \(favorite.title) from favorites" : "Favorite \(favorite.title)")
+                    NavigationLink { FavoritesView() } label: { Image(systemName: "list.star") }
+                        .accessibilityLabel("Manage favorites")
+                }
+            }
             .sheet(isPresented: $showCategoryPicker) {
                 CategoryPickerView(selectedCategory: Binding(
                     get: { effectiveCategory },
