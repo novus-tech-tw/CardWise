@@ -6,7 +6,7 @@ struct ShortcutsHelpView: View {
         List {
             Section("Find Your Best Card") {
                 Text("In Shortcuts, add a CardWise action: Best Card for a Merchant or Best Card for a Category. Choose a purchase amount to get an estimated reward.")
-                Text("You can also say: “Find my best card with CardWise” or “Compare my cards with CardWise.” Siri asks for the merchant or category and amount.")
+                Text("You can also say: “Find my best card with CardWise” or “Compare my cards with CardWise.” Siri asks for the merchant or category. The amount defaults to $100; set a different amount in Shortcuts.")
                 ShortcutsLink()
             }
             Section("Your Saved Preferences") {
