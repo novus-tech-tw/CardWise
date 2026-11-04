@@ -1,7 +1,17 @@
+import AppIntents
 import XCTest
 @testable import CardWise
 
 final class ShortcutRecommendationTests: XCTestCase {
+    func testIntentCategoryNamesAvoidRejectedBrandAndPreserveStoredIdentity() {
+        XCTAssertEqual(SpendingCategory.apple.rawValue, "apple")
+        XCTAssertEqual(SpendingCategory.apple.displayName, "Apple")
+        XCTAssertEqual(SpendingCategory.caseDisplayRepresentations.count, SpendingCategory.allCases.count)
+        for representation in SpendingCategory.caseDisplayRepresentations.values {
+            XCTAssertFalse(String(localized: representation.title).localizedCaseInsensitiveContains("apple"))
+        }
+    }
+
     private func card(id: String, base: Double, points: Bool = false, fixed: [CategoryReward] = []) -> CreditCard {
         CreditCard(id: id, name: id, issuer: "Test", network: .visa, annualFee: 0,
                    rewardType: points ? .points : .cashback, baseReward: base, baseIsPercentage: !points,
