@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 struct SettingsView: View {
     @EnvironmentObject var cardViewModel: CardViewModel
@@ -6,6 +7,9 @@ struct SettingsView: View {
     @AppStorage("notificationsEnabled") private var notificationsEnabled = true
     @AppStorage("rotatingReminders") private var rotatingReminders = true
     @AppStorage("spendingCapAlerts") private var spendingCapAlerts = true
+    @AppStorage("benefitReminders") private var benefitReminders = false
+    @Environment(\.openURL) private var openURL
+    @State private var notificationStatus: UNAuthorizationStatus = .notDetermined
     @State private var showingPrivacyPolicy = false
     @State private var showingTermsOfService = false
     @State private var showingClearDataAlert = false
@@ -52,6 +56,11 @@ struct SettingsView: View {
 
                 Section("Recommendations") {
                     NavigationLink("Ranking, Point Values & Widgets") { RecommendationSettingsView() }
+                    NavigationLink("Saved Merchant Categories") { SavedMerchantCategoriesView() }
+                    NavigationLink("Favorites") { FavoritesView() }
+                    NavigationLink("Annual Card Value") { AnnualValueView() }
+                    NavigationLink("Merchant Offers") { WalletOffersView() }
+                    NavigationLink("Siri & Shortcuts") { ShortcutsHelpView() }
                 }
 
                 // MARK: Notifications
@@ -60,11 +69,12 @@ struct SettingsView: View {
                         .foregroundStyle(Theme.textPrimary)
                         .onChange(of: notificationsEnabled) { _, newValue in
                             if newValue {
-                                NotificationService.shared.requestAuthorization { _ in }
+                                NotificationService.shared.requestAuthorization { _ in refreshBenefitReminders() }
                             }
                             NotificationService.shared.refreshRotatingReminders(
                                 hasRotatingCards: cardViewModel.hasRotatingCards
                             )
+                            refreshBenefitReminders()
                         }
 
                     Toggle("Rotating Category Reminders", isOn: $rotatingReminders)
@@ -75,6 +85,24 @@ struct SettingsView: View {
                                 hasRotatingCards: cardViewModel.hasRotatingCards
                             )
                         }
+
+                    Toggle("Benefit Expiry Reminders", isOn: $benefitReminders)
+                        .disabled(!notificationsEnabled)
+                        .onChange(of: benefitReminders) { _, enabled in
+                            refreshBenefitReminders()
+                            if enabled { NotificationService.shared.requestAuthorization { _ in refreshBenefitReminders() } }
+                        }
+                    Text("Reminders 7, 3 and 1 days before unused credits reset. Open CardWise regularly to refresh amounts and upcoming reminders.")
+                        .font(.caption)
+                        .foregroundStyle(Theme.textSecondary)
+
+                    if notificationsEnabled && notificationStatus == .denied {
+                        Button("Enable notifications in iOS Settings") {
+                            if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                        }
+                        Text("Notifications are blocked by iOS. Allow them in Settings to receive reminders.")
+                            .font(.caption).foregroundStyle(Theme.textSecondary)
+                    }
 
                     Toggle("Spending Cap Alerts", isOn: $spendingCapAlerts)
                         .foregroundStyle(Theme.textPrimary)
@@ -189,6 +217,7 @@ struct SettingsView: View {
             .background(Theme.bg)
             .tint(Theme.accent)
             .navigationTitle("Settings")
+            .task { notificationStatus = await NotificationService.shared.checkPermission() }
             .sheet(isPresented: $showingPrivacyPolicy) {
                 PrivacyPolicyView()
             }
@@ -206,11 +235,21 @@ struct SettingsView: View {
                     cardViewModel.clearAllData()
                     spendingViewModel.clearAllData()
                     RecommendationSettingsStore.shared.reset()
+                    QuickAccessStore.shared.reset()
+                    MerchantPreferencesStore.shared.reset()
+                    RecentPurchaseStore.shared.reset()
+                    NotificationService.shared.clearAllNotifications()
                 }
             } message: {
                 Text("This will delete all your cards, spending records, and preferences. This action cannot be undone.")
             }
         }
+    }
+
+    private func refreshBenefitReminders() {
+        Task { notificationStatus = await NotificationService.shared.checkPermission() }
+        BenefitReminderScheduler.shared.refresh(userCards: cardViewModel.userCards,
+                                                catalog: cardViewModel.allCards, usages: cardViewModel.creditUsages)
     }
 
     // MARK: - Row helper: icon in accentSoft tile + label

@@ -28,12 +28,11 @@ struct CardListView: View {
                 } else {
                     ScrollView {
                         VStack(spacing: 12) {
-                            ForEach(cardViewModel.userCards) { userCard in
+                            ForEach(cardViewModel.sortedUserCards) { userCard in
                                 if let card = cardViewModel.getCard(for: userCard) {
-                                    CardRow(userCard: userCard, card: card)
-                                        .onTapGesture {
-                                            selectedCard = userCard
-                                        }
+                                    CardRow(userCard: userCard, card: card,
+                                            openCard: { selectedCard = userCard },
+                                            togglePin: { cardViewModel.togglePin(for: userCard) })
                                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                             Button(role: .destructive) {
                                                 if let index = cardViewModel.userCards.firstIndex(where: { $0.id == userCard.id }) {
@@ -87,74 +86,87 @@ struct CardListView: View {
 struct CardRow: View {
     let userCard: UserCard
     let card: CreditCard
+    let openCard: () -> Void
+    let togglePin: () -> Void
 
     var body: some View {
-        HStack(spacing: 16) {
-            // Card visual
-            CardImageView(
-                imageURL: card.imageURL,
-                fallbackColor: card.imageColor,
-                width: 60,
-                height: 40,
-                cornerRadius: 8
-            )
+        HStack(spacing: 8) {
+            Button(action: openCard) {
+                HStack(spacing: 12) {
+                    // Card visual
+                    CardImageView(
+                        imageURL: card.imageURL,
+                        fallbackColor: card.imageColor,
+                        width: 60,
+                        height: 40,
+                        cornerRadius: 8
+                    )
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(userCard.nickname ?? card.name)
-                    .font(.app(.headline, weight: .semibold))
-                    .foregroundStyle(Theme.textPrimary)
-                Text(card.issuer)
-                    .font(.app(.caption))
-                    .foregroundStyle(Theme.textSecondary)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(userCard.nickname ?? card.name)
+                            .font(.app(.headline, weight: .semibold))
+                            .foregroundStyle(Theme.textPrimary)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2)
+                        Text(card.issuer)
+                            .font(.app(.caption))
+                            .foregroundStyle(Theme.textSecondary)
 
-                // Show key benefits
-                HStack(spacing: 6) {
-                    if !card.categoryRewards.isEmpty {
-                        let topReward = card.categoryRewards.max(by: { $0.multiplier < $1.multiplier })
-                        if let reward = topReward {
-                            HStack(spacing: 4) {
-                                Text(reward.displayMultiplier)
-                                    .font(.app(.caption2))
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(Theme.success)
-                                Text(reward.category.displayName)
-                                    .font(.app(.caption2))
-                                    .foregroundStyle(Theme.success)
+                        // Show key benefits
+                        HStack(spacing: 6) {
+                            if !card.categoryRewards.isEmpty {
+                                let topReward = card.categoryRewards.max(by: { $0.multiplier < $1.multiplier })
+                                if let reward = topReward {
+                                    HStack(spacing: 4) {
+                                        Text(reward.displayMultiplier)
+                                            .font(.app(.caption2))
+                                            .fontWeight(.semibold)
+                                            .foregroundStyle(Theme.success)
+                                        Text(reward.category.displayName)
+                                            .font(.app(.caption2))
+                                            .foregroundStyle(Theme.success)
+                                    }
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(Theme.success.opacity(0.12))
+                                    .clipShape(Capsule())
+                                }
                             }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .background(Theme.success.opacity(0.12))
-                            .clipShape(Capsule())
+
+                            if card.rotatingCategories != nil {
+                                Text("Rotating")
+                                    .font(.app(.caption2))
+                                    .foregroundStyle(Theme.warning)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(Theme.warning.opacity(0.12))
+                                    .clipShape(Capsule())
+                            }
+
+                            if card.selectableConfig != nil {
+                                Text("Selectable")
+                                    .font(.app(.caption2))
+                                    .foregroundStyle(Theme.accent)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(Theme.accentSoft())
+                                    .clipShape(Capsule())
+                            }
                         }
                     }
 
-                    if card.rotatingCategories != nil {
-                        Text("Rotating")
-                            .font(.app(.caption2))
-                            .foregroundStyle(Theme.warning)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .background(Theme.warning.opacity(0.12))
-                            .clipShape(Capsule())
-                    }
+                    Spacer()
 
-                    if card.selectableConfig != nil {
-                        Text("Selectable")
-                            .font(.app(.caption2))
-                            .foregroundStyle(Theme.accent)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .background(Theme.accentSoft())
-                            .clipShape(Capsule())
-                    }
                 }
+                .contentShape(Rectangle())
+            }.buttonStyle(.plain)
+            Button(action: togglePin) {
+                Image(systemName: userCard.isPinned == true ? "pin.fill" : "pin")
+                    .foregroundStyle(Theme.accent)
+                    .frame(width: 44, height: 44)
             }
-
-            Spacer()
-
-            Image(systemName: "chevron.right")
-                .foregroundStyle(Theme.textSecondary)
-                .font(.app(.caption))
+            .accessibilityLabel(userCard.isPinned == true ? "Unpin \(card.name)" : "Pin \(card.name)")
+            .accessibilityAddTraits(userCard.isPinned == true ? [.isSelected] : [])
         }
         .padding(.vertical, 8)
         .sectionCard()
@@ -423,13 +435,21 @@ struct CardDetailView: View {
                             if card.credits?.isEmpty == false {
                                 let net = card.netAnnualFee
                                 let netText = net < 0
-                                    ? "credits exceed fee by $\(Int(-net))/yr"
-                                    : "$\(Int(net)) net/yr"
+                                    ? "potential credits exceed fee by $\(Int(-net))/yr"
+                                    : "$\(Int(net))/yr after potential credits"
                                 Text("−$\(Int(card.annualizedCreditTotal)) credits · \(netText)")
                                     .font(.app(.caption))
                                     .foregroundStyle(Theme.textSecondary)
                             }
                         }
+                    }
+                }
+
+                Section {
+                    NavigationLink("Merchant Offers") { MerchantOffersView(userCard: userCard) }
+                    NavigationLink("Annual Card Value") { AnnualValueView() }
+                    Button((cardViewModel.userCards.first { $0.id == userCard.id }?.isPinned == true) ? "Unpin card" : "Pin card") {
+                        cardViewModel.togglePin(for: userCard)
                     }
                 }
 

@@ -64,12 +64,16 @@ struct CardWiseApp: App {
     @Environment(\.openURL) private var openURL
 
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
+    @ObservedObject private var recentPurchase = RecentPurchaseStore.shared
+    @ObservedObject private var quickAccess = QuickAccessStore.shared
 
     @StateObject private var updateChecker = AppUpdateChecker()
     @State private var whatsNewNotes: [ReleaseNote] = []
 
     init() {
         AppAppearance.apply()
+        CardWiseShortcuts.updateAppShortcutParameters()
         let store = CloudStore(context: AppContainer.shared.mainContext)
         store.migrateFromKeychainIfNeeded()
         _cardViewModel = StateObject(wrappedValue: CardViewModel(store: store))
@@ -88,8 +92,12 @@ struct CardWiseApp: App {
                         }
                     }
                     .onChange(of: cardViewModel.userCards) { _, _ in updateWidgetData() }
+                    .onChange(of: cardViewModel.creditUsages) { _, _ in refreshBenefitReminders() }
                     .onChange(of: cardViewModel.allCards) { _, _ in updateWidgetData() }
                     .onChange(of: spendingViewModel.spendings) { _, _ in updateWidgetData() }
+                    .onChange(of: merchantPreferences.categories) { _, _ in updateWidgetData() }
+                    .onChange(of: recentPurchase.purchase) { _, _ in updateWidgetData() }
+                    .onChange(of: quickAccess.favorites) { _, _ in updateWidgetData() }
                     .onChange(of: preferences.settings) { _, _ in updateWidgetData() }
                     .onAppear {
                         updateWidgetData()
@@ -147,7 +155,15 @@ struct CardWiseApp: App {
         }
     }
 
+    private func refreshBenefitReminders() {
+        BenefitReminderScheduler.shared.refresh(userCards: cardViewModel.userCards,
+                                                catalog: cardViewModel.allCards, usages: cardViewModel.creditUsages)
+    }
+
     private func updateWidgetData() {
+        refreshBenefitReminders()
+        NotificationService.shared.refreshRotatingReminders(hasRotatingCards: cardViewModel.hasRotatingCards)
+
         WidgetDataManager.shared.updateWidgetData(
             cardViewModel: cardViewModel,
             spendingViewModel: spendingViewModel

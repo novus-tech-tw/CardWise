@@ -16,7 +16,8 @@ struct ScanReceiptView: View {
     // Editable fields (pre-filled from OCR)
     @State private var merchant = ""
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
-    @State private var includeConditionalRewards = false
+    @State private var conditions = PurchaseConditions()
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
     @State private var amount = ""
     @State private var selectedCategory: SpendingCategory = .other
     @State private var selectedCardId: String?
@@ -144,8 +145,8 @@ struct ScanReceiptView: View {
                                 .font(.app(.body))
                                 .tint(Theme.accent)
 
-                            PurchaseConditionsToggle(isOn: $includeConditionalRewards)
-                                .onChange(of: includeConditionalRewards) { _, _ in updateRecommendedCard() }
+                            PurchaseConditionsView(category: selectedCategory, conditions: $conditions)
+                                .onChange(of: conditions) { _, _ in updateRecommendedCard() }
 
                             // Card selection
                             VStack(alignment: .leading, spacing: 8) {
@@ -267,7 +268,7 @@ struct ScanReceiptView: View {
             if let m = data.merchant {
                 merchant = m
                 // Auto-detect category
-                if let detectedCategory = MerchantDatabase.suggestCategory(for: m) {
+                if let detectedCategory = merchantPreferences.category(for: m) {
                     selectedCategory = detectedCategory
                 }
             }
@@ -297,7 +298,7 @@ struct ScanReceiptView: View {
             spendings: spendingViewModel.spendings,
             settings: preferences.settings,
             asOf: date,
-            includeConditionalRewards: includeConditionalRewards
+            purchaseConditions: conditions
         )
 
         if let best = recommendations.first {
@@ -318,7 +319,7 @@ struct ScanReceiptView: View {
             note: "Scanned from receipt",
             cardViewModel: cardViewModel,
             notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts(),
-            includeConditionalRewards: includeConditionalRewards
+            purchaseConditions: conditions
         )
 
         dismiss()

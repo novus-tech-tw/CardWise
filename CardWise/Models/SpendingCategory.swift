@@ -1,6 +1,6 @@
 import Foundation
 
-enum SpendingCategory: String, CaseIterable, Codable, Identifiable {
+enum SpendingCategory: String, CaseIterable, Codable, Identifiable, Sendable {
     case dining
     case grocery
     case gas

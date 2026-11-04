@@ -1,8 +1,13 @@
 import SwiftUI
 
 struct RecommendView: View {
+    var initialPurchase: PurchaseContext?
+    @State private var appliedInitialPurchase = false
+    @ObservedObject private var quickAccess = QuickAccessStore.shared
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
-    @State private var includeConditionalRewards = false
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
+    @State private var conditions = PurchaseConditions()
+    @State private var overrideMerchant = ""
     @EnvironmentObject var cardViewModel: CardViewModel
     @EnvironmentObject var spendingViewModel: SpendingViewModel
     @State private var searchText = ""
@@ -20,8 +25,8 @@ struct RecommendView: View {
     }
 
     var detectedCategory: SpendingCategory? {
-        if let overriddenCategory { return overriddenCategory }
-        return MerchantDatabase.suggestCategory(for: searchText)
+        if overrideMerchant == MerchantOffer.merchantKey(searchText), let overriddenCategory { return overriddenCategory }
+        return merchantPreferences.category(for: searchText)
     }
 
     var effectiveCategory: SpendingCategory {
@@ -29,7 +34,7 @@ struct RecommendView: View {
     }
 
     var recommendations: [CardRecommendation] {
-        let amountValue = Double(amount) ?? 100
+        let amountValue = Double(amount) ?? 0
         return RecommendationEngine.shared.getRecommendations(
             for: effectiveCategory,
             amount: amountValue,
@@ -37,7 +42,7 @@ struct RecommendView: View {
             allCards: cardViewModel.allCards,
             spendings: spendingViewModel.spendings,
             settings: preferences.settings,
-            includeConditionalRewards: includeConditionalRewards
+            purchaseConditions: conditions
         )
     }
 
@@ -50,6 +55,26 @@ struct RecommendView: View {
             VStack(spacing: 0) {
                 // Input Section
                 VStack(spacing: 12) {
+                    if !quickAccess.favorites.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(quickAccess.favorites) { favorite in
+                                    Button {
+                                        searchText = favorite.merchant
+                                        selectedCategory = favorite.category
+                                        overriddenCategory = merchantPreferences.savedCategory(for: favorite.merchant) ?? favorite.category
+                                        overrideMerchant = MerchantOffer.merchantKey(favorite.merchant)
+                                        showingSuggestions = false
+                                        isSearchFocused = false
+                                    } label: {
+                                        Label(favorite.title, systemImage: favorite.category.icon)
+                                            .font(.caption).padding(10).background(Theme.accentSoft())
+                                            .clipShape(Capsule())
+                                    }.accessibilityLabel("Recommend for \(favorite.title)")
+                                }
+                            }
+                        }
+                    }
                     // Merchant search with autocomplete
                     VStack(alignment: .leading, spacing: 0) {
                         AppSearchField(
@@ -58,7 +83,7 @@ struct RecommendView: View {
                             focused: $isSearchFocused
                         )
                         .onChange(of: searchText) { _, newValue in
-                            overriddenCategory = nil
+                            conditions = PurchaseConditions()
                             showingSuggestions = !newValue.isEmpty && isSearchFocused
                             showingHistory = newValue.isEmpty && isSearchFocused
                         }
@@ -132,6 +157,7 @@ struct RecommendView: View {
                                     Button {
                                         selectedCategory = detected
                                         overriddenCategory = detected
+                                        overrideMerchant = MerchantOffer.merchantKey(searchText)
                                         showingSuggestions = false
                                         isSearchFocused = false
                                         SearchHistoryManager.shared.addSearch(searchText, category: detected)
@@ -170,7 +196,8 @@ struct RecommendView: View {
                                 ForEach(matchingMerchants.prefix(5)) { merchant in
                                     Button {
                                         searchText = merchant.name
-                                        overriddenCategory = merchant.category
+                                        overriddenCategory = merchantPreferences.savedCategory(for: merchant.name) ?? merchant.category
+                                        overrideMerchant = MerchantOffer.merchantKey(merchant.name)
                                         showingSuggestions = false
                                         isSearchFocused = false
                                         SearchHistoryManager.shared.addSearch(merchant.name, category: merchant.category)
@@ -233,7 +260,7 @@ struct RecommendView: View {
                                     }
                                 }
 
-                                Text(detectedCategory != nil ? "Auto-detected category" : "Tap to change category")
+                                Text(categorySource)
                                     .font(.app(.caption2))
                                     .foregroundStyle(Theme.textSecondary)
                                     .lineLimit(1)
@@ -259,6 +286,11 @@ struct RecommendView: View {
                         )
                     }
                     .buttonStyle(.plain)
+
+                    if merchantPreferences.savedCategory(for: searchText) != nil ||
+                        (overriddenCategory != nil && overrideMerchant == MerchantOffer.merchantKey(searchText)) {
+                        MerchantCategoryPreferenceView(merchant: searchText, category: effectiveCategory)
+                    }
 
                     // Amount input
                     HStack {
@@ -304,12 +336,17 @@ struct RecommendView: View {
                     AppEmptyState(
                         icon: "questionmark.circle",
                         title: "No Recommendations",
-                        message: "No cards match this category"
+                        message: "Enter a purchase amount greater than zero to compare your cards"
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
-                        PurchaseConditionsToggle(isOn: $includeConditionalRewards)
+                        PurchaseConditionsView(category: effectiveCategory, conditions: $conditions)
+                        PurchaseComparisonView(recommendations: recommendations, merchant: searchText, amount: Double(amount) ?? 0)
+                        Button("Use this purchase in widgets") {
+                            saveRecentPurchase()
+                            preferences.settings.widgetSource = .recent
+                        }
                         Text(preferences.settings.ranking.explanation)
                             .font(.caption)
                             .foregroundStyle(Theme.textSecondary)
@@ -329,21 +366,64 @@ struct RecommendView: View {
             }
             .screenBackground()
             .navigationTitle("Recommend")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    let favorite = FavoritePurchase(merchant: searchText.trimmingCharacters(in: .whitespacesAndNewlines), category: effectiveCategory)
+                    Button { quickAccess.toggle(favorite) } label: {
+                        Image(systemName: quickAccess.contains(favorite) ? "star.fill" : "star")
+                    }
+                    .accessibilityLabel(quickAccess.contains(favorite) ? "Remove \(favorite.title) from favorites" : "Favorite \(favorite.title)")
+                    NavigationLink { FavoritesView() } label: { Image(systemName: "list.star") }
+                        .accessibilityLabel("Manage favorites")
+                }
+            }
             .sheet(isPresented: $showCategoryPicker) {
                 CategoryPickerView(selectedCategory: Binding(
                     get: { effectiveCategory },
                     set: { newCategory in
                         selectedCategory = newCategory
                         overriddenCategory = newCategory
+                        overrideMerchant = MerchantOffer.merchantKey(searchText)
                     }
                 ))
             }
+            .onAppear {
+                guard !appliedInitialPurchase, let initialPurchase else { return }
+                appliedInitialPurchase = true
+                searchText = initialPurchase.merchant
+                selectedCategory = initialPurchase.category
+                overriddenCategory = initialPurchase.category
+                overrideMerchant = MerchantOffer.merchantKey(initialPurchase.merchant)
+                amount = String(initialPurchase.amount)
+            }
+            .onChange(of: purchase) { _, _ in
+                if !isSearchFocused && !isAmountFocused { saveRecentPurchase() }
+            }
+            .onChange(of: isSearchFocused) { _, focused in if !focused { saveRecentPurchase() } }
+            .onChange(of: isAmountFocused) { _, focused in if !focused { saveRecentPurchase() } }
+            .onDisappear { saveRecentPurchase() }
             .onTapGesture {
                 // Dismiss keyboard and suggestions when tapping outside
                 isSearchFocused = false
                 showingSuggestions = false
             }
         }
+    }
+
+    private var categorySource: String {
+        if overrideMerchant == MerchantOffer.merchantKey(searchText), overriddenCategory != nil { return "Chosen category" }
+        if merchantPreferences.savedCategory(for: searchText) != nil { return "Saved category" }
+        return detectedCategory != nil ? "Suggested category" : "Tap to change category"
+    }
+
+    private var purchase: PurchaseContext {
+        PurchaseContext(merchant: searchText.trimmingCharacters(in: .whitespacesAndNewlines), category: effectiveCategory,
+                        amount: Double(amount) ?? 0, conditions: conditions)
+    }
+
+    private func saveRecentPurchase() {
+        guard !recommendations.isEmpty else { return }
+        RecentPurchaseStore.shared.save(purchase)
     }
 }
 

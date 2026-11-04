@@ -192,21 +192,23 @@ struct AddSpendingView: View {
     @EnvironmentObject var spendingViewModel: SpendingViewModel
 
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
-    @State private var includeConditionalRewards = false
+    @State private var conditions = PurchaseConditions()
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
     @State private var amount = ""
     @State private var merchant = ""
     @State private var selectedCategory: SpendingCategory = .other
+    @State private var hasChosenCategory = false
     @State private var selectedCardId: String?
     @State private var date = Date()
     @State private var note = ""
     @State private var showCategoryPicker = false
 
     var detectedCategory: SpendingCategory? {
-        MerchantDatabase.suggestCategory(for: merchant)
+        merchantPreferences.category(for: merchant)
     }
 
     var effectiveCategory: SpendingCategory {
-        detectedCategory ?? selectedCategory
+        hasChosenCategory ? selectedCategory : (detectedCategory ?? selectedCategory)
     }
 
     var recommendations: [CardRecommendation] {
@@ -219,14 +221,14 @@ struct AddSpendingView: View {
             spendings: spendingViewModel.spendings,
             settings: preferences.settings,
             asOf: date,
-            includeConditionalRewards: includeConditionalRewards
+            purchaseConditions: conditions
         )
     }
 
     var body: some View {
         NavigationStack {
             Form {
-                Section { PurchaseConditionsToggle(isOn: $includeConditionalRewards) }
+                Section { PurchaseConditionsView(category: effectiveCategory, conditions: $conditions) }
                 Section("Transaction") {
                     HStack {
                         Text("$")
@@ -317,7 +319,7 @@ struct AddSpendingView: View {
                             note: note.isEmpty ? nil : note,
                             cardViewModel: cardViewModel,
                             notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts(),
-                            includeConditionalRewards: includeConditionalRewards
+                            purchaseConditions: conditions
                         )
                         dismiss()
                     }
@@ -333,7 +335,10 @@ struct AddSpendingView: View {
                 }
             }
             .sheet(isPresented: $showCategoryPicker) {
-                CategoryPickerView(selectedCategory: $selectedCategory)
+                CategoryPickerView(selectedCategory: Binding(
+                    get: { effectiveCategory },
+                    set: { selectedCategory = $0; hasChosenCategory = true }
+                ))
             }
             .onAppear {
                 // Auto-select the best card
@@ -342,6 +347,8 @@ struct AddSpendingView: View {
                 }
             }
             .onChange(of: merchant) { _, _ in
+                conditions = PurchaseConditions()
+                hasChosenCategory = false
                 // Update card selection when merchant changes
                 if let best = recommendations.first {
                     selectedCardId = best.card.id

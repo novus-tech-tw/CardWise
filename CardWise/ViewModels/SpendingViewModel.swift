@@ -50,7 +50,8 @@ class SpendingViewModel: ObservableObject {
         cardViewModel: CardViewModel,
         notifyCapAlerts: Bool = false,
         settings: RecommendationSettings? = nil,
-        includeConditionalRewards: Bool = false
+        includeConditionalRewards: Bool = false,
+        purchaseConditions: PurchaseConditions? = nil
     ) throws {
         // Calculate reward earned
         guard let userCard = cardViewModel.getUserCard(byCardId: cardUsed),
@@ -64,7 +65,7 @@ class SpendingViewModel: ObservableObject {
         rewardSettings.ranking = .purchaseReward
         let recommendations = RecommendationEngine.shared.getRecommendations(
             for: category, amount: amount, userCards: cardViewModel.userCards,
-            allCards: cardViewModel.allCards, spendings: spendings, settings: rewardSettings, asOf: date, includeConditionalRewards: includeConditionalRewards
+            allCards: cardViewModel.allCards, spendings: spendings, settings: rewardSettings, asOf: date, includeConditionalRewards: includeConditionalRewards, purchaseConditions: purchaseConditions
         )
         let rewardEarned = recommendations.first { $0.userCard.id == userCard.id }?.estimatedReward ?? 0
         let optimalCard = recommendations.first

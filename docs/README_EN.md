@@ -32,7 +32,22 @@ An iOS app that helps you choose the best credit card for every purchase, so you
 | **Receipt Scanning** | OCR-powered receipt scanning for quick expense logging |
 | **Sign-Up Bonus Tracker** | Never miss a sign-up bonus deadline |
 | **Home Screen Widget** | Quick access to recommendations without opening the app |
+| **Benefit Expiry Reminders** | Optional notifications 7, 3 and 1 days before unused credits reset |
+| **Siri & Shortcuts** | Query your saved wallet by merchant or category and purchase amount |
+| **Favorites & Pins** | Save frequent merchants/categories on this device; pin cards in your synced wallet |
+| **Manual Merchant Offers** | Record offer conditions, activation confirmation and savings received |
+| **Annual Card Value** | Separate recorded rewards and credit usage from potential catalog value; enter actual fees to calculate net value |
 | **Privacy First** | Data lives on-device and syncs via your own iCloud — no accounts, no CardWise servers (only read-only card-data and app-update checks) |
+
+### Using Rewards Tools
+
+- **Benefit reminders:** Enable **Settings → Benefit Expiry Reminders** and allow iOS notifications. Alerts use your recorded credit usage. Opening CardWise refreshes the nearest upcoming alerts; iOS controls delivery. Fully used credits and removed cards are excluded.
+- **Shortcuts:** Add **Best Card for a Merchant** or **Best Card for a Category** in Shortcuts, or use **Settings → Siri & Shortcuts**. Choose an amount. Actions require an unlocked device and use the same saved spending caps, point values and ranking preference as the app. Unknown merchants ask for another value; the category action allows an explicit choice.
+- **Favorites and pins:** Tap the star on **Recommend** to save the current merchant/category. Manage favorites with the list icon. Use the pin beside a card in **My Cards** to move it to the top of the wallet; reward ranking is unchanged.
+- **Merchant offers:** Open **Home → Offers** or a card's **Merchant Offers**. Enter the exact merchant name, reward, purchase minimum and final eligible day. Confirm activation yourself. Matching merchant searches show estimated offer savings separately from reward rankings. Record posted savings only, without duplicating rewards or statement credits already tracked elsewhere. Archive old offers to hide them from recommendations while retaining their received savings in annual history; restore them from the archived list.
+- **Annual value:** Open **Home → Annual Value**, select a calendar year and enter each card's actual fee total, including 0 for waived fees. Save the fee total to calculate net recorded value. Purchase rewards remain saved estimates; statement credit usage is assigned to its credit period. Unrecorded amounts and redemptions are not inferred.
+
+Wallet pins, manual offers and fee totals use the existing private iCloud wallet sync. Favorites and notification preferences remain device-specific. No bank connection or additional network service is required.
 
 ### Supported Cards
 
