@@ -5,11 +5,13 @@
 
 require "base64"
 require "fileutils"
+require "yaml"
 
 default_platform(:ios)
 
 APP_ID = "studio.tmj.cardwise"
 WIDGET_ID = "studio.tmj.cardwise.widget"
+ASC_APP_ID = "6776198130"
 
 platform :ios do
   desc "Build and upload a TestFlight build."
@@ -69,8 +71,12 @@ platform :ios do
       bundle_identifier: WIDGET_ID
     )
 
-    # Next build number = highest already on TestFlight + 1 (0 -> 1 for the very first build).
-    next_build = (latest_testflight_build_number(api_key: api_key, app_identifier: APP_ID) rescue 0) + 1
+    # Processing-rejected uploads can consume a number before appearing in the
+    # build list. Keep the source project's minimum as well as ASC's next number.
+    spec = YAML.safe_load(File.read(File.expand_path("../project.yml", __dir__)))
+    minimum_build = Integer(spec.fetch("targets").fetch("CardWise").fetch("settings").fetch("base").fetch("CURRENT_PROJECT_VERSION"))
+    latest_build = latest_testflight_build_number(api_key: api_key, app_identifier: APP_ID, initial_build_number: 0)
+    next_build = [latest_build + 1, minimum_build].max
 
     # Archive + export both sign manually with the profiles fetched above; no
     # -allowProvisioningUpdates, so xcodebuild never logs into the portal or mints certs.
@@ -101,6 +107,17 @@ platform :ios do
       ipa = lane_context[SharedValues::IPA_OUTPUT_PATH]
       sh("xcrun", "altool", "--upload-app", "-f", ipa, "-t", "ios",
          "--apiKey", key_id, "--apiIssuer", issuer_id)
+
+      # An upload receipt is not processing acceptance. Fail this lane if ASC
+      # rejects the binary, or if its processing result cannot be verified.
+      version = get_version_number(xcodeproj: "CardWise.xcodeproj", target: "CardWise")
+      build = FastlaneCore::BuildWatcher.wait_for_build_processing_to_be_complete(
+        app_id: ASC_APP_ID, platform: "ios", app_version: version,
+        build_version: next_build.to_s, poll_interval: 30, timeout_duration: 1200,
+        return_spaceship_testflight_build: false
+      )
+      UI.user_error!("App Store Connect rejected build #{next_build}: #{build.processing_state}") unless build.processing_state == "VALID"
+      UI.success("App Store Connect accepted #{version} (#{next_build}): VALID")
     ensure
       File.delete(key_file) if File.exist?(key_file)
     end

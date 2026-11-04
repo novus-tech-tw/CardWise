@@ -25,7 +25,7 @@ extension SpendingCategory: AppEnum {
         .advertising: "Advertising",
         .officeSupplies: "Office Supplies",
         .evCharging: "EV Charging",
-        .apple: "Apple",
+        .apple: "Devices & Services",
         .wholeFoods: "Whole Foods",
         .target: "Target",
         .walmart: "Walmart",
