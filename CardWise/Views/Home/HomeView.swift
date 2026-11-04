@@ -55,6 +55,8 @@ struct HomeView: View {
                     }
                     .font(.subheadline).padding().sectionCard()
 
+                    UpcomingActionsCard()
+
                     // Credit Utilization Overview
                     if hasAnyUtilizationData {
                         CreditUtilizationCard(isExpanded: $utilizationExpanded)
@@ -506,7 +508,11 @@ struct RecentTransactionsCard: View {
 
 struct QuickRecommendSheet: View {
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
-    @State private var includeConditionalRewards = false
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
+    @State private var conditions = PurchaseConditions()
+    @State private var chosenCategory: SpendingCategory?
+    @State private var chosenMerchant = ""
+    @State private var showCategoryPicker = false
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cardViewModel: CardViewModel
     @EnvironmentObject var spendingViewModel: SpendingViewModel
@@ -519,7 +525,8 @@ struct QuickRecommendSheet: View {
     @FocusState private var isSearchFocused: Bool
 
     var detectedCategory: SpendingCategory? {
-        MerchantDatabase.suggestCategory(for: searchText)
+        if chosenMerchant == MerchantOffer.merchantKey(searchText), let chosenCategory { return chosenCategory }
+        return merchantPreferences.category(for: searchText)
     }
 
     var effectiveCategory: SpendingCategory {
@@ -527,7 +534,7 @@ struct QuickRecommendSheet: View {
     }
 
     var recommendations: [CardRecommendation] {
-        let amountValue = Double(amount) ?? 100
+        let amountValue = Double(amount) ?? 0
         return RecommendationEngine.shared.getRecommendations(
             for: effectiveCategory,
             amount: amountValue,
@@ -535,7 +542,7 @@ struct QuickRecommendSheet: View {
             allCards: cardViewModel.allCards,
             spendings: spendingViewModel.spendings,
             settings: preferences.settings,
-            includeConditionalRewards: includeConditionalRewards
+            purchaseConditions: conditions
         )
     }
 
@@ -559,6 +566,7 @@ struct QuickRecommendSheet: View {
                             focused: $isSearchFocused
                         )
                         .onChange(of: searchText) { _, newValue in
+                            conditions = PurchaseConditions()
                             showingHistory = newValue.isEmpty && isSearchFocused
                         }
                         .onChange(of: isSearchFocused) { _, focused in
@@ -647,6 +655,13 @@ struct QuickRecommendSheet: View {
                         }
                     }
 
+                    Button("Change category") { showCategoryPicker = true }
+                        .font(.subheadline)
+                    if merchantPreferences.savedCategory(for: searchText) != nil ||
+                        (chosenCategory != nil && chosenMerchant == MerchantOffer.merchantKey(searchText)) {
+                        MerchantCategoryPreferenceView(merchant: searchText, category: effectiveCategory)
+                    }
+
                     // Detected category
                     if let category = detectedCategory {
                         HStack(spacing: 8) {
@@ -702,11 +717,12 @@ struct QuickRecommendSheet: View {
                     AppEmptyState(
                         icon: "magnifyingglass",
                         title: "No Match",
-                        message: "Try searching for a different merchant"
+                        message: "Enter a purchase amount greater than zero"
                     )
                 } else {
                     List {
-                        PurchaseConditionsToggle(isOn: $includeConditionalRewards)
+                        PurchaseConditionsView(category: effectiveCategory, conditions: $conditions)
+                        PurchaseComparisonView(recommendations: recommendations, merchant: searchText, amount: Double(amount) ?? 0)
                         Text(preferences.settings.ranking.explanation)
                             .font(.caption)
                             .foregroundStyle(Theme.textSecondary)
@@ -727,8 +743,18 @@ struct QuickRecommendSheet: View {
                     Button("Done") { dismiss() }
                 }
             }
-            .onAppear {
-                searchText = initialSearch
+            .onAppear { searchText = initialSearch }
+            .sheet(isPresented: $showCategoryPicker) {
+                CategoryPickerView(selectedCategory: Binding(
+                    get: { effectiveCategory },
+                    set: { chosenCategory = $0; chosenMerchant = MerchantOffer.merchantKey(searchText) }
+                ))
+            }
+            .onDisappear {
+                if !recommendations.isEmpty {
+                    RecentPurchaseStore.shared.save(PurchaseContext(merchant: searchText, category: effectiveCategory,
+                                                                    amount: Double(amount) ?? 0, conditions: conditions))
+                }
             }
             .alert("Add Spending", isPresented: $showingAddConfirmation) {
                 Button("Add") {
@@ -742,7 +768,7 @@ struct QuickRecommendSheet: View {
                             note: nil,
                             cardViewModel: cardViewModel,
                             notifyCapAlerts: NotificationService.shared.shouldSendSpendingCapAlerts(),
-                            includeConditionalRewards: includeConditionalRewards
+                            purchaseConditions: conditions
                         )
                         dismiss()
                     }

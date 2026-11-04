@@ -38,17 +38,3 @@ struct RecommendationContextView: View {
         }
     }
 }
-
-struct PurchaseConditionsToggle: View {
-    @Binding var isOn: Bool
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Toggle("Assume special rate terms apply", isOn: $isOn)
-                .font(.subheadline)
-            Text("Enable only when the listed booking channel or merchant conditions match this purchase. Review each card's explanation.")
-                .font(.caption2)
-                .foregroundStyle(Theme.textSecondary)
-        }
-    }
-}

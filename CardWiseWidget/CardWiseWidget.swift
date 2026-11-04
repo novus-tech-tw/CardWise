@@ -17,6 +17,7 @@ struct WidgetData {
     var purchaseContext: String?
     var explanation: String?
     var statsTitle = "This Month"
+    var recommendationURL: URL?
 
     static let placeholder = WidgetData(
         topCategory: "Dining",
@@ -46,7 +47,8 @@ struct WidgetData {
                 rewardsThisMonth: payload.rewardsThisMonth,
                 purchaseContext: payload.purchaseContext,
                 explanation: payload.isStale(at: date) ? "Saved estimate has expired" : payload.explanation,
-                statsTitle: payload.isStale(at: date) ? "Saved Month" : "This Month"
+                statsTitle: payload.isStale(at: date) ? "Saved Month" : "This Month",
+                recommendationURL: payload.recommendationURL
             )
         }
 
@@ -330,16 +332,19 @@ struct CardWiseWidgetEntryView: View {
     let entry: CardWiseEntry
 
     var body: some View {
-        switch family {
-        case .systemSmall:
-            CardWiseWidgetSmallView(entry: entry)
-        case .systemMedium:
-            CardWiseWidgetMediumView(entry: entry)
-        case .accessoryRectangular:
-            CardWiseLockScreenView(entry: entry)
-        default:
-            CardWiseWidgetSmallView(entry: entry)
+        Group {
+            switch family {
+            case .systemSmall:
+                CardWiseWidgetSmallView(entry: entry)
+            case .systemMedium:
+                CardWiseWidgetMediumView(entry: entry)
+            case .accessoryRectangular:
+                CardWiseLockScreenView(entry: entry)
+            default:
+                CardWiseWidgetSmallView(entry: entry)
+            }
         }
+        .widgetURL(entry.data.recommendationURL)
     }
 }
 

@@ -2,6 +2,8 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var selectedTab = 0
+    @State private var widgetPurchase: PurchaseContext?
+    @State private var purchaseRouteID = UUID()
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -17,7 +19,8 @@ struct MainTabView: View {
                 }
                 .tag(1)
 
-            RecommendView()
+            RecommendView(initialPurchase: widgetPurchase)
+                .id(purchaseRouteID)
                 .tabItem {
                     Label("Recommend", systemImage: "star.fill")
                 }
@@ -36,6 +39,12 @@ struct MainTabView: View {
                 .tag(4)
         }
         .tint(Theme.accent)
+        .onOpenURL { url in
+            guard let purchase = PurchaseContext(url: url) else { return }
+            widgetPurchase = purchase
+            purchaseRouteID = UUID()
+            selectedTab = 2
+        }
     }
 }
 

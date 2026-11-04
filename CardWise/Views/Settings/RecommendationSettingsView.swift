@@ -3,6 +3,9 @@ import SwiftUI
 struct RecommendationSettingsView: View {
     @EnvironmentObject var cardViewModel: CardViewModel
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @ObservedObject private var quickAccess = QuickAccessStore.shared
+    @ObservedObject private var recent = RecentPurchaseStore.shared
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
 
     var body: some View {
         Form {
@@ -31,27 +34,77 @@ struct RecommendationSettingsView: View {
                 Text("Enter your estimated cents per point for each card. The default is 1¢. These assumptions affect recommendations and new spending records; saved rewards stay unchanged. Cash back percentages are unchanged. Settings are saved on this device.")
             }
             Section {
-                Picker("Category", selection: $preferences.settings.widgetCategory) {
-                    ForEach(SpendingCategory.allCases, id: \.self) { category in
-                        Text(category.displayName).tag(category)
+                Picker("Show", selection: Binding(
+                    get: { preferences.settings.widgetSource ?? .configured },
+                    set: { preferences.settings.widgetSource = $0 }
+                )) {
+                    ForEach(WidgetContextSource.allCases) { source in Text(source.title).tag(source) }
+                }
+                if preferences.settings.widgetSource == .recent {
+                    if let purchase = recent.purchase {
+                        Text("\(purchase.merchant.isEmpty ? purchase.category.displayName : purchase.merchant) · \(purchase.amount.formatted(.currency(code: "USD")))")
+                        Button("Forget last checked purchase", role: .destructive) { recent.reset() }
+                    } else {
+                        Text("Check a purchase on Recommend first. Until then, widgets use your custom purchase below.")
                     }
                 }
-                TextField("Merchant (optional)", text: $preferences.settings.widgetMerchant)
-                    .autocorrectionDisabled()
-                LabeledContent("Detected category", value: preferences.settings.effectiveWidgetCategory.displayName)
-                WidgetAmountField()
-                PurchaseConditionsToggle(isOn: $preferences.settings.widgetConditionalRewards)
+                if preferences.settings.widgetSource == .favorite {
+                    Picker("Favorite", selection: Binding(
+                        get: { quickAccess.favorites.contains(where: { $0.id == preferences.settings.widgetFavoriteID }) ? (preferences.settings.widgetFavoriteID ?? "") : "" },
+                        set: { preferences.settings.widgetFavoriteID = $0 }
+                    )) {
+                        Text("Choose a favorite").tag("")
+                        ForEach(quickAccess.favorites) { favorite in Text(favorite.title).tag(favorite.id) }
+                    }
+                    if !quickAccess.favorites.contains(where: { $0.id == preferences.settings.widgetFavoriteID }) {
+                        Text("Save or choose a favorite. Widgets use your custom purchase until one is available.").font(.caption)
+                    }
+                }
+                if preferences.settings.widgetSource != .recent || recent.purchase == nil {
+                    if preferences.settings.widgetSource != .favorite || !quickAccess.favorites.contains(where: { $0.id == preferences.settings.widgetFavoriteID }) {
+                        Picker("Category", selection: $preferences.settings.widgetCategory) {
+                            ForEach(SpendingCategory.allCases, id: \.self) { category in Text(category.displayName).tag(category) }
+                        }
+                        TextField("Merchant (optional)", text: $preferences.settings.widgetMerchant).autocorrectionDisabled()
+                    }
+                    WidgetAmountField()
+                    PurchaseConditionsView(category: widgetPurchase.category, conditions: Binding(
+                        get: { PurchaseConditions(confirmedRewardIDs: preferences.settings.widgetConfirmedRewardIDs ?? []) },
+                        set: {
+                            preferences.settings.widgetConfirmedRewardIDs = $0.confirmedRewardIDs
+                            preferences.settings.widgetConditionalRewards = false
+                        }
+                    ))
+                }
+                LabeledContent("Category used", value: widgetPurchase.category.displayName)
+                Text("\(widgetPurchase.merchant.isEmpty ? widgetPurchase.category.displayName : widgetPurchase.merchant) · \(widgetPurchase.amount.formatted(.currency(code: "USD")))")
+                    .font(.caption).foregroundStyle(.secondary)
             } header: {
                 Text("Home and Lock Screen widgets")
             } footer: {
-                Text("A recognized merchant overrides the category. Widgets use this purchase amount, recorded spending, and your ranking settings. Open CardWise to refresh after a day or a period reset. Merchant categories are estimates; issuer coding can differ.")
+                Text("Choose a custom purchase, your last checked purchase, or a favorite. Saved merchant categories apply. " +
+                     "Widgets use current recorded spending and ranking settings. Tap a widget to check the purchase again; " +
+                     "confirm special rate terms in the app. Saved estimates expire and need CardWise to refresh.")
             }
             Section {
                 Button("Reset Recommendation Settings", role: .destructive) { preferences.reset() }
             }
         }
+        .onChange(of: preferences.settings.widgetMerchant) { _, _ in clearWidgetConditions() }
+        .onChange(of: preferences.settings.widgetCategory) { _, _ in clearWidgetConditions() }
+        .onChange(of: preferences.settings.widgetFavoriteID) { _, _ in clearWidgetConditions() }
         .navigationTitle("Recommendations")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func clearWidgetConditions() {
+        preferences.settings.widgetConfirmedRewardIDs = []
+        preferences.settings.widgetConditionalRewards = false
+    }
+
+    private var widgetPurchase: PurchaseContext {
+        WidgetDataManager.resolvedPurchase(settings: preferences.settings, recentPurchase: recent.purchase,
+                                            favorites: quickAccess.favorites, merchantCategories: merchantPreferences.categories)
     }
 }
 

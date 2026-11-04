@@ -11,17 +11,22 @@ final class WidgetDataManager {
 
     func updateWidgetData(cardViewModel: CardViewModel, spendingViewModel: SpendingViewModel) {
         let payload = Self.makePayload(userCards: cardViewModel.userCards, allCards: cardViewModel.allCards,
-                                       spendings: spendingViewModel.spendings, settings: RecommendationSettingsStore.shared.settings)
+                                       spendings: spendingViewModel.spendings, settings: RecommendationSettingsStore.shared.settings,
+                                       recentPurchase: RecentPurchaseStore.shared.purchase, favorites: QuickAccessStore.shared.favorites,
+                                       merchantCategories: MerchantPreferencesStore.shared.categories)
         if let data = try? JSONEncoder().encode(payload) { defaults?.set(data, forKey: Self.widgetDataKey) }
         WidgetCenter.shared.reloadAllTimelines()
     }
 
     static func makePayload(userCards: [UserCard], allCards: [CreditCard], spendings: [Spending],
-                            settings: RecommendationSettings, asOf date: Date = Date()) -> WidgetPayload {
-        let category = settings.effectiveWidgetCategory
+                            settings: RecommendationSettings, asOf date: Date = Date(), recentPurchase: PurchaseContext? = nil,
+                            favorites: [FavoritePurchase] = [], merchantCategories: [String: SpendingCategory] = [:]) -> WidgetPayload {
+        let purchase = resolvedPurchase(settings: settings, recentPurchase: recentPurchase, favorites: favorites,
+                                        merchantCategories: merchantCategories)
+        let category = purchase.category
         let top = RecommendationEngine.shared.getRecommendations(
-            for: category, amount: settings.validWidgetAmount, userCards: userCards, allCards: allCards,
-            spendings: spendings, settings: settings, asOf: date, includeConditionalRewards: settings.widgetConditionalRewards
+            for: category, amount: purchase.amount, userCards: userCards, allCards: allCards,
+            spendings: spendings, settings: settings, asOf: date, purchaseConditions: purchase.conditions
         ).first
         let rotating = userCards.compactMap { userCard -> (String, RotatingCategory)? in
             guard let card = allCards.first(where: { $0.id == userCard.cardId }), let rotating = card.rotatingCategory(asOf: date) else { return nil }
@@ -34,8 +39,8 @@ final class WidgetDataManager {
             allCards.first(where: { $0.id == userCard.cardId }).flatMap { userCard.signUpBonusDeadline(for: $0) }
         }.filter { $0 > date }
         let validUntil = min(nextDay, deadlines.min() ?? nextDay)
-        let merchant = settings.widgetMerchant.trimmingCharacters(in: .whitespacesAndNewlines)
-        let context = "\(merchant.isEmpty ? category.displayName : merchant) · \(settings.validWidgetAmount.formatted(.currency(code: "USD")))"
+        let merchant = purchase.merchant.trimmingCharacters(in: .whitespacesAndNewlines)
+        let context = "\(merchant.isEmpty ? category.displayName : merchant) · \(purchase.amount.formatted(.currency(code: "USD")))"
         return WidgetPayload(
             topCategory: category.displayName, topCategoryIcon: category.icon,
             bestCard: top.map { $0.userCard.nickname ?? $0.card.name } ?? "Add Cards",
@@ -45,8 +50,28 @@ final class WidgetDataManager {
             rewardsThisMonth: monthlySpending.reduce(0) { $0 + $1.rewardEarned },
             purchaseContext: context,
             explanation: top.map { "\($0.formattedEstimatedReward) est. · \(settings.ranking.title)" },
-            generatedAt: date, validUntil: validUntil
+            generatedAt: date, validUntil: validUntil,
+            purchaseMerchant: purchase.merchant, purchaseCategory: category.rawValue, purchaseAmount: purchase.amount
         )
+    }
+
+    static func resolvedPurchase(settings: RecommendationSettings, recentPurchase: PurchaseContext?,
+                                 favorites: [FavoritePurchase], merchantCategories: [String: SpendingCategory]) -> PurchaseContext {
+        var purchase = PurchaseContext(merchant: settings.widgetMerchant, category: settings.effectiveWidgetCategory,
+                                       amount: settings.validWidgetAmount,
+                                       conditions: PurchaseConditions(confirmedRewardIDs: settings.widgetConfirmedRewardIDs ?? []))
+        switch settings.widgetSource ?? .configured {
+        case .configured: break
+        case .recent:
+            if let recentPurchase, recentPurchase.isValid { purchase = recentPurchase }
+        case .favorite:
+            if let favorite = favorites.first(where: { $0.id == settings.widgetFavoriteID }) {
+                purchase.merchant = favorite.merchant
+                purchase.category = favorite.category
+            }
+        }
+        if let saved = merchantCategories[MerchantOffer.merchantKey(purchase.merchant)] { purchase.category = saved }
+        return purchase
     }
 
     static func loadWidgetPayload() -> WidgetPayload? {

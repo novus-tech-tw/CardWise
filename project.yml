@@ -39,6 +39,18 @@ targets:
         # Declaring this here means every uploaded build skips the export-compliance
         # prompt in App Store Connect — keeping the auto-release flow hands-off.
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+    info:
+      path: CardWise/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UIRequiresFullScreen: true
+        UIBackgroundModes:
+          - remote-notification
+        CFBundleURLTypes:
+          - CFBundleURLName: studio.tmj.cardwise.recommend
+            CFBundleURLSchemes:
+              - cardwise
     resources:
       - path: CardWise/Resources/Assets.xcassets
       - path: CardWise/Resources/Preview Content

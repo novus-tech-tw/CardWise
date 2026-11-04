@@ -64,6 +64,9 @@ struct CardWiseApp: App {
     @Environment(\.openURL) private var openURL
 
     @ObservedObject private var preferences = RecommendationSettingsStore.shared
+    @ObservedObject private var merchantPreferences = MerchantPreferencesStore.shared
+    @ObservedObject private var recentPurchase = RecentPurchaseStore.shared
+    @ObservedObject private var quickAccess = QuickAccessStore.shared
 
     @StateObject private var updateChecker = AppUpdateChecker()
     @State private var whatsNewNotes: [ReleaseNote] = []
@@ -92,6 +95,9 @@ struct CardWiseApp: App {
                     .onChange(of: cardViewModel.creditUsages) { _, _ in refreshBenefitReminders() }
                     .onChange(of: cardViewModel.allCards) { _, _ in updateWidgetData() }
                     .onChange(of: spendingViewModel.spendings) { _, _ in updateWidgetData() }
+                    .onChange(of: merchantPreferences.categories) { _, _ in updateWidgetData() }
+                    .onChange(of: recentPurchase.purchase) { _, _ in updateWidgetData() }
+                    .onChange(of: quickAccess.favorites) { _, _ in updateWidgetData() }
                     .onChange(of: preferences.settings) { _, _ in updateWidgetData() }
                     .onAppear {
                         updateWidgetData()

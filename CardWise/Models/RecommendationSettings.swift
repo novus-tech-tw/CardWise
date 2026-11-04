@@ -22,6 +22,10 @@ struct RecommendationSettings: Codable, Equatable {
     var widgetAmount: Double = 100
     var widgetConditionalRewards = false
 
+    var widgetSource: WidgetContextSource?
+    var widgetFavoriteID: String?
+    var widgetConfirmedRewardIDs: Set<String>?
+
     func dollarsPerPoint(for cardID: String) -> Double {
         guard let value = pointValues[cardID], value.isFinite, value > 0, value <= 100 else {
             return RewardConstants.defaultPointsValueCPP

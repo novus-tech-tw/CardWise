@@ -63,11 +63,14 @@ enum ShortcutRecommendation {
     }
 
     @MainActor
-    static func savedMessage(category: SpendingCategory, amount: Double) -> String {
+    static func savedMessage(category: SpendingCategory, amount: Double, merchant: String = "") -> String {
         let store = CloudStore(context: AppContainer.shared.mainContext)
         store.migrateFromKeychainIfNeeded()
         let snapshot = Snapshot(userCards: store.loadUserCards(), catalog: CardCatalog.loadCards(),
                                 spendings: store.loadSpendings(), settings: RecommendationSettingsStore.shared.settings)
+        if !snapshot.userCards.isEmpty {
+            RecentPurchaseStore.shared.save(PurchaseContext(merchant: merchant, category: category, amount: amount))
+        }
         return message(category: category, amount: amount, snapshot: snapshot)
     }
 }
@@ -85,11 +88,11 @@ struct BestCardForMerchantIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<String> & ProvidesDialog {
-        guard let category = MerchantDatabase.suggestCategory(for: merchant) else {
+        guard let category = MerchantPreferencesStore.shared.category(for: merchant) else {
             throw $merchant.needsValueError("Enter a recognized merchant, or use Best Card for a Category.")
         }
         guard amount.isFinite, amount > 0 else { throw $amount.needsValueError("Enter an amount greater than zero.") }
-        let message = ShortcutRecommendation.savedMessage(category: category, amount: amount)
+        let message = ShortcutRecommendation.savedMessage(category: category, amount: amount, merchant: merchant)
         return .result(value: message, dialog: IntentDialog(stringLiteral: message))
     }
 }

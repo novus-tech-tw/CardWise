@@ -75,12 +75,13 @@ final class RecommendationEngine {
         spendings: [Spending] = [],
         settings: RecommendationSettings = RecommendationSettings(),
         asOf date: Date = Date(),
-        includeConditionalRewards: Bool = false
+        includeConditionalRewards: Bool = false,
+        purchaseConditions: PurchaseConditions? = nil
     ) -> [CardRecommendation] {
         guard amount.isFinite, amount > 0 else { return [] }
         let recommendations = userCards.compactMap { userCard -> CardRecommendation? in
             guard let card = allCards.first(where: { $0.id == userCard.cardId }) else { return nil }
-            let request = Request(category: category, amount: amount, spendings: spendings, settings: settings, date: date, includeConditionalRewards: includeConditionalRewards)
+            let request = Request(category: category, amount: amount, spendings: spendings, settings: settings, date: date, includeConditionalRewards: includeConditionalRewards, purchaseConditions: purchaseConditions)
             return recommendation(card: card, userCard: userCard, request: request)
         }
         return recommendations.enumerated().sorted { lhs, rhs in
@@ -102,11 +103,12 @@ final class RecommendationEngine {
         spendings: [Spending] = [],
         settings: RecommendationSettings = RecommendationSettings(),
         asOf date: Date = Date(),
-        includeConditionalRewards: Bool = false
+        includeConditionalRewards: Bool = false,
+        purchaseConditions: PurchaseConditions? = nil
     ) -> (recommendations: [CardRecommendation], detectedCategory: SpendingCategory?) {
         let detectedCategory = MerchantDatabase.suggestCategory(for: merchantName)
         return (getRecommendations(for: detectedCategory ?? .other, amount: amount, userCards: userCards,
-                                   allCards: allCards, spendings: spendings, settings: settings, asOf: date, includeConditionalRewards: includeConditionalRewards), detectedCategory)
+                                   allCards: allCards, spendings: spendings, settings: settings, asOf: date, includeConditionalRewards: includeConditionalRewards, purchaseConditions: purchaseConditions), detectedCategory)
     }
 
     private struct RewardOption {
@@ -135,6 +137,7 @@ final class RecommendationEngine {
         let settings: RecommendationSettings
         let date: Date
         let includeConditionalRewards: Bool
+        let purchaseConditions: PurchaseConditions?
     }
 
     private struct EligibleOptions {
@@ -208,8 +211,9 @@ final class RecommendationEngine {
         var result = EligibleOptions()
         for reward in card.categoryRewards where category.isCovered(by: [reward.category]) {
             if let note = reward.note {
-                if reward.requiresPurchaseConfirmation && !request.includeConditionalRewards {
-                    result.context.append("Not included: \(reward.displayMultiplier) requires \(note). Enable special rate assumptions only if these terms apply.")
+                let confirmed = request.purchaseConditions?.confirms(cardID: card.id, reward: reward) ?? request.includeConditionalRewards
+                if reward.requiresPurchaseConfirmation && !confirmed {
+                    result.context.append("Not included: \(reward.displayMultiplier) requires \(note). Confirm this rate’s specific terms only if they apply.")
                     continue
                 }
                 result.context.append("Rate terms: \(note).")

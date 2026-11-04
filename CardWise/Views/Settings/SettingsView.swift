@@ -56,6 +56,7 @@ struct SettingsView: View {
 
                 Section("Recommendations") {
                     NavigationLink("Ranking, Point Values & Widgets") { RecommendationSettingsView() }
+                    NavigationLink("Saved Merchant Categories") { SavedMerchantCategoriesView() }
                     NavigationLink("Favorites") { FavoritesView() }
                     NavigationLink("Annual Card Value") { AnnualValueView() }
                     NavigationLink("Merchant Offers") { WalletOffersView() }
@@ -235,6 +236,8 @@ struct SettingsView: View {
                     spendingViewModel.clearAllData()
                     RecommendationSettingsStore.shared.reset()
                     QuickAccessStore.shared.reset()
+                    MerchantPreferencesStore.shared.reset()
+                    RecentPurchaseStore.shared.reset()
                     NotificationService.shared.clearAllNotifications()
                 }
             } message: {
