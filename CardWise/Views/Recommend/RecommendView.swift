@@ -19,6 +19,7 @@ struct RecommendView: View {
     @State private var showingHistory = false
     @FocusState private var isSearchFocused: Bool
     @FocusState private var isAmountFocused: Bool
+    @State private var activityMessage: String?
 
     var matchingMerchants: [Merchant] {
         MerchantDatabase.searchMerchants(query: searchText)
@@ -347,6 +348,12 @@ struct RecommendView: View {
                             saveRecentPurchase()
                             preferences.settings.widgetSource = .recent
                         }
+                        Button {
+                            startShoppingMode()
+                        } label: {
+                            Label("Start Shopping Mode", systemImage: "lock.rectangle.on.rectangle")
+                        }
+                        .accessibilityHint("Keeps the best card on your Lock Screen for up to 4 hours")
                         Text(preferences.settings.ranking.explanation)
                             .font(.caption)
                             .foregroundStyle(Theme.textSecondary)
@@ -375,7 +382,15 @@ struct RecommendView: View {
                     .accessibilityLabel(quickAccess.contains(favorite) ? "Remove \(favorite.title) from favorites" : "Favorite \(favorite.title)")
                     NavigationLink { FavoritesView() } label: { Image(systemName: "list.star") }
                         .accessibilityLabel("Manage favorites")
+                    NavigationLink { NearbyView() } label: { Image(systemName: "location") }
+                        .accessibilityLabel("Best card for places nearby")
                 }
+            }
+            .alert("Shopping Mode", isPresented: Binding(get: { activityMessage != nil },
+                                                         set: { if !$0 { activityMessage = nil } })) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(activityMessage ?? "")
             }
             .sheet(isPresented: $showCategoryPicker) {
                 CategoryPickerView(selectedCategory: Binding(
@@ -419,6 +434,20 @@ struct RecommendView: View {
     private var purchase: PurchaseContext {
         PurchaseContext(merchant: searchText.trimmingCharacters(in: .whitespacesAndNewlines), category: effectiveCategory,
                         amount: Double(amount) ?? 0, conditions: conditions)
+    }
+
+    private func startShoppingMode() {
+        let purchase = purchase
+        let recs = recommendations
+        Task {
+            do {
+                try await ShoppingActivityController.start(purchase: purchase, recommendations: recs)
+                saveRecentPurchase()
+                activityMessage = "\(recs.first.map { $0.userCard.nickname ?? $0.card.name } ?? "Your best card") is now on your Lock Screen."
+            } catch {
+                activityMessage = error.localizedDescription
+            }
+        }
     }
 
     private func saveRecentPurchase() {

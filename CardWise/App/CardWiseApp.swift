@@ -90,6 +90,9 @@ struct CardWiseApp: App {
                         if newPhase == .background || newPhase == .active {
                             updateWidgetData()
                         }
+                        if newPhase == .active {
+                            Task { await ShoppingActivityController.endExpired() }
+                        }
                     }
                     .onChange(of: cardViewModel.userCards) { _, _ in updateWidgetData() }
                     .onChange(of: cardViewModel.creditUsages) { _, _ in refreshBenefitReminders() }

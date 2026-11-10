@@ -58,6 +58,12 @@ struct PrivacyPolicyView: View {
                             """
                         }
 
+                        section(title: "Location") {
+                            """
+                            If you open Nearby, CardWise asks for your location while the app is in use. The location is used once per search to ask Apple Maps for stores around you, then discarded. It is never saved, synced or sent to us. You can turn location access off at any time in your device's Settings app.
+                            """
+                        }
+
                         section(title: "Card Reward Database") {
                             """
                             The credit card reward information displayed in CardWise (bonus categories, earn rates, etc.) is bundled directly in the app as reference data. It is not personal information and does not originate from your accounts. Always verify current reward terms directly with your card issuer, as terms can change.

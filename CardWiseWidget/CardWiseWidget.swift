@@ -410,6 +410,7 @@ extension Color {
 struct CardWiseWidgetBundle: WidgetBundle {
     var body: some Widget {
         CardWiseWidget()
+        ShoppingLiveActivity()
     }
 }
 

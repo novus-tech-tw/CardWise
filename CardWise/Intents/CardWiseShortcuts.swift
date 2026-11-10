@@ -122,5 +122,15 @@ struct CardWiseShortcuts: AppShortcutsProvider {
                     shortTitle: "Best Card for Merchant", systemImageName: "creditcard")
         AppShortcut(intent: BestCardForCategoryIntent(), phrases: ["Compare my cards with \(.applicationName)"],
                     shortTitle: "Best Card for Category", systemImageName: "star")
+        AppShortcut(intent: StartShoppingModeIntent(), phrases: ["Start shopping mode in \(.applicationName)"],
+                    shortTitle: "Start Shopping Mode", systemImageName: "lock.rectangle.on.rectangle")
+        AppShortcut(intent: EndShoppingModeIntent(), phrases: ["End shopping mode in \(.applicationName)"],
+                    shortTitle: "End Shopping Mode", systemImageName: "xmark.circle")
+        AppShortcut(intent: UnusedCreditsIntent(), phrases: ["Show unused credits in \(.applicationName)"],
+                    shortTitle: "Unused Credits", systemImageName: "dollarsign.circle")
+        AppShortcut(intent: UpcomingActionsIntent(), phrases: ["Show card deadlines in \(.applicationName)"],
+                    shortTitle: "Card Deadlines", systemImageName: "calendar.badge.clock")
+        AppShortcut(intent: BonusCategoriesIntent(), phrases: ["Show bonus categories in \(.applicationName)"],
+                    shortTitle: "Bonus Categories", systemImageName: "arrow.triangle.2.circlepath")
     }
 }
