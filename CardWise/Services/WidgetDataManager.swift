@@ -56,7 +56,7 @@ final class WidgetDataManager {
             purchaseMerchant: purchase.merchant, purchaseCategory: category.rawValue, purchaseAmount: purchase.amount,
             walletSections: WalletWidgetContent.sections(snapshot: ShortcutRecommendation.Snapshot(
                 userCards: userCards, catalog: allCards, spendings: spendings, settings: settings
-            ), usages: usages, favorites: favorites, now: date)
+            ), usages: usages, favorites: favorites, purchase: purchase, now: date)
         )
     }
 

@@ -231,4 +231,19 @@ import Testing
         #expect(secondResult == "second")
         #expect(events == ["first started", "first finished", "second"])
     }
+
+    @Test func categoryWidgetsPreserveRecentPurchaseRateConfirmations() throws {
+        let special = CategoryReward(category: .travel, multiplier: 5, isPercentage: true, cap: nil,
+                                     capPeriod: nil, note: "Booked through Test Travel")
+        let card = card(rewards: [special])
+        let purchase = PurchaseContext(merchant: "Travel", category: .travel, amount: 50,
+                                       conditions: PurchaseConditions(confirmedRewardIDs: [PurchaseConditions.key(cardID: card.id, reward: special)]))
+        var settings = RecommendationSettings()
+        settings.widgetSource = .recent
+        let payload = WidgetDataManager.makePayload(userCards: [UserCard(card: card)], allCards: [card], spendings: [],
+                                                     settings: settings, asOf: now, recentPurchase: purchase)
+        let rows = try #require(payload.walletSections?.first { $0.kind == .categories }?.rows)
+        #expect(rows.first { $0.id == SpendingCategory.travel.rawValue }?.value.contains("$2.50") == true)
+        #expect(rows.first { $0.id == SpendingCategory.dining.rawValue }?.value.contains("$0.50") == true)
+    }
 }

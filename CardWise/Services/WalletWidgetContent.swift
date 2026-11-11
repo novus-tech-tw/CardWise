@@ -2,11 +2,11 @@ import Foundation
 
 enum WalletWidgetContent {
     static func sections(snapshot: ShortcutRecommendation.Snapshot, usages: [CreditUsage],
-                         favorites: [FavoritePurchase], now: Date) -> [WalletWidgetSection] {
+                         favorites: [FavoritePurchase], purchase: PurchaseContext, now: Date) -> [WalletWidgetSection] {
         let userCards = snapshot.userCards
         let catalog = snapshot.catalog
-        let categories = categoryRows(snapshot: snapshot, favorites: favorites, now: now)
-        let offers = WalletOfferQuery.matches(userCards: userCards, catalog: catalog, now: now).map { match in
+        let categories = categoryRows(snapshot: snapshot, favorites: favorites, purchase: purchase, now: now)
+        let offers = WalletOfferQuery.matches(userCards: userCards, catalog: catalog, amount: purchase.amount, now: now).map { match in
             WalletWidgetRow(id: match.id, title: match.offer.merchant, subtitle: "\(match.cardName) · \(match.offer.title)",
                             value: "Through \(match.offer.expiresAt.addingTimeInterval(-1).formatted(date: .abbreviated, time: .omitted))",
                             url: URL(string: "cardwise://offers"))
@@ -35,24 +35,26 @@ enum WalletWidgetContent {
         ]
     }
 
-    private static func categoryRows(snapshot: ShortcutRecommendation.Snapshot, favorites: [FavoritePurchase], now: Date) -> [WalletWidgetRow] {
+    private static func categoryRows(snapshot: ShortcutRecommendation.Snapshot, favorites: [FavoritePurchase],
+                                     purchase: PurchaseContext, now: Date) -> [WalletWidgetRow] {
         let settings = snapshot.settings
         let defaults: [SpendingCategory] = [.dining, .grocery, .gas, .travel, .onlineShopping, .drugstore]
         var seen = Set<SpendingCategory>()
         let categories = (favorites.map(\.category) + defaults).filter { seen.insert($0).inserted }
         return categories.compactMap { category in
             guard let best = RecommendationEngine.shared.getRecommendations(
-                for: category, amount: settings.validWidgetAmount, userCards: snapshot.userCards, allCards: snapshot.catalog,
-                spendings: snapshot.spendings, settings: settings, asOf: now
+                for: category, amount: purchase.amount, userCards: snapshot.userCards, allCards: snapshot.catalog,
+                spendings: snapshot.spendings, settings: settings, asOf: now, purchaseConditions: purchase.conditions
             ).first else { return nil }
-            let purchase = WidgetPayload(topCategory: category.displayName, topCategoryIcon: category.icon,
-                                         bestCard: best.card.name, bestCardColor: best.card.imageColor, rewardRate: best.displayReward,
-                                         rotatingCategories: [], rotatingCard: nil, spendingThisMonth: 0, rewardsThisMonth: 0,
-                                         purchaseCategory: category.rawValue, purchaseAmount: settings.validWidgetAmount)
+            var link = URLComponents()
+            link.scheme = "cardwise"
+            link.host = "recommend"
+            link.queryItems = [URLQueryItem(name: "category", value: category.rawValue),
+                               URLQueryItem(name: "amount", value: String(purchase.amount))]
             return WalletWidgetRow(id: category.rawValue, title: category.displayName,
                                    subtitle: best.userCard.nickname ?? best.card.name,
-                                   value: "\(best.formattedEstimatedReward) est. on \(settings.validWidgetAmount.formatted(.currency(code: "USD")))",
-                                   url: purchase.recommendationURL)
+                                   value: "\(best.formattedEstimatedReward) est. on \(purchase.amount.formatted(.currency(code: "USD")))",
+                                   url: link.url)
         }
     }
 
