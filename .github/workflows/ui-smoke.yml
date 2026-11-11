@@ -55,12 +55,21 @@ jobs:
             -collect-test-diagnostics never -test-timeouts-enabled YES \
             -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \
             CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
+      - name: Collect focused widget diagnostics
+        if: always() && steps.simulator.outputs.id != ''
+        run: |
+          xcrun simctl spawn '${{ steps.simulator.outputs.id }}' log show --last 5m --style compact \
+            --predicate 'process == "CardWiseWidget" OR eventMessage CONTAINS "studio.tmj.cardwise.widget"' > widget-extension.log || true
+          xcrun simctl spawn '${{ steps.simulator.outputs.id }}' launchctl list | grep -Ei 'widget|gallery|springboard' > simulator-processes.txt || true
       - name: Retain test results
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: widget-ui-results
-          path: ui-smoke.xcresult
+          path: |
+            ui-smoke.xcresult
+            widget-extension.log
+            simulator-processes.txt
           if-no-files-found: ignore
           retention-days: 7
       - name: Remove disposable simulator

@@ -16,8 +16,9 @@ final class WalletWidgetTests: XCTestCase {
         edit.tap()
         springboard.buttons["Edit"].tap()
         springboard.buttons["Add Widget"].tap()
-        let cardwise = springboard.buttons["CardWise"].firstMatch
-        XCTAssertTrue(cardwise.waitForExistence(timeout: 10))
+        attachScreenshot(springboard, name: "Widget gallery listing")
+        let cardwise = springboard.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "CardWise")).firstMatch
+        XCTAssertTrue(cardwise.waitForExistence(timeout: 30), springboard.debugDescription)
         cardwise.tap()
         var attempts = 0
         while !springboard.staticTexts["Unused Statement Credits"].exists && attempts < 17 {
@@ -50,7 +51,7 @@ final class WalletWidgetTests: XCTestCase {
         app.launchArguments = ["-hasCompletedOnboarding", "YES", "-lastSeenVersion", "1.0.6"]
         app.launch()
         XCTAssertTrue(app.buttons["What are you buying?"].waitForExistence(timeout: 15))
-        let credit = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Use DoorDash credit")).firstMatch
+        let credit = app.buttons["Update DoorDash credit for Chase Sapphire Preferred"]
         if !credit.exists {
             app.buttons["My Cards"].tap()
             app.buttons["Add Your First Card"].tap()
@@ -65,17 +66,22 @@ final class WalletWidgetTests: XCTestCase {
 
     @MainActor
     private func enterPartialCreditUsage(in app: XCUIApplication) {
-        let credit = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Use DoorDash credit")).firstMatch
+        let credit = app.buttons["Update DoorDash credit for Chase Sapphire Preferred"]
         XCTAssertTrue(credit.waitForExistence(timeout: 10), app.debugDescription)
         credit.tap()
         let amount = app.textFields["Used amount for DoorDash credit"]
-        XCTAssertTrue(amount.waitForExistence(timeout: 5))
+        var scrolls = 0
+        while !amount.isHittable && scrolls < 6 {
+            app.swipeUp()
+            scrolls += 1
+        }
+        XCTAssertTrue(amount.isHittable)
         amount.tap()
         amount.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 8))
         amount.typeText("3.5")
         let remaining = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "$6.50 left")).firstMatch
         XCTAssertTrue(remaining.waitForExistence(timeout: 5))
-        app.buttons["Done"].tap()
+        app.buttons["Save"].tap()
         XCTAssertTrue(app.staticTexts["$6.50"].waitForExistence(timeout: 5))
     }
 
