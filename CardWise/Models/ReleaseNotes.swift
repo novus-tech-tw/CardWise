@@ -10,6 +10,11 @@ struct ReleaseNote: Identifiable, Equatable {
 /// Bundled "What's New" content. Edit `all` each release (newest first).
 enum ReleaseNotes {
     static let all: [ReleaseNote] = [
+        ReleaseNote(version: "1.0.6", highlights: [
+            "Shopping Mode keeps your best card on the Lock Screen and in the Dynamic Island while you shop.",
+            "Nearby shows the best card for stores around you. Your location is never saved.",
+            "New Siri actions: start or end Shopping Mode, unused credits, upcoming deadlines and this quarter's bonus categories."
+        ]),
         ReleaseNote(version: "1.0.4", highlights: [
             "Enhanced merchant & category search with natural language keywords and instant suggestions.",
             "Smarter reward engine with automatic fallback for related categories.",
