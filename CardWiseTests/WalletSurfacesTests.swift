@@ -5,10 +5,10 @@ import Testing
 @Suite @MainActor struct WalletSurfacesTests {
     private let now = Date(timeIntervalSince1970: 1_794_916_800)
 
-    private func card(_ id: String = "Test Card", credits: [StatementCredit]? = nil,
+    private func card(_ id: String = "Test Card", base: Double = 1, credits: [StatementCredit]? = nil,
                       rewards: [CategoryReward] = []) -> CreditCard {
         CreditCard(id: id, name: id, issuer: "Test", network: .visa, annualFee: 95,
-                   rewardType: .cashback, baseReward: 1, baseIsPercentage: true,
+                   rewardType: .cashback, baseReward: base, baseIsPercentage: true,
                    categoryRewards: rewards, rotatingCategories: nil, selectableConfig: nil,
                    signUpBonus: nil, imageColor: "#112233", imageURL: nil, lastUpdated: nil, credits: credits)
     }
@@ -160,5 +160,71 @@ import Testing
                                                      settings: .init(), asOf: now, favorites: restored.favorites)
         let rows = try #require(payload.walletSections?.first { $0.kind == .categories }?.rows)
         #expect(rows.prefix(2).map(\.id) == [SpendingCategory.gas.rawValue, SpendingCategory.dining.rawValue])
+    }
+
+    @Test func shoppingRefreshUsesUpdatedSpendingAndEndsWhenWalletBecomesEmpty() throws {
+        let capped = card("Capped", rewards: [CategoryReward(category: .dining, multiplier: 5, isPercentage: true,
+                                                              cap: 100, capPeriod: .monthly)])
+        let flat = card("Flat", base: 2)
+        let attributes = ShoppingActivityController.attributes(for: PurchaseContext(merchant: "Cafe", category: .dining, amount: 100))
+        var snapshot = ShortcutRecommendation.Snapshot(userCards: [UserCard(card: capped), UserCard(card: flat)],
+                                                       catalog: [capped, flat], spendings: [], settings: .init())
+        #expect(ShoppingActivityController.state(for: attributes, snapshot: snapshot, now: now)?.cardName == "Capped")
+        snapshot.spendings = [Spending(amount: 100, merchant: "Cafe", category: .dining, cardUsed: capped.id, date: now, rewardEarned: 5)]
+        #expect(ShoppingActivityController.state(for: attributes, snapshot: snapshot, now: now)?.cardName == "Flat")
+        snapshot.userCards = []
+        #expect(ShoppingActivityController.state(for: attributes, snapshot: snapshot, now: now) == nil)
+        var invalid = attributes
+        invalid.amount = .nan
+        #expect(ShoppingActivityController.state(for: invalid, snapshot: snapshot, now: now) == nil)
+    }
+
+    @Test func shoppingRefreshPreservesOnlyExactConfirmedTermsAndDecodesLegacyActivities() throws {
+        let special = CategoryReward(category: .travel, multiplier: 5, isPercentage: true, cap: nil,
+                                     capPeriod: nil, note: "Booked through Test Travel")
+        let card = card(rewards: [special])
+        let conditions = PurchaseConditions(confirmedRewardIDs: [PurchaseConditions.key(cardID: card.id, reward: special)])
+        let attributes = ShoppingActivityController.attributes(for: PurchaseContext(merchant: "Travel", category: .travel, amount: 100, conditions: conditions))
+        let snapshot = ShortcutRecommendation.Snapshot(userCards: [UserCard(card: card)], catalog: [card], spendings: [], settings: .init())
+        #expect(ShoppingActivityController.state(for: attributes, snapshot: snapshot, now: now)?.estimatedReward == "$5.00")
+        var json = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(attributes)) as? [String: Any])
+        json.removeValue(forKey: "confirmedRewardIDs")
+        let legacy = try JSONDecoder().decode(ShoppingActivityAttributes.self, from: JSONSerialization.data(withJSONObject: json))
+        #expect(legacy.confirmedRewardIDs == nil)
+        #expect(ShoppingActivityController.state(for: legacy, snapshot: snapshot, now: now)?.estimatedReward == "$1.00")
+        var changed = attributes
+        changed.confirmedRewardIDs = ["other-card|\(special.id)"]
+        #expect(ShoppingActivityController.state(for: changed, snapshot: snapshot, now: now)?.estimatedReward == "$1.00")
+    }
+
+    @Test(.timeLimit(.minutes(1))) func shoppingMutationsStayOrderedAcrossSuspension() async throws {
+        var events: [String] = []
+        var release: CheckedContinuation<Void, Never>?
+        let first = Task { @MainActor in
+            try await ShoppingActivityRequest.run {
+                events.append("first started")
+                await withCheckedContinuation { release = $0 }
+                events.append("first finished")
+                return "first"
+            }
+        }
+        while release == nil { await Task.yield() }
+        var secondQueued = false
+        let second = Task { @MainActor in
+            secondQueued = true
+            return try await ShoppingActivityRequest.run {
+                events.append("second")
+                return "second"
+            }
+        }
+        while !secondQueued { await Task.yield() }
+        await Task.yield()
+        #expect(events == ["first started"])
+        release?.resume()
+        let firstResult = try await first.value
+        let secondResult = try await second.value
+        #expect(firstResult == "first")
+        #expect(secondResult == "second")
+        #expect(events == ["first started", "first finished", "second"])
     }
 }

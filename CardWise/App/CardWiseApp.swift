@@ -168,5 +168,9 @@ struct CardWiseApp: App {
             cardViewModel: cardViewModel,
             spendingViewModel: spendingViewModel
         )
+        ShoppingActivityController.scheduleRefresh(snapshot: ShortcutRecommendation.Snapshot(
+            userCards: cardViewModel.userCards, catalog: cardViewModel.allCards,
+            spendings: spendingViewModel.spendings, settings: preferences.settings
+        ))
     }
 }
