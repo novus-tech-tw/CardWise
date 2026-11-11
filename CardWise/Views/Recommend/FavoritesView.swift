@@ -16,9 +16,15 @@ struct FavoritesView: View {
                             .accessibilityLabel("Remove \(favorite.title) from favorites")
                     }
                 }
+                .onMove { source, destination in
+                    var favorites = store.favorites
+                    favorites.move(fromOffsets: source, toOffset: destination)
+                    store.reorder(ids: favorites.map(\.id))
+                }
             } footer: {
                 Text("Favorites are saved on this device. Pinned wallet cards do not change reward ranking.")
             }
         }.navigationTitle("Favorites")
+            .toolbar { EditButton().disabled(store.favorites.count < 2) }
     }
 }

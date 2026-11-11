@@ -198,19 +198,28 @@ class CardViewModel: ObservableObject {
         let cardName: String
         let credit: StatementCredit
         let remaining: Double
-        var resetDate: Date { CreditPeriod.nextReset(for: Date(), cadence: credit.cadence) }
+        var asOf = Date()
+        var resetDate: Date { CreditPeriod.nextReset(for: asOf, cadence: credit.cadence) }
     }
 
     var unusedCreditsThisPeriod: [UnusedCredit] {
+        Self.unusedCredits(userCards: userCards, catalog: allCards, usages: creditUsages)
+    }
+
+    nonisolated static func unusedCredits(userCards: [UserCard], catalog: [CreditCard], usages: [CreditUsage],
+                                          asOf now: Date = Date()) -> [UnusedCredit] {
         var result: [UnusedCredit] = []
         for userCard in userCards {
-            guard let card = getCard(for: userCard), let credits = card.credits else { continue }
+            guard let card = catalog.first(where: { $0.id == userCard.cardId }), let credits = card.credits else { continue }
             for credit in credits {
-                let periodKey = CreditPeriod.key(for: Date(), cadence: credit.cadence)
-                let remaining = credit.amount - usedAmount(cardID: card.id, creditID: credit.id, periodKey: periodKey)
+                guard credit.amount.isFinite, credit.amount > 0 else { continue }
+                let periodKey = CreditPeriod.key(for: now, cadence: credit.cadence)
+                let used = usages.first { $0.cardID == card.id && $0.creditID == credit.id && $0.periodKey == periodKey }?.amountUsed ?? 0
+                let remaining = max(0, credit.amount - (used.isFinite ? max(0, used) : 0))
                 if remaining > 0 {
                     result.append(UnusedCredit(id: "\(card.id)|\(credit.id)",
-                                               cardID: card.id, cardName: userCard.nickname ?? card.name, credit: credit, remaining: remaining))
+                                               cardID: card.id, cardName: userCard.nickname ?? card.name, credit: credit,
+                                               remaining: remaining, asOf: now))
                 }
             }
         }

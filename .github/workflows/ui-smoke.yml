@@ -1,0 +1,80 @@
+name: Widget UI smoke
+
+on:
+  pull_request:
+    paths:
+      - 'CardWise/**'
+      - 'CardWiseWidget/**'
+      - 'Shared/**'
+      - 'CardWiseUITests/**'
+      - 'project.yml'
+      - '.github/workflows/ui-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: widget-ui-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  widget-ui:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Select Xcode
+        run: |
+          latest=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          [ -z "$latest" ] && latest=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$latest"
+          xcodebuild -version
+      - name: Generate project and verify capture settings
+        run: |
+          brew install xcodegen
+          xcodegen generate
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          action = ET.parse('CardWise.xcodeproj/xcshareddata/xcschemes/CardWiseUI.xcscheme').getroot().find('TestAction')
+          assert action.get('preferredScreenCaptureFormat') == 'screenshots'
+          assert action.get('systemAttachmentLifetime') == 'keepNever'
+          PY
+      - name: Create disposable simulator
+        id: simulator
+        run: |
+          runtime=$(xcrun simctl list runtimes -j | python3 -c 'import json,sys; rs=[r for r in json.load(sys.stdin)["runtimes"] if r["isAvailable"] and r["identifier"].startswith("com.apple.CoreSimulator.SimRuntime.iOS-")]; print(max(rs,key=lambda r: tuple(map(int,r["version"].split("."))))["identifier"])')
+          echo "Widget acceptance runtime $runtime"
+          device=$(xcrun simctl create 'CardWise Widget Acceptance' com.apple.CoreSimulator.SimDeviceType.iPhone-16 "$runtime")
+          echo "id=$device" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$device"
+          open -a Simulator --args -CurrentDeviceUDID "$device"
+          xcrun simctl bootstatus "$device" -b
+      - name: Run widget acceptance test
+        run: |
+          xcodebuild test -project CardWise.xcodeproj -scheme CardWiseUI \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.id }}' \
+            -resultBundlePath ui-smoke.xcresult -parallel-testing-enabled NO \
+            -collect-test-diagnostics never -test-timeouts-enabled YES \
+            -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 360 \
+            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
+      - name: Collect focused widget diagnostics
+        if: always() && steps.simulator.outputs.id != ''
+        run: |
+          xcrun simctl spawn '${{ steps.simulator.outputs.id }}' log show --last 5m --style compact \
+            --predicate 'process == "CardWiseWidget" OR process CONTAINS "Widget" OR process CONTAINS "Gallery" OR (process == "SpringBoard" AND messageType == 16) OR eventMessage CONTAINS "studio.tmj.cardwise.widget"' > widget-extension.log || true
+          xcrun simctl spawn '${{ steps.simulator.outputs.id }}' launchctl list | grep -Ei 'widget|gallery|springboard' > simulator-processes.txt || true
+      - name: Retain test results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: widget-ui-results
+          path: |
+            ui-smoke.xcresult
+            widget-extension.log
+            simulator-processes.txt
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Remove disposable simulator
+        if: always() && steps.simulator.outputs.id != ''
+        run: xcrun simctl delete '${{ steps.simulator.outputs.id }}'

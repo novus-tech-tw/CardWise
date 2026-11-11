@@ -4,7 +4,7 @@ import Foundation
 
 /// Live Activity contract shared by the app (which starts and updates it) and the widget
 /// extension (which renders it). Everything is computed on-device; nothing is pushed remotely.
-struct ShoppingActivityAttributes: ActivityAttributes {
+struct ShoppingActivityAttributes: ActivityAttributes, Equatable {
     struct ContentState: Codable, Hashable {
         var cardName: String
         var cardColor: String
@@ -20,6 +20,8 @@ struct ShoppingActivityAttributes: ActivityAttributes {
     var categoryName: String
     var categoryIcon: String
     var amount: Double
+    /// Exact catalog terms confirmed when shopping mode was started. Optional for older activities.
+    var confirmedRewardIDs: Set<String>?
 
     /// Merchant when known, otherwise the category name.
     var title: String {
@@ -39,16 +41,50 @@ struct ShoppingActivityAttributes: ActivityAttributes {
     }
 }
 
+/// Start and stop intents execute in the app process. Invalidate a suspended start when
+/// another start or stop arrives, so an older request cannot recreate a stopped activity.
+@MainActor
+enum ShoppingActivityRequest {
+    private(set) static var generation = UUID()
+    private static var pending: Task<String?, Error>?
+
+    @discardableResult
+    static func advance() -> UUID {
+        generation = UUID()
+        return generation
+    }
+
+    /// Serialize ActivityKit mutations across app updates and the Lock Screen stop intent.
+    static func run(_ operation: @escaping @MainActor () async throws -> String?) async throws -> String? {
+        let previous = pending
+        let task = Task {
+            _ = await previous?.result
+            return try await operation()
+        }
+        pending = task
+        return try await task.value
+    }
+
+    static func endAll() async {
+        advance()
+        _ = try? await run {
+            for activity in Activity<ShoppingActivityAttributes>.activities {
+                await activity.end(nil, dismissalPolicy: .immediate)
+            }
+            return nil
+        }
+    }
+}
+
 /// Ends every CardWise shopping Live Activity. Runs in the app process, so the Lock Screen
 /// button and Siri share one implementation.
 struct EndShoppingModeIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "End Shopping Mode"
     static var description = IntentDescription("Remove the CardWise best-card card from the Lock Screen.")
 
+    @MainActor
     func perform() async throws -> some IntentResult {
-        for activity in Activity<ShoppingActivityAttributes>.activities {
-            await activity.end(nil, dismissalPolicy: .immediate)
-        }
+        await ShoppingActivityRequest.endAll()
         return .result()
     }
 }

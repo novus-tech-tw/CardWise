@@ -69,7 +69,7 @@ struct WidgetData {
 
 // MARK: - Widget Storage Helper
 
-private enum WidgetStorageHelper {
+enum WidgetStorageHelper {
     static let appGroupID = "group.com.cardwise.app"
     static let widgetDataKey = "widget_data"
 
@@ -410,6 +410,11 @@ extension Color {
 struct CardWiseWidgetBundle: WidgetBundle {
     var body: some Widget {
         CardWiseWidget()
+        WalletOverviewWidget(content: .categories)
+        WalletOverviewWidget(content: .offers)
+        WalletOverviewWidget(content: .deadlines)
+        WalletOverviewWidget(content: .credits)
+        WalletOverviewWidget(content: .summary)
         ShoppingLiveActivity()
     }
 }

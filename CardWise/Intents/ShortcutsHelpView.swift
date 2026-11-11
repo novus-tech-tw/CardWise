@@ -15,6 +15,11 @@ struct ShortcutsHelpView: View {
             Section("Wallet Check-ins") {
                 Text("“Show unused credits in CardWise”, “Show card deadlines in CardWise” and “Show bonus categories in CardWise” read your saved wallet. Nothing leaves your device.")
             }
+            Section("Saved Merchant Offers") {
+                Text("Get Saved Merchant Offers returns your current manually entered offers for a merchant, or all merchants when left empty. " +
+                     "Get Best Saved Merchant Offer compares eligible savings for one merchant and purchase amount. Both return offer details you can use in later Shortcut actions.")
+                Text("The best offer uses your activation confirmation, minimum spend, maximum reward and expiry. Offer savings are separate from base card rewards. Confirm eligibility with your issuer.")
+            }
             Section("Your Saved Preferences") {
                 Text("Actions use your recorded purchases, spending caps, point values and ranking preference. Open CardWise after changing data on another device. Unlock your device to run an action.")
             }

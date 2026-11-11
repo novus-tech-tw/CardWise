@@ -1,9 +1,16 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var cardViewModel: CardViewModel
     @State private var selectedTab = 0
     @State private var widgetPurchase: PurchaseContext?
     @State private var purchaseRouteID = UUID()
+    @State private var walletDestination: WalletDestination?
+
+    private enum WalletDestination: String, Identifiable {
+        case offers, deadlines, credits
+        var id: String { rawValue }
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -40,11 +47,57 @@ struct MainTabView: View {
         }
         .tint(Theme.accent)
         .onOpenURL { url in
+            if url.scheme == "cardwise" {
+                if url.host == "cards" {
+                    walletDestination = nil
+                    selectedTab = 1
+                    return
+                }
+                if let destination = url.host.flatMap(WalletDestination.init(rawValue:)) {
+                    selectedTab = 0
+                    walletDestination = destination
+                    return
+                }
+            }
             guard let purchase = PurchaseContext(url: url) else { return }
+            walletDestination = nil
             widgetPurchase = purchase
             purchaseRouteID = UUID()
             selectedTab = 2
         }
+        .sheet(item: $walletDestination) { destination in
+            NavigationStack {
+                Group {
+                    switch destination {
+                    case .offers: WalletOffersView()
+                    case .deadlines:
+                        ScrollView {
+                            if cardViewModel.userCards.isEmpty { Text("Add a card to see upcoming actions.").padding() }
+                            UpcomingActionsCard().padding()
+                        }.navigationTitle("Coming Up")
+                    case .credits: UnusedCreditsWidgetDestination()
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) { Button("Done") { walletDestination = nil } }
+                }
+            }
+        }
+    }
+}
+
+private struct UnusedCreditsWidgetDestination: View {
+    @EnvironmentObject var cardViewModel: CardViewModel
+
+    var body: some View {
+        List {
+            if cardViewModel.unusedCreditsThisPeriod.isEmpty { Text("No unused statement credits this period.") }
+            ForEach(cardViewModel.unusedCreditsThisPeriod) { item in
+                if let card = cardViewModel.getCard(byId: item.cardID) {
+                    Section(item.cardName) { CreditUsageEditor(card: card, credit: item.credit) }
+                }
+            }
+        }.navigationTitle("Unused Credits")
     }
 }
 

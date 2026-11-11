@@ -95,7 +95,7 @@ struct CardWiseApp: App {
                         }
                     }
                     .onChange(of: cardViewModel.userCards) { _, _ in updateWidgetData() }
-                    .onChange(of: cardViewModel.creditUsages) { _, _ in refreshBenefitReminders() }
+                    .onChange(of: cardViewModel.creditUsages) { _, _ in updateWidgetData() }
                     .onChange(of: cardViewModel.allCards) { _, _ in updateWidgetData() }
                     .onChange(of: spendingViewModel.spendings) { _, _ in updateWidgetData() }
                     .onChange(of: merchantPreferences.categories) { _, _ in updateWidgetData() }
@@ -104,9 +104,6 @@ struct CardWiseApp: App {
                     .onChange(of: preferences.settings) { _, _ in updateWidgetData() }
                     .onAppear {
                         updateWidgetData()
-                        NotificationService.shared.refreshRotatingReminders(
-                            hasRotatingCards: cardViewModel.hasRotatingCards
-                        )
                     }
                     .task {
                         let notes = WhatsNew.notesToPresent(lastSeen: lastSeenVersion,
@@ -171,5 +168,9 @@ struct CardWiseApp: App {
             cardViewModel: cardViewModel,
             spendingViewModel: spendingViewModel
         )
+        ShoppingActivityController.scheduleRefresh(snapshot: ShortcutRecommendation.Snapshot(
+            userCards: cardViewModel.userCards, catalog: cardViewModel.allCards,
+            spendings: spendingViewModel.spendings, settings: preferences.settings
+        ))
     }
 }

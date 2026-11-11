@@ -13,14 +13,15 @@ final class WidgetDataManager {
         let payload = Self.makePayload(userCards: cardViewModel.userCards, allCards: cardViewModel.allCards,
                                        spendings: spendingViewModel.spendings, settings: RecommendationSettingsStore.shared.settings,
                                        recentPurchase: RecentPurchaseStore.shared.purchase, favorites: QuickAccessStore.shared.favorites,
-                                       merchantCategories: MerchantPreferencesStore.shared.categories)
+                                       merchantCategories: MerchantPreferencesStore.shared.categories, usages: cardViewModel.creditUsages)
         if let data = try? JSONEncoder().encode(payload) { defaults?.set(data, forKey: Self.widgetDataKey) }
         WidgetCenter.shared.reloadAllTimelines()
     }
 
     static func makePayload(userCards: [UserCard], allCards: [CreditCard], spendings: [Spending],
                             settings: RecommendationSettings, asOf date: Date = Date(), recentPurchase: PurchaseContext? = nil,
-                            favorites: [FavoritePurchase] = [], merchantCategories: [String: SpendingCategory] = [:]) -> WidgetPayload {
+                            favorites: [FavoritePurchase] = [], merchantCategories: [String: SpendingCategory] = [:],
+                            usages: [CreditUsage] = []) -> WidgetPayload {
         let purchase = resolvedPurchase(settings: settings, recentPurchase: recentPurchase, favorites: favorites,
                                         merchantCategories: merchantCategories)
         let category = purchase.category
@@ -38,7 +39,8 @@ final class WidgetDataManager {
         let deadlines = userCards.compactMap { userCard in
             allCards.first(where: { $0.id == userCard.cardId }).flatMap { userCard.signUpBonusDeadline(for: $0) }
         }.filter { $0 > date }
-        let validUntil = min(nextDay, deadlines.min() ?? nextDay)
+        let offerExpiries = WalletOfferQuery.matches(userCards: userCards, catalog: allCards, now: date).map { $0.offer.expiresAt }
+        let validUntil = min(nextDay, (deadlines + offerExpiries).min() ?? nextDay)
         let merchant = purchase.merchant.trimmingCharacters(in: .whitespacesAndNewlines)
         let context = "\(merchant.isEmpty ? category.displayName : merchant) · \(purchase.amount.formatted(.currency(code: "USD")))"
         return WidgetPayload(
@@ -51,7 +53,10 @@ final class WidgetDataManager {
             purchaseContext: context,
             explanation: top.map { "\($0.formattedEstimatedReward) est. · \(settings.ranking.title)" },
             generatedAt: date, validUntil: validUntil,
-            purchaseMerchant: purchase.merchant, purchaseCategory: category.rawValue, purchaseAmount: purchase.amount
+            purchaseMerchant: purchase.merchant, purchaseCategory: category.rawValue, purchaseAmount: purchase.amount,
+            walletSections: WalletWidgetContent.sections(snapshot: ShortcutRecommendation.Snapshot(
+                userCards: userCards, catalog: allCards, spendings: spendings, settings: settings
+            ), usages: usages, favorites: favorites, purchase: purchase, now: date)
         )
     }
 

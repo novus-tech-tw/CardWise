@@ -106,3 +106,29 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: studio.tmj.cardwise.tests
         GENERATE_INFOPLIST_FILE: YES
+
+  CardWiseUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: CardWiseUITests
+    dependencies:
+      - target: CardWise
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: studio.tmj.cardwise.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: CardWise
+
+schemes:
+  CardWiseUI:
+    build:
+      targets:
+        CardWise: all
+        CardWiseUITests: [test]
+    test:
+      targets: [CardWiseUITests]
+      captureScreenshotsAutomatically: false
+      preferredScreenCaptureFormat: screenshots
+    run:
+      config: Debug

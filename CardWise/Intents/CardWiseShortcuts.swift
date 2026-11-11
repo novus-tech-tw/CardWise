@@ -132,5 +132,9 @@ struct CardWiseShortcuts: AppShortcutsProvider {
                     shortTitle: "Card Deadlines", systemImageName: "calendar.badge.clock")
         AppShortcut(intent: BonusCategoriesIntent(), phrases: ["Show bonus categories in \(.applicationName)"],
                     shortTitle: "Bonus Categories", systemImageName: "arrow.triangle.2.circlepath")
+        AppShortcut(intent: SavedMerchantOffersIntent(), phrases: ["Show my saved offers in \(.applicationName)"],
+                    shortTitle: "Saved Offers", systemImageName: "tag")
+        AppShortcut(intent: BestSavedMerchantOfferIntent(), phrases: ["Find my best saved offer in \(.applicationName)"],
+                    shortTitle: "Best Saved Offer", systemImageName: "tag.fill")
     }
 }
