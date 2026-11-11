@@ -43,7 +43,8 @@ jobs:
       - name: Create disposable simulator
         id: simulator
         run: |
-          runtime=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(r for r,ds in d["devices"].items() if any(x["name"].startswith("iPhone 16") for x in ds)))')
+          runtime=$(xcrun simctl list runtimes -j | python3 -c 'import json,sys; rs=[r for r in json.load(sys.stdin)["runtimes"] if r["isAvailable"] and r["identifier"].startswith("com.apple.CoreSimulator.SimRuntime.iOS-")]; print(max(rs,key=lambda r: tuple(map(int,r["version"].split("."))))["identifier"])')
+          echo "Widget acceptance runtime $runtime"
           device=$(xcrun simctl create 'CardWise Widget Acceptance' com.apple.CoreSimulator.SimDeviceType.iPhone-16 "$runtime")
           echo "id=$device" >> "$GITHUB_OUTPUT"
           xcrun simctl boot "$device"
