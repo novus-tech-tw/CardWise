@@ -36,6 +36,12 @@ final class WalletWidgetTests: XCTestCase {
         }
         attachScreenshot(springboard, name: "Unused credits gallery")
         XCTAssertTrue(springboard.staticTexts["Unused Statement Credits"].exists, springboard.debugDescription)
+        springboard.swipeLeft()
+        attachScreenshot(springboard, name: "Unused credits medium")
+        springboard.swipeLeft()
+        attachScreenshot(springboard, name: "Unused credits large")
+        springboard.swipeRight()
+        springboard.swipeRight()
         let addWidget = springboard.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Add Widget")).firstMatch
         XCTAssertTrue(addWidget.exists)
         addWidget.tap()

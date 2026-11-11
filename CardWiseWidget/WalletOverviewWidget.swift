@@ -86,7 +86,7 @@ struct WalletOverviewView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Text(entry.section?.title ?? "Wallet Overview").font(.caption.weight(.semibold)).lineLimit(1)
             if entry.isStale || entry.section == nil {
                 Text("Open CardWise to refresh").font(.subheadline).widgetAccentable()
@@ -96,15 +96,20 @@ struct WalletOverviewView: View {
                 } else {
                     ForEach(section.rows.prefix(rowLimit)) { row in
                         Link(destination: row.url ?? URL(string: "cardwise://cards")!) {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(row.title).font(.subheadline.weight(.semibold)).lineLimit(1)
-                                Text(family == .accessoryRectangular ? row.value : row.subtitle)
-                                    .font(.caption).foregroundStyle(.secondary).lineLimit(1)
-                                if family != .accessoryRectangular {
-                                    Text(row.value).font(.caption).lineLimit(1)
+                            HStack(alignment: .top, spacing: 8) {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(row.title).font(.subheadline.weight(.semibold)).lineLimit(1)
+                                    Text(family == .accessoryRectangular ? row.value : row.subtitle)
+                                        .font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                                    if family == .systemSmall {
+                                        Text(row.value).font(.caption).lineLimit(1)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                if family == .systemMedium || family == .systemLarge {
+                                    Text(row.value).font(.caption).multilineTextAlignment(.trailing).lineLimit(2)
                                 }
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
                         }.buttonStyle(.plain)
                     }
                     if section.rows.count > rowLimit, family != .accessoryRectangular {
