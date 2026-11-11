@@ -16,9 +16,12 @@ final class WalletWidgetTests: XCTestCase {
         edit.tap()
         springboard.buttons["Edit"].tap()
         springboard.buttons["Add Widget"].tap()
-        let cardwise = springboard.descendants(matching: .any).matching(
-            NSPredicate(format: "label == %@ AND elementType != %d", "CardWise", XCUIElement.ElementType.icon.rawValue)
-        ).firstMatch
+        let search = springboard.searchFields["Search Widgets"]
+        XCTAssertTrue(search.waitForExistence(timeout: 10), springboard.debugDescription)
+        search.tap()
+        search.typeText("CardWise")
+        let gallery = springboard.collectionViews["add-sheet-collection-view"]
+        let cardwise = gallery.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "CardWise")).firstMatch
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isHittable == true"), object: cardwise)
         let result = XCTWaiter.wait(for: [ready], timeout: 45)
         attachScreenshot(springboard, name: "Widget gallery listing")
