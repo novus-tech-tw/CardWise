@@ -47,6 +47,8 @@ jobs:
           device=$(xcrun simctl create 'CardWise Widget Acceptance' com.apple.CoreSimulator.SimDeviceType.iPhone-16 "$runtime")
           echo "id=$device" >> "$GITHUB_OUTPUT"
           xcrun simctl boot "$device"
+          open -a Simulator --args -CurrentDeviceUDID "$device"
+          xcrun simctl bootstatus "$device" -b
       - name: Run widget acceptance test
         run: |
           xcodebuild test -project CardWise.xcodeproj -scheme CardWiseUI \
@@ -59,7 +61,7 @@ jobs:
         if: always() && steps.simulator.outputs.id != ''
         run: |
           xcrun simctl spawn '${{ steps.simulator.outputs.id }}' log show --last 5m --style compact \
-            --predicate 'process == "CardWiseWidget" OR eventMessage CONTAINS "studio.tmj.cardwise.widget"' > widget-extension.log || true
+            --predicate 'process == "CardWiseWidget" OR process CONTAINS "Widget" OR process CONTAINS "Gallery" OR (process == "SpringBoard" AND messageType == 16) OR eventMessage CONTAINS "studio.tmj.cardwise.widget"' > widget-extension.log || true
           xcrun simctl spawn '${{ steps.simulator.outputs.id }}' launchctl list | grep -Ei 'widget|gallery|springboard' > simulator-processes.txt || true
       - name: Retain test results
         if: always()

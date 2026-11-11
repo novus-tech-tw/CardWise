@@ -16,17 +16,21 @@ final class WalletWidgetTests: XCTestCase {
         edit.tap()
         springboard.buttons["Edit"].tap()
         springboard.buttons["Add Widget"].tap()
+        let cardwise = springboard.descendants(matching: .any).matching(
+            NSPredicate(format: "label == %@ AND elementType != %d", "CardWise", XCUIElement.ElementType.icon.rawValue)
+        ).firstMatch
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isHittable == true"), object: cardwise)
+        let result = XCTWaiter.wait(for: [ready], timeout: 45)
         attachScreenshot(springboard, name: "Widget gallery listing")
-        let cardwise = springboard.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "CardWise")).firstMatch
-        XCTAssertTrue(cardwise.waitForExistence(timeout: 30), springboard.debugDescription)
+        XCTAssertEqual(result, .completed, springboard.debugDescription)
         cardwise.tap()
         var attempts = 0
         while !springboard.staticTexts["Unused Statement Credits"].exists && attempts < 17 {
             springboard.swipeLeft()
             attempts += 1
         }
-        XCTAssertTrue(springboard.staticTexts["Unused Statement Credits"].exists, springboard.debugDescription)
         attachScreenshot(springboard, name: "Unused credits gallery")
+        XCTAssertTrue(springboard.staticTexts["Unused Statement Credits"].exists, springboard.debugDescription)
         let addWidget = springboard.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Add Widget")).firstMatch
         XCTAssertTrue(addWidget.exists)
         addWidget.tap()
