@@ -116,6 +116,6 @@ struct WalletOverviewView: View {
         }
         .privacySensitive()
         .containerBackground(for: .widget) { Color(.systemBackground) }
-        .widgetURL(URL(string: "cardwise://cards"))
+        .widgetURL(entry.section?.destinationURL ?? URL(string: "cardwise://cards"))
     }
 }

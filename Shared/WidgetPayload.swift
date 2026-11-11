@@ -55,4 +55,14 @@ struct WalletWidgetSection: Codable, Equatable {
     let title: String
     let emptyMessage: String
     let rows: [WalletWidgetRow]
+
+    var destinationURL: URL? {
+        switch kind {
+        case .categories: return rows.first?.url ?? URL(string: "cardwise://cards")
+        case .offers: return URL(string: "cardwise://offers")
+        case .deadlines: return URL(string: "cardwise://deadlines")
+        case .credits: return URL(string: "cardwise://credits")
+        case .summary: return URL(string: "cardwise://cards")
+        }
+    }
 }

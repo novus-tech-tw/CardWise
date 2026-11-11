@@ -129,6 +129,10 @@ import Testing
         #expect(sections.first { $0.kind == .summary }?.rows.last?.value == "$95.00")
         let restored = try JSONDecoder().decode(WidgetPayload.self, from: JSONEncoder().encode(payload))
         #expect(restored == payload)
+        #expect(sections.first { $0.kind == .categories }?.destinationURL?.host == "recommend")
+        #expect(sections.first { $0.kind == .credits }?.destinationURL?.host == "credits")
+        let emptyOffers = WalletWidgetSection(kind: .offers, title: "Offers", emptyMessage: "No offers", rows: [])
+        #expect(emptyOffers.destinationURL?.host == "offers")
     }
 
     @Test func legacyWidgetAndWalletPayloadsStillLoad() throws {
