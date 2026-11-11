@@ -140,4 +140,25 @@ import Testing
         let wallet = UserCard(card: card())
         #expect(WalletOfferQuery.matches(userCards: [wallet], catalog: [], now: now).isEmpty)
     }
+
+    @Test func favoriteOrderPersistsAndUpdatesCategoryWidgetPriority() throws {
+        let suite = "CardWiseFavorites.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let store = QuickAccessStore(defaults: defaults)
+        let dining = FavoritePurchase(merchant: "", category: .dining)
+        let gas = FavoritePurchase(merchant: "", category: .gas)
+        store.toggle(dining)
+        store.toggle(gas)
+        store.reorder(ids: [gas.id, dining.id])
+        store.reorder(ids: [gas.id, gas.id])
+        store.reorder(ids: ["missing", dining.id])
+        let restored = QuickAccessStore(defaults: defaults)
+        #expect(restored.favorites == [gas, dining])
+        let card = card()
+        let payload = WidgetDataManager.makePayload(userCards: [UserCard(card: card)], allCards: [card], spendings: [],
+                                                     settings: .init(), asOf: now, favorites: restored.favorites)
+        let rows = try #require(payload.walletSections?.first { $0.kind == .categories }?.rows)
+        #expect(rows.prefix(2).map(\.id) == [SpendingCategory.gas.rawValue, SpendingCategory.dining.rawValue])
+    }
 }

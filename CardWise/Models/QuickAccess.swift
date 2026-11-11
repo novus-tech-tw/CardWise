@@ -29,6 +29,13 @@ final class QuickAccessStore: ObservableObject {
         persist()
     }
 
+    func reorder(ids: [String]) {
+        guard ids.count == favorites.count, Set(ids).count == ids.count,
+              Set(ids) == Set(favorites.map(\.id)) else { return }
+        favorites = ids.compactMap { id in favorites.first { $0.id == id } }
+        persist()
+    }
+
     func reset() { favorites = []; persist() }
 
     private func persist() {
