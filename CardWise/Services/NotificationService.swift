@@ -5,6 +5,9 @@ import os
 class NotificationService {
     private static let logger = Logger(subsystem: "com.cardwise.app", category: "NotificationService")
     static let shared = NotificationService()
+    /// Notification-service IPC can wait for the system daemon. Keep synchronous writes
+    /// off the UI thread and preserve the order of replacement and cancellation requests.
+    private let notificationQueue = DispatchQueue(label: "com.cardwise.notification-writes", qos: .utility)
 
     private init() {}
 
@@ -64,7 +67,7 @@ class NotificationService {
             trigger: trigger
         )
 
-        UNUserNotificationCenter.current().add(request)
+        notificationQueue.async { UNUserNotificationCenter.current().add(request) }
     }
 
     func shouldSendSpendingCapAlerts() -> Bool {
@@ -99,35 +102,42 @@ class NotificationService {
     /// (Re)schedule the repeating quarter-start reminders, or cancel them when the user
     /// has no rotating-category cards or has turned the toggles off.
     func refreshRotatingReminders(hasRotatingCards: Bool) {
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: Self.rotatingReminderIdentifiers)
+        let enabled = hasRotatingCards && shouldSendRotatingReminders()
+        notificationQueue.async {
+            let center = UNUserNotificationCenter.current()
+            center.removePendingNotificationRequests(withIdentifiers: Self.rotatingReminderIdentifiers)
 
-        guard hasRotatingCards, shouldSendRotatingReminders() else { return }
+            guard enabled else { return }
 
-        for (index, components) in Self.quarterReminderDateComponents().enumerated() {
-            let content = UNMutableNotificationContent()
-            content.title = "New Rotating Categories"
-            content.body = "Q\(index + 1) just started — activate your cards' rotating bonus categories to earn the full rate."
-            content.sound = .default
+            for (index, components) in Self.quarterReminderDateComponents().enumerated() {
+                let content = UNMutableNotificationContent()
+                content.title = "New Rotating Categories"
+                content.body = "Q\(index + 1) just started — activate your cards' rotating bonus categories to earn the full rate."
+                content.sound = .default
 
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-            let request = UNNotificationRequest(
-                identifier: Self.rotatingReminderIdentifiers[index],
-                content: content,
-                trigger: trigger
-            )
-            center.add(request)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+                let request = UNNotificationRequest(
+                    identifier: Self.rotatingReminderIdentifiers[index],
+                    content: content,
+                    trigger: trigger
+                )
+                center.add(request)
+            }
         }
     }
 
     // MARK: - Clear Notifications
 
     func clearAllNotifications() {
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        notificationQueue.async {
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        }
     }
 
     func clearNotification(identifier: String) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        notificationQueue.async {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        }
     }
 }

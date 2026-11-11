@@ -19,6 +19,7 @@ struct WidgetPayload: Codable, Equatable {
     var purchaseMerchant: String?
     var purchaseCategory: String?
     var purchaseAmount: Double?
+    var walletSections: [WalletWidgetSection]?
 
     var recommendationURL: URL? {
         guard let purchaseCategory, let purchaseAmount, purchaseAmount.isFinite, purchaseAmount > 0 else { return nil }
@@ -35,4 +36,23 @@ struct WidgetPayload: Codable, Equatable {
         guard let validUntil else { return true }
         return date >= validUntil
     }
+}
+
+enum WalletWidgetSectionKind: String, Codable, CaseIterable, Sendable {
+    case categories, offers, deadlines, credits, summary
+}
+
+struct WalletWidgetRow: Codable, Equatable, Identifiable {
+    let id: String
+    let title: String
+    let subtitle: String
+    let value: String
+    var url: URL?
+}
+
+struct WalletWidgetSection: Codable, Equatable {
+    let kind: WalletWidgetSectionKind
+    let title: String
+    let emptyMessage: String
+    let rows: [WalletWidgetRow]
 }

@@ -10,6 +10,7 @@
 		0281D1EB5399AB722D80F408 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E2B4656F04A27CDA45B53B /* KeychainHelper.swift */; };
 		057E1333A60A2BFCFF884EED /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D0DE5265934001FD7948B4 /* FavoritesView.swift */; };
 		0642E0A4A307C0DF15D8CB01 /* HeroStatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3CFC5475B463B957F028F /* HeroStatCard.swift */; };
+		074080B9DBD22A88F1FA2C86 /* WalletSurfacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C8C3E4EAFC9C8E8EFD1BD /* WalletSurfacesTests.swift */; };
 		07D349BE1B1D702BC3A2411C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2EACAE9B6AC051343C040 /* HomeView.swift */; };
 		0AF6F97F2BBE90C731D37F21 /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C85F068146A64781EFF3A /* Badges.swift */; };
 		1046684823824E0B9A943FBE /* ShoppingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF3C4B15FD87C606B73291 /* ShoppingActivity.swift */; };
@@ -25,12 +26,14 @@
 		2F0077C82C278DAC739FE80A /* LocalIntegrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EC6A60EDADBD46E45D4067 /* LocalIntegrationsTests.swift */; };
 		2FC2A91D4E762B8DD3FA12C8 /* CloudStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97732289978E9D76C5A0E08 /* CloudStoreTests.swift */; };
 		3053BD38689869691D821BC5 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E304F5D3034F498361136AA /* MockData.swift */; };
+		3278BF1F8D94A7D621F99543 /* WalletOverviewWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFCC4753FDBD10B23C12260 /* WalletOverviewWidget.swift */; };
 		32E72906FB039011FC0EA73F /* RecommendationEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C15E8A509DCC0838E4E96CA /* RecommendationEngineTests.swift */; };
 		3495EA4C145807AC2907B0BF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274F2E9B6A333220D5F8B0C /* CardViewModel.swift */; };
 		34BD33D1EABC53BB2B3AB371 /* ShoppingActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BCDEBAF47D8FFF243D8A0 /* ShoppingActivityController.swift */; };
 		36068E5FFA47CBC3E6CDB77D /* MerchantPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828C29AE29441DFB1FBFD05 /* MerchantPreferencesStore.swift */; };
 		3B02C31B60910A846B78B96B /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC73D1563A464E7142E6C234 /* WhatsNewView.swift */; };
 		3B7A453494A1E8BC37B67F87 /* RemoteCatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11583449A6D8F7FA63D5D1B /* RemoteCatalogService.swift */; };
+		3C1C5203C9A9B735A613025B /* WalletOfferQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411B0C9241C11860195F14D /* WalletOfferQuery.swift */; };
 		3DCC2372FA629D5C4CDBF39E /* WidgetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46793A72523BFCB316D74A7C /* WidgetDataManager.swift */; };
 		3EC01DB11EC48653F556D15B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACB054B1C57355D04F18D873 /* Preview Assets.xcassets */; };
 		410E367B1F0C3022B094ED3B /* PurchaseContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474EBD748535F012CF120C24 /* PurchaseContext.swift */; };
@@ -40,6 +43,7 @@
 		4494AEE272A780EBA9679431 /* PurchaseToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A852DC684F61A1462AEAC69 /* PurchaseToolsTests.swift */; };
 		468821C9B7D56681BBF396B2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C580FBCB53FA560F4362B77 /* Theme.swift */; };
 		4ABD8BE8CE0E9475FF2BDA0D /* ShoppingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF3C4B15FD87C606B73291 /* ShoppingActivity.swift */; };
+		4AD3240DB04295FFAD4507AB /* OfferIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC71E5EB06C4E86E0D1BF45 /* OfferIntents.swift */; };
 		4C26E2A0F5834D67C024CDE7 /* RecommendationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E44D99041272DC0BF84DD /* RecommendationSettings.swift */; };
 		4CCC2D41CFD22BFAC72F47E7 /* AppButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CD6C612AC3FCB5753A2E5 /* AppButtons.swift */; };
 		4E2ED4D6F93B88B8611E20B2 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AEAFE49F6A0E286A10992 /* CreditCard.swift */; };
@@ -109,6 +113,7 @@
 		E96600BFC9F671E826EA13A0 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB4C0064CA01D693739E78B /* OCRService.swift */; };
 		EC6A3D10C9A3C2B6AD6AB3CC /* MerchantDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F173864CFC6B3CF85B28DB /* MerchantDatabaseTests.swift */; };
 		EC7AE85A1ADEC89378C80C44 /* ScanReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFB2FBE8A1C01745D63948 /* ScanReceiptView.swift */; };
+		EF26214662637DB49B67F890 /* WalletWidgetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E217DB22EE9FACFDF697A33 /* WalletWidgetContent.swift */; };
 		F071521DE211DD5E2AC981AD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B7435406B695A2AC41E68 /* MainTabView.swift */; };
 		F23A8E082BAE1CE57A1E2289 /* SpendingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ACE63934BA7D10758F38A2 /* SpendingCategory.swift */; };
 		F2D64085377ACA590DF337E6 /* RewardsToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9441B8BCF4535CF43DF4 /* RewardsToolsTests.swift */; };
@@ -167,7 +172,9 @@
 		18F664E2BAF611E22F994D4F /* AppVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionTests.swift; sourceTree = "<group>"; };
 		19B1F70D111E1968C02C9C0A /* UpcomingActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingActions.swift; sourceTree = "<group>"; };
 		20064D59998A353D8617AA14 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		2411B0C9241C11860195F14D /* WalletOfferQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletOfferQuery.swift; sourceTree = "<group>"; };
 		2DBC8E84F4174A2A378805CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E217DB22EE9FACFDF697A33 /* WalletWidgetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidgetContent.swift; sourceTree = "<group>"; };
 		2E6F0A498B90BF641C9725DD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		334D9441B8BCF4535CF43DF4 /* RewardsToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsToolsTests.swift; sourceTree = "<group>"; };
 		371EDCF327C645E7DD3ACB1E /* SpendingCapTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCapTracker.swift; sourceTree = "<group>"; };
@@ -200,6 +207,7 @@
 		674FD906747C982D4993D300 /* AppProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppProgressBar.swift; sourceTree = "<group>"; };
 		6C77377151FEE3B8604A9474 /* CardWiseShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWiseShortcuts.swift; sourceTree = "<group>"; };
 		6D2A8B007A587D97ED570255 /* AnnualCardValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualCardValue.swift; sourceTree = "<group>"; };
+		6DC71E5EB06C4E86E0D1BF45 /* OfferIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferIntents.swift; sourceTree = "<group>"; };
 		71FE0B83021A60A26314E020 /* SectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCard.swift; sourceTree = "<group>"; };
 		7274F2E9B6A333220D5F8B0C /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		762CD900EF202B47B17FBCD3 /* CardWiseWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWiseWidget.swift; sourceTree = "<group>"; };
@@ -221,7 +229,9 @@
 		9826353CEE7E3787AD7513F8 /* UnusedCreditsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnusedCreditsTests.swift; sourceTree = "<group>"; };
 		998DD0C18E2B6B0A017F1050 /* CreditUsageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditUsageViewModelTests.swift; sourceTree = "<group>"; };
 		9A852DC684F61A1462AEAC69 /* PurchaseToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseToolsTests.swift; sourceTree = "<group>"; };
+		9B2C8C3E4EAFC9C8E8EFD1BD /* WalletSurfacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSurfacesTests.swift; sourceTree = "<group>"; };
 		9C55748F1169D27C5E1F4C94 /* RecentPurchaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPurchaseStore.swift; sourceTree = "<group>"; };
+		9CFCC4753FDBD10B23C12260 /* WalletOverviewWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletOverviewWidget.swift; sourceTree = "<group>"; };
 		9EF88FBB29B10BEDD26919AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A19A21D57BB7FC98B67DFA4C /* SpendingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListView.swift; sourceTree = "<group>"; };
 		A2EAFE3ACDD24CFDCFE2C00F /* CardWiseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWiseApp.swift; sourceTree = "<group>"; };
@@ -314,6 +324,7 @@
 				43AE329C5BF824AC8FC7375E /* SearchHistoryManagerTests.swift */,
 				5AA1881A3F22C5BB0E758513 /* ShortcutRecommendationTests.swift */,
 				9826353CEE7E3787AD7513F8 /* UnusedCreditsTests.swift */,
+				9B2C8C3E4EAFC9C8E8EFD1BD /* WalletSurfacesTests.swift */,
 				4BB7C226563289833EA7095D /* WhatsNewTests.swift */,
 			);
 			path = CardWiseTests;
@@ -347,6 +358,7 @@
 				762CD900EF202B47B17FBCD3 /* CardWiseWidget.swift */,
 				137EA6547C7BFB8F919B98B3 /* Info.plist */,
 				8EC0FBD52FA641775816FC76 /* ShoppingLiveActivity.swift */,
+				9CFCC4753FDBD10B23C12260 /* WalletOverviewWidget.swift */,
 			);
 			path = CardWiseWidget;
 			sourceTree = "<group>";
@@ -355,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				6C77377151FEE3B8604A9474 /* CardWiseShortcuts.swift */,
+				6DC71E5EB06C4E86E0D1BF45 /* OfferIntents.swift */,
 				13575FCA7E8E0C8622C60F2E /* ShortcutsHelpView.swift */,
 				FA6294887618AC326F2F6B02 /* WalletIntents.swift */,
 			);
@@ -429,6 +442,8 @@
 				E20BCDEBAF47D8FFF243D8A0 /* ShoppingActivityController.swift */,
 				371EDCF327C645E7DD3ACB1E /* SpendingCapTracker.swift */,
 				19B1F70D111E1968C02C9C0A /* UpcomingActions.swift */,
+				2411B0C9241C11860195F14D /* WalletOfferQuery.swift */,
+				2E217DB22EE9FACFDF697A33 /* WalletWidgetContent.swift */,
 				46793A72523BFCB316D74A7C /* WidgetDataManager.swift */,
 			);
 			path = Services;
@@ -735,6 +750,7 @@
 				DD78683EF40A77D474B59E5C /* NearbyView.swift in Sources */,
 				93DBF7456906A5431E2F2BD8 /* NotificationService.swift in Sources */,
 				E96600BFC9F671E826EA13A0 /* OCRService.swift in Sources */,
+				4AD3240DB04295FFAD4507AB /* OfferIntents.swift in Sources */,
 				43B1B89DB3683C7C94D0CC5A /* OnboardingView.swift in Sources */,
 				7077673429DC12EDDCC8A77F /* PurchaseComparison.swift in Sources */,
 				E33F2F41C255C226E8A9C7AD /* PurchaseComparisonView.swift in Sources */,
@@ -768,7 +784,9 @@
 				43777AD208FE1C50590CB88D /* UpcomingActions.swift in Sources */,
 				8FDB234B01AD25087B433FA1 /* UpcomingActionsView.swift in Sources */,
 				99EC7709A70FC11F34D96745 /* WalletIntents.swift in Sources */,
+				3C1C5203C9A9B735A613025B /* WalletOfferQuery.swift in Sources */,
 				1E156E360D780ECDF372D212 /* WalletOffersView.swift in Sources */,
+				EF26214662637DB49B67F890 /* WalletWidgetContent.swift in Sources */,
 				3B02C31B60910A846B78B96B /* WhatsNewView.swift in Sources */,
 				3DCC2372FA629D5C4CDBF39E /* WidgetDataManager.swift in Sources */,
 				FC505FF5F465920E82578086 /* WidgetPayload.swift in Sources */,
@@ -782,6 +800,7 @@
 				CF8D6A693BFD78D075960F59 /* CardWiseWidget.swift in Sources */,
 				1046684823824E0B9A943FBE /* ShoppingActivity.swift in Sources */,
 				A5968DFCA98917663253572B /* ShoppingLiveActivity.swift in Sources */,
+				3278BF1F8D94A7D621F99543 /* WalletOverviewWidget.swift in Sources */,
 				22D2DA5EEE52363A33E53638 /* WidgetPayload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -812,6 +831,7 @@
 				DB509AB60F4D5175E7E74CEE /* SearchHistoryManagerTests.swift in Sources */,
 				656086D304B67ADCF6284B36 /* ShortcutRecommendationTests.swift in Sources */,
 				17CD8EC9F9369CC8FED62B44 /* UnusedCreditsTests.swift in Sources */,
+				074080B9DBD22A88F1FA2C86 /* WalletSurfacesTests.swift in Sources */,
 				B8B6837B2FE9828D3DB70532 /* WhatsNewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
