@@ -10,11 +10,13 @@ final class WalletWidgetTests: XCTestCase {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let icon = springboard.icons["CardWise"].firstMatch
         XCTAssertTrue(icon.waitForExistence(timeout: 10))
-        icon.press(forDuration: 1)
-        let edit = springboard.buttons["Edit Home Screen"]
-        XCTAssertTrue(edit.waitForExistence(timeout: 5), springboard.debugDescription)
+        attachScreenshot(springboard, name: "Home before widget installation")
+        // The disposable simulator's lower Home grid is empty. Holding it avoids
+        // the app-icon preview process, which can stall SpringBoard animation waits.
+        springboard.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.7)).press(forDuration: 1.5)
+        let edit = springboard.buttons["Edit"]
+        XCTAssertTrue(edit.waitForExistence(timeout: 10), springboard.debugDescription)
         edit.tap()
-        springboard.buttons["Edit"].tap()
         springboard.buttons["Add Widget"].tap()
         let search = springboard.searchFields["Search Widgets"]
         XCTAssertTrue(search.waitForExistence(timeout: 10), springboard.debugDescription)

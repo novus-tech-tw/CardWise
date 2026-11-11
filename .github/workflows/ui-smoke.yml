@@ -56,7 +56,7 @@ jobs:
             -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.id }}' \
             -resultBundlePath ui-smoke.xcresult -parallel-testing-enabled NO \
             -collect-test-diagnostics never -test-timeouts-enabled YES \
-            -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \
+            -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 240 \
             CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
       - name: Collect focused widget diagnostics
         if: always() && steps.simulator.outputs.id != ''
