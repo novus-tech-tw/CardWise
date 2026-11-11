@@ -9,6 +9,12 @@ struct ShortcutsHelpView: View {
                 Text("You can also say: “Find my best card with CardWise” or “Compare my cards with CardWise.” Siri asks for the merchant or category. The amount defaults to $100; set a different amount in Shortcuts.")
                 ShortcutsLink()
             }
+            Section("Shopping Mode") {
+                Text("Say “Start shopping mode in CardWise” to keep the best card for a merchant on your Lock Screen and in the Dynamic Island for up to 4 hours. Say “End shopping mode in CardWise” or tap the close button to remove it.")
+            }
+            Section("Wallet Check-ins") {
+                Text("“Show unused credits in CardWise”, “Show card deadlines in CardWise” and “Show bonus categories in CardWise” read your saved wallet. Nothing leaves your device.")
+            }
             Section("Your Saved Preferences") {
                 Text("Actions use your recorded purchases, spending caps, point values and ranking preference. Open CardWise after changing data on another device. Unlock your device to run an action.")
             }

@@ -24,7 +24,7 @@ targets:
         INFOPLIST_GENERATION_MODE: GeneratedFile
         PRODUCT_BUNDLE_IDENTIFIER: studio.tmj.cardwise
         TARGETED_DEVICE_FAMILY: "1"
-        MARKETING_VERSION: "1.0.5"
+        MARKETING_VERSION: "1.0.6"
         CURRENT_PROJECT_VERSION: "21"
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
@@ -33,6 +33,8 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait"
         INFOPLIST_KEY_NSCameraUsageDescription: "CardWise uses the camera to scan receipts for quick transaction entry."
         INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "CardWise accesses your photo library to import receipt images."
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "CardWise uses your location only while you view Nearby, to find stores around you and suggest the best card. Your location is never saved or sent to the developer."
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
         INFOPLIST_KEY_CFBundleDisplayName: "CardWise"
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.finance"
         # App only uses Apple's standard OS encryption (HTTPS/TLS), which is exempt.
@@ -82,7 +84,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: studio.tmj.cardwise.widget
         TARGETED_DEVICE_FAMILY: "1"
-        MARKETING_VERSION: "1.0.5"
+        MARKETING_VERSION: "1.0.6"
         CURRENT_PROJECT_VERSION: "21"
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: CardWiseWidget/Info.plist

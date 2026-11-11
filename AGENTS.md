@@ -14,9 +14,12 @@ The app is **free and local-first** — no accounts, no CardWise-operated backen
 lives on-device via SwiftData and syncs across the user's own devices through CloudKit
 (private database, with a local-only fallback when iCloud is unavailable). Note: sync in
 TestFlight/App Store builds requires the CloudKit schema to be deployed to Production in
-the CloudKit Console. The app makes exactly two read-only network calls: a card-catalog
+the CloudKit Console. The app makes exactly two read-only network calls of its own: a card-catalog
 refresh from GitHub raw (`RemoteCatalogService`) and an App Store version check against
-`itunes.apple.com` (`AppUpdateChecker`). The credit-card reward database ships bundled with
+`itunes.apple.com` (`AppUpdateChecker`). The opt-in Nearby screen additionally asks Apple Maps
+(`MKLocalPointsOfInterestRequest`) for places around a one-shot, when-in-use location; the
+location is never stored or sent anywhere else. Live Activities are started locally with no
+push token. The credit-card reward database ships bundled with
 the app (`CardWise/Resources/cards.json`) and is refreshed weekly by the `Scripts/` pipeline.
 
 ## Tech Stack
@@ -68,6 +71,8 @@ CardWise/
 │   ├── CardCatalog.swift       # Card catalog: cache-first load of cards.json with bundled fallback
 │   ├── RemoteCatalogService.swift # Fetches updated cards.json from GitHub raw, validates + caches
 │   ├── RecommendationEngine.swift
+│   ├── ShoppingActivityController.swift # "Shopping mode" Live Activity (local, no push)
+│   ├── NearbyPlaces.swift      # One-shot location + Apple Maps POI search → category
 │   ├── SpendingCapTracker.swift    # Per-period category-cap accounting
 │   ├── OCRService.swift        # Receipt scanning (Vision)
 │   ├── NotificationService.swift
@@ -80,7 +85,8 @@ CardWise/
 └── Utils/
     └── Extensions.swift    # Color hex, Date helpers
 
-CardWiseWidget/             # Home-screen widget (app-extension)
+Shared/                     # Compiled into app + widget: WidgetPayload, Live Activity attributes/intent
+CardWiseWidget/             # Home-screen widget + shopping-mode Live Activity (app-extension)
 CardWiseTests/              # Unit tests
 Scripts/                    # cards.json update pipeline (validator, diff classifier,
                             # pre-push hook, weekly `claude -p` orchestrator + launchd job)
