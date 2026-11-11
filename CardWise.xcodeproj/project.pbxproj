@@ -108,6 +108,7 @@
 		DFC5CDDA2577E1B7061511CE /* CardWiseWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 56CEFF1604E21E24C22E8048 /* CardWiseWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E33F2F41C255C226E8A9C7AD /* PurchaseComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DEB5AB3ADE2B320599DBA /* PurchaseComparisonView.swift */; };
 		E40AD5A79833E2FF8E708DF5 /* SectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE0B83021A60A26314E020 /* SectionCard.swift */; };
+		E476D1BAEA8D44B916D6F1FD /* WalletWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B3589EF914E21D2F671D54 /* WalletWidgetTests.swift */; };
 		E54F9F9A47A612CFD6744460 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40BCAD3A0B02D4BB31F13A /* RecommendView.swift */; };
 		E6EABFC9726CC26D628F43D2 /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19A21D57BB7FC98B67DFA4C /* SpendingListView.swift */; };
 		E96600BFC9F671E826EA13A0 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB4C0064CA01D693739E78B /* OCRService.swift */; };
@@ -126,6 +127,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1163C37BE239A46F4AA32B31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C617ABDF28EE0081495696D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F1F82530D23B328D484BBA1;
+			remoteInfo = CardWise;
+		};
 		90DA3D7B31DCAC3C914194C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C617ABDF28EE0081495696D /* Project object */;
@@ -171,6 +179,7 @@
 		137EA6547C7BFB8F919B98B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		18F664E2BAF611E22F994D4F /* AppVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionTests.swift; sourceTree = "<group>"; };
 		19B1F70D111E1968C02C9C0A /* UpcomingActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingActions.swift; sourceTree = "<group>"; };
+		1B1FCB75C7C9A4C421A86A8B /* CardWiseUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CardWiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20064D59998A353D8617AA14 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		2411B0C9241C11860195F14D /* WalletOfferQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletOfferQuery.swift; sourceTree = "<group>"; };
 		2DBC8E84F4174A2A378805CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -224,6 +233,7 @@
 		8EC0FBD52FA641775816FC76 /* ShoppingLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingLiveActivity.swift; sourceTree = "<group>"; };
 		8F2B7435406B695A2AC41E68 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		91E2B4656F04A27CDA45B53B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		92B3589EF914E21D2F671D54 /* WalletWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidgetTests.swift; sourceTree = "<group>"; };
 		94D3CFC5475B463B957F028F /* HeroStatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroStatCard.swift; sourceTree = "<group>"; };
 		954D972AEF90855F3BCD06F1 /* ReleaseNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotes.swift; sourceTree = "<group>"; };
 		9826353CEE7E3787AD7513F8 /* UnusedCreditsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnusedCreditsTests.swift; sourceTree = "<group>"; };
@@ -330,6 +340,14 @@
 			path = CardWiseTests;
 			sourceTree = "<group>";
 		};
+		1CB23034577A3D26D2E58AA5 /* CardWiseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				92B3589EF914E21D2F671D54 /* WalletWidgetTests.swift */,
+			);
+			path = CardWiseUITests;
+			sourceTree = "<group>";
+		};
 		454AF5A141C17080857C0EC4 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +432,7 @@
 			children = (
 				BF22589E623ADA6FC8592C4F /* CardWise */,
 				0D0F76BC18DB47371AFF8681 /* CardWiseTests */,
+				1CB23034577A3D26D2E58AA5 /* CardWiseUITests */,
 				4964EC7DDA4E353A6A618DC4 /* CardWiseWidget */,
 				041D0216EACAF16BBE9CD941 /* Shared */,
 				99B4E26EF68D63BB6C99DAEA /* Products */,
@@ -482,6 +501,7 @@
 			children = (
 				CFA49935D5C8A86F1693BA70 /* CardWise.app */,
 				89112E68051435F4ECA85FCE /* CardWiseTests.xctest */,
+				1B1FCB75C7C9A4C421A86A8B /* CardWiseUITests.xctest */,
 				56CEFF1604E21E24C22E8048 /* CardWiseWidget.appex */,
 			);
 			name = Products;
@@ -593,6 +613,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C3DAA7E0AD1470EAD072C43 /* CardWiseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7632C35F6A0BDF4AB3C4A02A /* Build configuration list for PBXNativeTarget "CardWiseUITests" */;
+			buildPhases = (
+				DC875E3E3A4C49AD1746E5C2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				670054DF808B422F718F42FD /* PBXTargetDependency */,
+			);
+			name = CardWiseUITests;
+			packageProductDependencies = (
+			);
+			productName = CardWiseUITests;
+			productReference = 1B1FCB75C7C9A4C421A86A8B /* CardWiseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		4834B5136DDB110C9C186A1E /* CardWiseWidget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E81D34AC8EF24681AE4E0ED9 /* Build configuration list for PBXNativeTarget "CardWiseWidget" */;
@@ -657,6 +695,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					2C3DAA7E0AD1470EAD072C43 = {
+						DevelopmentTeam = K434CK85HW;
+						TestTargetID = 4F1F82530D23B328D484BBA1;
+					};
 					4834B5136DDB110C9C186A1E = {
 						DevelopmentTeam = K434CK85HW;
 					};
@@ -684,6 +726,7 @@
 			targets = (
 				4F1F82530D23B328D484BBA1 /* CardWise */,
 				CAE66B47D710F56EA580459F /* CardWiseTests */,
+				2C3DAA7E0AD1470EAD072C43 /* CardWiseUITests */,
 				4834B5136DDB110C9C186A1E /* CardWiseWidget */,
 			);
 		};
@@ -836,6 +879,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DC875E3E3A4C49AD1746E5C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E476D1BAEA8D44B916D6F1FD /* WalletWidgetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -843,6 +894,11 @@
 			isa = PBXTargetDependency;
 			target = 4834B5136DDB110C9C186A1E /* CardWiseWidget */;
 			targetProxy = B6BF3727453007EFE8CAF8B6 /* PBXContainerItemProxy */;
+		};
+		670054DF808B422F718F42FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F1F82530D23B328D484BBA1 /* CardWise */;
+			targetProxy = 1163C37BE239A46F4AA32B31 /* PBXContainerItemProxy */;
 		};
 		729B59607453D55E08012796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1025,6 +1081,23 @@
 			};
 			name = Debug;
 		};
+		6523A8CE7317F3613064C083 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = studio.tmj.cardwise.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CardWise;
+			};
+			name = Release;
+		};
 		9AEA6E8F2F29BCC4F911FDA7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1056,6 +1129,23 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		CBD221EEE05AB66F20B20BB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = studio.tmj.cardwise.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CardWise;
+			};
+			name = Debug;
 		};
 		CD6DA5007255F5C646B0045C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1119,6 +1209,15 @@
 			buildConfigurations = (
 				D8EFA4F60FB3E5BD8F147A1B /* Debug */,
 				DE551C9EB7707310E44411F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7632C35F6A0BDF4AB3C4A02A /* Build configuration list for PBXNativeTarget "CardWiseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBD221EEE05AB66F20B20BB6 /* Debug */,
+				6523A8CE7317F3613064C083 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
