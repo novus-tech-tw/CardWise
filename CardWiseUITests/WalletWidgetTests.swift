@@ -1,4 +1,5 @@
 import XCTest
+import Vision
 
 final class WalletWidgetTests: XCTestCase {
     @MainActor
@@ -34,11 +35,14 @@ final class WalletWidgetTests: XCTestCase {
             springboard.swipeLeft()
             attempts += 1
         }
+        waitForVisibleCredit(in: springboard)
         attachScreenshot(springboard, name: "Unused credits gallery")
         XCTAssertTrue(springboard.staticTexts["Unused Statement Credits"].exists, springboard.debugDescription)
         springboard.swipeLeft()
+        waitForVisibleCredit(in: springboard)
         attachScreenshot(springboard, name: "Unused credits medium")
         springboard.swipeLeft()
+        waitForVisibleCredit(in: springboard)
         attachScreenshot(springboard, name: "Unused credits large")
         springboard.swipeRight()
         springboard.swipeRight()
@@ -47,6 +51,7 @@ final class WalletWidgetTests: XCTestCase {
         addWidget.tap()
         let done = springboard.buttons["Done"]
         if done.waitForExistence(timeout: 5) { done.tap() }
+        waitForVisibleCredit(in: springboard)
         attachScreenshot(springboard, name: "Installed unused credits")
         let widget = springboard.descendants(matching: .any).matching(
             NSPredicate(format: "label == %@ AND value CONTAINS %@", "CardWise", "Widget")
@@ -98,6 +103,26 @@ final class WalletWidgetTests: XCTestCase {
         XCTAssertTrue(remaining.waitForExistence(timeout: 5))
         app.buttons["Save"].tap()
         XCTAssertTrue(app.staticTexts["$6.50"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    private func waitForVisibleCredit(in app: XCUIApplication) {
+        let rendered = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            guard let image = app.screenshot().image.cgImage else { return false }
+            let request = VNRecognizeTextRequest()
+            request.recognitionLevel = .accurate
+            request.recognitionLanguages = ["en-US"]
+            do {
+                try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
+            } catch {
+                return false
+            }
+            return request.results?.contains { observation in
+                observation.topCandidates(1).first?.string.contains("6.50") == true
+            } ?? false
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [rendered], timeout: 30), .completed,
+                       "The widget must render the recorded remaining credit before its screenshot is accepted.")
     }
 
     @MainActor
