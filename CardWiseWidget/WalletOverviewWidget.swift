@@ -85,6 +85,13 @@ struct WalletOverviewView: View {
         }
     }
 
+    private var widgetURL: URL? {
+        guard !entry.isStale, family == .systemSmall || family == .accessoryRectangular else {
+            return entry.section?.destinationURL ?? URL(string: "cardwise://cards")
+        }
+        return entry.section?.singleRowDestinationURL ?? URL(string: "cardwise://cards")
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(entry.section?.title ?? "Wallet Overview").font(.caption.weight(.semibold)).lineLimit(1)
@@ -121,6 +128,6 @@ struct WalletOverviewView: View {
         }
         .privacySensitive()
         .containerBackground(for: .widget) { Color(.systemBackground) }
-        .widgetURL(entry.section?.destinationURL ?? URL(string: "cardwise://cards"))
+        .widgetURL(widgetURL)
     }
 }

@@ -18,7 +18,7 @@ enum WalletShortcutMessages {
     static func upcomingActions(_ actions: [UpcomingAction], limit: Int = 5) -> String {
         guard !actions.isEmpty else { return "Nothing needs attention in the next 30 days." }
         let lines = actions.prefix(limit).map { action in
-            "\(action.cardName): \(action.title), \(action.deadline.formatted(date: .abbreviated, time: .omitted))"
+            "\(action.cardName): \(action.title), \(action.displayDate.formatted(date: .abbreviated, time: .omitted))"
         }
         let more = actions.count > limit ? " Plus \(actions.count - limit) more in CardWise." : ""
         return lines.joined(separator: ". ") + "." + more

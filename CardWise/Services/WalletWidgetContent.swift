@@ -9,14 +9,12 @@ enum WalletWidgetContent {
         let offers = WalletOfferQuery.matches(userCards: userCards, catalog: catalog, amount: purchase.amount, now: now).map { match in
             WalletWidgetRow(id: match.id, title: match.offer.merchant, subtitle: "\(match.cardName) · \(match.offer.title)",
                             value: "Through \(match.offer.expiresAt.addingTimeInterval(-1).formatted(date: .abbreviated, time: .omitted))",
-                            url: URL(string: "cardwise://offers"))
+                            url: match.destination.url)
         }
         let deadlines = UpcomingActions.items(userCards: userCards, catalog: catalog, usages: usages,
                                              spendings: snapshot.spendings, now: now).map { action in
-            let date: Date
-            if case .offer = action.kind { date = action.deadline.addingTimeInterval(-1) } else { date = action.deadline }
             return WalletWidgetRow(id: action.id, title: action.title, subtitle: action.cardName,
-                                   value: date.formatted(date: .abbreviated, time: .omitted), url: URL(string: "cardwise://deadlines"))
+                                   value: action.displayDate.formatted(date: .abbreviated, time: .omitted), url: URL(string: "cardwise://deadlines"))
         }
         let credits = creditRows(userCards: userCards, catalog: catalog, usages: usages, now: now)
         let annualFees = userCards.reduce(0.0) { total, wallet in

@@ -1,6 +1,38 @@
 import AppIntents
 import Foundation
 
+struct SavedWalletCardEntity: AppEntity {
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Saved Card"
+    static var defaultQuery = SavedWalletCardEntityQuery()
+
+    var id: String
+    @Property(title: "Card") var name: String
+
+    var displayRepresentation: DisplayRepresentation { DisplayRepresentation(title: "\(name)") }
+
+    init(wallet: UserCard, catalog: [CreditCard]) {
+        id = wallet.id
+        name = wallet.nickname ?? catalog.first { $0.id == wallet.cardId }?.name ?? "Saved card"
+    }
+}
+
+struct SavedWalletCardEntityQuery: EntityQuery {
+    @MainActor
+    func entities(for identifiers: [String]) async throws -> [SavedWalletCardEntity] {
+        let cards = Self.savedCards()
+        return identifiers.compactMap { id in cards.first { $0.id == id } }
+    }
+
+    @MainActor
+    func suggestedEntities() async throws -> [SavedWalletCardEntity] { Self.savedCards() }
+
+    @MainActor
+    private static func savedCards() -> [SavedWalletCardEntity] {
+        let catalog = CardCatalog.loadCards()
+        return WalletSnapshotLoader.store().loadUserCards().map { SavedWalletCardEntity(wallet: $0, catalog: catalog) }
+    }
+}
+
 struct MerchantOfferEntity: AppEntity {
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "Saved Merchant Offer"
     static var defaultQuery = MerchantOfferEntityQuery()
@@ -47,9 +79,9 @@ struct MerchantOfferEntityQuery: EntityQuery {
     }
 
     @MainActor
-    static func savedMatches(merchant: String = "", amount: Double = 100) -> [WalletOfferMatch] {
+    static func savedMatches(merchant: String = "", amount: Double = 100, walletID: String? = nil) -> [WalletOfferMatch] {
         WalletOfferQuery.matches(userCards: WalletSnapshotLoader.store().loadUserCards(), catalog: CardCatalog.loadCards(),
-                                 merchant: merchant, amount: amount)
+                                 merchant: merchant, amount: amount, walletID: walletID)
     }
 }
 
@@ -60,10 +92,11 @@ struct SavedMerchantOffersIntent: AppIntent {
     static var authenticationPolicy: IntentAuthenticationPolicy = .requiresAuthentication
 
     @Parameter(title: "Merchant", default: "") var merchant: String
+    @Parameter(title: "Card") var card: SavedWalletCardEntity?
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<[MerchantOfferEntity]> & ProvidesDialog {
-        let matches = MerchantOfferEntityQuery.savedMatches(merchant: merchant)
+        let matches = MerchantOfferEntityQuery.savedMatches(merchant: merchant, walletID: card?.id)
         let message = "\(matches.count) current saved offers. Eligibility and savings use your records and issuer terms."
         return .result(value: matches.map(MerchantOfferEntity.init), dialog: IntentDialog(stringLiteral: message))
     }
@@ -77,6 +110,7 @@ struct BestSavedMerchantOfferIntent: AppIntent {
 
     @Parameter(title: "Merchant") var merchant: String
     @Parameter(title: "Purchase Amount", default: 100) var amount: Double
+    @Parameter(title: "Card") var card: SavedWalletCardEntity?
 
     enum OfferError: LocalizedError {
         case noEligibleOffer
@@ -87,7 +121,7 @@ struct BestSavedMerchantOfferIntent: AppIntent {
     func perform() async throws -> some IntentResult & ReturnsValue<MerchantOfferEntity> & ProvidesDialog {
         guard !MerchantOffer.merchantKey(merchant).isEmpty else { throw $merchant.needsValueError("Enter a merchant.") }
         guard amount.isFinite, amount > 0 else { throw $amount.needsValueError("Enter an amount greater than zero.") }
-        guard let best = WalletOfferQuery.best(in: MerchantOfferEntityQuery.savedMatches(merchant: merchant, amount: amount)) else {
+        guard let best = WalletOfferQuery.best(in: MerchantOfferEntityQuery.savedMatches(merchant: merchant, amount: amount, walletID: card?.id)) else {
             throw OfferError.noEligibleOffer
         }
         let value = MerchantOfferEntity(match: best)

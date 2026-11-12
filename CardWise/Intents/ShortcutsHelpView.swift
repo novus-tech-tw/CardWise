@@ -19,6 +19,7 @@ struct ShortcutsHelpView: View {
                 Text("Get Saved Merchant Offers returns your current manually entered offers for a merchant, or all merchants when left empty. " +
                      "Get Best Saved Merchant Offer compares eligible savings for one merchant and purchase amount. Both return offer details you can use in later Shortcut actions.")
                 Text("The best offer uses your activation confirmation, minimum spend, maximum reward and expiry. Offer savings are separate from base card rewards. Confirm eligibility with your issuer.")
+                Text("Set Card to search just that saved card, or leave it empty to search your wallet. The app's Your Offers screen has the same current inventory, plus search and used, expired and archived history.")
             }
             Section("Your Saved Preferences") {
                 Text("Actions use your recorded purchases, spending caps, point values and ranking preference. Open CardWise after changing data on another device. Unlock your device to run an action.")

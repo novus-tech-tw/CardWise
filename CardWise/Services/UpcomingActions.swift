@@ -9,6 +9,11 @@ struct UpcomingAction: Identifiable, Equatable {
     let detail: String
     let deadline: Date
     let kind: Kind
+
+    var displayDate: Date {
+        if case .offer = kind { return deadline.addingTimeInterval(-1) }
+        return deadline
+    }
 }
 
 enum UpcomingActions {

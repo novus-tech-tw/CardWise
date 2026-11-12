@@ -25,7 +25,7 @@ struct UpcomingActionsCard: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(item.title).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.textPrimary)
                             Text(item.cardName).font(.caption).foregroundStyle(.secondary)
-                            Text("\(item.detail) \(displayDate(item).formatted(date: .abbreviated, time: .omitted))")
+                            Text("\(item.detail) \(item.displayDate.formatted(date: .abbreviated, time: .omitted))")
                                 .font(.caption).foregroundStyle(.secondary)
                         }
                         .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
@@ -43,10 +43,6 @@ struct UpcomingActionsCard: View {
         }
     }
 
-    private func displayDate(_ item: UpcomingAction) -> Date {
-        if case .offer = item.kind { return item.deadline.addingTimeInterval(-1) }
-        return item.deadline
-    }
 }
 
 private struct UpcomingActionDetail: View {
