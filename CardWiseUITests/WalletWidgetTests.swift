@@ -37,7 +37,15 @@ final class WalletWidgetTests: XCTestCase {
         app.buttons["Chase Sapphire Preferred"].firstMatch.tap()
         XCTAssertTrue(app.buttons["offer-card-filter"].label.contains("Chase Sapphire Preferred"))
         XCTAssertTrue(current.waitForExistence(timeout: 5))
-        app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Acceptance Café")).firstMatch.tap()
+        let offerRow = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Acceptance Café")).firstMatch
+        let identity = offerRow.identifier.split(separator: "|", maxSplits: 1).map(String.init)
+        XCTAssertEqual(identity.count, 2)
+        var link = URLComponents()
+        link.scheme = "cardwise"
+        link.host = "offers"
+        link.queryItems = [URLQueryItem(name: "wallet", value: identity[0]), URLQueryItem(name: "offer", value: identity[1])]
+        let offerURL = try XCTUnwrap(link.url)
+        offerRow.tap()
         XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 5))
         let used = app.switches["I received the offer savings"].switches.firstMatch
         for _ in 0..<5 {
@@ -61,6 +69,22 @@ final class WalletWidgetTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["1 used offer"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Used · savings recorded by you"].exists)
         attachScreenshot(app, name: "Offer browser used history")
+        assertRepeatedOfferLink(offerURL, in: app)
+    }
+
+    @MainActor
+    private func assertRepeatedOfferLink(_ offerURL: URL, in app: XCUIApplication) {
+        XCUIDevice.shared.system.open(offerURL)
+        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 10), app.debugDescription)
+        XCTAssertEqual(app.textFields["Merchant"].value as? String, "Acceptance Café")
+        app.buttons["Cancel"].tap()
+        app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Your Offers"].firstMatch.waitForExistence(timeout: 5))
+        // Reopening the same widget URL must work while its offers sheet is still open.
+        XCUIDevice.shared.system.open(offerURL)
+        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 10), app.debugDescription)
+        XCTAssertEqual(app.textFields["Merchant"].value as? String, "Acceptance Café")
+        attachScreenshot(app, name: "Repeated offer widget link opens the same record")
     }
 
     @MainActor

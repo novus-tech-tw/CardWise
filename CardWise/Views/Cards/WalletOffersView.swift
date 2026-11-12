@@ -43,6 +43,7 @@ struct WalletOffersView: View {
                                 Text(match.cardName).font(.caption).foregroundStyle(.secondary)
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }.tint(Theme.textPrimary)
+                            .accessibilityIdentifier(match.id)
                     }
                 } header: {
                     Text("\(visible.count) \(scope.rawValue.lowercased()) \(visible.count == 1 ? "offer" : "offers")")
