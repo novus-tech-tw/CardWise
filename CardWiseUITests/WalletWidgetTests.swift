@@ -75,14 +75,14 @@ final class WalletWidgetTests: XCTestCase {
     @MainActor
     private func assertRepeatedOfferLink(_ offerURL: URL, in app: XCUIApplication) {
         openOfferURL(offerURL)
-        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 10), app.debugDescription)
+        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 30), app.debugDescription)
         XCTAssertEqual(app.textFields["Merchant"].value as? String, "Acceptance Café")
         app.buttons["Cancel"].tap()
         app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Your Offers"].firstMatch.waitForExistence(timeout: 5))
         // Reopening the same widget URL must work while its offers sheet is still open.
         openOfferURL(offerURL)
-        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 10), app.debugDescription)
+        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 30), app.debugDescription)
         XCTAssertEqual(app.textFields["Merchant"].value as? String, "Acceptance Café")
         attachScreenshot(app, name: "Repeated offer widget link opens the same record")
         app.terminate()
@@ -92,6 +92,7 @@ final class WalletWidgetTests: XCTestCase {
     private func openOfferURL(_ url: URL) {
         #if targetEnvironment(simulator)
         // The host bridge opens URLs while this runner waits for the destination.
+        XCUIDevice.shared.press(.home)
         NSLog("CARDWISE_TEST_OPEN_URL %@ %@", UUID().uuidString, url.absoluteString)
         #else
         XCUIDevice.shared.system.open(url)

@@ -61,7 +61,7 @@ jobs:
           python3 - <<'PY'
           import subprocess
           device = '${{ steps.simulator.outputs.id }}'
-          predicate = 'process == "CardWiseWidget" OR process CONTAINS "Widget" OR process CONTAINS "Gallery" OR (process == "SpringBoard" AND messageType == 16) OR eventMessage CONTAINS "studio.tmj.cardwise.widget"'
+          predicate = 'process == "CardWise" OR process == "CardWiseWidget" OR process CONTAINS "Widget" OR process CONTAINS "Gallery" OR (process == "SpringBoard" AND messageType == 16) OR eventMessage CONTAINS "studio.tmj.cardwise.widget"'
           checks = [
               (['xcrun', 'simctl', 'spawn', device, 'log', 'show', '--last', '5m', '--style', 'compact', '--predicate', predicate], 'widget-extension.log'),
               (['xcrun', 'simctl', 'spawn', device, 'launchctl', 'list'], 'simulator-processes.txt'),

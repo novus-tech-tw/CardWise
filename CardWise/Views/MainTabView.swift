@@ -1,6 +1,8 @@
 import SwiftUI
+import os
 
 struct MainTabView: View {
+    private static let logger = Logger(subsystem: "studio.tmj.cardwise", category: "Navigation")
     @EnvironmentObject var cardViewModel: CardViewModel
     @State private var selectedTab = 0
     @State private var widgetPurchase: PurchaseContext?
@@ -56,6 +58,7 @@ struct MainTabView: View {
                     return
                 }
                 if let destination = url.host.flatMap(WalletDestination.init(rawValue:)) {
+                    Self.logger.notice("Wallet link received for \(destination.rawValue, privacy: .public)")
                     offerDestination = WalletOfferDestination(url: url)
                     walletRouteID = UUID()
                     selectedTab = 0
