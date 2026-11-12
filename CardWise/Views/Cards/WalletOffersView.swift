@@ -22,12 +22,14 @@ struct WalletOffersView: View {
                     Picker("Status", selection: $scope) {
                         ForEach(WalletOfferScope.allCases) { Text($0.rawValue).tag($0) }
                     }
+                    .accessibilityIdentifier("offer-status-filter")
                     Picker("Card", selection: $walletID) {
                         Text("All cards").tag(String?.none)
                         ForEach(cardViewModel.sortedUserCards) { wallet in
                             Text(cardName(wallet)).tag(Optional(wallet.id))
                         }
                     }
+                    .accessibilityIdentifier("offer-card-filter")
                 }
                 Section {
                     if visible.isEmpty {
@@ -56,7 +58,7 @@ struct WalletOffersView: View {
             }
         }
         .navigationTitle("Your Offers")
-        .searchable(text: $search, prompt: "Merchant, offer or card")
+        .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always), prompt: "Merchant, offer or card")
         .onChange(of: cardViewModel.userCards.map(\.id)) { _, ids in
             if let walletID, !ids.contains(walletID) { self.walletID = nil }
         }

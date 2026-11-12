@@ -24,7 +24,8 @@ final class WalletWidgetTests: XCTestCase {
         app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
         let current = app.staticTexts["1 current offer"]
         XCTAssertTrue(current.waitForExistence(timeout: 5), app.debugDescription)
-        let search = app.searchFields["Merchant, offer or card"]
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 5), app.debugDescription)
         search.tap()
         search.typeText("no match")
         XCTAssertTrue(app.staticTexts["No offers match your search."].waitForExistence(timeout: 5))
@@ -32,7 +33,7 @@ final class WalletWidgetTests: XCTestCase {
         search.typeText("cafe")
         XCTAssertTrue(app.staticTexts["Acceptance Café"].waitForExistence(timeout: 5))
         app.buttons["Cancel"].tap()
-        app.buttons["Card, All cards"].tap()
+        app.buttons["offer-card-filter"].tap()
         app.buttons["Chase Sapphire Preferred"].firstMatch.tap()
         XCTAssertTrue(current.waitForExistence(timeout: 5))
         app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Acceptance Café")).firstMatch.tap()
@@ -49,7 +50,7 @@ final class WalletWidgetTests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Merchant Offers"].waitForExistence(timeout: 5))
         app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
         XCTAssertTrue(app.staticTexts["0 current offers"].waitForExistence(timeout: 5))
-        app.buttons["Status, Current"].tap()
+        app.buttons["offer-status-filter"].tap()
         app.buttons["Used"].tap()
         XCTAssertTrue(app.staticTexts["1 used offer"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Used · savings recorded by you"].exists)
