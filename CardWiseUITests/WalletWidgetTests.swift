@@ -39,12 +39,17 @@ final class WalletWidgetTests: XCTestCase {
         XCTAssertTrue(current.waitForExistence(timeout: 5))
         app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Acceptance Café")).firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 5))
-        let used = app.switches["I received the offer savings"]
-        for _ in 0..<5 where !used.isHittable { app.swipeUp() }
+        let used = app.switches["I received the offer savings"].switches.firstMatch
+        for _ in 0..<5 {
+            if used.exists, used.isHittable, used.frame.maxY < app.frame.maxY - 100 { break }
+            app.swipeUp()
+        }
         XCTAssertTrue(used.isHittable)
         used.tap()
+        XCTAssertEqual(used.value as? String, "1")
         let received = app.textFields["Savings Received ($)"]
         XCTAssertTrue(received.waitForExistence(timeout: 5))
+        for _ in 0..<5 where !received.isHittable { app.swipeUp() }
         received.tap()
         received.typeText("4.50")
         app.buttons["Save"].tap()
