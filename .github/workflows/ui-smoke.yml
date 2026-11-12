@@ -7,6 +7,7 @@ on:
       - 'CardWiseWidget/**'
       - 'Shared/**'
       - 'CardWiseUITests/**'
+      - 'Scripts/run_ui_acceptance.py'
       - 'project.yml'
       - '.github/workflows/ui-smoke.yml'
   workflow_dispatch:
@@ -52,18 +53,26 @@ jobs:
           xcrun simctl bootstatus "$device" -b
       - name: Run widget acceptance test
         run: |
-          xcodebuild test -project CardWise.xcodeproj -scheme CardWiseUI \
-            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.id }}' \
-            -resultBundlePath ui-smoke.xcresult -parallel-testing-enabled NO \
-            -collect-test-diagnostics never -test-timeouts-enabled YES \
-            -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 360 \
-            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
+          python3 Scripts/run_ui_acceptance.py \
+            --device '${{ steps.simulator.outputs.id }}' --result-bundle ui-smoke.xcresult
       - name: Collect focused widget diagnostics
         if: always() && steps.simulator.outputs.id != ''
         run: |
-          xcrun simctl spawn '${{ steps.simulator.outputs.id }}' log show --last 5m --style compact \
-            --predicate 'process == "CardWiseWidget" OR process CONTAINS "Widget" OR process CONTAINS "Gallery" OR (process == "SpringBoard" AND messageType == 16) OR eventMessage CONTAINS "studio.tmj.cardwise.widget"' > widget-extension.log || true
-          xcrun simctl spawn '${{ steps.simulator.outputs.id }}' launchctl list | grep -Ei 'widget|gallery|springboard' > simulator-processes.txt || true
+          python3 - <<'PY'
+          import subprocess
+          device = '${{ steps.simulator.outputs.id }}'
+          predicate = 'process == "CardWiseWidget" OR process CONTAINS "Widget" OR process CONTAINS "Gallery" OR (process == "SpringBoard" AND messageType == 16) OR eventMessage CONTAINS "studio.tmj.cardwise.widget"'
+          checks = [
+              (['xcrun', 'simctl', 'spawn', device, 'log', 'show', '--last', '5m', '--style', 'compact', '--predicate', predicate], 'widget-extension.log'),
+              (['xcrun', 'simctl', 'spawn', device, 'launchctl', 'list'], 'simulator-processes.txt'),
+          ]
+          for command, path in checks:
+              with open(path, 'w') as output:
+                  try:
+                      subprocess.run(command, stdout=output, stderr=subprocess.STDOUT, timeout=30, check=False)
+                  except subprocess.TimeoutExpired:
+                      output.write('\nDiagnostic collection timed out after 30 seconds.\n')
+          PY
       - name: Retain test results
         if: always()
         uses: actions/upload-artifact@v7
@@ -77,4 +86,8 @@ jobs:
           retention-days: 7
       - name: Remove disposable simulator
         if: always() && steps.simulator.outputs.id != ''
-        run: xcrun simctl delete '${{ steps.simulator.outputs.id }}'
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          subprocess.run(['xcrun', 'simctl', 'delete', '${{ steps.simulator.outputs.id }}'], timeout=30, check=True)
+          PY

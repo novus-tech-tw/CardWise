@@ -5,6 +5,7 @@ struct MerchantOffersView: View {
     let userCard: UserCard
     var initialOfferID: String?
     @State private var editingOffer: MerchantOffer?
+    @State private var openedInitialOffer = false
 
     private var current: UserCard { cardViewModel.userCards.first { $0.id == userCard.id } ?? userCard }
     private var offers: [MerchantOffer] {
@@ -43,7 +44,10 @@ struct MerchantOffersView: View {
         }
         .navigationTitle("Merchant Offers")
         .onAppear {
-            if let id = initialOfferID { editingOffer = (current.merchantOffers ?? []).first { $0.id == id } }
+            if !openedInitialOffer, let id = initialOfferID {
+                openedInitialOffer = true
+                editingOffer = (current.merchantOffers ?? []).first { $0.id == id }
+            }
         }
         .sheet(item: $editingOffer) { offer in
             MerchantOfferEditor(userCard: current, offer: offer)
