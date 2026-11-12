@@ -7,7 +7,6 @@ on:
       - 'CardWiseWidget/**'
       - 'Shared/**'
       - 'CardWiseUITests/**'
-      - 'Scripts/run_ui_acceptance.py'
       - 'project.yml'
       - '.github/workflows/ui-smoke.yml'
   workflow_dispatch:
@@ -53,8 +52,12 @@ jobs:
           xcrun simctl bootstatus "$device" -b
       - name: Run widget acceptance test
         run: |
-          python3 Scripts/run_ui_acceptance.py \
-            --device '${{ steps.simulator.outputs.id }}' --result-bundle ui-smoke.xcresult
+          xcodebuild test -project CardWise.xcodeproj -scheme CardWiseUI \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.id }}' \
+            -resultBundlePath ui-smoke.xcresult -parallel-testing-enabled NO \
+            -collect-test-diagnostics never -test-timeouts-enabled YES \
+            -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 360 \
+            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
       - name: Collect focused widget diagnostics
         if: always() && steps.simulator.outputs.id != ''
         run: |

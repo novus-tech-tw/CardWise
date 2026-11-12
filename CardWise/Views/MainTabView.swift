@@ -7,13 +7,16 @@ struct MainTabView: View {
     @State private var selectedTab = 0
     @State private var widgetPurchase: PurchaseContext?
     @State private var purchaseRouteID = UUID()
-    @State private var walletDestination: WalletDestination?
-    @State private var offerDestination: WalletOfferDestination?
-    @State private var walletRouteID = UUID()
+    @State private var walletRoute: WalletRoute?
 
-    private enum WalletDestination: String, Identifiable {
+    private enum WalletDestination: String {
         case offers, deadlines, credits
-        var id: String { rawValue }
+    }
+
+    private struct WalletRoute: Identifiable {
+        let id = UUID()
+        let destination: WalletDestination
+        let offer: WalletOfferDestination?
     }
 
     var body: some View {
@@ -53,30 +56,28 @@ struct MainTabView: View {
         .onOpenURL { url in
             if url.scheme == "cardwise" {
                 if url.host == "cards" {
-                    walletDestination = nil
+                    walletRoute = nil
                     selectedTab = 1
                     return
                 }
                 if let destination = url.host.flatMap(WalletDestination.init(rawValue:)) {
                     Self.logger.notice("Wallet link received for \(destination.rawValue, privacy: .public)")
-                    offerDestination = WalletOfferDestination(url: url)
-                    walletRouteID = UUID()
                     selectedTab = 0
-                    walletDestination = destination
+                    walletRoute = WalletRoute(destination: destination, offer: WalletOfferDestination(url: url))
                     return
                 }
             }
             guard let purchase = PurchaseContext(url: url) else { return }
-            walletDestination = nil
+            walletRoute = nil
             widgetPurchase = purchase
             purchaseRouteID = UUID()
             selectedTab = 2
         }
-        .sheet(item: $walletDestination) { destination in
+        .sheet(item: $walletRoute) { route in
             NavigationStack {
                 Group {
-                    switch destination {
-                    case .offers: WalletOffersView(initialDestination: offerDestination)
+                    switch route.destination {
+                    case .offers: WalletOffersView(initialDestination: route.offer)
                     case .deadlines:
                         ScrollView {
                             if cardViewModel.userCards.isEmpty { Text("Add a card to see upcoming actions.").padding() }
@@ -86,10 +87,10 @@ struct MainTabView: View {
                     }
                 }
                 .toolbar {
-                    ToolbarItem(placement: .confirmationAction) { Button("Done") { walletDestination = nil } }
+                    ToolbarItem(placement: .confirmationAction) { Button("Done") { walletRoute = nil } }
                 }
             }
-            .id(walletRouteID)
+            .id(route.id)
         }
     }
 }

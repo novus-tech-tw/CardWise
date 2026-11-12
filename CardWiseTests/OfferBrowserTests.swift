@@ -71,11 +71,16 @@ import Testing
         var wallet = UserCard(card: card)
         wallet.merchantOffers = [offer("shared &/?=é")]
         let payload = WidgetDataManager.makePayload(userCards: [wallet], allCards: [card], spendings: [], settings: .init(), asOf: now)
-        let row = try #require(payload.walletSections?.first { $0.kind == .offers }?.rows.first)
+        let section = try #require(payload.walletSections?.first { $0.kind == .offers })
+        let row = try #require(section.rows.first)
         let url = try #require(row.url)
         let destination = try #require(WalletOfferDestination(url: url))
         #expect(destination.walletID == wallet.id)
         #expect(destination.offerID == "shared &/?=é")
+        #expect(section.singleRowDestinationURL == url)
+        #expect(section.destinationURL == URL(string: "cardwise://offers"))
+        let empty = WalletWidgetSection(kind: .offers, title: "Offers", emptyMessage: "None", rows: [])
+        #expect(empty.singleRowDestinationURL == empty.destinationURL)
     }
 
     @Test(arguments: ["cardwise://offers", "cardwise://offers?wallet=a", "cardwise://offers?wallet=&offer=b",

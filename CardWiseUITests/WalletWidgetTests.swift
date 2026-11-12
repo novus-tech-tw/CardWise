@@ -37,16 +37,7 @@ final class WalletWidgetTests: XCTestCase {
         app.buttons["Chase Sapphire Preferred"].firstMatch.tap()
         XCTAssertTrue(app.buttons["offer-card-filter"].label.contains("Chase Sapphire Preferred"))
         XCTAssertTrue(current.waitForExistence(timeout: 5))
-        let offerRow = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Acceptance Café")).firstMatch
-        let identity = offerRow.identifier.split(separator: "|", maxSplits: 1).map(String.init)
-        XCTAssertEqual(identity.count, 2)
-        var link = URLComponents()
-        link.scheme = "cardwise"
-        link.host = "offers"
-        link.queryItems = [URLQueryItem(name: "wallet", value: identity[0]), URLQueryItem(name: "offer", value: identity[1])]
-        let offerURL = try XCTUnwrap(link.url)
-        offerRow.tap()
-        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 5))
+        assertRepeatedOfferWidgetLink(in: app)
         let used = app.switches["I received the offer savings"].switches.firstMatch
         for _ in 0..<5 {
             if used.exists, used.isHittable, used.frame.maxY < app.frame.maxY - 100 { break }
@@ -69,34 +60,25 @@ final class WalletWidgetTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["1 used offer"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Used · savings recorded by you"].exists)
         attachScreenshot(app, name: "Offer browser used history")
-        assertRepeatedOfferLink(offerURL, in: app)
+        app.terminate()
     }
 
     @MainActor
-    private func assertRepeatedOfferLink(_ offerURL: URL, in app: XCUIApplication) {
-        openOfferURL(offerURL)
+    private func assertRepeatedOfferWidgetLink(in app: XCUIApplication) {
+        let springboard = installWalletWidget(titled: "Saved Offers", text: "Acceptance Café")
+        widget(containing: "Acceptance Café", in: springboard).tap()
         XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 30), app.debugDescription)
         XCTAssertEqual(app.textFields["Merchant"].value as? String, "Acceptance Café")
         app.buttons["Cancel"].tap()
         app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Your Offers"].firstMatch.waitForExistence(timeout: 5))
-        // Reopening the same widget URL must work while its offers sheet is still open.
-        openOfferURL(offerURL)
+        // Tap the same installed widget while its offers sheet remains open.
+        XCUIDevice.shared.press(.home)
+        waitForVisibleText("Acceptance Café", in: springboard)
+        widget(containing: "Acceptance Café", in: springboard).tap()
         XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 30), app.debugDescription)
         XCTAssertEqual(app.textFields["Merchant"].value as? String, "Acceptance Café")
         attachScreenshot(app, name: "Repeated offer widget link opens the same record")
-        app.terminate()
-    }
-
-    @MainActor
-    private func openOfferURL(_ url: URL) {
-        #if targetEnvironment(simulator)
-        // The host bridge opens URLs while this runner waits for the destination.
-        XCUIDevice.shared.press(.home)
-        NSLog("CARDWISE_TEST_OPEN_URL %@ %@", UUID().uuidString, url.absoluteString)
-        #else
-        XCUIDevice.shared.system.open(url)
-        #endif
     }
 
     @MainActor
@@ -104,11 +86,21 @@ final class WalletWidgetTests: XCTestCase {
         continueAfterFailure = false
         let app = launchWallet()
         enterPartialCreditUsage(in: app)
+        let springboard = installWalletWidget(titled: "Unused Statement Credits", text: "6.50")
+        widget(containing: "6.50", in: springboard).tap()
+        XCTAssertTrue(app.staticTexts["Unused Credits"].waitForExistence(timeout: 10), app.debugDescription)
+        let amount = app.textFields["Used amount for DoorDash credit"]
+        XCTAssertTrue(amount.waitForExistence(timeout: 5))
+        XCTAssertEqual(amount.value as? String, "3.5")
+    }
+
+    @MainActor
+    private func installWalletWidget(titled title: String, text: String) -> XCUIApplication {
         XCUIDevice.shared.press(.home)
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let icon = springboard.icons["CardWise"].firstMatch
         XCTAssertTrue(icon.waitForExistence(timeout: 10))
-        attachScreenshot(springboard, name: "Home before widget installation")
+        attachScreenshot(springboard, name: "Home before installing " + title)
         // The disposable simulator's lower Home grid is empty. Holding it avoids
         // the app-icon preview process, which can stall SpringBoard animation waits.
         springboard.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.7)).press(forDuration: 1.5)
@@ -128,19 +120,19 @@ final class WalletWidgetTests: XCTestCase {
         XCTAssertEqual(result, .completed, springboard.debugDescription)
         cardwise.tap()
         var attempts = 0
-        while !springboard.staticTexts["Unused Statement Credits"].exists && attempts < 17 {
+        while !springboard.staticTexts[title].exists && attempts < 17 {
             springboard.swipeLeft()
             attempts += 1
         }
-        waitForVisibleCredit(in: springboard)
-        attachScreenshot(springboard, name: "Unused credits gallery")
-        XCTAssertTrue(springboard.staticTexts["Unused Statement Credits"].exists, springboard.debugDescription)
+        waitForVisibleText(text, in: springboard)
+        attachScreenshot(springboard, name: title + " small")
+        XCTAssertTrue(springboard.staticTexts[title].exists, springboard.debugDescription)
         springboard.swipeLeft()
-        waitForVisibleCredit(in: springboard)
-        attachScreenshot(springboard, name: "Unused credits medium")
+        waitForVisibleText(text, in: springboard)
+        attachScreenshot(springboard, name: title + " medium")
         springboard.swipeLeft()
-        waitForVisibleCredit(in: springboard)
-        attachScreenshot(springboard, name: "Unused credits large")
+        waitForVisibleText(text, in: springboard)
+        attachScreenshot(springboard, name: title + " large")
         springboard.swipeRight()
         springboard.swipeRight()
         let addWidget = springboard.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Add Widget")).firstMatch
@@ -148,17 +140,20 @@ final class WalletWidgetTests: XCTestCase {
         addWidget.tap()
         let done = springboard.buttons["Done"]
         if done.waitForExistence(timeout: 5) { done.tap() }
-        waitForVisibleCredit(in: springboard)
-        attachScreenshot(springboard, name: "Installed unused credits")
-        let widget = springboard.descendants(matching: .any).matching(
+        waitForVisibleText(text, in: springboard)
+        attachScreenshot(springboard, name: "Installed " + title)
+        return springboard
+    }
+
+    @MainActor
+    private func widget(containing text: String, in springboard: XCUIApplication) -> XCUIElement {
+        let widgets = springboard.descendants(matching: .any).matching(
             NSPredicate(format: "label == %@ AND value CONTAINS %@", "CardWise", "Widget")
-        ).firstMatch
-        XCTAssertTrue(widget.waitForExistence(timeout: 10), springboard.debugDescription)
-        widget.tap()
-        XCTAssertTrue(app.staticTexts["Unused Credits"].waitForExistence(timeout: 10), app.debugDescription)
-        let amount = app.textFields["Used amount for DoorDash credit"]
-        XCTAssertTrue(amount.waitForExistence(timeout: 5))
-        XCTAssertEqual(amount.value as? String, "3.5")
+        ).allElementsBoundByIndex
+        let point = visibleTextPoint(text, in: springboard)
+        let match = widgets.first { widget in point.map { widget.frame.contains($0) } ?? false }
+        XCTAssertNotNil(match, "An installed CardWise widget must contain the rendered text: \(text)")
+        return match ?? springboard.otherElements["Missing rendered widget"]
     }
 
     @MainActor
@@ -203,23 +198,31 @@ final class WalletWidgetTests: XCTestCase {
     }
 
     @MainActor
-    private func waitForVisibleCredit(in app: XCUIApplication) {
+    private func visibleTextPoint(_ text: String, in app: XCUIApplication) -> CGPoint? {
+        guard let image = app.screenshot().image.cgImage else { return nil }
+        let request = VNRecognizeTextRequest()
+        request.recognitionLevel = .accurate
+        request.recognitionLanguages = ["en-US"]
+        do {
+            try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
+        } catch {
+            return nil
+        }
+        guard let observation = request.results?.first(where: {
+            $0.topCandidates(1).first?.string.localizedStandardContains(text) == true
+        }) else { return nil }
+        let box = observation.boundingBox
+        return CGPoint(x: app.frame.minX + box.midX * app.frame.width,
+                       y: app.frame.minY + (1 - box.midY) * app.frame.height)
+    }
+
+    @MainActor
+    private func waitForVisibleText(_ text: String, in app: XCUIApplication) {
         let rendered = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            guard let image = app.screenshot().image.cgImage else { return false }
-            let request = VNRecognizeTextRequest()
-            request.recognitionLevel = .accurate
-            request.recognitionLanguages = ["en-US"]
-            do {
-                try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
-            } catch {
-                return false
-            }
-            return request.results?.contains { observation in
-                observation.topCandidates(1).first?.string.contains("6.50") == true
-            } ?? false
+            self.visibleTextPoint(text, in: app) != nil
         }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [rendered], timeout: 30), .completed,
-                       "The widget must render the recorded remaining credit before its screenshot is accepted.")
+                       "The widget must render \(text) before its screenshot is accepted.")
     }
 
     @MainActor

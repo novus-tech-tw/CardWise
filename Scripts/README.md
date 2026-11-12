@@ -28,16 +28,3 @@ Manual run:
 - `make_appstore_shots.py` / `take_screenshots.sh` — App Store screenshot generation.
 
 These are run manually and ad hoc; they are not part of CI or the release flow.
-
-## Simulator UI acceptance
-
-After `xcodegen generate`, run the offer and widget tests on a disposable Simulator:
-
-```bash
-python3 Scripts/run_ui_acceptance.py --device <SIMULATOR_UDID> --result-bundle /tmp/cardwise-ui.xcresult
-```
-
-The host opens the two saved-offer URL requests with `simctl openurl` while the test
-runner waits for the corresponding screens. The helper requires screenshot-only capture
-settings, refuses to overwrite an existing result bundle, and bounds the owned test
-process to 18 minutes. It creates no Simulator and deletes no Simulator data.
