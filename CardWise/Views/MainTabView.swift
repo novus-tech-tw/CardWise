@@ -6,6 +6,7 @@ struct MainTabView: View {
     @State private var widgetPurchase: PurchaseContext?
     @State private var purchaseRouteID = UUID()
     @State private var walletDestination: WalletDestination?
+    @State private var offerDestination: WalletOfferDestination?
 
     private enum WalletDestination: String, Identifiable {
         case offers, deadlines, credits
@@ -54,6 +55,7 @@ struct MainTabView: View {
                     return
                 }
                 if let destination = url.host.flatMap(WalletDestination.init(rawValue:)) {
+                    offerDestination = WalletOfferDestination(url: url)
                     selectedTab = 0
                     walletDestination = destination
                     return
@@ -69,7 +71,7 @@ struct MainTabView: View {
             NavigationStack {
                 Group {
                     switch destination {
-                    case .offers: WalletOffersView()
+                    case .offers: WalletOffersView(initialDestination: offerDestination).id(offerDestination)
                     case .deadlines:
                         ScrollView {
                             if cardViewModel.userCards.isEmpty { Text("Add a card to see upcoming actions.").padding() }

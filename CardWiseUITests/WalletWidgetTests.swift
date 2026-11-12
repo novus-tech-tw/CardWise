@@ -3,6 +3,58 @@ import Vision
 
 final class WalletWidgetTests: XCTestCase {
     @MainActor
+    func testOfferBrowserSearchCardFilterAndHistory() throws {
+        continueAfterFailure = false
+        let app = launchWallet()
+        app.buttons["Offers"].tap()
+        XCTAssertTrue(app.navigationBars["Your Offers"].waitForExistence(timeout: 10))
+        app.buttons["Chase Sapphire Preferred"].firstMatch.tap()
+        app.buttons["Add an offer"].tap()
+        let merchant = app.textFields["Merchant"]
+        XCTAssertTrue(merchant.waitForExistence(timeout: 5))
+        merchant.tap()
+        merchant.typeText("Acceptance Café")
+        app.textFields["Offer description"].tap()
+        app.textFields["Offer description"].typeText("Save on a purchase")
+        let reward = app.textFields["Cash Back ($)"]
+        reward.tap()
+        reward.typeText("20")
+        app.buttons["Save"].tap()
+        app.navigationBars.buttons["Your Offers"].tap()
+        let current = app.staticTexts["1 current offer"]
+        XCTAssertTrue(current.waitForExistence(timeout: 5), app.debugDescription)
+        let search = app.searchFields["Merchant, offer or card"]
+        search.tap()
+        search.typeText("no match")
+        XCTAssertTrue(app.staticTexts["No offers match your search."].waitForExistence(timeout: 5))
+        search.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 8))
+        search.typeText("cafe")
+        XCTAssertTrue(app.staticTexts["Acceptance Café"].waitForExistence(timeout: 5))
+        app.buttons["Cancel"].tap()
+        app.buttons["Card, All cards"].tap()
+        app.buttons["Chase Sapphire Preferred"].firstMatch.tap()
+        XCTAssertTrue(current.waitForExistence(timeout: 5))
+        app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Acceptance Café")).firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Edit Offer"].waitForExistence(timeout: 5))
+        let used = app.switches["I received the offer savings"]
+        for _ in 0..<5 where !used.isHittable { app.swipeUp() }
+        XCTAssertTrue(used.isHittable)
+        used.tap()
+        let received = app.textFields["Savings Received ($)"]
+        XCTAssertTrue(received.waitForExistence(timeout: 5))
+        received.tap()
+        received.typeText("4.50")
+        app.buttons["Save"].tap()
+        app.navigationBars.buttons["Your Offers"].tap()
+        XCTAssertTrue(app.staticTexts["0 current offers"].waitForExistence(timeout: 5))
+        app.buttons["Status, Current"].tap()
+        app.buttons["Used"].tap()
+        XCTAssertTrue(app.staticTexts["1 used offer"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Used · savings recorded by you"].exists)
+        attachScreenshot(app, name: "Offer browser used history")
+    }
+
+    @MainActor
     func testUnusedCreditWidgetOpensRecordedCredit() throws {
         continueAfterFailure = false
         let app = launchWallet()
