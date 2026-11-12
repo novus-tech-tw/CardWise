@@ -20,7 +20,8 @@ final class WalletWidgetTests: XCTestCase {
         reward.tap()
         reward.typeText("20")
         app.buttons["Save"].tap()
-        app.navigationBars.buttons["Your Offers"].tap()
+        XCTAssertTrue(app.navigationBars["Merchant Offers"].waitForExistence(timeout: 5))
+        app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
         let current = app.staticTexts["1 current offer"]
         XCTAssertTrue(current.waitForExistence(timeout: 5), app.debugDescription)
         let search = app.searchFields["Merchant, offer or card"]
@@ -45,7 +46,8 @@ final class WalletWidgetTests: XCTestCase {
         received.tap()
         received.typeText("4.50")
         app.buttons["Save"].tap()
-        app.navigationBars.buttons["Your Offers"].tap()
+        XCTAssertTrue(app.navigationBars["Merchant Offers"].waitForExistence(timeout: 5))
+        app.navigationBars["Merchant Offers"].buttons.firstMatch.tap()
         XCTAssertTrue(app.staticTexts["0 current offers"].waitForExistence(timeout: 5))
         app.buttons["Status, Current"].tap()
         app.buttons["Used"].tap()
